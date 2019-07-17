@@ -1,0 +1,25 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="guest_txt" id="content">
+				
+			</div>
+			<!-- <div class="guest_txt_fill_hotel"></div> -->
+		</div>
+
+{include file="public/footer2" /}
+
+<script>
+		var download = "api/convention/article";
+		var module = '<?php echo $module; ?>';
+		console.log(module);
+		function mtdownload(data){
+			if(data.data.length){
+				var content = htmls(data.data[0].content);
+				$("#content").html(content)
+			}
+		}
+		var data = {"convention_id":convention_id,"module":module};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+</script>

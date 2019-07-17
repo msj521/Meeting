@@ -1,0 +1,138 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+  <span class="layui-breadcrumb">
+    <a><cite>大会管理</cite></a>
+    <a><cite>会议食宿</cite></a>
+  </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="{$index|default='/'}" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+        <div class="layui-input-inline">
+          <select name="class_id" lay-search="">
+            <option value="">会议分类</option>
+            {volist name="meet"  id="vo"}
+            <option value="{$vo.fid}"  {if condition="$vo.fid eq $class_id"} selected="selected" {/if} >{$vo.class_name_zh}</option>
+            {/volist}
+          </select>
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off" class="layui-input">
+        </div>
+
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <span class="x-left" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+ <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="z">
+  <a  href="javascript:;"  lay-event="Z"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6f6;</i></a>
+</script>
+
+<script type="text/html" id="x">
+  <a  href="javascript:;"  lay-event="X"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6ee;</i></a>
+</script>
+
+<script type="text/html" id="v">
+  <a  href="javascript:;"  lay-event="V"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6f5;</i></a>
+</script>
+
+<script type="text/html" id="n">
+  <a  href="javascript:;"  lay-event="N"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6f4;</i></a>
+</script>
+
+<script type="text/html" id="a1">
+  <a  href="javascript:;"  lay-event="A1"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6bf;</i></a>
+</script>
+
+<script type="text/html" id="a2">
+  <a  href="javascript:;"  lay-event="A2"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6a2;</i></a>
+</script>
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  // console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+ 
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    }
+    
+  }
+
+  // console.log(dataList);
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid',width:80,title: 'ID',sort:true}
+        ,{field:'convention_name',  width:450, title: '名称'}
+        ,{field:'class_name',  title: '类型'}
+        ,{  title: '关于城市', toolbar: '#z'}
+        ,{title: '会场介绍', toolbar: '#x'}
+        ,{title: '会议酒店', toolbar: '#v'}
+        ,{ title: '周边餐饮', toolbar: '#n'}
+        ,{ title: '历届简介', toolbar: '#a1'}
+        ,{ title: '大会征文通知',width:115,  toolbar: '#a2'}
+        ,{field:'start_time', width:160, title: '开始时间'}
+        ,{field:'end_time',width:160,  title: '结束时间'}        
+        ,{field:'record_status',width:80,   title: '状态'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'Z'){
+        member_edit('关于城市','/meet/switch','{$index|default="/"}',data.fid+'&Z',0,0)
+      } else if(obj.event === 'X'){
+        member_edit('会场介绍','/meet/switch','{$index|default="/"}',data.fid+'&X',0,0)
+      } else if(obj.event === 'V'){
+        member_edit('会议酒店','/meet/switch','{$index|default="/"}',data.fid+'&V',0,0)
+      } else if(obj.event === 'N'){
+        member_edit('周边餐饮','/meet/switch','{$index|default="/"}',data.fid+'&N',0,0)
+      } else if(obj.event === 'A1'){
+        member_edit('历届简介','/meet/switch','{$index|default="/"}',data.fid+'&A1',0,0)
+      } else if(obj.event === 'A2'){
+        member_edit('大会征文通知','/meet/switch','{$index|default="/"}',data.fid+'&A2',0,0)
+      }
+    });
+
+  })
+
+</script>
+</body>
+</html>

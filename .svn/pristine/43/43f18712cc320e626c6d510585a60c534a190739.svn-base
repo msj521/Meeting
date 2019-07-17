@@ -1,0 +1,83 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue2" /}
+			<div class="abstract_list" style="height: 700px;">
+				<div class="content02">
+				<div class="title_abs_list" style="margin-bottom: 30px;">
+					<div class="title_abs">开具发票</div>
+				</div>
+					<div class="abs_txtlist">
+						<div class="abs_input">
+							<div id="">
+								<div class="abs_inputlist">
+									<div class="abs_input_lf" style="width: 260px;">
+										发票抬头<span>*</span>
+									</div>
+									<div class="abs_input_rg">
+										<input type="text" name="" id="bill_title" />
+									</div>
+									
+								</div>
+								<div class="abs_inputlist">
+									<div class="abs_input_lf" style="width: 260px;">
+										统一社会信用代码/纳税人识别号<span>*</span>
+									</div>
+									<div class="abs_input_rg">
+										<input type="text" name="" id="tax_num" />
+									</div>
+								</div>
+								
+								<p style=" color:#598DC4;text-align:center ;">注意大会只提供电子发票，请各位老师仔细核对发票抬头和税号，发票开出后不退不换：</p>
+								<div style="float: left; display: inline-block; width: 100%;">
+									<div class="abs_btn02" style="margin-top: 40px;">
+										
+										<input type="button" name="" id="invoice_btn" value="提交" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+
+{include file="public/footer" /}
+<script>
+	$(function(){
+		var invoiceurl = "/api/convention/pay"//下拉接口
+		
+		$("#invoice_btn").click(function(){
+			var bill_title = $("#bill_title").val()
+			var tax_num = $("#tax_num").val()
+			
+			if(bill_title == ""){
+				showLaert("发票抬头不能为空！");
+			}
+			if(tax_num == ""){
+				showLaert("纳税人识别号不能为空！");
+			}
+			showLaert("发票抬头："+bill_title+"；纳税人识别号："+tax_num);
+			$("#alert_btn").click(function() {
+				//加载
+				Loadings();
+				function invoicefo(data) {
+					if(data.code==200){
+						window.location.href = "/convention?convention_id=" + convention_id + "&nav_id=1";	
+					}
+				}
+				var invoiceata = {
+					"convention_id": convention_id,
+					"uid": cook_uid,
+					"bill_title":bill_title,
+					" tax_num": tax_num,
+					"type":2,
+					"invoice_status":1
+				};
+				ajax_all_Filed("true", "true", "GET", invoiceurl, "json", invoiceata, invoicefo); //调用函数
+			})
+			
+		})
+	})
+</script>

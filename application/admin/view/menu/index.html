@@ -1,0 +1,130 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+  <span class="layui-breadcrumb">
+    <a><cite>菜单管理</cite></a>
+    <a><cite>{$title|default="菜单列表"}</cite></a>
+  </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/menu/index" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <select name="app_type">
+            <option value="0">菜单类型</option>
+            {volist name="menu" id="vo" key="ko"}
+            <option value="{$ko}"  {if condition="$ko eq $FType"} selected="selected" {/if} >{$vo}</option>
+            {/volist}
+          </select>
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off" class="layui-input">
+        </div>
+
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    {if condition="!empty(fid) and fid eq 2"}
+      <button class="layui-btn" onclick="edit('新增','/menu/edit','','500','500')"><i class="layui-icon">&#xe608;</i>添加</button>
+      <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'/menu/del','/menu/index')"><i class="layui-icon">&#xe640;</i>批量删除</button>
+    {/if}
+    <span class="layui-btn" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th style="width:20px;">
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+      </th>
+      <th style="width:40px;">ID</th>
+      <th >菜单名称</th>
+      <th >菜单类别</th>
+      <th >菜单路由</th>
+      <th >状态</th>
+      <th style="width:120px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">&#xe605;</i></div>
+      </td>
+      <td >{$vo.fid}</td>
+      <td title="{$vo.menu_name}">{$vo.menu_name}</td>
+      <td title="{$vo.app_type}">{$vo.app_type|app_type}</td>
+      <td title="{$vo.route}">{$vo.route|default='父级菜单'}</td>
+      <td title="{$vo.record_status}">{$vo.record_status|is_status}</td>
+      {if condition="!empty(fid) and fid eq 2"}
+      <td class="td-manage">
+              <a title="编辑" href="javascript:;" onclick="edit('编辑','/menu/edit','{$vo.fid}','500','500')"
+                 class="ml-5" style="text-decoration:none" 
+                >
+                <i class="layui-icon" >&#xe642;</i>
+              </a>
+
+              <a title="删除" href="javascript:;" onclick="member_del('{$vo.fid}','/menu/del','/menu/index')"
+                 style="text-decoration:none">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+      </td>
+      {else}
+      <td class="td-manage"></td>
+      {/if}
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+{include file="public/top_js" /}
+<script>
+
+  //编辑
+  function edit (title,url,id,w,h) {
+    x_admin_consult(title,url,id,w,h);
+  }
+
+  function x_admin_consult(title,url,id,w,h){
+    if (title == null || title == '') {
+      title=false;
+    };
+    if (url == null || url == '') {
+      url="404.html";
+    };
+    if (w == null || w == '') {
+      w=($(window).width()*0.9);
+    };
+    if (h == null || h == '') {
+      h=($(window).height() - 50);
+    };
+
+    layer.open({
+      type: 2,
+      area: [w+'px', h +'px'],
+      fix: false, //不固定
+      maxmin: true,
+      shadeClose: false,
+      shade:0.4,
+      title: title,
+      content: url+"?fid="+id,
+      cancel: function(){
+        //do something
+       window.location.href="/menu/index";
+      }
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+	<title>SIFIC 2019会议</title>
+    <link rel="stylesheet" href="/static/web/css/bootstrap.css" />
+    <link rel="stylesheet" href="/static/web/css/pulic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/banner.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/liveinfo.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/pagination.css" />
+    <link rel="stylesheet" href="/static/web/css/idangerous.swiper.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+    <script type="text/javascript" src="/static/web/js/pdfobject.js"></script>
+</head>
+<body>

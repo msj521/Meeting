@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>SIFIC 2019会议</title>
+    <link rel="stylesheet" href="/static/web/css/bootstrap.css" />
+    <link rel="stylesheet" media="screen and (min-width:800px)" href="/static/web/css/pulic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/banner.css" />
+    <link rel="stylesheet" media="screen and (min-width:800px)" href="/static/web/css/liveinfo.css" />
+    <link rel="stylesheet" media="screen and (max-width:800px)" href="/static/web/css/liveinfoapp.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/pagination.css" />
+    <link rel="stylesheet" href="/static/web/css/idangerous.swiper.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+    <script type="text/javascript" src="/static/web/js/pdfobject.js"></script>
+</head>
+
+<body>
+    <div class="conter1000">
+        <div class="mbxue">
+            位置&nbsp;>&nbsp;直播&nbsp;>&nbsp;<span id="class_name"></span>&nbsp;>&nbsp;<span id="top_title"></span>
+        </div>
+        <div class="liveinfo">
+
+            <div class="mt_live_module" style="padding-bottom: 0;">
+                <div class="liveinfo_title">
+                    <div class="liveinfo_titlelf ellipsis" id="titles"></div>
+
+                </div>
+                <div class="context">
+                    <div id="live_list" style="background: #000; width: 710px; height: 420px; text-align: center;color: #FF9F00; font-size: 17px; line-height: 420px;">
+
+                    </div>
+                    <div class="dm-y-list">
+                        <div class="heihei">互动区</div>
+                        <div class="dm-list-cont">
+                            <div class="dm-font">
+                                <font style="font-size: 14px;"></font>
+                            </div>
+                        </div>
+                        <div class="send-dm" id="send-dm">
+                            <input type="text" id="send_input" placeholder="要说点什么吧...">
+                            <button class="sendBtn">发送</button>
+                        </div>
+                    </div>
+                    <div class="liveinfo_titlerg" id="sort"></div>
+                </div>
+            </div>
+
+
+            <div class="liveinfo_ct" style="padding: 20px 20px 40px;">
+
+                <div class="liveinfo_tab liveinfo_tab_active">
+                    <div class="title">
+                        <div class="title_txt2">会议简介</div>
+                        <div class="title_txt2_content title_txt2_introduce">
+                            <p style="font-size: 16px; color: #333;">
+                                <span id="start_date"></span>&nbsp;至&nbsp;<span id="end_date"></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="liveinfo_tab">
+                    <div class="title">
+                        <div class="title_txt2">会议日程</div>
+                        <div class="title_txt2_content title_txt2_schedule">
+                            <p style="font-size: 16px; color: #333;" id="description"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="liveinfo_tab">
+                    <div class="title chet_tab" style="display:none">
+                        <div class="title_txt2">互动聊天</div>
+                        <ul class="guestlive_ul" style="display:none;">
+                            234234
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="logos">
+				<img src="../images/pic_advertising.png" />
+			</div>
+			-->
+
+    </div>
+
+    <script type="text/javascript" src="/static/web/js/module/liveinfo.js"></script>
+    <script src="//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.2.2.js" charset="utf-8"></script>
+    {include file="public/footer2" /}

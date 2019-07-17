@@ -1,0 +1,31 @@
+{include file="public/header" /}
+
+<body>
+  <div class="x-body layui-anim layui-anim-up">
+    <form class="layui-form" action="/sys/explain/update" method="post" enctype="multipart/form-data">
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <script id="editor" type="text/plain" name="{$field|default=''}" required></script>
+        </div>
+      </div>
+      <input type="hidden" name="fid" value="{$list.fid|default=0}">
+      <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+      </div>
+    </form>
+  </div>
+  <script>
+    var ue = UE.getEditor('editor');
+    var field = '{$result|default=""}';
+    console.log(field)
+    ue.addListener("ready", function () {
+      // editor准备好之后才可以使用
+      if (field != "") {
+        ue.setContent(HTMLDecode(field));
+      }
+    });
+  </script>
+</body>
+
+</html>

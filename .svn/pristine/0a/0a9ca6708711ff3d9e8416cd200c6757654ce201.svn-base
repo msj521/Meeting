@@ -1,0 +1,37 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+</div>
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  //console.log(dataList);
+  for (var i = 0; i < dataList.length; i++) {
+    if(dataList[i].field_type==1){
+        dataList[i].field_type='填空';
+    }else if(dataList[i].field_type==2){
+        dataList[i].field_type='单选题';
+    }else if(dataList[i].field_type==3){
+        dataList[i].field_type='多选题';
+    }else if(dataList[i].field_type==4){
+        dataList[i].field_type='下拉选择';
+    }
+  }
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList
+      ,cols: [[
+        {field:'fid', width:80, title: 'ID'}
+        ,{field:'field_name',title: '字段名'}
+        ,{field:'field_type',title: '题目类型'}
+        ,{field:'value',title: '内容'}
+      ]]
+    });
+  })  
+</script>
+</body>
+</html>

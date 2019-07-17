@@ -1,0 +1,142 @@
+<style>
+    .meet_banner {
+        width: 100%;
+    }
+    
+    .meet_banner .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .meet_banner .swiper-slide a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .meet_banner .swiper-slide img {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .meet_banner .swiper-pagination span {
+        width: 30px;
+        border-radius: 0;
+    }
+</style>
+<!-- 轮播图 -->
+<div class="swiper-container meet_banner">
+    <div class="swiper-wrapper" style="height:100%;">
+
+    </div>
+</div>
+<div style="width: 1000px;margin:0 auto;height: 60px;overflow: hidden;font: 400 20px/60px '微软雅黑';" class="clear">
+    <p style="float:left;">最新新闻：</p>
+    <div class="newsest" style="float:left;margin-left: 10px;">
+        <ul class="news-wrapper">
+
+        </ul>
+    </div>
+</div>
+
+<script src="/static/web/js/idangerous.swiper.min.js"></script>
+<script>
+    $(function() {
+        //根据设备计算轮播图的高度
+        if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('Android') > 0) {
+            $('.meet_banner').css({
+                height: window.innerHeight * .3 + 'px'
+            });
+        } else {
+            $('.meet_banner').css({
+                height: window.innerHeight * .55 + 'px'
+            });
+        }
+
+
+        function homelist(data) {
+            if (data.code == 414) {
+                return false;
+            }
+            var banner = data.data.banner_list;
+            var banner_str = '';
+            for (var i = 0; i < banner.length; i++) {
+                banner_str += "<div class='swiper-slide' style='width:100%;height:100%;'><a href='" + banner[i].location_url + "'><img src='" + banner[i].web_image_url + "' title='" + banner[i].title + "' style='display:block;width:100%;height:100%;'></a></div>"
+            }
+
+            $('.swiper-wrapper').html(banner_str); //轮播图字符串渲染
+            //配置轮播图
+            var mySwiper = new Swiper('.swiper-container', {
+                // loop: true,
+                grabCursor: true,
+                autoplay: 3000
+            })
+        }
+        var bannerurl = "/api/index/first_page"; //轮播图数据所在接口
+        var home_data = {};
+
+        ajax_all_Filed("true", "true", "POST", bannerurl, "json", home_data, homelist); //封装ajax得到数据执行homelist方法	
+    })
+
+    $(function() {
+        var convention_news;
+        if (localStorage_info != null && localStorage_info != "" && localStorage_info.fid == convention_id) {
+            var localStorage_info = JSON.parse(localStorage.getItem("convention_info"))
+            $("#class_name").text(localStorage_info.class_name);
+            $("#title").text(localStorage_info.convention_name)
+            $("#meeting_img").attr({
+                src: localStorage_info.top_image_url,
+                alt: ""
+            })
+        } else {
+            var mbxurl = "api/convention/convention_base";
+            var data = {
+                "convention_id": convention_id
+            };
+            ajax_all_Filed("true", "true", "GET", mbxurl, "json", data, mbx); //调用	
+        }
+
+        function mbx(data) {
+            var convention_info = data.data.convention_info;
+            convention_news = data.data.convention_news; //最新新闻
+
+            if (convention_info != null) {
+                storage.setItem('convention_info', JSON.stringify(data.data.convention_info));
+                $("#class_name").text(convention_info.class_name);
+                $("#title").text(convention_info.convention_name)
+                $("#meeting_img").attr({
+                    src: convention_info.top_image_url,
+                    alt: ""
+                })
+            }
+
+            if (window.location.href == 'http://2019.sific.com.cn/') {
+
+                var str = '';
+                for (var i = 0; i < convention_news.length; i++) {
+                    str += '<li><a href="/newsinfo?convention_id=47&news_id=' + convention_news[i].fid + '">' + convention_news[i].title + '</a></li>'
+                }
+                $('.news-wrapper').html(str);
+
+                setInterval(() => {
+                    scroll()
+                }, 2500);
+            }
+
+        }
+
+        function scroll() {
+            $(".newsest ul")
+                .stop()
+                .animate({
+                    "margin-top": "-60px"
+                }, function() {
+                    $(".newsest ul li:eq(0)").appendTo($(".newsest ul"));
+                    $(".newsest ul").css({
+                        "margin-top": 0
+                    });
+                });
+        }
+    })
+</script>

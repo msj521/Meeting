@@ -1,0 +1,65 @@
+{include file="public/header" /}
+
+		<div class="conter960">
+			<div class="mbxue">
+				位置&nbsp;>&nbsp;直播&nbsp;>&nbsp;<span id="class_name"></span>&nbsp;>&nbsp;<span id="top_title"></span>
+			</div>
+			<div class="liveinfo">
+				
+				<div class="mt_live_module" style="padding-bottom: 0;">
+					<div class="liveinfo_title">
+					<div class="liveinfo_titlelf ellipsis" id="titles"></div>
+						
+					</div>
+					<div class="context">
+					  <!--  <div class="txtbg"></div>-->
+					    <div id="live_list" style="background: #000; width: 710px; height: 420px; text-align: center;color: #FF9F00; font-size: 17px; line-height: 420px;">
+					    	
+					    </div>
+					    <div class="dm-y-list">
+					    	<div class="heihei">互动区</div>
+					        <div class="dm-list-cont">
+					            <div class="dm-font">
+					                <font style="font-size: 14px;"></font></div>
+					        </div>
+					        <div class="send-dm" id="send-dm">
+					            <input type="text" id="send_input" placeholder="要说点什么吧...">
+					            <button class="sendBtn">发送</button>
+					        </div>
+					    </div>
+					    <div class="liveinfo_titlerg" id="sort"></div>
+					</div>
+				</div>
+				
+				
+				<div class="liveinfo_ct" style="padding-left: 20px; padding-right: 20px;">
+					
+					<div class="title">
+						<div class="title_txt2">直播时间</div>
+					</div>
+					<p style="font-size: 16px; color: #333;">
+						<span id="start_date"></span>&nbsp;至&nbsp;<span id="end_date"></span>
+					</p>
+					<div class="title">
+						<div class="title_txt2">直播简介</div>
+					</div>
+					<p style="font-size: 16px; color: #333;" id="description"></p>
+					<div class="title">
+						<div class="title_txt2">专家介绍</div>
+					</div>
+					<ul class="guestlive_ul">
+						
+					</ul>
+				</div>
+			</div>
+			
+			<!--<div class="logos">
+				<img src="../images/pic_advertising.png" />
+			</div>
+			-->
+			
+		</div>
+		
+		<script type="text/javascript" src="/static/web/js/module/liveinfo.js" ></script>
+		<script src="//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer-2.2.2.js" charset="utf-8"></script>
+{include file="public/footer" /}

@@ -1,0 +1,177 @@
+{include file="public/header" /}
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form" action="/live/update" method="post" enctype="multipart/form-data">
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text"  name="title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input" value="{$list.title|default=''}">
+              </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label for="description" class="layui-form-label">简介</label>
+                <div class="layui-input-block" >
+                    <textarea placeholder="请输入简介"  id="description" name="description" autocomplete="off"
+                    class="layui-textarea" style="height: 80px;">{$list.description|default=''}</textarea>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+              <label for="class_id" class="layui-form-label">直播类型<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <select name="class_id" lay-verify="required" lay-search="">
+                  <option value="">--选择或者搜索--</option>
+                  {volist name="class" id="vo"}
+                  <option value="{$vo.fid}" {if condition="isset($list['class_id']) and $vo['fid'] eq $list['class_id']"} selected="selected" {/if} >{$vo.class_name_zh}</option>
+                  {/volist}
+                </select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="L_sign" class="layui-form-label">
+                </label>
+               <a class="layui-btn" onclick="expert_add()"><i class="layui-icon">&#xe608;</i>添加专家</a>
+            </div>
+
+            <div class="layui-form-item" style="margin-left: 110px;">
+                <table id="expert_table" lay-filter="expert_table"></table>
+                <input type="hidden"  name="expert_ids">
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">开始时间<?php html_sign();?></label>
+                <div class="layui-input-block">
+                  <input class="layui-input" id="start_date" lay-verify="required" name="start_date" value="{$list.start_date|default=''}">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label ">结束时间<?php html_sign();?></label>
+                <div class="layui-input-block ">
+                  <input class="layui-input" id="end_date" lay-verify="required" name="end_date" value="{$list.end_date|default=''}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label ">置顶</label>
+                  <div class="layui-input-block">
+                    <select name="sort" lay-verify="" required>
+                      <option value="0">普通</option>
+                      <option value="1" {if condition="isset($list['sort']) and $list['sort'] eq 1"} selected="selected" {/if} >一级置顶</option>
+                      <option value="2" {if condition="isset($list['sort']) and $list['sort'] eq 2"} selected="selected" {/if} >二级置顶</option>
+                      <option value="3" {if condition="isset($list['sort']) and $list['sort'] eq 3"} selected="selected" {/if} >三级置顶</option>
+                    </select>     
+                  </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label ">是否推荐</label>
+              <div class="layui-input-block">
+                <input type="radio" name="recommend" value="0" title="普通" checked>
+                <input type="radio" name="recommend" value="1" title="推荐" {if condition="isset($list['recommend']) and $list['recommend'] eq 1 "} checked {/if}>
+              </div>
+            </div>
+
+<!--             <div class="layui-form-item">
+              <label class="layui-form-label xbs768">VIP才能观看</label>
+              <div class="layui-input-block">
+                <input type="radio" name="vip" value="1" title="是"  checked>
+                <input type="radio" name="vip" value="0" title="否" {if condition="isset($list['vip']) and $list['vip'] eq 1 "} {else} checked {/if}>
+              </div>
+            </div>
+ -->
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">播放量</label>
+              <div class="layui-input-block">
+                <input type="play_count" name="play_count" lay-verify="play_count" placeholder="请输入播放量" class="layui-input" value="{$list['play_count']|default=0}">
+              </div>
+            </div>
+
+          <input type="hidden" name="fid" value="{$list.fid|default=''}">
+          {include file="public/upload" /}
+
+          <div class="layui-form-item">
+            <label class="layui-form-label xbs768">状态</label>
+            <div class="layui-input-block">
+              <input type="radio" name="record_status" value="1" title="启用"checked>
+              <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+              <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+            </div>
+          </div>
+
+          {if condition="$list.fid"}
+          <div class="layui-form-item">
+            <label class="layui-form-label">推流状态</label>
+              <div class="layui-input-inline">
+                {if condition="$list['live'] eq 'active' "}
+                  <span  style="color: #4ae18e; margin-right: 50px;">直播中</span>
+                  <a class="layui-btn" href="javascript:;" onclick="live_edit('ForbidLiveStream')" class="ml-5" style="color: #4d4ae1;text-decoration:none">禁用</a>
+                {elseif condition="$list['live'] eq 'forbid' "}
+                  <span style="color: #e1504a;margin-right: 50px;">禁止</span>
+                  <a class="layui-btn" href="javascript:;" onclick="live_edit('ResumeLiveStream')" class="ml-5" style="color: #4ae18e;text-decoration:none">恢复</a>
+                {elseif condition="$list['live'] eq 'inactive' "}
+                  <span class="layui-btn layui-btn-normal">无输入流</span>
+                {/if}
+              </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">通信刷新(秒)</label>
+            <div class="layui-input-block">
+              <input type="refresh_time" name="refresh_time" lay-verify="refresh_time" placeholder="请输入播放量" class="layui-input"
+                value="{$list['refresh_time']|default=1}">
+            </div>
+          </div>
+          
+          <div class="layui-form-item">
+            <label class="layui-form-label">推流地址</label>
+            <div class="layui-input-block">
+              <input type="text" disabled="disabled" class="layui-input"  value="{$list.push_url|default=''}">
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label">拉流地址</label>
+            <div class="layui-input-block">
+              <input type="text" class="layui-input"   disabled="disabled"   value="{$list.rtmp_url|default=''}">
+            </div>
+          </div>
+          {/if}
+            <div class="layui-form-item">
+              <label for="L_sign" class="layui-form-label"></label>
+              <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+{include file="public/expert" /}
+<script>
+    //发异步修改推流状态
+    function live_edit($action) {
+      var fid= '{$list.fid|default=0}';
+      var urls="/live/edit?fid="+fid;
+      $.ajax({
+        type: "post",
+        url: '/live/edit',
+        data: {fid: fid,action:$action},
+        dataType: "json",
+        success: function (data) {
+          if (data > 0) {
+            layer.msg("操作成功", { icon: 1, time: 1000 });
+          } else {
+            layer.msg("操作失败"+ data, { icon: 1, time: 1000 });
+          }
+          setTimeout(function () {
+            window.location.href = urls;
+          }, 1000);
+        }
+      });
+    }
+
+</script>
+</body>
+</html>

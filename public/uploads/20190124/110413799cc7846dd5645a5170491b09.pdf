@@ -1,0 +1,228 @@
+function Rict_Text($type,$data){
+    require_once (EXTEND_PATH."PHPWord-develop/bootstrap.php");
+	$uid=isset($data['uid'])?$data['uid']:0;
+	$convention_id=isset($data['convention_id'])?$data['convention_id']:0;
+	$_idss=isset($data['_idss'])?$data['_idss']:0;
+	$where=[];
+	$where['convention_id']=$convention_id;
+	$where['record_status']=1;
+	//获取会议报名信息
+	$convention=DB::table("v_convention_signup_detail")->where($where)->find();
+	
+	//导出摘要
+	$abstract="";
+	if($_idss>0 && $uid>0){
+		$where['convention_id']=$_idss;
+		$where['creator_id']=$uid;
+		//获取某一用户摘要信息
+		$abstract=DB::table("v_paper_abstract")->where($where)->find();
+	}elseif($_idss>0){
+		//导出批量
+		$where['convention_id']=$_idss;
+		$abstract=DB::table("v_paper_abstract")->where($where)->select();
+	}
+	
+    $report_type="";
+	$pwd="";//重置密码
+	$top="第14届上海国际医院感染控制论坛注册秘书处";
+	$email="Registration@sific.org.cn";
+	$year="SIFIC".date("Y");
+	$image=$convention['web_image_url'];
+	$user_name=$convention['user_name'];
+	$cstime=$convention['start_time'];
+	$cdtime=$convention['end_time'];
+	$address=$convention['caddress'];
+	$convention_name=$convention['convention_name'];
+	$dir=ROOT_PATH . 'public/conference_template/email/';
+    switch($type){
+        case 1:
+            //账户成功创建
+            $report_type="账户成功创建";
+            $result_address="enrolment";
+            $content="。http://sific.vip/login";
+            break; 
+		case 2:
+            //重置密码确认
+            $report_type="摘要接受确认函";
+            $result_address="enrolment";
+			$pwd=isset($data['pwd'])?$data['pwd']:"123";
+			$content=$dir.$report_type.".html";
+            break;
+        case 3:
+            //付款通知单
+            $report_type="付款通知单";
+            $result_address="enrolment";
+            $content="感谢您注册将于".$cstime."至".$cdtime."在".$address."召开的".$convention_name.".为了方便您顺利参会，请您尽早完成付款，注册费支付成功方可确认为会议注册成功.";
+            break;
+        case 4:    
+            //付款确认涵
+            $report_type="付款确认涵";
+            $result_address="enrolment";
+            $content=$convention_name."将于".$cstime."至".$cdtime."召开";
+            break;
+        case 5:    
+            //摘要提交确认信
+            $report_type="摘要提交确认信";
+            $result_address="abstracts_papers";
+			$content="摘要提交确认信";
+            break;		
+        case 6:
+            //摘要接受确认函
+            $report_type="摘要接受确认函";
+            $result_address="abstracts_papers";
+			$content="感谢您参加即将在".$address."的".$convention_name;
+            break;				
+        case 7:
+            //全文提交确认信
+            $report_type="全文提交确认信";
+            $result_address="abstracts_papers";
+            $content="全文提交确认信";
+            break;
+        case 8:   
+            //全文评审通知
+            $report_type="全文评审通知";
+            $result_address="abstracts_papers";
+			$content="全文评审通知";
+            break;
+        case 9:    
+            //证书模板
+            $report_type="证书";
+            $result_address="certificate";
+            $org_name=$data['org_name'];
+            $fid=$data['fid'];
+            $path=SourceInfo(820,4);
+            $UserName=$data['user_name'];
+            break;
+		case 10:    
+            //导出-SIFIC摘要
+            $result_address="abstracts_papers";
+            $content="";
+            break;
+    }
+
+    if($type==9){
+        //读取文件
+        $dir=ROOT_PATH . 'public/conference_template/';
+        //读取模板地址
+        $template_file =empty($path)?$dir. "$report_type.docx":ROOT_PATH ."public".$path;
+        //生成模板地址
+        $file_to =$dir."$result_address/"."$fid-$UserName-$report_type.docx";  
+
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_file);
+        $templateProcessor->setValue('Convention',$org_name);
+        $templateProcessor->setValue('UserName',$UserName);
+
+        $templateProcessor->saveAs($file_to);
+        $pdf=$dir."$result_address";
+        //   /home/wwwroot/default/SIFIC/public/conference_template/certificate/施卉证书.pdf
+        //   /home/wwwroot/default/SIFIC/public/conference_template/certificate/施卉证书.docx
+        exec("export HOME=/tmp && libreoffice --headless -convert-to pdf $file_to -outdir $pdf");
+        /* 下载本地 */
+        $pdf=$pdf."/$fid-$UserName-$report_type.pdf";
+        header("Content-type: application/octet-stream");
+        header("Content-Disposition: attachment; filename='$UserName$report_type.pdf' ");
+        header("Content-Length: ". filesize($pdf));
+        readfile($pdf);
+    }elseif($type==10){
+		if(empty($abstract)){ return;}
+		$filename="$year-摘要.docx";
+		//读取文件
+        $dir=ROOT_PATH . 'public/conference_template/';
+        //读取模板地址
+        $template_file= $dir. $filename;
+        //生成模板地址
+        $file_to =$dir."$result_address/".$filename;  
+        
+		//作者单位信息处理
+		foreach($abstract as $vo){
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_file);
+			$where['abstract_id']=empty($vo['fid'])?0:$vo['fid'];
+			$author=DB::table("v_paper_author")
+					->distinct(true)
+					->field("company,author_name,address")
+					->where($where)->select();
+			//var_dump($where,$author);die;
+			$author_list="";
+			$company_list="";			
+			foreach($author as $k=>$v){
+				$author_name=empty($v['author_name'])?"":$v['author_name'];
+				$company=empty($v['company'])?"":$v['company'];
+				$address=empty($v['address'])?"":$v['address'];
+				$author_list.=$author_name.",";
+				$company_list.=($k+1).".".$company.",".$address.";";
+			}
+			$templateProcessor->setValue('title',$vo['title']);
+			$templateProcessor->setValue('author',$author_list);
+			$templateProcessor->setValue('company',$company_list);
+			
+			$templateProcessor->setValue('objective',$vo['objective']);
+			$templateProcessor->setValue('method',$vo['method']);
+			$templateProcessor->setValue('result',$vo['result']);
+			$templateProcessor->setValue('conclusion',$vo['conclusion']);
+			$templateProcessor->saveAs($file_to);
+		}
+
+        header("Content-type: application/octet-stream");
+        header("Content-Disposition: attachment; filename='$filename' ");
+        header("Content-Length: ". filesize($file_to));
+        readfile($file_to);
+	}else{
+		$send_email=$convention['email']?$convention['email']:$data['email'];
+		//var_dump($convention);die;
+		if(empty($convention) && $type!=2) return;
+		//读取文件
+        $dir=ROOT_PATH . 'public/conference_template/';
+		$suffix=".docx";
+        //读取模板地址
+        $template_file =$dir.$report_type.$suffix;
+        //生成模板地址
+        $file_to =$dir."$result_address/$uid-$report_type$suffix";  
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor($template_file);
+		
+		//摘要及全文相关数据
+		if($abstract){
+			$TYPE=$abstract['paper_status']==2?"F0".$abstract['fid']:"A0".$abstract['fid'];
+			$templateProcessor->setValue('abstract_title',$abstract['title']);
+			$templateProcessor->setValue('abstract_id',$TYPE);
+			$templateProcessor->setValue('abstract_keywords',$abstract['keyword']);
+			$templateProcessor->setValue('abstract_subject',$abstract['class_name_zh']);
+			$templateProcessor->setValue('abstract_CoAuthor',$convention['user_name']);
+			$templateProcessor->setValue('abstract_status',"通过");
+			$templateProcessor->setValue('abstract_type',$abstract['special']==1?"口头和壁报":"壁报");
+		}
+		
+		//公共参数
+        $templateProcessor->setValue('title',$report_type);
+        $templateProcessor->setValue('email',$email);
+        $templateProcessor->setValue('top',$top);
+        $templateProcessor->setValue('convention_name',$convention['convention_name']);
+        $templateProcessor->setValue('username',$convention['user_name']);
+		
+		//付款确认信
+		$templateProcessor->setValue('content',$content);
+		$templateProcessor->setValue('Payment',"在线支付");
+		$templateProcessor->setValue('Payment_Info',"在线支付只接受人民币付款");
+		$templateProcessor->setValue('pay_mode',$convention['pay_mode']);
+		$templateProcessor->setValue('p1',$convention['price']);
+		$templateProcessor->setValue('pcount',$convention['price']);
+		$templateProcessor->setValue('ordernumber',$convention['order_number']);
+		$templateProcessor->setValue('time',$convention['update_time']);
+		$templateProcessor->setValue('address',$address);
+		$templateProcessor->setValue('year',$year);
+		$templateProcessor->setValue('pwd',$pwd);
+
+		if($templateProcessor) {
+			$file_img =empty($image)?$dir."/图片.png":ROOT_PATH . "public/$image"; 
+			$arrImagenes=array('src' => $file_img,'swh'=>'600','size'=>array(0=>600, 1=>90));
+			$templateProcessor->setImg('image', $arrImagenes);
+		}
+		
+        $templateProcessor->saveAs($file_to);
+		//var_dump($send_email,"$year",$file_to,$report_type,$content);die;
+        //发送邮件
+        Email($send_email,"$year-$convention_name",$file_to,$report_type,$content);
+    }
+    //每次执行前刷新缓存 
+    ob_flush();
+    flush();
+}

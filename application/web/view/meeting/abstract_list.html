@@ -1,0 +1,136 @@
+{include file="public/header" /}
+<div class="conter960">
+    {include file="public/mbxue2" /}
+    <div class="abstract_list">
+        <div class="abstract_list_ct">
+            <div class="abstract_list_title"><img src="/static/web/images/icon_list.png" />摘要列表</div>
+            <table class="abs_table table table-bordered" id="table01">
+                <thead>
+                    <th>摘要编号</th>
+                    <th>摘要标题</th>
+                    <th>所属专题</th>
+                    <th>呈现方式</th>
+                    <th>审核状态</th>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+
+            <div class="abs_btnlist">
+                <input type="button" class="text_btn" value="提交摘要" />
+            </div>
+        </div>
+        <div class="abstract_list_ct">
+            <div class="abstract_list_title"><img src="/static/web/images/icon_list.png" />全文列表</div>
+            <table class="abs_table table table-bordered" id="table02" style="margin-bottom: 10px;">
+                <thead>
+                    <th>全文编号</th>
+                    <th>全文标题</th>
+                    <th>所属专题</th>
+                    <th>审核状态</th>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+            <p style="font-size: 14px; color: #598DC4;">注意：《中华医院感染学杂志》全文提交截至日期为2019年3月31日，请您在此截至日期前提交您的全文。</p>
+            <p style="font-size: 14px; color: #598DC4;margin-left:50px;">您需先提交全文对应的摘要后，点击参加《中华医院感染学杂志》的选项后，提交您的全文。</p>
+            <div class="abs_btnlist">
+                <input type="button" class="text_btn" value="提交全文" />
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+
+<script>
+    var authorurl = "api/convention/paper";
+    $(function() {
+        function authorlist(data) {
+            var tablist = data.data;
+            var str = "";
+            var str2 = "";
+            if (data.code == 200 && tablist) {
+                for (var i = 0; i < tablist.length; i++) {
+                    str = str12(str, tablist[i], 1);
+                    str2 = str12(str2, tablist[i], 2);
+                }
+
+                $("#table01 tbody").append(str);
+                $("#table02 tbody").append(str2);
+            }
+
+        }
+        var data = {
+            "convention_id": convention_id,
+            "uid": cook_uid
+        };
+        ajax_all_Filed("true", "true", "POST", authorurl, "json", data, authorlist); //调用函数
+
+        //限制提交论文过期日期
+        $('body').on('click', '.text_btn', function() {
+            if (getNowTime() > setFutureTime(2019, 4, 13)) {
+                showLaert('提交截止日期已过！')
+            } else {
+                window.location.href = '/add_abstract?convention_id=' + convention_id + '';
+            }
+        })
+    })
+
+    function str12(str, tablist, TYPE) {
+
+        if (TYPE == 1) {
+            str += '<tr>';
+            str += '<td>A0' + tablist.fid + '</td>';
+            str += '<td style="width:300px;"><div class="ellipsis" style="width:300px;">';
+            str += tablist.title;
+            str += '</div></td>';
+            str += '<td style="width:250px;"><div class="ellipsis" style="width:250px;">';
+            str += tablist.class_name_zh;
+            str += '</div></td>';
+            str += '<td>';
+            if (tablist.shape == 1) {
+                str += '口头和壁报';
+            } else {
+                str += '壁报';
+            }
+
+            str += '</td>';
+            str += '<td>';
+            if (tablist.abstract_status == 1) {
+                str += '待审核';
+            } else if (tablist.abstract_status == 2) {
+                str += '审核成功';
+            } else {
+                str += '审核失败';
+            }
+            str += '</td>';
+            str += '</tr>';
+        }
+        if (TYPE == 2 && tablist.yes_no == 2) {
+            str += '<tr>';
+            str += '<td>F0' + tablist.fid + '</td>';
+            str += '<td style="width:300px;"><div class="ellipsis" style="width:300px;">';
+            str += tablist.title;
+            str += '</div></td>';
+            str += '<td style="width:250px;"><div class="ellipsis" style="width:250px;">';
+            str += tablist.class_name_zh;
+            str += '</div></td>';
+            str += '<td>';
+            if (tablist.abstract_status == 1) {
+                str += '待审核';
+            } else if (tablist.abstract_status == 2) {
+                str += '审核成功';
+            } else {
+                str += '审核失败';
+            }
+            str += '</td>';
+            str += '</tr>';
+        }
+        return str;
+    }
+</script>

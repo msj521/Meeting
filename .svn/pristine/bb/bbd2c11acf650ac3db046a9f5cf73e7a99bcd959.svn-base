@@ -1,0 +1,48 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue" /}
+			{include file="public/meeting_nav" /}
+			<div class="meeting_ct">
+				<div class="guest_txt">
+				<div class="guest_ss">
+					<div class="active">全部</div>
+					<div >A</div>
+					<div >B</div>
+					<div >C</div>
+					<div >D</div>
+					<div >E</div>
+					<div >F</div>
+					<div >G</div>
+					<div >H</div>
+					<div >I</div>
+					<div >J</div>
+					<div >K</div>
+					<div >L</div>
+					<div >M</div>
+					<div >N</div>
+					<div >O</div>
+					<div >P</div>
+					<div >Q</div>
+					<div >R</div>
+					<div >S</div>
+					<div >T</div>
+					<div >U</div>
+					<div >V</div>
+					<div >W</div>
+					<div >X</div>
+					<div >Y</div>
+					<div >Z</div>
+				</div>
+				<div class="guest_txtlf">
+					<ul class="guest_ul">
+						
+					</ul>
+				</div>
+				
+			</div>
+			</div>
+			
+		</div>
+
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/experlist.js" ></script>

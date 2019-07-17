@@ -1,0 +1,51 @@
+{include file="public/header" /}
+		<div class="conter960">
+			<div class="mbxue">
+				位置&nbsp;>&nbsp;培训&nbsp;>&nbsp;<span id="class_name"></span>&nbsp;>&nbsp;<span id="title"></span>
+			</div>
+			<div class="mt_live_module">
+				<div class="peixlist">
+					<div class="peix_title">
+						<div class="peix_titlelf ellipsis" id="product_name"></div>
+						<!--<div class="peix_titlerg" id="peix_titlerg">收藏</div>-->
+					</div>
+					<div class="peix_ct">
+						<div class="peix_img"></div>
+						<div class="peix_txt">
+							<div class="peixtle">
+								<div class="peixtle_txt">课程简介</div>
+							</div>
+							<div class="pxtxt" id="description"></div>
+							<div id="xuexi_btn"></div>
+							
+						</div>
+						
+					</div>
+					<div class="peix_tcher">
+						<div class="peixtle" style="margin-bottom: 10px;">
+							<div class="peixtle_txt">授课讲师</div>
+						</div>
+						<ul class="guestlive_ul">
+							
+						</ul>
+					</div>
+					<div class="peix_tcher">
+						<div class="peixtle" style="margin-bottom: 10px;">
+							<div class="peixtle_txt">章节目录</div>
+						</div>
+						<div class="mulu">
+							<ul class="mulu_ul" id="mulu_ul">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mt_live_module_fill"></div>
+			
+			<!--<div class="logos">
+				<img src="../images/pic_advertising.png" />
+			</div>-->
+		</div>
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/videoinfo.js" ></script>

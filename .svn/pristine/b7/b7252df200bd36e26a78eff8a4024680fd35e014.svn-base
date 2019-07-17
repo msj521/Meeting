@@ -1,0 +1,117 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>会议管理</cite></a>
+              <a><cite>{$title|default='会议报名'}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<div class="x-body">
+  <!-- 右侧内容框架，更改从这里开始 -->
+  <form class="layui-form xbs" action="{$index|default='/'}">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <input type="text" name="string" placeholder="字段名称" autocomplete="off" class="layui-input" value="{$string}">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <button class="layui-btn" onclick="member_edit('添加','{$edit|default='/'}','{$index|default='/'}?fid={$fid|default=0}&ZS=0','{$convention_id|default=0}')"><i class="layui-icon">&#xe608;</i>添加</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+
+
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="barTool">
+    <div class="td-manage">
+
+    <a title="编辑" href="javascript:;"  lay-event="edit"
+      class="ml-5" style="text-decoration:none" 
+      ><i class="iconfont" >&#xe69e;</i>
+    </a>  
+          
+    <a title="删除" href="javascript:;" lay-event="del"
+        style="text-decoration:none">
+      <i class="iconfont">&#xe69d;</i>
+    </a>
+  </div>
+</script>
+
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  //console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+
+    dataList.data[i].require=dataList.data[i].require==1?'必填':"非必填";
+    if(dataList.data[i].field_type==1){
+        dataList.data[i].field_type='填空';
+    }else if(dataList.data[i].field_type==2){
+        dataList.data[i].field_type='单选题';
+    }else if(dataList.data[i].field_type==3){
+        dataList.data[i].field_type='多选题';
+    }else if(dataList.data[i].field_type==4){
+        dataList.data[i].field_type='下拉选择';
+    }else if(dataList.data[i].field_type==5){
+        dataList.data[i].field_type='时间';
+    }
+
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    }
+  }
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid', width:80, title: 'ID'}
+        ,{field:'field_name',title: '字段名'}
+        ,{field:'field_type',title: '题目类型'}
+        ,{field:'require',title: '是否必填'}
+       // ,{field:'user_name', width:160,  title: '创建人'}
+        ,{field:'create_time', width:160,  title: '创建时间'}
+        ,{field:'record_status',  title: '状态'}
+        ,{fixed: 'right', width:178, align:'center', toolbar: '#barTool'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'del'){
+        member_del(data.fid,'{$del|default="/"}','{$index|default="/"}?fid={$fid|default=0}')
+      } else if(obj.event === 'edit'){
+        member_edit('编辑',"{$edit|default='/'}?convention_id={$fid|default=0}&fid="+ data.fid,"{$index|default='/'}?fid={$fid|default=0}&ZS=0",data.fid,0)
+      }
+    });
+  })   
+</script>
+</body>
+</html>

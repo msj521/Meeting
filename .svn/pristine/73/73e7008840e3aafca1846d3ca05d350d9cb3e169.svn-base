@@ -1,0 +1,344 @@
+@charset "UTF-8";
+@font-face {
+    font-family: PingFangSC-Regular;
+    font-weight: normal;
+    font-style: normal;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+input,
+button,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    font-weight: normal;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul,
+li {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 5px;
+    background-color: rgba(125, 125, 125, 0.7);
+    -webkit-border-radius: 6px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft YaHei";
+}
+
+body {
+    line-height: 1;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    overflow-y: scroll;
+}
+
+.dn {
+    display: none;
+}
+
+.clear_float::after {
+    content: "";
+    display: block;
+    height: 100%;
+    clear: both;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: .05rem;
+    padding: .05rem .1rem;
+    font-size: .18rem;
+    color: #666;
+}
+
+html {
+    font-size: 26.6667vw;
+}
+
+body {
+    font-size: .18rem;
+    font-family: '微软雅黑'
+}
+
+.red {
+    color: red;
+}
+
+header {
+    font: 400 .24rem/.44rem '微软雅黑';
+    text-align: center;
+    height: .44rem;
+    background: #0C7753;
+    color: #fff;
+}
+
+main {
+    padding: .2rem .15rem;
+}
+
+h3 {
+    font: 400 .14rem/.26rem '微软雅黑'
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+    /* line-height: .36rem; */
+}
+
+ul {
+    width: 100%;
+    margin: .2rem 0;
+}
+
+ul li {
+    display: flex;
+    justify-content: space-around;
+    margin: .1rem 0;
+}
+
+ul li p {
+    line-height: .36rem;
+    width: .8rem;
+    font-size: .14rem;
+}
+
+.button {
+    text-align: center;
+}
+
+.button button {
+    width: 3rem;
+    border-radius: .2rem;
+    background: #0C7753;
+    color: #fff;
+    line-height: .34rem;
+    outline: none;
+}
+
+select {
+    width: 2.19rem;
+    border-radius: .05rem;
+    padding-left: .15rem;
+    line-height: .36rem;
+    height: .36rem;
+}
+
+.alert {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.alert_box {
+    box-shadow: 0 .02rem .3rem 0 rgba(0, 0, 0, 0.5);
+    position: absolute;
+    width: 3rem;
+    height: 2rem;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    box-sizing: border-box;
+    padding: .4rem .3rem;
+}
+
+h5 {
+    line-height: .3rem;
+}
+
+.alert_box p {
+    margin: .1rem .2rem;
+}
+
+.alert button {
+    outline: none;
+    display: block;
+    margin: 0 auto;
+    width: 1rem;
+    line-height: .3rem;
+    border-radius: .05rem;
+    background: #0C7753;
+    color: #fff;
+    margin-top: .3rem;
+}
+
+.ticket_box {
+    display: flex;
+    justify-content: space-between;
+    width: 2.19rem;
+}
+
+.ticket_btn {
+    font: 400 .16rem/.36rem '微软雅黑';
+    border-radius: .05rem;
+    border: 1px solid #0C7753;
+    background: #fff;
+    color: #0C7753;
+    outline: none;
+    padding: 0 .05rem;
+    box-sizing: border-box
+}
+
+.ticket_box button.isActive {
+    background: #0C7753;
+    color: #fff;
+}
+
+.ticket_form ul li.require p::after {
+    content: "*";
+    color: red;
+}

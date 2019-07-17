@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>SIFIC2019年会 培训班签到</title>
+    <link rel="stylesheet" href="/static/web/css/temp.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+</head>
+
+<body>
+    <header>SIFIC2019年会 培训班签到</header>
+    <main>
+        <h3><span class="red">注意: </span> 是的发送到发送到官方规划电饭锅电饭锅大幅度发鬼地方个山东分公司法国队三大范德萨发生时代士大夫士大夫撒</h3>
+        <div class="form">
+            <ul>
+                <li>
+                    <p>报名姓名:</p>
+                    <div class="ticket_box">
+                        <input type="text" class="name">
+                    </div>
+                </li>
+                <li>
+                    <p>注册编号:</p>
+                    <div class="ticket_box">
+                        <input type="text" class="number">
+                    </div>
+                </li>
+                <li>
+                    <p>手机号码:</p>
+                    <div class="ticket_box">
+                        <input type="number" class="phone">
+                    </div>
+                </li>
+                <li>
+                    <p>注册类别:</p>
+                    <div class="ticket_box">
+                        <select name="" id="" class="register">
+                            <option value="早期注册">早期注册</option>
+                            <option value="标准注册">标准注册</option>
+                            <option value="晚期注册">晚期注册</option>
+                            <option value="上海市院内感染岗位培训班">上海市院内感染岗位培训班</option>
+                            <option value="上海代表参加年会">上海代表参加年会</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+            <p class="button"><button class="sign">签到</button></p>
+        </div>
+    </main>
+</body>
+<script>
+    $(function() {
+        var userinfo = <?php echo json_encode($userinfo);?>;
+        var url = '/api/convention/training_sigin';
+
+        var getData = {
+            open_id: userinfo,
+        }
+        ajax_all_Filed("true", "true", "POST", url, "json", getData, get_func);
+
+        function get_func(data) {
+            if (data.code == 412) {
+                appShowAlert(data.msg);
+                $('.name').val(data.data.username);
+                $('.number').val(data.data.serial_number);
+                $('.phone').val(data.data.tel);
+                $('.register').val(data.data.ticket_id);
+            } else {
+                // appShowAlert(data.msg);
+            }
+        }
+
+        $('.sign').click(function() {
+            if ($('.name').val() == '') {
+                appShowAlert('报名姓名不能为空！');
+                return;
+            } else if ($('.number').val() == '') {
+                appShowAlert('注册编号不能为空！');
+                return;
+            } else if ($('.phone').val().length != 11) {
+                appShowAlert('手机号码格式不正确！');
+                return;
+            } else if ($('.register').val() == '') {
+                appShowAlert('注册类别不能为空！')
+            } else {
+                var data = {
+                    username: $('.name').val(),
+                    serial_number: $('.number').val(),
+                    tel: $('.phone').val(),
+                    ticket_id: $('.register').val(),
+                    type: 1,
+                    open_id: userinfo
+                }
+                ajax_all_Filed("true", "true", "POST", url, "json", data, sign_func);
+            }
+        })
+
+        function sign_func(data) {
+            if (data.code == 200) {
+                $('.sign').hide();
+                appShowAlert(data.msg);
+            } else {
+                appShowAlert(data.msg);
+            }
+        }
+
+    })
+</script>
+
+</html>

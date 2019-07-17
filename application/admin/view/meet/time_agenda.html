@@ -1,0 +1,134 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会议管理</cite></a>
+              <a><cite>时间日程</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/meet/time_agenda" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <input TYPE="hidden" name="fid" value="{$fid}">
+        <input TYPE="hidden" name="convention_id" value="{$convention_id|default='0'}">
+
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off"
+                 class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <button class="layui-btn" onclick="member_editf('增加会议日程','{$edit|default='/'}','0','{$fid|default=0}','{$convention_id|default=0}','')"><i class="layui-icon">&#xe608;</i>添加</button>
+    <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'{$del|default='/'}','/meet/time_agenda?fid={$fid}&convention_id={$convention_id|default=0}')"><i class="layui-icon">&#xe640;</i>批量删除</button> 
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th width="5%">
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i>
+        </div>
+      </th>
+      <th width="5%">ID</th>
+      <th width="15%">日程名称</th>
+      <th width="15%">专家</th>
+      <th width="15%">会议室</th>
+      <th width="15%">开始时间</th>
+      <th width="15%">结束时间</th>
+      <th width="8%">状态</th>
+      <th width="10%">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">&#xe605;</i></div>
+      </td>
+      <td>{$vo.fid}</td>
+      <td title="{$vo.schedule_name}">{$vo.schedule_name}</td>
+      <td title="{$vo.expert_name}">{$vo.expert_name}</td>
+      <td title="{$vo.room_name}">{$vo.room_name}</td>
+      <td title="{$vo.start_date}">{$vo.start_date}</td>
+      <td title="{$vo.end_date}">{$vo.end_date}</td>
+      <td>{$vo.record_status|is_status}</td>
+      <td class="td-manage" style="text-align: center">
+        <span>
+          <a title="编辑" href="javascript:;"
+             onclick="member_editf('编辑会议日程','/meet/time_edit_agenda','{$vo.fid}','{$fid|default='0'}','{$convention_id|default='0'}',0,0)"
+             class="sp-10" style="text-decoration:none">
+            <i class="layui-icon">&#xe642;</i>
+          </a>
+        </span>
+        <span>
+        <a title="删除" href="javascript:;" onclick="member_del('{$vo.fid}','/meet/time_del_agenda','/meet/time_agenda?fid={$fid}&convention_id={$convention_id|default=0}')"
+           style="text-decoration:none">
+          <i class="layui-icon">&#xe640;</i>
+        </a>
+        </span>
+      </td>
+      </td>
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+
+</div>
+{include file="public/top_js" /}
+<script>
+  var room_id='{$room_id|default=0}';
+  // 会议-编辑
+  function member_editf(title, url, fid,fmid, fpid, w, h) {
+    x_admin_consultf(title, url, fid,fmid, fpid, w, h);
+  }
+
+  function x_admin_consultf(title, url, fid,fmid, fpid, w, h) {
+    if (title == null || title == '') {
+      title = false;
+    };
+    if (url == null || url == '') {
+      url = "404.html";
+    };
+    if (w == null || w == '') {
+      w = ($(window).width() * 0.9);
+    };
+    if (h == null || h == '') {
+      h = ($(window).height() - 50);
+    };
+
+    if (fmid == '' || fmid == null || fmid < 0) {
+      layer.msg('一级日程FID参数丢失~~', {icon: 2, time: 3000});
+    } else if(fpid == '' || fpid == null || fpid < 0){
+      layer.msg('会议FID参数丢失~~', {icon: 2, time: 3000});
+    }else{
+      layer.open({
+        type: 2,
+        area: [w + 'px', h + 'px'],
+        fix: false, //不固定
+        maxmin: true,
+        shadeClose: false,
+        shade: 0.4,
+        title: title,
+        content: url + "?fid=" + fid + "&fmid=" + fmid+"&convention_id=" + fpid+"&room_id="+room_id,
+        cancel: function () {
+          //do something
+          window.location.href = "/meet/time_agenda?fid=" + fmid+ "&convention_id=" + fpid+"&room_id="+room_id;
+        }
+      });
+    }
+
+  }
+</script>
+</body>
+</html>

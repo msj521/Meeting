@@ -1,0 +1,30 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="guest_txt">
+				<div style=" font-size: 18px; color: #555; text-align: center; width: 100%; float: left; line-height: 40px; padding-top: 20px;" id="met_tel">
+					111
+				</div>
+				<div style="width: 100%; float: left;  color: #777; text-align: center;" id="time"></div>
+				<div style="width: 100%; float: left; padding: 15px;" id="content"></div>
+				
+			</div>
+		</div>
+
+{include file="public/footer2" /}
+
+<script>
+		var download = "api/convention/convention_news";
+		function mtdownload(data){
+			$("#met_tel").text(data.data.title);
+			$("#time").text("发布时间："+data.data.create_time)
+			var content = htmls(data.data.content);
+			$("#content").html(content)
+			
+		}
+		var data = {"news_id":news_id,"convention_id":convention_id};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

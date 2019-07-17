@@ -1,0 +1,131 @@
+{include file="public/header" /}
+<body class="layui-anim layui-anim-up">
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>会议管理</cite></a>
+              <a><cite>企业</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+
+  <div class="layui-row">
+    <!--参厂商列表-->
+    <div class="layui-col-xs6">
+      <form class="layui-form x-center" action="{$index}" method="get">
+        <div class="layui-form-pane" style="text-align: center;">
+          <div class="layui-form-item">
+            <label class="layui-form-label">企业</label>
+            <div class="layui-input-inline">
+              <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off"
+                     class="layui-input">
+              <input type="hidden" name="fid" value="{$convention_id|default=0}">
+            </div>
+            <div class="layui-input-inline" style="width:80px">
+              <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <table class="layui-table">
+        <thead>
+        <tr>
+          <th width="5%">ID</th>
+          <th width="15%">企业</th>
+          <th width="5%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="exhibitor" id="vo"}
+        <tr>
+          <td>{$vo.fid}</td>
+          <td title="{$vo.org_name}">{$vo.org_name}</td>
+          <td class="td-manage" style="text-align: center">
+            <span style="margin-right: 25px">
+              <a title="添加" href="javascript:;"onclick="member_edits('增加企业','{$edit}','{$index}','{$vo.fid}','{$convention_id}',0,400,300)"
+                 class="sp-10 layui-btn" style="text-decoration:none">
+                <i class="iconfont">&#xe6b9;</i>
+              </a>
+            </span>
+          </td>
+        </tr>
+        {/volist}
+        </tbody>
+      </table>
+      <div class="page">
+        {$exhibitor->render()}
+      </div>
+    </div>
+
+
+    <div class="layui-col-xs6">
+      <form class="layui-form x-center" action="{$index}" method="get">
+        <div class="layui-form-pane" style="text-align: center;">
+          <div class="layui-form-item">
+            <label class="layui-form-label">企业</label>
+            <div class="layui-input-inline">
+              <input type="text" name="exh" value="{$exh}" placeholder="请输入查询内容" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-input-inline" style="width:80px">
+              <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+            </div>
+            <input type="hidden" name="fid" value="{$convention_id|default=0}">
+            <div class="layui-input-inline" style="Float:right">
+              <a class="layui-btn layui-btn-danger" onclick='member_dels(-1,"del_exh","/meet/exh?convention_id={$convention_id|default=0}")'><i class="layui-icon"></i>批量删除</a>
+            </div>
+          </div>
+        </div>
+      </form>
+      <table class="layui-table">
+        <thead>
+        <tr>
+          <th width="5%">
+            <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+          </th>
+          <th width="8%">ID</th>
+          <th width="25%">企业</th>
+          <th width="10%">展位</th>
+          <th width="10%">企业级别</th>
+          <th width="10%">状态</th>
+          <th width="15%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="list" id="vo"}
+        <tr>
+          <td>
+            <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">&#xe605;</i></div>
+          </td>
+          <td title="{$vo.fid}">{$vo.fid}</td>
+          <td title="{$vo.org_name}">{$vo.org_name}</td>
+          <td title="{$vo.booth}">{$vo.booth}</td>
+          <td>{$vo.exhibitor_type|exhibitor_type}</td>
+          <td>{$vo.record_status|is_status}</td>
+          <td>
+		  
+            <span style="margin-right: 25px">
+              <a title="编辑" href="javascript:;"onclick="member_edits('编辑企业','{$edit}','{$index}','{$vo.fid}','{$convention_id}',0,400,300)"
+                 class="sp-10" style="text-decoration:none">
+                <i class="iconfont">&#xe6b2;</i>
+              </a>
+            </span>
+  
+            <a title="删除" href="javascript:;" onclick="member_dels('{$vo.fid}','{$del|default='/'}','{$index|default='/'}','{$vo.convention_id|default=0}')"
+               style="text-decoration:none">
+              <i class="layui-icon">&#xe640;</i>
+            </a>
+          </td>
+        </tr>
+        {/volist}
+        </tbody>
+      </table>
+      <div class="page">
+        {$list->render()}
+      </div>
+    </div>
+  </div>
+</div>
+{include file="public/top_js" /}

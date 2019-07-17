@@ -1,0 +1,55 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="/sys/expert/update" method="post" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+      <label for="expert_name" class="layui-form-label">专家姓名<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="expert_name" name="expert_name"  lay-verify="required" autocomplete="off"
+               value="{$list.expert_name|default=''}" class="layui-input">
+      </div>
+    </div>
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+
+    <div class="layui-form-item">
+      <label for="introduction" class="layui-form-label">专家介绍</label>
+      <div class="layui-input-block">
+        <textarea placeholder="专家介绍" class="layui-textarea" type="text" id="introduction" name="introduction">{$list.introduction|default=''}</textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="experience" class="layui-form-label">专家履历</label>
+      <div class="layui-input-block">
+        <textarea placeholder="专家履历" class="layui-textarea" type="text" id="experience" name="experience">{$list.experience|default=''}</textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="research_fields" class="layui-form-label">擅长领域</label>
+      <div class="layui-input-block">
+        <textarea placeholder="擅长领域" class="layui-textarea" type="text" id="research_fields" name="research_fields">{$list.research_fields|default=''}</textarea>
+      </div>
+    </div>
+    
+    {include file="public/upload" /}
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用" checked>
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) && $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) &&  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+
+  </form>
+</div>    
+</body>
+</html>

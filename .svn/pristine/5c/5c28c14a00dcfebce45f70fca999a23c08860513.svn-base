@@ -1,0 +1,102 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="/sys/version/update" method="post" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label xbs768">应用端类型<?php html_sign();?></label>
+        <div class="layui-input-block">
+          <select name="app_type" lay-verify="required" lay-search="" >
+            <option value="">直接选择或搜索选择</option>
+            {volist name="app_type" key="ko" id="vo"}
+            <option value="{$ko}"  {if condition="$ko eq $list.app_type"} selected="selected" {/if} >{$vo}</option>
+            {/volist}
+          </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label xbs768">系统类型<?php html_sign();?></label>
+        <div class="layui-input-block">
+          <select name="app_postfix" lay-verify="required" lay-search="" >
+            <option value="">直接选择或搜索选择</option>
+            {volist name="sys_type" key="ko" id="vo"}
+            <option value="{$ko}"  {if condition="$ko eq $list.app_postfix"} selected="selected" {/if} >{$vo}</option>
+            {/volist}
+          </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="version_no" class="layui-form-label">应用版本号<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="version_no" name="version_no"  lay-verify="required" autocomplete="off"
+               value="{$list.version_no|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="memo" class="layui-form-label">版本说明<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入内容" class="layui-textarea" type="text" id="memo" name="memo">{$list.memo|default=''}</textarea>
+      </div>
+    </div>
+
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+    <input type="hidden" name="file_id" id="file_id" value="{$list.file_id|default=''}">
+	<div class="layui-form-item">
+		<label class="layui-form-label">软件包上传<?php html_sign();?></label>
+		<div class="layui-upload">
+			<div style="float: left; text-align: center;margin-right:50px;">
+				<button type="button" class="layui-btn" id="version">上传</button>
+			</div>
+			<div class="layui-upload-list" {if condition="empty($list['file_path'])"} style="display:none;" {/if}>
+				点击下载：<a  href="http://sific.vip{$list['file_path']|default=''}" >http://sific.vip{$list['file_path']|default=''}</a>
+			</div>
+		</div>
+	</div>
+	
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用"checked>
+
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) && $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="2" title="标记删除" {if condition="isset($list['record_status']) &&  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+<script>
+  layui.use('upload',function(){
+	  var $ = layui.jquery
+	  ,upload = layui.upload;
+	  
+	var file_id='{$list.file_id|default=""}';
+	//版本压缩包文件上传
+	var uploadInst3 = upload.render({
+	  elem: '#version'
+	  ,url: '/upload'
+	  ,data: {file_id:file_id,source_type:4}
+	  ,acceptMime: '*'
+	  ,before: function(obj){
+		obj.preview(function(index, file, result){
+		});
+	  }
+	  ,done: function(res){
+		if(res.code == 200){
+		  $('#file_id').attr('value', res.data);
+		  return layer.msg('上传成功');
+		}else{
+		  return layer.msg('上传失败');
+		}
+	  }
+	});
+});    
+</script>
+</body>
+</html>

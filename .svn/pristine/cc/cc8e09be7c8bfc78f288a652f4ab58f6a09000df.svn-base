@@ -1,0 +1,171 @@
+{include file="public/header" /}
+
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action='{$update|default="/"}' method="post" enctype="multipart/form-data">
+
+
+    <div class="layui-form-item">
+      <label for="FClassName" class="layui-form-label">会议类型<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <select name="class_id" lay-verify="required" lay-search="">
+          <option value="">--选择或者搜索--</option>
+          {volist name="meet" id="vo"}
+          <option value="{$vo.fid}" {if condition="isset($list.class_id) and $vo.fid eq $list.class_id" } selected="selected" {/if} >{$vo.class_name_zh}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="convention_name" class="layui-form-label">会议名称<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="convention_name" name="convention_name" lay-verify="required" value="{$list.convention_name|default=''}">
+      </div>
+    </div>
+
+
+    <div class="layui-form-item">
+      <label for="address" class="layui-form-label">会议地址<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="address" name="address" lay-verify="required"  autocomplete="off"
+               value="{$list.address|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="organizer" class="layui-form-label">举办方</label>
+      <div class="layui-input-block">
+        <input type="text" id="organizer" name="organizer"  autocomplete="off"
+               value="{$list.organizer|default=''}" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="sign_fee" class="layui-form-label">注册费用</label>
+      <div class="layui-input-block">
+        <input type="text" id="sign_fee" name="sign_fee"  autocomplete="off"
+               value="{$list.sign_fee|default=''}" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label for="sign_url" class="layui-form-label">注册地址</label>
+      <div class="layui-input-block">
+        <input type="text" id="sign_url" name="sign_url"  autocomplete="off"
+               value="{$list.sign_url|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="invoice_collection" class="layui-form-label">发票领取</label>
+      <div class="layui-input-block">
+        <input type="text" id="invoice_collection" name="invoice_collection"  autocomplete="off"
+               value="{$list.invoice_collection|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="credit_certificate" class="layui-form-label">学分证</label>
+      <div class="layui-input-block">
+        <input type="text" id="credit_certificate" name="credit_certificate"  autocomplete="off"
+               value="{$list.credit_certificate|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="dot_card" class="layui-form-label">积点卡</label>
+      <div class="layui-input-block">
+        <input type="text" id="dot_card" name="dot_card"  autocomplete="off"
+               value="{$list.dot_card|default=''}" class="layui-input">
+      </div>
+    </div>
+
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">开始时间<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="LAY_demorange_s"  lay-verify="required" name="start_time" value="{$list.start_time|default=''}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">结束时间<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="LAY_demorange_e" lay-verify="required" name="end_time" value="{$list.end_time|default=''}">
+      </div>
+    </div> 
+
+    <div class="layui-form-item layui-form-text">
+      <label for="digest" class="layui-form-label">会议简介</label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入简介" required id="digest" name="digest" autocomplete="off" class="layui-textarea"
+          style="height: 80px;">{$list.digest|default=''}</textarea>
+      </div>
+    </div>
+
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">置顶</label>
+        <div class="layui-input-block">
+          <select name="sort" lay-verify="" >
+            <option value="0">普通</option>
+            <option value="1" {if condition="isset($list['sort']) and $list['sort'] eq 1"} selected="selected" {/if} >一级置顶</option>
+            <option value="2" {if condition="isset($list['sort']) and $list['sort'] eq 2"} selected="selected" {/if} >二级置顶</option>
+            <option value="3" {if condition="isset($list['sort']) and $list['sort'] eq 3"} selected="selected" {/if} >三级置顶</option>
+          </select>     
+        </div>
+    </div>
+
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+    {include file="public/upload" /}
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用" checked>
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">下载证书</label>
+      <div class="layui-input-block">
+        <input type="radio" name="certificate" value="0" title="否" checked >
+        <input type="radio" name="certificate" value="1" title="是" {if condition="isset($list['certificate']) and  $list['certificate'] eq 1"} checked {/if}>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+<script>
+  var list = <?php echo !empty($list)?json_encode($list):1; ?>;
+    // console.log(FContent);
+    layui.use('laydate', function () {
+  var laydate = layui.laydate;
+
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#LAY_demorange_s' //指定元素
+    , type: 'datetime'
+  });
+  //执行一个laydate实例
+  laydate.render({
+    elem: '#LAY_demorange_e' //指定元素
+    , type: 'datetime'
+  });
+
+});  
+  // var ue = UE.getEditor('editor');
+  // ue.addListener("ready", function () {
+  //   // editor准备好之后才可以使用
+  //   if (list != 1) {
+  //     ue.setContent(HTMLDecode(list.digest));
+  //   }
+  // });
+</script>
+</body>
+</html>

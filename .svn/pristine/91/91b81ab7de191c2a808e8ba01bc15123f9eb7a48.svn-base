@@ -1,0 +1,51 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue" /}
+			{include file="public/meeting_nav" /}
+			<div class="guest_txt">
+				<div style="padding: 10px 0 10px 0;" id="pdfname">
+					
+				</div>
+				
+				<div id="pdf2" style="width:100%; height:750px;">
+					
+				</div>
+			</div>
+		</div>
+
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/meetinginfo.js" ></script>
+<script>
+		var download = "api/convention/download";
+		var module = '<?php echo $module; ?>';
+		console.log(module);
+		function mtdownload(data){
+			var  dow_data=data.data;
+			if(dow_data.length){
+				pdfurls = dow_data[0].file_path
+				var download_title = dow_data[0].download_title;
+				if(pdfurls.substr(-3,3)=="pdf"){
+					$('<a href="'+pdfurls+'" target="view_window" download="'+pdfurls+'">'+download_title+'&nbsp;&nbsp;<span style="font-size:14px; color:#666">(点击下载文件)</span></a>').appendTo("#pdfname");
+					createPdf(pdfurls)
+				}else{
+					$('<a href="https://view.officeapps.live.com/op/view.aspx?src='+pdfurls+'" target="view_window" >'+download_title+'</a>').appendTo("#pdfname");
+					$('<iframe src="https://view.officeapps.live.com/op/view.aspx?src='+pdfurls+'" width="100%" height="750" style="border:0px" frameborder="1"></iframe>').appendTo("#pdf2");
+				}
+			}
+		}
+		var data = {"convention_id":convention_id,"module":module};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+   		
+ 			function createPdf(pdfurls){new PDFObject({
+				 url:pdfurls,
+				 pdfOpenParams: { 
+				      view: 'Fit', 
+				      scrollbars: '0', 
+				      toolbar: '0', 
+				      statusbar: '0', 
+				      navpanes: '0' }
+				  }).embed('pdf2'); 
+				 };
+	
+
+</script>

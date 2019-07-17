@@ -1,0 +1,70 @@
+{include file="public/header" /}
+
+<body>
+<div class="x-body">
+  <form class="" action="/menu/update" method="post" enctype="multipart/form-data" >
+
+    <div class="layui-form-item" {if condition="isset($list['pid']) && $list['pid'] eq 0" } style="display:none" {/if}>
+      <label  for="pid" class="layui-form-label">父级菜单<?php html_sign();?></label>
+      <div class="layui-input-inline">
+        <select name="pid" id="pid"  lay-search="">
+          <option value="">请选择</option>
+          {volist name="parent" id="vo"}
+          <option value="{$vo.fid}"
+                  {if condition="isset($list['pid']) && $vo.fid eq $list['pid']" } selected="selected" {/if}>{$vo.menu_name}
+          </option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">菜单名称<?php html_sign();?></label>
+      <div class="layui-input-inline">
+        <input  type="text" id="menu_name" name="menu_name" required layui_search=""  autocomplete="off" value="{$list.menu_name|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item" {if condition="(isset($list['fid']) && $list['pid'] eq 0)" } style="display: none" {/if}>
+      <label for="route" class="layui-form-label">路由地址<?php html_sign();?></label>
+      <div class="layui-input-inline">
+        <input  type="text" id="route" name="route"  
+        {if condition="isset($list['fid'])" } disabled="disabled" {else} required   {/if}
+         autocomplete="off" value="{$list.route|default=''}" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label  for="app_type" class="layui-form-label">菜单类型<?php html_sign();?></label>
+      <div class="layui-input-inline">
+        <select name="app_type" id="app_type" required lay-search="">
+          <option value="">请选择</option>
+          {volist name="class" key='ko' id="vo"}
+          <option value="{$ko}"
+                  {if condition="isset($list['app_type']) && $ko eq $list['app_type']" } selected="selected" {/if}>{$vo}
+          </option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">是否启用</label>
+      <div class="layui-input-inline">
+        <select name="record_status" id="record_status">
+          {volist name="is_no" key="k" id="v"}
+          <option value="{$k}"
+                  {if condition="isset($list.record_status) && $list['record_status'] eq $k" } selected="selected" {/if}>{$v}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" layui_filter="save" layui_submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

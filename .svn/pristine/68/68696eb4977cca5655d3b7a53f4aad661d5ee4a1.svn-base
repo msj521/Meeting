@@ -1,0 +1,324 @@
+{include file="public/header" /}
+<div class="conter980">
+    <h3>SIFIC2019感控实践优秀基层医院</h3>
+    <h4 style="text-align:center;"><a href="/programme_detail" target="_blank" style="font-size: 20px;color: blue;">感控实践优秀基层医院</a></h4>
+    <div class="hospital_box select_box">医院名称：<input type="text" class="hospital_name" value=""><span style="margin-left: 300px;">
+        </span>医院级别：
+        <select name="" id="">
+                <option value="一级甲等">一级甲等</option>
+                <option value="一级乙等">一级乙等</option>
+                <option value="一级丙等">一级丙等</option>
+                <option value="二级甲等">二级甲等</option>
+                <option value="二级乙等">二级乙等</option>
+                <option value="二级丙等">二级丙等</option>
+                <option value="二级未评定">二级未评定</option>
+                <option value="三级甲等">三级甲等</option>
+                <option value="三级乙等">三级乙等</option>
+                <option value="三级丙等">三级丙等</option>
+                <option value="三级未评定">三级未评定</option>
+                <option value="其他">其他</option>
+            </select>
+        <!-- <input type="text" value="" class="hospital_dec">级<input type="text" class="hospital_dec">等 -->
+    </div>
+    <div class="select_1 select_box">1.联系人:<input type="text" style="width:100px;" class="contact_people" value="">；手机号码：<input type="text" class="contact_phone" value="" style="width: 120px;">；Email：<input type="text" class="contact_email" value=""></div>
+    <div class="select_2 select_box">2.医院感染管理部门成立日期：
+        <div class="programme_date" style="display:inline-block">
+            <input type="text" class="Myclass_timeselect clssdatetime" name="" id="credit_time" value="2019-04-01" lay-key="1">
+            <div class="annual_tips_ys"></div>
+        </div>
+    </div>
+    <div class="select_3 select_box">3．团队成员SIFIC会员名（至少1人）：<input type="text" style="width:300px;" class="group_name" value="">；(格式：张三/李四/王二)</div>
+    <div class="select_4 select_box select_box_crl">
+        <div class="select_4_title">4．医院感染人员组成及专业（2015年1月至今）</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">姓名</th>
+                    <th class="table_thead_2">专业</th>
+                    <th class="table_thead_3">职称</th>
+                    <th class="table_thead_4">参与感控时间</th>
+                    <th class="table_thead_5">离开感控岗位时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="select_5 select_box select_box_crl">
+        <div class="select_5_title">5．组织参加“感·动中国”基层医院感染质量管理培训班情况：</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">会议地点</th>
+                    <th class="table_thead_2">举办时间</th>
+                    <th class="table_thead_3">参与人数</th>
+                    <th class="table_thead_4">具体姓名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_6 select_box select_box_crl">
+        <div class="select_6_title">6．2015年1月至今，发表文章列表（作者、题目、杂志年份及期）</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">题目</th>
+                    <th class="table_thead_2">第一作者</th>
+                    <th class="table_thead_3">杂志年份及期</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_7 select_box select_box_crl">
+        <div class="select_7_title">7．团队成员担任医院感染相关学会全国委员或省市级（直辖市）常委学术兼职</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">时间</th>
+                    <th class="table_thead_2">姓名</th>
+                    <th class="table_thead_3">学术机构名称</th>
+                    <th class="table_thead_3">任职情况</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_8 select_box select_box_crl">
+        <div class="select_8_title">8．团队成员曾在省级以上培训班讲课，或市级以上感控年会做专题报告；</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">时间</th>
+                    <th class="table_thead_2">主持或报告者</th>
+                    <th class="table_thead_3">会议名称和地点</th>
+                    <th class="table_thead_3">题目</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_9 select_box select_box_crl">
+        <div class="select_9_title">9．2015年1月至今，团队成员参编过的专著列表</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">时间</th>
+                    <th class="table_thead_2">参编人员</th>
+                    <th class="table_thead_3">书名</th>
+                    <th class="table_thead_3">出版社</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_10 select_box select_box_crl">
+        <div class="select_10_title">10．2015年1月至今，团队成员在SIFIC平台中获得的荣誉、投稿或任职情况</div>
+        <table border="1" cellspacing="0">
+            <thead align="center">
+                <tr>
+                    <th class="table_thead_1">时间</th>
+                    <th class="table_thead_2">SIFIC会员</th>
+                    <th class="table_thead_3">真实姓名</th>
+                    <th class="table_thead_3">荣誉、投稿或任职情况</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                    <td><input type="text" value=""></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="table_add_tr">
+                        添加+
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="select_11 select_box select_box_crl">
+        <div class="select_11_title">11. 2015年至今，医院感控方面的突出亮点事项（300-1000字）</div>
+        <textarea id="prog_txt" cols="30" rows="10" style="width:100%;height:250px;outline: none;resize: none;background:rgb(248, 248, 247);margin-top: 10px;"></textarea>
+    </div>
+    <div class="select_12 select_box select_box_crl">
+        <div class="select_12_title">12.请将电子版申报表、发表论文（PDF 格式）、其他相关证明材料（图片或PDF格式），压缩成zip或rar格式文件上传。5月1日-15日组委会进行终评；5月16日后公布入选名单。<button type="button" class="layui-btn" id="test3" style="background: #232323;"><i class="layui-icon"></i>点击选择您要上传的文件</button></div>
+    </div>
+    <div class="programme_submit">提交</div>
+</div>
+<script src="/static/web/js/module/programme.js"></script>
+{include file="public/footer2" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>

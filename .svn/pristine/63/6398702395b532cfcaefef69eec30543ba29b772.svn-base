@@ -1,0 +1,29 @@
+{include file="public/header" /}
+
+		<div class="conter960">
+			<div class="h_modules">
+				<div class="h_modulelist">
+					<div class="classify">
+						<div class="classify_lf">全部分类</div>
+						<div class="classify_rg">
+						
+						</div>
+					</div>
+					<div class="mt_txt">
+						<div class="list_mt">
+							<ul class="meeting_ul2"></ul>
+						</div>
+						<div id="pagination"></div>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			<div class="logoslist">
+				<div class="logos3" id="logos1"></div>
+			</div>
+			
+		</div>
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/meeting.js" ></script>

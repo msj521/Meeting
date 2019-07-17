@@ -1,0 +1,206 @@
+{include file="public/header" /}
+<div class="conter960">
+    {include file="public/mbxue2" /}
+    <div class="mt_sigin_module">
+        <div style="width: 940px; margin: auto;">
+            <div class="title">
+                <div class="title_txt2">参会类别</div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>参会类型</th>
+                        <th>截止时间</th>
+                        <th>备注</th>
+                        <th>单价/元</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <div class="title">
+                <div class="title_txt2">参会人信息</div>
+            </div>
+            <div class="canh_pr">
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        参会人*
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" class="form-control" id="user_name" disabled>
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        联系方式*
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" class="form-control" id="tel" disabled>
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        单位*
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" class="form-control" id="org_name" disabled>
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        职称*
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" class="form-control" id="job_name" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="canh_pr" id="canh_pr">
+
+            </div>
+            <div class="title">
+                <div class="title_txt2">学分信息填写</div>
+            </div>
+            <div class="canh_pr">
+                <div class="canh_prlist">
+                    <div style="font-size: 15px; width: 100%; float: left;">此次培训是否要学分？</div>
+                    <div style="margin-top: 10px;  width: 100%; float: left;" id="xuefen">
+                        <div class="opt">
+                            <input class="magic-radio" type="radio" name="1" id="r2" value="2">
+                            <label for="r2">是</label>
+                        </div>
+                        <div class="opt">
+                            <input class="magic-radio" type="radio" name="1" id="r3" value="1">
+                            <label for="r3">否</label>
+                        </div>
+                        <!--<label><input type="radio" name="2" value="2" />是</label>&nbsp;&nbsp;&nbsp;&nbsp;
+							<label><input type="radio" name="2" value="1" />否</label>-->
+                    </div>
+                    <div style="margin-top: 10px;  width: 100%; float: left; display: none;" id="turediv">
+                        <div class="canh_prlist">
+                            <div class="canh_prlist_lf">
+                                出生年月
+                            </div>
+                            <div class="canh_prlist_rg">
+                                <input type="text" name="bill_title" value="" lay-verify="date" class="form-control" id="credit_time" placeholder="选择出生年月" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="canh_prlist">
+                            <div class="canh_prlist_lf">
+                                职称
+                            </div>
+                            <div class="canh_prlist_rg">
+                                <input type="text" name="bill_title" value="" class="form-control" id="credit_title" placeholder="填写职称">
+                            </div>
+                        </div>
+                        <div class="canh_prlist">
+                            <div class="canh_prlist_lf">
+                                职称级别
+                            </div>
+                            <div class="canh_prlist_rg">
+                                <select class="form-control" id="credit_type" style="width:350px;">
+										<option value="1">初级</option>
+										<option value="2">中级</option>
+										<option value="3">副高级以上</option>
+									</select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="title">
+                <div class="title_txt2">发票</div>
+            </div>
+            <div class="canh_pr">
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        发票类型*
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <div class="invoice" id="f1">普通发票</div>
+                        <div class="invoice" id="f2">增值税专用发票</div>
+                        <input type="text" name="bill_type" id="bill_type" value="普通发票" style="display: none;" />
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        发票抬头<span style="color: red;">*</span>
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="bill_title" value="" class="form-control" id="bill_title" placeholder="填写公司名称">
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        税号<span style="color: red;">*</span>
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="tax_num" value="" class="form-control" id="tax_num" placeholder="填写纳税人识别号">
+                    </div>
+                </div>
+                <div class="canh_prlist" id="khuh" style="display: none;">
+                    <div class="canh_prlist_lf">
+                        开户行<span style="color: red;">*</span>
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="account_bank" value="" class="form-control" id="account_bank" placeholder="请填写">
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        地址
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="sign_addr" class="form-control" id="sign_addr" placeholder="填写公司地址">
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        电话
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="sign_tel" value="" class="form-control" id="sign_tel" placeholder="填写公司电话">
+                    </div>
+                </div>
+
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        账号
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="" value="" class="form-control" id="account" placeholder="填写开户行账号">
+                    </div>
+                </div>
+                <div class="canh_prlist">
+                    <div class="canh_prlist_lf">
+                        邮寄地址<span style="color: red;">*</span>
+                    </div>
+                    <div class="canh_prlist_rg">
+                        <input type="text" name="address" value="" class="form-control" id="address" placeholder="公司或住址以便您的签收">
+                    </div>
+                </div>
+                <div class="canh_prlist" style="text-align: center; margin-top: 20px;">
+                    <button class="tijiao_btn" id="tj_dingdan">提交订单</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>
+<script type="text/javascript" src="/static/web/js/module/meeting_siginfo.js"></script>
+<script>
+    $(function() {
+        layui.use('laydate', function() {
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#credit_time'
+            });
+        });
+
+    })
+</script>

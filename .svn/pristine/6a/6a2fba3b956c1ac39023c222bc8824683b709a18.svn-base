@@ -1,0 +1,334 @@
+$(function() {
+    if (!cook_uid) {
+        showLaert('您未登录！')
+        setTimeout(function() {
+            window.location.href = '/login'
+        }, 3000);
+    }
+    var selectinfo = "/api/login/baseinfo"; //下拉接口
+    var submit_person_url = 'api/convention/excellent'; //提交申请者信息
+    var provincess = ""; //省id
+    var file_id = 0; //附件id
+    var type = 0; //0为获取 1为提交 2更新
+    var fid = 0;
+    var get_person_data = {
+        "convention_id": convention_id,
+        "uid": cook_uid
+    };
+
+    function get_person_func(data) {
+        //没有上传信息
+        if (data == '') {
+            type = 1;
+        } else {
+            if (data.code == 200) {
+                type = 2;
+                fid = data.list.fid;
+                //已经上传信息 待渲染
+                var excellent_info = data.list;
+                if (excellent_info.file_id > 0) {
+                    $('.apply_person_file').val('重新上传');
+                }
+                var apply_school_info = JSON.parse(excellent_info.apply_school_info.replace(/&quot;/g, '"')); //学校信息
+                var apply_paper = JSON.parse(excellent_info.apply_paper.replace(/&quot;/g, '"')); //相关论文发表
+                var apply_recommend_info = JSON.parse(excellent_info.apply_recommend_info.replace(/&quot;/g, '"')); //推荐人信息
+                var apply_region = JSON.parse(excellent_info.apply_region.replace(/&quot;/g, '"')); //省市
+                $('#province_id').val(apply_region.province);
+                $("#city_id").val(apply_region.city);
+                $(".city_select").find("option[text='" + apply_region.city + "']").attr("selected", true);
+                $('.apply_date').val(excellent_info.apply_date);
+                $('.apply_name').val(excellent_info.apply_name);
+                $('.apply_sex').val(excellent_info.apply_sex);
+                $('.apply_birthday').val(excellent_info.apply_birthday);
+                $('.apply_company').val(excellent_info.apply_company);
+                $('.apply_postal_code').val(excellent_info.apply_postal_code);
+                $('.apply_department').val(excellent_info.apply_department);
+                $('.apply_company_address').val(excellent_info.apply_company_address);
+                $('.apply_job').val(excellent_info.apply_job);
+                $('.apply_title').val(excellent_info.apply_title);
+                $('.apply_degree').val(excellent_info.apply_degree);
+                $('.apply_company_level').val(excellent_info.apply_company_level);
+                $('.apply_bed_num').val(excellent_info.apply_bed_num);
+                $('.apply_entry_date').val(excellent_info.apply_entry_date);
+                $('.apply_phone').val(excellent_info.apply_phone);
+                $('.apply_tel').val(excellent_info.apply_tel);
+                $('.apply_email').val(excellent_info.apply_email);
+                $('.apply_sific_name').val(excellent_info.apply_sific_name);
+                $('.apply_register_date').val(excellent_info.apply_register_date);
+                $('.apply_member_level').val(excellent_info.apply_member_level);
+                $('.apply_situation').val(excellent_info.apply_situation);
+                $('.apply_explain').val(excellent_info.apply_explain);
+                $('.apply_recommend').val(excellent_info.apply_recommend);
+                table_msg_set(apply_school_info, '.select_4');
+                table_msg_set(apply_paper, '.select_5');
+                table_msg_set(apply_recommend_info, '.select_6');
+            } else {
+                showLaert(data.code);
+            }
+
+        }
+    }
+
+    Selectlist(0)
+
+    function Selectlist(type) {
+        function pubselect(data) {
+            var region_list = data.data.region_list;
+            //省
+            var shen = "";
+            for (var i = 0; i < region_list.length; i++) {
+                shen += '<option value="' + region_list[i].region_name + '"';
+                if (provincess == region_list[i].region_name) {
+                    shen += 'selected="selected"';
+                }
+                shen += '>';
+                shen += region_list[i].region_name;
+                shen += '</option>';
+
+            }
+            if (type == 1) {
+                $("#province_id option").remove();
+                $("#province_id").append(shen);
+            } else {
+                $("#province_id").append(shen);
+            }
+
+            //市绑定
+            var shi = "";
+            for (var i = 0; i < region_list.length; i++) {
+                for (var j = 0; j < region_list[i].children.length; j++) {
+                    shi += '<option>';
+                    shi += region_list[i].children[j].region_name;
+                    shi += '</option>';
+                }
+            }
+            if (type == 1) {
+                $("#city_id option").remove();
+                $("#city_id").append(shi);
+            } else {
+                $("#city_id").append(shi);
+            }
+            ajax_all_Filed("true", "true", "POST", submit_person_url, "json", get_person_data, get_person_func);
+        }
+        var selectdata = {};
+        ajax_all_Filed("true", "true", "GET", selectinfo, "json", selectdata, pubselect); //调用函数	
+    }
+    //获取下拉数据封装
+    function selectinfos(data) {
+        var region_list = data.data.region_list;
+        $("#province_id").change(function() {
+            var now_province = $(this).val();
+            $("#city_id").html('<option value="">请选择城市</option>');
+            for (var i = 0; i < region_list.length; i++) {
+                if (region_list[i].region_name == now_province) {
+                    var children = region_list[i].children;
+                    for (var k = 0; k < children.length; k++) {
+                        $("#city_id").append('<option>' + children[k].region_name + '</option>');
+                    }
+                }
+            }
+        });
+
+    }
+    var selectdata = {};
+    ajax_all_Filed("true", "true", "GET", selectinfo, "json", selectdata, selectinfos); //调用函数	
+
+
+
+
+    //layui文件上传
+    layui.use('upload', function() {
+        var $ = layui.jquery,
+            upload = layui.upload;
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '.apply_person_file',
+            url: '/upload',
+            accept: 'file', //普通文件
+            exts: 'zip|rar',
+            before: function(obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                Loadings()
+            },
+            done: function(res) {
+                $('.newloading').remove();
+                if (res.code == 200) {
+                    $('.apply_person_file').hide();
+                    showLaert('上传成功!');
+                    file_id = res.data;
+                } else {
+                    this.error(index, upload);
+                }
+            },
+            error: function() {
+                showLaert('上传异常，请重新上传!')
+            }
+        });
+    });
+
+
+    $('.apply_person_submit').click(function() {
+        //省市
+        var apply_region_data = {
+            province: $('#province_id').val(),
+            city: $('#city_id').val()
+        }
+
+        //提交的数据
+        var apply_person_data = {
+            convention_id: convention_id,
+            uid: cook_uid,
+            type: type,
+            fid: fid,
+            file_id: file_id, //附件id
+            apply_region: JSON.stringify(apply_region_data),
+            apply_date: $('.apply_date').val(), //申请日期
+            apply_name: $('.apply_name').val(), //申请人姓名
+            apply_sex: $('.apply_sex').val(), //申请人性别
+            apply_birthday: $('.apply_birthday').val(), //申请人出生日期
+            apply_school_info: JSON.stringify(table_msg_get('.select_4')), //学校信息
+            apply_company: $('.apply_company').val(), //申请人单位
+            apply_postal_code: $('.apply_postal_code').val(), //邮编
+            apply_department: $('.apply_department').val(), //部门
+            apply_company_address: $('.apply_company_address').val(), //单位地址
+            apply_job: $('.apply_job').val(), //职务
+            apply_title: $('.apply_title').val(), //技术职称
+            apply_degree: $('.apply_degree').val(), //学位
+            apply_company_level: $('.apply_company_level').val(), //单位级别
+            apply_bed_num: $('.apply_bed_num').val(), //床位数
+            apply_entry_date: $('.apply_entry_date').val(), //入职日期
+            apply_phone: $('.apply_phone').val(), //手机号码
+            apply_tel: $('.apply_tel').val(), //单位电话
+            apply_email: $('.apply_email').val(), //email
+            apply_sific_name: $('.apply_sific_name').val(), //sific会员名
+            apply_register_date: $('.apply_register_date').val(), //注册时间
+            apply_member_level: $('.apply_member_level').val(), //会员等级
+            apply_paper: JSON.stringify(table_msg_get('.select_5')), //相关论文发表
+            apply_situation: $('.apply_situation').val(), //“优先条件”具备情况
+            apply_explain: $('.apply_explain').val(), //补充说明的其他信息
+            apply_recommend: $('.apply_recommend').val(), //推荐意见
+            apply_recommend_info: JSON.stringify(table_msg_get('.select_6')), //推荐人信息
+        };
+        ajax_all_Filed("true", "true", "POST", submit_person_url, "json", apply_person_data, person_func_submit);
+
+        function person_func_submit(data) {
+            if (data.code == 200) {
+                showLaert(data.msg);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                showLaert(data.code);
+            }
+        }
+    })
+
+    //添加列表
+    $('body').on('click', '.table_add', function() {
+        var length = $(this).prev().find('th').length;
+        var str = '<tr>'
+        for (var i = 0; i < length; i++) {
+            str += '<td><input type="text" value=""></td>'
+        }
+        str += '</tr>';
+        $(this).prev().find('tbody').append(str)
+    })
+
+    //表单元素输入宽度自适应
+    $('tbody').on('input', 'input', function() {
+        var now_width = $(this).val().length * parseInt($(this).css('font-size'));
+        // var origin_width = parseInt($(this).css('width'));
+        if (now_width > 160) {
+            $(this).css('width', now_width);
+        }
+    })
+
+    //获取table的信息返回一个数组
+    function table_msg_get(selector) {
+        var store_arr = [];
+        //table的行tr
+        for (var i = 0; i < $(selector + ' tbody tr').length; i++) {
+            //存储table行的信息
+            var check_arr = [];
+            //tr的列td
+            for (var j = 0; j < $(selector + ' table th').length; j++) {
+                check_arr.push($(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').val())
+            }
+            // var writed = false; //对应列是否填写信息
+            // var empty_cont = false; //对应列是否为空
+            // check_arr.forEach(function(val, index) {
+            //         //为空时
+            //         if (selector == '.select_4') {
+            //             if (!val) {
+            //                 empty_cont = true;
+            //             } else {
+            //                 writed = true;
+            //             }
+            //         }
+            //     })
+            //填写了没有空项就存储
+            // if (selector == '.select_4') {
+            //     if (writed && !empty_cont) {
+            //         var obj = {};
+            // check_arr.forEach(function(val, index) {
+            //     obj['programme' + index] = val;
+            // })
+            //     store_arr.push(obj);
+            // }
+            // } else {
+            var obj = {};
+            check_arr.forEach(function(val, index) {
+                obj['programme' + index] = val;
+            })
+            store_arr.push(obj);
+            // }
+
+            //填写了有空 提示用户补充填报信息
+            // if (writed && empty_cont) {
+            //     unintact = true;
+            //     for (var k = 0; k < check_arr.length; k++) {
+            //         if (!check_arr[k]) {
+            //             $('.select_4 table tbody tr').eq(i).find('td').eq(k).css({ border: '1px solid #f00' })
+            //         }
+            //     }
+            //     showLaert('第4项没有按照要求填写！请填写完整再提交！')
+            //     return false;
+            // }
+        }
+        return store_arr;
+    }
+
+    //设置table的信息
+    function table_msg_set(data_arr, selector) {
+        //判断数据的长度是否大于table的tbody的行数 大于则添加至数据的长度
+        if (data_arr.length > $(selector + ' tbody tr').length) {
+            var str = '';
+            for (var i = 0; i < data_arr.length - $(selector + ' tbody tr').length; i++) {
+                str += '<tr>';
+                for (var j = 0; j < $(selector + ' th').length; j++) {
+                    str += '<td><input type="text" value=""></td>';
+                }
+                str += '</tr>';
+            }
+            $(selector + ' tbody').append(str)
+        }
+        //循环数据放入对应的列表
+        for (var i = 0; i < data_arr.length; i++) {
+            for (var j = 0; j < $(selector + ' table th').length; j++) {
+                $(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').val(data_arr[i]['programme' + j]);
+                if (data_arr[i]['programme' + j].length > 8) {
+                    $(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').css('width', data_arr[i]['programme' + j].length * 20 + 'px');
+                }
+            }
+        }
+    }
+
+    $('.Myclass_timeselect').each(function(index) {
+        layui.use('laydate', function() {
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '.clssdatetime' + index,
+                trigger: 'click' //采用click弹出
+            });
+        })
+    })
+})

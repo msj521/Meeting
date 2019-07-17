@@ -1,0 +1,395 @@
+{include file="public/header" /}
+<style type="text/css">
+    .str4 a {
+        margin-right: 10px;
+    }
+    
+    .str4 a img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .meet_main {
+        width: 100%;
+        background: rgba(245, 255, 252, 1);
+    }
+    
+    .center1000 {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 60px 0;
+    }
+    
+    .meet_main_ul {
+        height: 500px;
+    }
+    
+    .meet_main_li {
+        float: left;
+        width: 480px;
+        height: 500px;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 30px 0px rgba(0, 92, 244, 0.2);
+        border-radius: 10px;
+    }
+    
+    .meet_news {
+        margin-left: 40px;
+    }
+    
+    .meet_main_title {
+        height: 87px;
+        box-sizing: border-box;
+        padding: 0 28px 0 30px;
+        background: #0C7753;
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .meet_main_title span {
+        color: rgba(255, 255, 255, 1);
+        line-height: 40px;
+        font: 500 28px/87px 'PingFangSC-Medium';
+        float: left;
+    }
+    
+    .meet_main_title a {
+        text-decoration-line: none;
+        color: rgba(255, 255, 255, 1);
+        line-height: 28px;
+        font: 500 20px/87px 'PingFangSC-Medium';
+        float: right;
+    }
+    
+    .meet_main_content {
+        box-sizing: border-box;
+        width: 100%;
+        height: 413px;
+        padding: 16px 30px 0;
+    }
+    
+    .meet_news_list {
+        height: 22px;
+        margin-top: 16px;
+        font-size: 16px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(98, 106, 128, 1);
+        line-height: 22px;
+    }
+    
+    .meet_new_container {
+        float: left;
+    }
+    
+    .meet_new_container::before {
+        content: "";
+        float: left;
+        width: 6px;
+        height: 6px;
+        background: rgba(170, 170, 170, 1);
+        border-radius: 50%;
+        margin: 8px 8px 0 0;
+    }
+    
+    .meet_new_container a {
+        float: left;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 16px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(98, 106, 128, 1);
+        line-height: 22px;
+    }
+    
+    .meet_new_container i {
+        float: left;
+        width: 40px;
+        height: 20px;
+        margin-left: 6px;
+    }
+    
+    .meet_main_content p {
+        margin-top: 16px;
+    }
+    
+    .meet_main_content p::before {
+        content: "";
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(170, 170, 170, 1);
+    }
+    
+    .meet_main_content p span {
+        font-size: 16px !important;
+        font-family: PingFangSC-Medium !important;
+        font-weight: 500 !important;
+        color: rgba(98, 106, 128, 1) !important;
+        line-height: 22px !important;
+    }
+    
+    .meet_main_content li.new i {
+        background: url('/static/web/images/new.png') no-repeat center;
+    }
+    
+    .meet_main_date {
+        float: right;
+    }
+    
+    .qr_code_box {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 80px;
+        height: 212px;
+        z-index: 5;
+        box-shadow: 0px 0px 30px 0px rgba(12, 119, 83, 0.1);
+        border-radius: 8px 0px 0px 8px;
+    }
+    
+    .qr_code_box .qr_code_box_li {
+        background: #fff;
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        height: 70px;
+        z-index: 10;
+        transition: .3s;
+    }
+    
+    .qr_code_box .qr_code_box_li_chet {
+        background: #fff url(static/web/images/Wechat_uncheck.png) center no-repeat;
+        border-bottom: 1px solid #ECECEC;
+    }
+    
+    .qr_code_box .qr_code_box_li_chet:hover {
+        background: #fff url(static/web/images/Wechat_check.png) center no-repeat;
+    }
+    
+    .qr_code_box .qr_code_box_li_android {
+        background: #fff url(static/web/images/Android_uncheck.png) center no-repeat;
+        border-bottom: 1px solid #ECECEC;
+    }
+    
+    .qr_code_box .qr_code_box_li_android:hover {
+        background: #fff url(static/web/images/Android_check.png) center no-repeat;
+        border-bottom: 1px solid #ECECEC;
+    }
+    
+    .qr_code_box .qr_code_box_li_iphone {
+        background: #fff url(static/web/images/Apple_uncheck.png) center no-repeat;
+    }
+    
+    .qr_code_box .qr_code_box_li_iphone:hover {
+        background: #fff url(static/web/images/Apple_check.png) center no-repeat;
+    }
+    
+    .qr_code_box .qr_code_img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        width: 160px;
+        height: 190px;
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0px 0px 30px 0px rgba(12, 119, 83, 0.1);
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(72, 78, 94, 1);
+        line-height: 20px;
+        text-align: center;
+    }
+    
+    .qr_code_img_chet p {
+        background: #fff url(static/web/images/qr_code_chet.png) center;
+        background-size: 120px 120px;
+    }
+    
+    .qr_code_img_android p {
+        background: #fff url(static/web/images/qr_code_android.png) center;
+        background-size: 120px 120px;
+    }
+    
+    .qr_code_img_iphone p {
+        background: #fff url(static/web/images/qr_code_iphone.png) center;
+        background-size: 120px 120px;
+    }
+</style>
+{include file="public/meeting_nav" /} {include file="public/mbxue" /} {include file="public/meet_center" /}
+
+<div class="meet_main">
+    <div class="center1000">
+        <ul class="meet_main_ul">
+            <li class="meet_main_li meet_date">
+                <div class="meet_main_title">
+                    <span>重要日期</span>
+                </div>
+                <ul class="meet_main_content meet_main_date_ul">
+
+                </ul>
+            </li>
+            <li class="meet_main_li meet_news">
+                <div class="meet_main_title">
+                    <span>新闻动态</span>
+                </div>
+                <ul class="meet_main_content meet_main_news_ul">
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="paomad" style="display:none;">
+    <div class="conter960">
+        <div class="sponsor_list">
+            <h2 class="sponsor_h2t">特别支持</h2>
+            <div class="sponsor_list_ct" id="sponsor_list_t">
+            </div>
+        </div>
+        <div class="sponsor_list">
+            <h2 class="sponsor_h2A">A级支持</h2>
+            <div class="sponsor_list_ct" id="sponsor_list_A">
+            </div>
+        </div>
+        <div class="sponsor_list">
+            <h2 class="sponsor_h2B">B级支持</h2>
+            <div class="sponsor_list_ct" id="sponsor_list_B">
+            </div>
+        </div>
+        <div class="sponsor_list">
+            <h2 class="sponsor_h2C">C级支持</h2>
+            <div class="sponsor_list_ct" id="sponsor_list_C">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 二维码 -->
+<div class="qr_code_box">
+    <div class="qr_code_box_li qr_code_box_li_chet">
+    </div>
+    <div class="qr_code_img qr_code_img_chet">
+        <p style="width:120px;height:120px;"></p>
+        <span>关注微信公众号</span> 了解更多咨询
+    </div>
+    <div class="qr_code_box_li qr_code_box_li_android" style="top:70px;">
+    </div>
+    <div class="qr_code_img qr_code_img_android" style="top:10px;">
+        <p style="width:120px;height:120px;"></p>
+        <span>sific2019 App</span> Android系统下载
+    </div>
+    <div class="qr_code_box_li qr_code_box_li_iphone" style="top:140px;">
+    </div>
+    <div class="qr_code_img qr_code_img_iphone" style="top:20px;">
+        <p style="width:120px;height:120px;"></p>
+        <span>sific2019 App</span> IOS系统下载
+    </div>
+</div>
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/meetinginfo.js"></script>
+<script>
+    $(function() {
+        $("#sponsor_list_t a").eq(0).css('margin-left', '0px')
+        $("#sponsor_list_A a").eq(0).css('margin-left', '0px')
+        $("#sponsor_list_B a").eq(0).css('margin-left', '0px')
+        $("#sponsor_list_C a").eq(0).css('margin-left', '0px')
+    })
+</script>
+<script>
+    $(function() {
+
+        $('.qr_code_box').on('mouseover', '.qr_code_box_li', function() {
+            $(this).next().stop().animate({
+                left: -180
+            }, 500);
+        })
+        $('.qr_code_box').on('mouseout', '.qr_code_box_li', function() {
+            $(this).next().stop().animate({
+                left: 0
+            }, 500);
+        })
+
+
+
+
+
+        var convention_base = "api/convention/convention_base"; //新闻和重要日期数据所在接口
+        var data = {
+            "convention_id": convention_id,
+            "uid": cook_uid
+        };
+        ajax_all_Filed("true", "true", "GET", convention_base, "json", data, convention);
+
+        function convention(data) {
+            if (data.code == 414) {
+                return false;
+            }
+            //important date    重要日期模块渲染
+            var convention_info = data.data.convention_info;
+            var date_str = htmls(convention_info.important_date)
+            $('.meet_main_date_ul').html(date_str);
+            //news		新闻模块渲染
+            var newsList = data.data.convention_news;
+            var news_str = '';
+            for (var i = 0; i < newsList.length; i++) {
+                news_str += "<li class='meet_news_list'><div class='meet_new_container'><a href='/newsinfo?convention_id=" + convention_id + "&news_id=" + newsList[i].fid + "'>" + newsList[i].title + "</a><i></i></div><div class='meet_main_date'>" + timeStamp2String(newsList[i].create_time) + "</div></li>"
+            }
+            $('.meet_main_news_ul').html(news_str);
+
+            //paper
+
+            var convention_order = data.data.convention_order;
+            //cookie拿用户的状态，用户没有登录时，a标签的路由状态跳转到登录
+            if (cook_uid == null || cook_uid == "") {
+                $('.meet_login_li').html("<a class='meet_login' href='" + pu_url + "'><p>会议报名</p></a>")
+                $('.meet_paper_li').html("<a class='meet_paper' href='" + pu_url + "'><p>论文发表</p></a>")
+                $('.meet_user_li').html("<a class='meet_user' href='" + pu_url + "'><p>个人中心</p></a>")
+                $('.meet_select_li').html("<a class='meet_select' href='" + pu_url + "'><p>追梦之星</p></a>")
+            } else {
+                //用户登录的时候，个人中心路由跳转到userinfo
+                $('.meet_user_li').html("<a class='meet_user' href='/userinfo'><p>个人中心</p></a>")
+                    //登录了评优报名路由跳转到programme
+                    // if (getNowTime() > setFutureTime(2019, 3, 20, 17, 0, 0)) {
+                    //     $('.meet_select_li').html("<a class='meet_select' style='cursor:pointer'><p>追梦之星</p></a>")
+                    //     $('.meet_select_li').click(function() {
+                    //         showLaert('敬请期待！')
+                    //     })
+                    // } else {
+                $('.meet_select_li').html("<a class='meet_select' href='/excellent_person'><p>追梦之星</p></a>")
+                    // }
+                if (convention_info.class_name == "SIFIC专栏") {
+                    //SIFIC专栏
+                    $('.meet_login_li').html("<a class='meet_login' href='/annual_meeting'><p>会议报名</p></a>")
+                    if (convention_order != null) {
+                        //判断用户的报名状态，已经报名可以进行论文发表的跳转
+                        $('.meet_paper_li').html("<a class='meet_paper' href='/abstract_list'><p>论文发表</p></a>")
+                    } else {
+                        //判断用户的报名状态，没有报名，弹出提示信息，不可以进行论文发表
+                        $('.meet_paper_li').html("<a class='meet_login'><p>论文发表</p></a>")
+                        $(".meet_paper_li").click(function() {
+                            showLaert("您还未注册会议，请您先点击“会议报名”按钮注册会议后，提交您的论文！");
+                        })
+
+                    }
+                } else {
+                    //普通栏目
+                    $('.meet_login_li').html("<a class='meet_paper' href='/paper?convention_id='" + convention_id + "'><p>论文发表</p></a>")
+                    $('.meet_paper_li').html("<a class='meet_login' href='/siginfo?convention_id='" + convention_id + "'><p>会议报名</p></a>")
+                }
+
+            }
+
+        }
+    })
+</script>

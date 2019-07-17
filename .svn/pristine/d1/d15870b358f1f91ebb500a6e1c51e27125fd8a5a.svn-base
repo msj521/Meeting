@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://app.incongress.cn/model/rcylt.jsp?conId=197&color=98090b -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=9">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<title>日程一览图</title>
+		<link href="/static/web/css/rcylt.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="/static/web/css/tipso.min.css">
+		<style type="text/css">
+			.sticky-thead {
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: #FFF;
+				z-index: 100000;
+			}
+			
+			.sticky-col {
+				position: relative;
+				left: 0;
+				top: 0;
+			}
+			
+			.sticky-thead td,
+			.sticky-col td {
+				border: 0;
+			}
+			
+			table {
+				border-collapse: 0px;
+				border-spacing: 0px;
+			}
+			
+			.timeShow {
+				color: #232323
+			}
+			
+			.tk1_header {
+				background: #98090b !important
+			}
+			
+			#tb2 {
+				color: #98090b
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="container">
+			<div style="height:10px;">
+				<table class="tb1" id="tb_head" style="min-width:1536px;width:100%;">
+					<thead style="min-width: 1536px; left: 0px;">
+						<tr style="background: #239397;">
+							<td colspan="67">
+								<div class="tabnav_date" id="tabnav_date">
+
+								</div>
+							</td>
+						</tr>
+						<tr class="tr1" style="min-width:1536px;background: #FFF;">
+							<td style="background:none;width:160px;" colspan="5">
+								<div style="width:160px;height: 50px;"></div>
+							</td>
+							<td class="timeShow">07:00</td>
+							<td class="timeShow">07:15</td>
+							<td class="timeShow">07:30</td>
+							<td class="timeShow">07:45</td>
+							<td class="timeShow">08:00</td>
+							<td class="timeShow">08:15</td>
+							<td class="timeShow">08:30</td>
+							<td class="timeShow">08:45</td>
+							<td class="timeShow">09:00</td>
+							<td class="timeShow">09:15</td>
+							<td class="timeShow">09:30</td>
+							<td class="timeShow">09:45</td>
+							<td class="timeShow">10:00</td>
+							<td class="timeShow">10:15</td>
+							<td class="timeShow">10:30</td>
+							<td class="timeShow">10:45</td>
+							<td class="timeShow">11:00</td>
+							<td class="timeShow">11:15</td>
+							<td class="timeShow">11:30</td>
+							<td class="timeShow">11:45</td>
+							<td class="timeShow">12:00</td>
+							<td class="timeShow">12:15</td>
+							<td class="timeShow">12:30</td>
+							<td class="timeShow">12:45</td>
+							<td class="timeShow">13:00</td>
+							<td class="timeShow">13:15</td>
+							<td class="timeShow">13:30</td>
+							<td class="timeShow">13:45</td>
+							<td class="timeShow">14:00</td>
+							<td class="timeShow">14:15</td>
+							<td class="timeShow">14:30</td>
+							<td class="timeShow">14:45</td>
+							<td class="timeShow">15:00</td>
+							<td class="timeShow">15:15</td>
+							<td class="timeShow">15:30</td>
+							<td class="timeShow">15:45</td>
+							<td class="timeShow">16:00</td>
+							<td class="timeShow">16:15</td>
+							<td class="timeShow">16:30</td>
+							<td class="timeShow">16:45</td>
+							<td class="timeShow">17:00</td>
+							<td class="timeShow">17:15</td>
+							<td class="timeShow">17:30</td>
+							<td class="timeShow">17:45</td>
+							<td class="timeShow">18:00</td>
+							<td class="timeShow">18:15</td>
+							<td class="timeShow">18:30</td>
+							<td class="timeShow">18:45</td>
+							<td class="timeShow">19:00</td>
+							<td class="timeShow">19:15</td>
+							<td class="timeShow">19:30</td>
+							<td class="timeShow">19:45</td>
+							<td class="timeShow">20:00</td>
+							<td class="timeShow">20:15</td>
+							<td class="timeShow">20:30</td>
+							<td class="timeShow">20:45</td>
+							<td class="timeShow">21:00</td>
+							<td class="timeShow">21:15</td>
+							<td class="timeShow">21:30</td>
+							<td class="timeShow">21:45</td>
+							<td class="timeShow">22:00</td>
+						</tr>
+						<tr>
+							<td colspan="67" style="border:0px;height:5px;background: #EA9052;margin-bottom:0;"></td>
+						</tr>
+					</thead>
+				</table>
+				<table class="tb1" id="tb_meeting2" style="min-width:1536px;">
+					<thead style="min-width: 1536px; visibility: visible; left: 0px;">
+						<tr style="background: #FFF;">
+							<td colspan="67">
+								<div class="tabnav_date">
+									<a href="#" class="aShow">
+										<span style="font-size: 20px;display: block">05/17</span><span style="font-size: 14px; display: block">星期四</span>
+									</a>
+									<a href="#"><span style="font-size: 20px;display: block">05/17</span><span style="font-size: 14px; display: block">星期四</span></a>
+									<a href="#"><span style="font-size: 20px;display: block">05/17</span><span style="font-size: 14px; display: block">星期四</span></a>
+								</div>
+
+							</td>
+						</tr>
+						<tr class="tr1" style="min-width:1536px;">
+							<td style="background:none;width:160px;" colspan="5">
+								<div style="width:160px;height: 50px;"></div>
+							</td>
+
+							<td class="timeShow">07:00</td>
+							<td class="timeShow">07:15</td>
+							<td class="timeShow">07:30</td>
+							<td class="timeShow">07:45</td>
+							<td class="timeShow">08:00</td>
+							<td class="timeShow">08:15</td>
+							<td class="timeShow">08:30</td>
+							<td class="timeShow">08:45</td>
+							<td class="timeShow">09:00</td>
+							<td class="timeShow">09:15</td>
+							<td class="timeShow">09:30</td>
+							<td class="timeShow">09:45</td>
+							<td class="timeShow">10:00</td>
+							<td class="timeShow">10:15</td>
+							<td class="timeShow">10:30</td>
+							<td class="timeShow">10:45</td>
+							<td class="timeShow">11:00</td>
+							<td class="timeShow">11:15</td>
+							<td class="timeShow">11:30</td>
+							<td class="timeShow">11:45</td>
+							<td class="timeShow">12:00</td>
+							<td class="timeShow">12:15</td>
+							<td class="timeShow">12:30</td>
+							<td class="timeShow">12:45</td>
+							<td class="timeShow">13:00</td>
+							<td class="timeShow">13:15</td>
+							<td class="timeShow">13:30</td>
+							<td class="timeShow">13:45</td>
+							<td class="timeShow">14:00</td>
+							<td class="timeShow">14:15</td>
+							<td class="timeShow">14:30</td>
+							<td class="timeShow">14:45</td>
+							<td class="timeShow">15:00</td>
+							<td class="timeShow">15:15</td>
+							<td class="timeShow">15:30</td>
+							<td class="timeShow">15:45</td>
+							<td class="timeShow">16:00</td>
+							<td class="timeShow">16:15</td>
+							<td class="timeShow">16:30</td>
+							<td class="timeShow">16:45</td>
+							<td class="timeShow">17:00</td>
+							<td class="timeShow">17:15</td>
+							<td class="timeShow">17:30</td>
+							<td class="timeShow">17:45</td>
+							<td class="timeShow">18:00</td>
+							<td class="timeShow">18:15</td>
+							<td class="timeShow">18:30</td>
+							<td class="timeShow">18:45</td>
+							<td class="timeShow">19:00</td>
+							<td class="timeShow">19:15</td>
+							<td class="timeShow">19:30</td>
+							<td class="timeShow">19:45</td>
+							<td class="timeShow">20:00</td>
+							<td class="timeShow">20:15</td>
+							<td class="timeShow">20:30</td>
+							<td class="timeShow">20:45</td>
+							<td class="timeShow">21:00</td>
+							<td class="timeShow">21:15</td>
+							<td class="timeShow">21:30</td>
+							<td class="timeShow">21:45</td>
+							<td class="timeShow">22:00</td>
+						</tr>
+						<tr>
+							<td colspan="67" style="border:0px;height:5px;background: #EA9052;margin-bottom:0;"></td>
+						</tr>
+					</thead>
+					<tbody style="">
+				
+					</tbody>
+				</table>
+				<table class="sticky-col" style="opacity: 0; z-index: -1; margin-left: 0px; width: 163px;">
+					<thead style="min-width: 1536px; visibility: visible; left: 0px;">
+						<tr>
+							<td colspan="5" style="width:163px;height:113px;">&nbsp;</td>
+						</tr>
+					</thead>
+					<tbody style="">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="/static/web/libs/jquery/jquery.js"></script>
+		<script src="/static/web/js/getQueryString.js"></script>
+		<script src="/static/web/js/md5.js"></script>
+		<script src="/static/web/js/jquery.cookie.js"></script>
+		<script src="/static/web/js/ajax.js"></script>
+		<script type="text/javascript" src="/static/web/js/cycle.js"></script>
+		<script src="/static/web/js/tipso.min.js"></script>
+		<script type="text/javascript">
+			var schedule_first = "api/convention/schedule_first";
+			var schedule_second = "api/convention/schedule_second";
+			//设置固定左边栏代码
+			$(window).scroll(function() {
+				var scrollLeft = $(this).scrollLeft();
+				if(scrollLeft > 0) {
+					$("thead").css({
+						left: -scrollLeft
+					})
+
+					$(".sticky-col").css({
+						opacity: 1,
+						'margin-left': scrollLeft
+					});
+				}
+				if(scrollLeft == 0) {
+					$(".sticky-col").css({
+						opacity: 0,
+						'margin-left': 0
+					});
+					$("thead").css({
+						left: 0
+					})
+				}
+			})
+
+			$(function() {
+				
+				//提取数据数组
+				var schedulefirstArray = new Array();
+
+				function agendalist(data) {
+					dateList = data.data.selectdate;
+					var schedulefirst_list = data.data.schedulefirst_list;
+
+					for(var i = 0; i < dateList.length; i++) {
+						var dateObj = dateList[i].selectdate + '';
+						$('<div title=' + i + '><span class="tabnav_span1">' + dateObj.substring(5).replace('-', '/') + '</span><span class="tabnav_span2" style="">' + dateToWeek(dateList[i].selectdate) + '</span></div>').appendTo("#tabnav_date");
+
+						schedulefirstArray = new Array();
+						var roomArray = new Array();
+						for(var j = 0; j < schedulefirst_list.length; j++) {
+							if(schedulefirst_list[j].selectdate == dateList[i].selectdate) {
+								var flag = false;
+								var targetId = 0;
+								for(var x = 0; x < roomArray.length; x++) {
+									if(roomArray[x].room_id == schedulefirst_list[j].room_id) {
+										flag = true;
+										targetId = x;
+									}
+								}
+
+								if(flag) {
+									roomArray[targetId].scheduleArray.push(schedulefirst_list[j]);
+								} else {
+									schedulefirst_list[j].scheduleArray = new Array();
+									schedulefirst_list[j].scheduleArray.push(schedulefirst_list[j]);
+									roomArray.push(schedulefirst_list[j]);
+								}
+
+								schedulefirstArray.push(schedulefirst_list[j]);
+							}
+						}
+						dateList[i].roomArray = roomArray;
+					}
+					//默认第一条展示
+					selectDate(0);
+					
+					//日期选择默认和点击事件
+					$(".tabnav_date div").eq(0).addClass("aShow")
+					$(".tabnav_date div").on('click', function() {
+						var index = $(this).attr('title');
+						$(".sticky-col tbody tr").remove();
+						$('#tb_meeting2 tbody tr').remove();
+						$(this).addClass("aShow").siblings().removeClass("aShow");
+						selectDate(index)
+					})
+
+				}
+
+				var agendadata = {
+					"convention_id": convention_id,
+					"select_date": '',
+					"search_type": 0
+				};
+				ajax_all_Filed("true", "true", "GET", schedule_first, "json", agendadata, agendalist); //调用函数
+				
+				
+				
+			})
+
+			function selectDate(i) {
+				for (var p = 0; p < dateList[i].roomArray.length; p++){
+					var room = dateList[i].roomArray[p];
+					var htmlString = '<tr>';
+						htmlString += '<td align="center" class="meettingName" colspan="5" style="width: 163px;background:#EA9052;  height: 60px; color: #232323;">' + room.room_name + '</td>';
+					for(var k = 0; k < room.scheduleArray.length; k++) {
+						var target = room.scheduleArray[k];
+						var start_date = new Date(target.start_date);
+						var end_date = new Date(target.end_date);
+						var tmp_date = new Date(dateList[i].selectdate + ' 07:00:00');
+						if(k>0){
+							tmp_date = new Date(room.scheduleArray[k-1].end_date);
+						}
+						var subSecond = parseInt(end_date - start_date) / 1000 / 60 / 15; //长度间隔
+						var subStartSecond = parseInt(start_date - tmp_date) / 1000 / 60 / 15; //前间隔数
+	
+						for(var m = 0; m < subStartSecond; m++) {
+							htmlString += '<td style="border:0px;height:60px;">&nbsp;</td>';
+						}
+						
+						htmlString += '<td colspan="' + subSecond + '" class="td_meetting_Div" style="background:#239397;" onclick="td_meetting_Divclick(\''+target.fid+'\')" id="'+target.fid+'">';
+						htmlString += '<div class="meettingName" style="height:60px"><input type="hidden" name="field＿name" value=""><span style="">' + target.schedule_name + '</span></div>';
+						htmlString += '<div class="showWords_Div" style="right: 0px; left: 0px;">' + target.schedule_name + '</div>';
+
+					}
+					htmlString += '</td>';	
+					htmlString += '</tr>';
+					htmlString += '<tr style="border:0px;"><td class="hr" colspan="67" style="border:0px;height:1px;background: #FFF;"></td></tr>'
+					$('#tb_meeting2 tbody').append(htmlString);
+
+					//第二次绑定
+					$('<tr><td align="center" class="meettingName" colspan="5" style="width: 163px;background:#EA9052;  height: 60px; color: #232323;">' + target.room_name + '</td></tr><tr style="border:0px;"><td class="hr" colspan="67" style="border:0px;height:1px;background: #FFF;"></td></tr>').appendTo(".sticky-col tbody");
+				}
+				
+
+			}
+
+			
+			function dateToWeek(dateString) {
+
+				//获取当天是星期几
+				var ji = "日一二三四五六".charAt(new Date(dateString).getDay());
+				return "星期" + ji;
+			}
+
+			function dateToStr(datetime) {
+				var year = datetime.getFullYear();
+				var month = datetime.getMonth() + 1; //js从0开始取 
+				var date = datetime.getDate();
+				var hour = datetime.getHours();
+				var minutes = datetime.getMinutes();
+				var second = datetime.getSeconds();
+				if(month < 10) {
+					month = "0" + month;
+				}
+				if(date < 10) {
+					date = "0" + date;
+				}
+				if(hour < 10) {
+					hour = "0" + hour;
+				}
+				if(minutes < 10) {
+					minutes = "0" + minutes;
+				}
+				if(second < 10) {
+					second = "0" + second;
+				}
+
+				var time = year + "-" + month + "-" + date + " " + hour + ":" + minutes + ":" + second;
+				return time;
+			}
+			
+			$('body').on('click','.daytiem_close', function() {
+			   	$(".daytiem_div").hide();
+			   	return true;
+		  	});
+		  	
+		function td_meetting_Divclick(e){
+			var schedulefirst_id = e;
+			$("#schedule_name").text("");
+			$(".schedule_ex").text("");
+			$("#mtdate1").text("");
+			$("#mtdate2").text("");
+			$("#addr").text("");
+			$(".tclist").text("");
+			function second(data) {
+			
+				var schedulefirst_info = data.data.schedulefirst_info;
+				var expert_list = data.data.schedulefirst_info.expert_list;
+				var schedulesecond_list = data.data.schedulesecond_list;
+
+				var role_list = Array();
+				//一级日程提取角色列表
+				for(var i = 0; i < expert_list.length; i++) {
+					var roleName = expert_list[i].role_name;
+					var flag = false;
+					for(var j = 0; j < role_list.length; j++) {
+						if(role_list[j].roleName == roleName) {
+							flag = true;
+						}
+					}
+					if(!flag) {
+						var model = {
+							"roleName": roleName,
+							'experts': Array()
+						}
+						role_list.push(model);
+					}
+				}
+				//一级日程把人员放到角色中
+				for(var i = 0; i < expert_list.length; i++) {
+					var roleName = expert_list[i].role_name;
+					for(var j = 0; j < role_list.length; j++) {
+						if(role_list[j].roleName == roleName) {
+							role_list[j].experts.push(expert_list[i]);
+						}
+					}
+				}
+
+				for (var n = schedulesecond_list.length - 1; n >= 0; n--) {
+					var role_list2 = Array();
+					var schedulesecond = schedulesecond_list[n];
+					//二级日程提取角色列表
+
+					for(var j = 0; j < schedulesecond.expert_list.length; j++) {
+						var roleName = schedulesecond.expert_list[j].role_name;
+						var flag = false;
+						for(var j = 0; j < role_list2.length; j++) {
+							if(role_list2[j].roleName == roleName) {
+								flag = true;
+							}
+						}
+						if(!flag) {
+							var model = {
+								"roleName": roleName,
+								'experts': Array()
+							}
+							role_list2.push(model);
+						}
+					}
+
+					//二级日程把人员放到角色中
+					for(var j = 0; j < schedulesecond.expert_list.length; j++) {
+						var roleName = schedulesecond.expert_list[j].role_name;
+						for(var k = 0; k < role_list2.length; k++) {
+							if(role_list2[k].roleName == roleName) {
+								role_list2[k].experts.push(schedulesecond.expert_list[j]);
+							}
+						}
+					}
+					schedulesecond.role_list = role_list2;
+				};
+				
+
+				$("#schedule_name").text(schedulefirst_info.schedule_name);
+				$("#mtdate1").text(schedulefirst_info.start_date);
+				$("#mtdate2").text(schedulefirst_info.end_date);
+				$("#addr").text(schedulefirst_info.room_name);
+				var str = "";
+				for(var i = 0; i < role_list.length; i++) {
+					str += '<div>';
+					str += role_list[i].roleName;
+					str += ':';
+					for(var j = 0; j < role_list[i].experts.length; j++) {
+						str += role_list[i].experts[j].expert_name;
+						str += j==role_list[i].experts.length-1 ? '' : ',';
+					}
+					str += '</div>';
+				}
+				$(".schedule_ex").append(str);
+
+				var html = "";
+				for(var i = 0; i < schedulesecond_list.length; i++) {
+					html += '<div class="tc_ctrg_txt">';
+					html += '<div class="tcrg_time">';
+					html += schedulesecond_list[i].start_date.substr(11, 5);
+					html += '-'
+					html += schedulesecond_list[i].end_date.substr(11, 5);
+					html += '</div>';
+					html += '<div class="tcrg_txt">';
+					html += schedulesecond_list[i].schedule_name
+
+					var role_list2 = schedulesecond_list[i].role_list;
+					for(var j = 0; j < role_list2.length; j++) {
+						html += '<div>';
+						html += role_list2[j].roleName;
+						html += ':';
+						for(var k = 0; k < role_list2[j].experts.length; k++) {
+							html += role_list2[j].experts[k].expert_name
+						}
+						html += '</div>';
+					}
+
+					html += '</div>';
+					html += '</div>';
+				}
+				$(".tclist").append(html);
+			}
+			var seconddata = {
+				"convention_id": convention_id,
+				"schedulefirst_id": schedulefirst_id
+			};
+			ajax_all_Filed("true", "true", "GET", schedule_second, "json", seconddata, second); //调用函数	
+					$(".daytiem_div").show();
+		}
+		</script>
+
+	</body>
+
+</html>
+
+<div class="daytiem_div" style="display: none;">
+	<div class="daytiem_div_ct">
+		<div class="daytiem_close"></div>
+		<div class="tc_title">
+			<h1 id="schedule_name"></h1>
+			<div class="schedule_ex ellipsis">
+				
+			</div>
+			
+		</div>
+		<div class="tc_ct">
+			<div class="tc_ctlf">
+				<h1>基本信息</h1>
+				<div class="tc_ctlf_txt">
+					<div class="tc_img"><img src="/static/web/images/icon_time.png"></div>
+					<div class="tc_txt" >
+						<p id="mtdate1"></p>
+						<p id="mtdate2"></p>
+					</div>
+				</div>
+				<div class="tc_ctlf_txt">
+					<div class="tc_img"><img src="/static/web/images/icon_adress.png"></div>
+					<div class="tc_txt" id="addr"></div>
+				</div>
+			</div>
+			<div class="tc_ctrg">
+				<h1>发言详情</h1>
+				<div class="tclist">
+					
+				
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

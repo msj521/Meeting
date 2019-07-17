@@ -1,0 +1,465 @@
+$(function() {
+    if (!cook_uid) {
+        showLaert('您未登录！')
+        setTimeout(function() {
+            window.location.href = '/login'
+        }, 3000);
+    }
+    var selectinfo = "/api/login/baseinfo"; //下拉接口
+    var submit_person_url = 'api/convention/excellent'; //提交申请者信息
+    var provincess = ""; //省id
+    var file_id = 0; //附件id
+    var type = 0; //0为获取 1为提交 2更新
+    var fid = 0;
+    var get_person_data = {
+        "convention_id": convention_id,
+        "uid": cook_uid
+    };
+
+    function get_person_func(data) {
+        //没有上传信息
+        if (data == '') {
+            type = 1;
+        } else {
+            if (data.code == 200) {
+                type = 2;
+                fid = data.list.fid;
+                //已经上传信息 待渲染
+                var excellent_info = data.list;
+                if (excellent_info.file_id > 0) {
+                    $('.apply_person_file').val('重新上传');
+                    file_id = data.list.file_id;
+                }
+                var apply_magazine = JSON.parse(excellent_info.apply_magazine.replace(/&quot;/g, '"')); //1杂志发表
+                var apply_project_research = JSON.parse(excellent_info.apply_project_research.replace(/&quot;/g, '"')); //2课题研究
+                var apply_paper = JSON.parse(excellent_info.apply_paper.replace(/&quot;/g, '"')); //3专题报告
+                var apply_compilation = JSON.parse(excellent_info.apply_compilation.replace(/&quot;/g, '"')); //4编著列表
+                var apply_honor_history = JSON.parse(excellent_info.apply_honor_history.replace(/&quot;/g, '"')); //5荣誉任职情况
+                var apply_recommend_info = JSON.parse(excellent_info.apply_recommend_info.replace(/&quot;/g, '"')); //推荐人信息
+                var apply_region = JSON.parse(excellent_info.apply_region.replace(/&quot;/g, '"')); //省市区
+                $('#province_id').val(apply_region.province); //省
+                $("#city_id").val(apply_region.city); //市
+                $('#area_id').val(apply_region.area); //区
+                $('.road').val(apply_region.road); //详细地址
+                $('.apply_name').val(excellent_info.apply_name); //姓名
+                $('.apply_sex').val(excellent_info.apply_sex); //性别
+                $('.apply_birthday').val(excellent_info.apply_birthday); //出生日期
+                $('.apply_company').val(excellent_info.apply_company); //单位名称
+                $('.apply_job').val(excellent_info.apply_job); //职务
+                $('.apply_title').val(excellent_info.apply_title); //职称
+                $('.apply_company_level').val(excellent_info.apply_company_level); //单位等级
+                $('.apply_bed_num').val(excellent_info.apply_bed_num); //床位数
+                $('.apply_entry_date').val(excellent_info.apply_entry_date); //入职日期
+                $('.apply_phone').val(excellent_info.apply_phone); //手机
+                $('.apply_email').val(excellent_info.apply_email); //email
+                $('.apply_sific_name').val(excellent_info.apply_sific_name); //会员名
+                $('.apply_member_level').val(excellent_info.apply_member_level); //会员等级
+                $('.apply_online_time').val(excellent_info.apply_online_time); //在线时长
+                $('.apply_evaluate').val(excellent_info.apply_evaluate); //评价
+                table_msg_set(apply_magazine, '.select_4'); //1杂志发表
+                table_msg_set(apply_project_research, '.select_5'); //2课题研究
+                table_msg_set(apply_paper, '.select_6'); //专题报告
+                table_msg_set(apply_compilation, '.select_7'); //专题报告
+                table_msg_set(apply_honor_history, '.select_8'); //5荣誉任职情况
+                table_msg_set(apply_recommend_info, '.select_9'); //推荐人信息
+            } else {
+                showLaert(data.code);
+            }
+
+        }
+    }
+
+    Selectlist(0)
+
+    function Selectlist(type) {
+        function pubselect(data) {
+            var region_list = data.data.region_list;
+            //省
+            var shen = "";
+            for (var i = 0; i < region_list.length; i++) {
+                shen += '<option value="' + region_list[i].region_name + '"';
+                if (provincess == region_list[i].region_name) {
+                    shen += 'selected="selected"';
+                }
+                shen += '>';
+                shen += region_list[i].region_name;
+                shen += '</option>';
+
+            }
+            if (type == 1) {
+                $("#province_id option").remove();
+                $("#province_id").append(shen);
+            } else {
+                $("#province_id").append(shen);
+            }
+
+            //市绑定
+            var shi = "";
+            for (var i = 0; i < region_list.length; i++) {
+                for (var j = 0; j < region_list[i].children.length; j++) {
+                    shi += '<option>';
+                    shi += region_list[i].children[j].region_name;
+                    shi += '</option>';
+                }
+            }
+            if (type == 1) {
+                $("#city_id option").remove();
+                $("#city_id").append(shi);
+            } else {
+                $("#city_id").append(shi);
+            }
+            //区绑定
+            var qu = "";
+            for (var i = 0; i < region_list.length; i++) {
+                for (var j = 0; j < region_list[i].children.length; j++) {
+                    for (var k = 0; k < region_list[i].children[j].children.length; k++) {
+
+                        qu += '<option>';
+                        qu += region_list[i].children[j].children[k].region_name;
+                        qu += '</option>';
+                    }
+                }
+            }
+            if (type == 1) {
+                $("#area_id option").remove();
+                $("#area_id").append(qu);
+            } else {
+                $("#area_id").append(qu);
+            }
+            ajax_all_Filed("true", "true", "POST", submit_person_url, "json", get_person_data, get_person_func);
+        }
+        var selectdata = {};
+        ajax_all_Filed("true", "true", "GET", selectinfo, "json", selectdata, pubselect); //调用函数	
+    }
+    //获取下拉数据封装
+    function selectinfos(data) {
+        var region_list = data.data.region_list;
+        $("#province_id").change(function() {
+            var now_province = $(this).val();
+            $("#city_id").html('<option value="">请选择城市</option>');
+            for (var i = 0; i < region_list.length; i++) {
+                if (region_list[i].region_name == now_province) {
+                    var children = region_list[i].children;
+                    for (var k = 0; k < children.length; k++) {
+                        $("#city_id").append('<option>' + children[k].region_name + '</option>');
+                    }
+                }
+            }
+        });
+        $('#city_id').change(function() {
+            var now_city = $(this).val();
+            $("#area_id").html('<option value="">请选择区</option>');
+            for (var i = 0; i < region_list.length; i++) {
+                for (var j = 0; j < region_list[i].children.length; j++) {
+                    if (region_list[i].children[j].region_name == now_city) {
+                        var children = region_list[i].children[j].children;
+                        for (var k = 0; k < children.length; k++) {
+                            $("#area_id").append('<option>' + children[k].region_name + '</option>');
+                        }
+                    }
+                }
+
+            }
+        })
+
+    }
+    var selectdata = {};
+    ajax_all_Filed("true", "true", "GET", selectinfo, "json", selectdata, selectinfos); //调用函数	
+
+
+
+
+    //layui文件上传
+    layui.use('upload', function() {
+        var $ = layui.jquery,
+            upload = layui.upload;
+        //指定允许上传的文件类型
+        upload.render({
+            elem: '.apply_person_file',
+            url: '/upload',
+            accept: 'file', //普通文件
+            exts: 'zip|rar',
+            before: function(obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                Loadings()
+            },
+            done: function(res) {
+                $('.newloading').remove();
+                if (res.code == 200) {
+                    $('.apply_person_file').hide();
+                    showLaert('上传成功!');
+                    file_id = res.data;
+                } else {
+                    this.error(index, upload);
+                }
+            },
+            error: function() {
+                showLaert('上传异常，请重新上传!')
+            }
+        });
+    });
+
+
+    $('.apply_person_submit').click(function() {
+        var province = $('#province_id').val();
+        var city = $('#city_id').val();
+        var area = $('#area_id').val();
+        var road = $('.road').val();
+        var apply_name = $('.apply_name').val();
+        var apply_sex = $('.apply_sex').val();
+        var apply_sific_name = $('.apply_sific_name').val();
+        var apply_member_level = $('.apply_member_level').val();
+        var apply_company = $('.apply_company').val();
+        var apply_entry_date = $('.apply_entry_date').val();
+        var apply_birthday = $('.apply_birthday').val();
+        var apply_job = $('.apply_job').val();
+        var apply_title = $('.apply_title').val();
+        var apply_company_level = $('.apply_company_level').val();
+        var apply_online_time = $('.apply_online_time').val();
+        var apply_bed_num = $('.apply_bed_num').val();
+        var apply_phone = $('.apply_phone').val();
+        var apply_email = $('.apply_email').val();
+        var apply_evaluate = $('.apply_evaluate').val();
+        var apply_recommend_info = table_msg_get('.select_9');
+
+        //省市
+        var apply_region_data = {
+            province: province,
+            city: city,
+            area: area,
+            road: road
+        }
+
+        //提交的数据
+        var apply_person_data = {
+            convention_id: convention_id,
+            uid: cook_uid,
+            type: type,
+            fid: fid,
+            file_id: file_id, //附件id
+            apply_name: apply_name, //申请人姓名
+            apply_sex: apply_sex, //申请人性别
+            apply_sific_name: apply_sific_name, //sific会员名
+            apply_member_level: apply_member_level, //会员等级
+            apply_company: apply_company, //申请人单位
+            apply_entry_date: apply_entry_date, //入职日期
+            apply_birthday: apply_birthday, //申请人出生日期
+            apply_job: apply_job, //职务
+            apply_title: apply_title, //职称
+            apply_company_level: apply_company_level, //单位级别
+            apply_online_time: apply_online_time, //在线时长
+            apply_bed_num: apply_bed_num, //床位数
+            apply_phone: apply_phone, //手机号码
+            apply_email: apply_email, //email
+            apply_region: JSON.stringify(apply_region_data), //单位地址省市区
+            apply_magazine: JSON.stringify(table_msg_get('.select_4')), //1杂志发表
+            apply_project_research: JSON.stringify(table_msg_get('.select_5')), //2课题研究
+            apply_paper: JSON.stringify(table_msg_get('.select_6')), //3专题报告
+            apply_compilation: JSON.stringify(table_msg_get('.select_7')), //4编著列表
+            apply_honor_history: JSON.stringify(table_msg_get('.select_8')), //5荣誉任职情况
+            apply_recommend_info: JSON.stringify(apply_recommend_info), //6推荐人信息
+            apply_evaluate: apply_evaluate //7评价
+        };
+        if (!apply_name) {
+            showLaert('姓名不能为空!');
+            return;
+        }
+        if (!apply_sific_name) {
+            showLaert('会员名不能为空!');
+            return;
+        }
+        if (!apply_member_level) {
+            showLaert('会员等级不能为空!');
+            return;
+        }
+        if (!apply_company) {
+            showLaert('申请人单位不能为空!');
+            return;
+        }
+        if (!apply_entry_date) {
+            showLaert('入职日期不能为空!');
+            return;
+        }
+        if (!apply_birthday) {
+            showLaert('出生日期不能为空!');
+            return;
+        }
+        if (!apply_job) {
+            showLaert('职务不能为空!');
+            return;
+        }
+        if (!apply_title) {
+            showLaert('职称不能为空!');
+            return;
+        }
+        if (!apply_company_level) {
+            showLaert('单位级别不能为空!');
+            return;
+        }
+        if (!apply_online_time) {
+            showLaert('在线时长不能为空!');
+            return;
+        }
+        if (!apply_bed_num) {
+            showLaert('床位数不能为空!');
+            return;
+        }
+        if (!apply_phone) {
+            showLaert('手机号码不能为空!');
+            return;
+        }
+        if (!apply_email) {
+            showLaert('邮箱不能为空!');
+            return;
+        }
+        if (province == '0' || !province) {
+            showLaert('省不能为空!');
+            return;
+        }
+        if (city == '0' || !city) {
+            showLaert('市不能为空!');
+            return;
+        }
+        if (!road) {
+            showLaert('详细地址不能为空!');
+            return;
+        }
+
+        if (!apply_evaluate) {
+            showLaert('7.评价不能为空!');
+            return;
+        }
+        for (var i in apply_recommend_info[0]) {
+            if (!apply_recommend_info[0][i]) {
+                showLaert('推荐人信息必须填写完整!');
+                return;
+            }
+        }
+        if (file_id == 0 || file_id == '') {
+            showLaert('您未上传zip/rar压缩文件!');
+            return;
+        }
+
+        ajax_all_Filed("true", "true", "POST", submit_person_url, "json", apply_person_data, person_func_submit);
+
+        function person_func_submit(data) {
+            if (data.code == 200) {
+                showLaert(data.msg);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                showLaert(data.code);
+            }
+        }
+    })
+
+    //添加列表
+    $('body').on('click', '.table_add', function() {
+        var length = $(this).prev().find('th').length;
+        var str = '<tr>'
+        for (var i = 0; i < length; i++) {
+            str += '<td><input type="text" value=""></td>'
+        }
+        str += '</tr>';
+        $(this).prev().find('tbody').append(str)
+    })
+
+    //表单元素输入宽度自适应
+    $('tbody').on('input', 'input', function() {
+        var now_width = $(this).val().length * parseInt($(this).css('font-size'));
+        // var origin_width = parseInt($(this).css('width'));
+        if (now_width > 160) {
+            $(this).css('width', now_width);
+        }
+    })
+
+    //获取table的信息返回一个数组
+    function table_msg_get(selector) {
+        var store_arr = [];
+        //table的行tr
+        for (var i = 0; i < $(selector + ' tbody tr').length; i++) {
+            //存储table行的信息
+            var check_arr = [];
+            //tr的列td
+            for (var j = 0; j < $(selector + ' table th').length; j++) {
+                check_arr.push($(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').val())
+            }
+            // var writed = false; //对应列是否填写信息
+            // var empty_cont = false; //对应列是否为空
+            // check_arr.forEach(function(val, index) {
+            //         //为空时
+            //         if (selector == '.select_4') {
+            //             if (!val) {
+            //                 empty_cont = true;
+            //             } else {
+            //                 writed = true;
+            //             }
+            //         }
+            //     })
+            //填写了没有空项就存储
+            // if (selector == '.select_4') {
+            //     if (writed && !empty_cont) {
+            //         var obj = {};
+            // check_arr.forEach(function(val, index) {
+            //     obj['programme' + index] = val;
+            // })
+            //     store_arr.push(obj);
+            // }
+            // } else {
+            var obj = {};
+            check_arr.forEach(function(val, index) {
+                obj['programme' + index] = val;
+            })
+            store_arr.push(obj);
+            // }
+
+            //填写了有空 提示用户补充填报信息
+            // if (writed && empty_cont) {
+            //     unintact = true;
+            //     for (var k = 0; k < check_arr.length; k++) {
+            //         if (!check_arr[k]) {
+            //             $('.select_4 table tbody tr').eq(i).find('td').eq(k).css({ border: '1px solid #f00' })
+            //         }
+            //     }
+            //     showLaert('第4项没有按照要求填写！请填写完整再提交！')
+            //     return false;
+            // }
+        }
+        return store_arr;
+    }
+
+    //设置table的信息
+    function table_msg_set(data_arr, selector) {
+        //判断数据的长度是否大于table的tbody的行数 大于则添加至数据的长度
+        if (data_arr.length > $(selector + ' tbody tr').length) {
+            var str = '';
+            for (var i = 0; i < data_arr.length - $(selector + ' tbody tr').length; i++) {
+                str += '<tr>';
+                for (var j = 0; j < $(selector + ' th').length; j++) {
+                    str += '<td><input type="text" value=""></td>';
+                }
+                str += '</tr>';
+            }
+            $(selector + ' tbody').append(str)
+        }
+        //循环数据放入对应的列表
+        for (var i = 0; i < data_arr.length; i++) {
+            for (var j = 0; j < $(selector + ' table th').length; j++) {
+                $(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').val(data_arr[i]['programme' + j]);
+                if (data_arr[i]['programme' + j].length > 8) {
+                    $(selector + ' table tbody tr').eq(i).find('td').eq(j).find('input').css('width', data_arr[i]['programme' + j].length * 20 + 'px');
+                }
+            }
+        }
+    }
+
+    $('.Myclass_timeselect').each(function(index) {
+        layui.use('laydate', function() {
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '.clssdatetime' + index,
+                trigger: 'click' //采用click弹出
+            });
+        })
+    })
+})

@@ -1,0 +1,28 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="guest_txt" id="content">
+				
+			</div>
+		</div>
+
+{include file="public/footer2" /}
+
+
+<script>
+		var download = "api/convention/download";
+		function mtdownload(data){
+			for(var i=0; i<data.data.length;i++){
+				$('<div class="maplist">'+
+					'<p>'+data.data[i].download_title+'</p>'+
+					'<img src="'+data.data[i].file_path+'"  />'+
+				'</div>').appendTo("#content");
+			}
+			
+		}
+		var data = {"convention_id":convention_id,"module":"B6"};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

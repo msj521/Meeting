@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>ICU 开班签到</title>
+    <link rel="stylesheet" href="/static/web/css/SignInAndFeedback.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+    <script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>
+    <style>
+        .eject_box {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: rgba(0, 0, 0, .2);
+            display: none;
+        }
+        
+        .container {
+            position: absolute;
+            left: .2rem;
+            right: .2rem;
+            top: 2rem;
+            bottom: 2rem;
+            margin: auto;
+            background: #fff;
+            border-radius: .08rem;
+            padding: .2rem;
+        }
+        
+        .container ol li {
+            height: .36rem;
+            margin: .15rem 0;
+        }
+        
+        .container ol li select {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+        
+        .confirmTitle {
+            height: .36rem;
+        }
+        
+        .confirmTitle button {
+            width: 100%;
+            height: 100%;
+            background: #0C7753;
+            color: #fff;
+            border-radius: .1rem;
+            outline: none;
+        }
+        
+        .closeBox {
+            position: absolute;
+            right: -.15rem;
+            top: -.15rem;
+            font-size: .4rem;
+        }
+    </style>
+</head>
+
+<body style="padding-top: .44rem;">
+    <header>ICU开班签到</header>
+    <main>
+        <h3>2019年国家级继续医学教育示范项目《ICU感染防控技能高级培训班》开班签到</h3>
+        <div class="form_box">
+            <ul>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>1.您的姓名</span>
+                        </dt>
+                        <dd><input type="text" name="name"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>2.身份证号码</span>
+                        </dt>
+                        <dd><input type="text" name="identitycard"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>3.职称</span>
+                        </dt>
+                        <dd>
+                            <p class="form_title" style="height: .36rem;border:.01rem solid #ccc;border-radius: .05rem;"></p>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>4.职务</span>
+                        </dt>
+                        <dd><input type="text" name="job"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>5.学历</span>
+                        </dt>
+                        <dd>
+                            <select name="edu" id="education">
+                                <option value="">请选择</option>
+                                <option value="高中">高中</option>
+                                <option value="中专">中专</option>
+                                <option value="大专">大专</option>
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
+                                <option value="博士后">博士后</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>6.单位 (请填写单位标准名称)</span>
+                        </dt>
+                        <dd><input type="text" name="company"></dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>7.是否来自基层 (县及以下、社区等医疗卫生机构)</span>
+                        </dt>
+                        <dd class="radio_dd">
+
+                            <label><input type="radio" name="is_base" value="是" id="not_base" />是</label>
+                            <label><input type="radio" name="is_base" value="否" id="is_base" />否</label>
+
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>8.请输入您的手机号码</span>
+                        </dt>
+                        <dd><input type="text" name="tel"></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="submitBtn">
+                <button>提交</button>
+            </div>
+        </div>
+        <div class="eject_box">
+            <div class="container">
+                <ol>
+                    <li>
+                        <select name="title1" id="title1">
+                            <option value="">请选择职称类别</option>
+                            <option value="医疗人员">医疗人员</option>
+                            <option value="护理人员">护理人员</option>
+                            <option value="药学人员">药学人员</option>
+                            <option value="公共卫生人员">公共卫生人员</option>
+                            <option value="技术人员">技术人员</option>
+                            <option value="中医人员">中医人员</option>
+                            <option value="教师">教师</option>
+                            <option value="研究人员">研究人员</option>
+                            <option value="其他">其他</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="title2" id="title2">
+                            <option value="">请选择职称</option>
+                        </select>
+                    </li>
+                </ol>
+                <div class="confirmTitle">
+                    <button>确定</button>
+                </div>
+                <i class="layui-icon layui-icon-close-fill closeBox"></i>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    $(function() {
+        var userinfo = <?php echo json_encode($userinfo);?>;
+        var openid = userinfo.openid;
+        var url = '/api/convention/Question_Sign'; //签到
+        var getData = {
+            open_id: openid,
+            type: 0
+        }
+        ajax_all_Filed("true", "true", "POST", url, "json", getData, get_func);
+
+        function get_func(data) {
+            if (data.code == 200) {
+                if (data.data) {
+                    $("input[name='name']").val(data.data.name);
+                    $("input[name='identitycard']").val(data.data.identitycard);
+                    $("select[name='title1']").val(data.data.title1);
+                    $('#title2').html(`<option value="${data.data.title2}">${data.data.title2}</option>`);
+                    $("select[name='title2']").val(data.data.title2);
+                    $('.form_title').html(data.data.title1 + ' / ' + data.data.title2);
+                    $("input[name='job']").val(data.data.job);
+                    $("select[name='edu']").val(data.data.edu);
+                    $("input[name='company']").val(data.data.company);
+                    $(`input[name='is_base'][value='${data.data.is_base}']`).attr({
+                        checked: true
+                    });
+                    $("input[name='tel']").val(data.data.tel);
+                }
+            } else {
+                type = 1;
+            }
+        }
+
+        //提交
+        $('.submitBtn button').click(function() {
+            var name = $("input[name='name']").val();
+            if (!name) {
+                alert('姓名不能为空！');
+                return;
+            }
+            var identitycard = $("input[name='identitycard']").val();
+            if (!identitycard) {
+                alert('身份证号不能为空！');
+                return;
+            }
+            var title1 = $("select[name='title1']").val();
+            if (!title1) {
+                alert('职称类型不能为空！');
+                return;
+            }
+            var title2 = $("select[name='title2']").val();
+            if (!title2) {
+                alert('职称不能为空！');
+                return;
+            }
+            var job = $("input[name='job']").val();
+            if (!job) {
+                alert('职务不能为空!');
+                return;
+            }
+            var edu = $("select[name='edu']").val();
+            if (!edu) {
+                alert('学历不能为空!');
+                return;
+            }
+            var company = $("input[name='company']").val();
+            if (!company) {
+                alert('单位不能为空!');
+                return;
+            }
+            var is_base = $("input[name='is_base']:checked").val();
+            if (!is_base) {
+                alert('是否来自基层必填！');
+                return;
+            }
+            var tel = $("input[name='tel']").val();
+            if (!tel) {
+                alert('手机号码不能为空！');
+                return;
+            }
+            var data = {
+                open_id: getData.open_id,
+                type: 1,
+                name: name,
+                identitycard: identitycard,
+                title1: title1,
+                title2: title2,
+                job: job,
+                edu: edu,
+                company: company,
+                is_base: is_base,
+                tel: tel
+            }
+            ajax_all_Filed("true", "true", "POST", url, "json", data, submit_func);
+        })
+
+        function submit_func(data) {
+            alert(data.msg);
+            if (data.code == 200) {
+
+            } else {
+
+            }
+        }
+
+        var title_json = {
+            "医疗人员": [
+                "主任医师",
+                "副主任医师",
+                "主治（主管）医师",
+                "医师（住院医师）",
+                "医士（助产士）"
+            ],
+            "护理人员": [
+                "主任护师",
+                "副主任护师",
+                "主管护师",
+                "初级护师",
+                "护士"
+            ],
+            "药学人员": [
+                "主任药师",
+                "副主任药师",
+                "主管药师",
+                "药师",
+                "药剂士",
+                "药剂员"
+            ],
+            "公共卫生人员": [
+                "主管医师",
+                "卫生防疫员（妇幼保健员）"
+            ],
+            "技术人员": [
+                "主任技师",
+                "副主任技师",
+                "主管技师",
+                "技师",
+                "技士",
+                "见习员"
+            ],
+            "中医人员": ["医士"],
+            "教师": [
+                "教授",
+                "副教授",
+                "讲师",
+                "助教"
+            ],
+            "研究人员": [
+                "研究员",
+                "副研究员",
+                "助理研究员",
+                "研究实习员"
+            ],
+            "其他": [
+                "其他"
+            ]
+
+        };
+        //关闭弹窗
+        $('.closeBox').click(function() {
+                $('.eject_box').hide();
+            })
+            //关闭弹窗
+        $('.confirmTitle button').click(function() {
+                $('.eject_box').hide();
+                $('.form_title').html($('select[name="title1"]').val() + ' / ' + $('select[name="title2"]').val());
+            })
+            //开启弹窗
+        $('.form_title').click(function() {
+                $('.eject_box').show();
+            })
+            //职称类别change event
+        $('#title1').change(function() {
+            var str = '<option value="">请选择职称</option>';
+            if ($(this).val()) {
+                var list = title_json[$(this).val()];
+                for (var i = 0; i < list.length; i++) {
+                    str += `<option value="${list[i]}">${list[i]}</option>`
+                }
+            }
+            $('#title2').html(str);
+
+        })
+    })
+</script>
+
+</html>

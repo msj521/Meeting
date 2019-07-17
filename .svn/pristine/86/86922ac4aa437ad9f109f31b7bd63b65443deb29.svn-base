@@ -1,0 +1,294 @@
+{include file="public/header" /}
+<div class="conter980" style="font-size:18px;">
+    <h3>SIFIC 2019卓越感控追梦之星</h3>
+    <h4 style="text-align:center;"><a href="/excellent_introduce" target="_blank" style="font-size: 20px;color: blue;">卓越感控追梦之星</a></h4>
+    <div class="apply_term apply_term_1 clear">
+        <div style="float:left;">姓名：<input type="text" style="width:80px;" class="apply_name"></div>
+        <div style="float:left;margin-left: 70px;">性别：<select class="form-control apply_sex" style="width: 53%;display: inline-block;background:#F8F8F7;"><option>男</option><option>女</option></select></div>
+        <div style="float:left;margin-left: 70px;"><span>SIFIC会员名:</span><input type="text" class="apply_sific_name"></div>
+        <div style="float:left;margin-left: 70px;"><span>会员等级:</span><input type="text" class="apply_member_level"></div>
+    </div>
+    <div class="apply_term apply_term_6 clear">
+        <div><span>单位名称:</span><input type="text" style="width: 500px;" class="apply_company"></div>
+    </div>
+    <div class="apply_term apply_term_2 clear">
+        <div class="abs_inputlist hideinput" style="width:100%;float:left;">
+            <div class="abs_input_lf">
+                单位地址:<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:800px;">
+                <div style="float:left;">
+                    <select id="province_id" class="form-control" data-live-search="true" style="width: 161px; float: left;background:#F8F8F7;">
+                        <option value="0">请选择</option>
+                      </select><span style="float:left;line-height: 36px;text-indent: 10px;">省</span>
+                </div>
+                <div style="float:left;width: 210px;">
+                    <select id="city_id" class="form-control" data-live-search="true" style="width: 161px; float: left; margin-left: 6%;background:#F8F8F7;">
+                        <option value="0">请选择</option>
+                      </select><span style="float:left;line-height: 36px;text-indent: 10px;">市</span>
+                </div>
+                <div style="float:left;width: 210px;">
+                    <select id="area_id" class="form-control" data-live-search="true" style="width: 161px; float: left; margin-left: 6%;background:#F8F8F7;">
+                        <option value="0">请选择</option>
+                      </select><span style="float:left;line-height: 36px;text-indent: 10px;">区</span>
+                </div>
+                <div class="annual_tips_ys" id="ss_tilps" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+        <div style="    font-size: 16px;color: #555;line-height: 40px;text-indent: 35px;">
+            详细地址:<input type="text" placeholder="如街道、门牌号、小区、楼栋号、单元室等" class="road" style="margin-left: 20px;width: 460px;">
+        </div>
+    </div>
+    <div class="apply_term apply_term_3 clear">
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                入职年月<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime0 apply_entry_date" name="" id="entry_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                出生年月<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime1 apply_birthday" name="" id="birth_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+    </div>
+    <div class="apply_term apply_term_4 clear">
+        <div style="float:left;"><span>职务:</span><input type="text" class="apply_job"></div>
+        <div style="float:left;margin:0 10px;"><span>职称:</span><input type="text" class="apply_title"></div>
+        <div style="float:left;margin:0 10px;"><span>单位级别:</span><input type="text" class="apply_company_level"></div>
+        <div style="float:left;"><span>在线时长(h):</span><input type="text" class="apply_online_time"></div>
+    </div>
+    <div class="apply_term apply_term_5 clear">
+        <div style="float:left;"><span>医院床位:</span><input type="text" style="width: 60px;" class="apply_bed_num"></div>
+        <div style="float:left;margin:0 20px;"><span>E-mail:</span><input type="text" style="width: 300px;" class="apply_email"></div>
+        <div style="float:left;margin:0 10px;"><span>手   机:</span><input type="text" style="width: 120px" class="apply_phone"></div>
+    </div>
+
+    <div class="select_4 select_box select_box_crl">
+        <div class="select_4_title">1、近5年发表的统计源以上或近3年发表的SCI文章列表（作者、题目、杂志年份及期）（杂志类型按“统计源”、“核心”和“SCI”填写）（优先条件，选填）</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">杂志类型</th>
+                        <th class="table_thead_2">题目</th>
+                        <th class="table_thead_3">第一作者</th>
+                        <th class="table_thead_4">杂志年份及期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_5 select_box select_box_crl">
+        <div class="select_5_title">2、近3年（2016年至今）主持局级以上或参加省部级以上感控相关课题研究（优先条件，选填）</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">时间</th>
+                        <th class="table_thead_2">姓名</th>
+                        <th class="table_thead_3">学术机构名称</th>
+                        <th class="table_thead_4">任职情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_6 select_box select_box_crl">
+        <div class="select_6_title">3、近3年（2016年至今）在感控相关国家级培训班上或省级以上年会中作专题报告（优先条件，选填）</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">时间</th>
+                        <th class="table_thead_2">主持或报告者</th>
+                        <th class="table_thead_3">会议名称和地点</th>
+                        <th class="table_thead_4">题目</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_7 select_box select_box_crl">
+        <div class="select_7_title">4、近3年（2016年至今）参编过感控相关专著的列表（优先条件，选填）</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">时间</th>
+                        <th class="table_thead_2">参编人员</th>
+                        <th class="table_thead_3">书名</th>
+                        <th class="table_thead_4">出版社</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_8 select_box select_box_crl">
+        <div class="select_8_title">5、近3年（2016年至今）在SIFIC平台中获得荣誉、投稿或任职情况（优先条件，选填）</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">时间</th>
+                        <th class="table_thead_2">SIFIC会员</th>
+                        <th class="table_thead_3">真实姓名</th>
+                        <th class="table_thead_4">荣誉、投稿或任职情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+
+    <div class="select_9 select_box select_box_crl">
+        <div class="select_9_title">6、推荐人基本信息(必填)</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">时间</th>
+                        <th class="table_thead_2">SIFIC会员</th>
+                        <th class="table_thead_3">真实姓名</th>
+                        <th class="table_thead_4">荣誉、投稿或任职情况</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="apply_term apply_term_8 clear select_box">
+        <div class="select_3_title">7、推荐人对本人的感控业务能力和工作成绩的评价（必填）</div>
+        <textarea id="apply_evaluate" class="apply_evaluate" cols="30" rows="10" style="width:100%;height:250px;outline: none;resize: none;background:rgb(248, 248, 247);margin-top: 10px;"></textarea>
+    </div>
+    <div class="select_7 select_box select_box_crl">
+        <div>8、*申请者应确保提供的上述材料真实有效，如有虚假不实，一切后果由申请者自己承担；申请时请将申请表（加盖单位公章并扫描成PDF文件）、发表论文（PDF 格式）、其他相关证明材料，一同打包压缩成zip或rar格式文件，在申请页面上传，文件名称请参照“申请人+SIFIC 2019卓越感控追梦之星申请表”格式填写 *推荐意见：由附件 1中的“推荐人”人员填写，并如实记录推荐者相关信息。
+            <input type="button" value="文件上传" class="apply_person_file" style="display:inline-block;width: 100px;"></div>
+    </div>
+    <a href="/static/web/docx1.docx" download="附件1.docx" style="color:blue;text-decoration:underline;font-size: 16px;">附件1：可作为“推荐人”的SIFIC管理员/版主名单</a>
+    <br/>
+    <a href="/static/web/docx2.docx" download="附件2.docx" style="color:blue;margin:20px 0;display:block;text-decoration:underline;font-size: 16px;">附件2：“SIFIC 2019卓越感控追梦之星”申请表</a>
+    <input type="button" class="apply_person_submit" value="提交" style="margin: 0 auto 100px">
+</div>
+{include file="public/footer2" /}
+<script src="/static/web/js/module/excellent_person.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>

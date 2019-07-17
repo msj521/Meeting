@@ -1,0 +1,125 @@
+{include file="public/header" /} {include file="public/meeting_nav" /} {include file="public/mbxue" /}
+<div class="conter960">
+    <div class="guest_txt" style="min-height: 806px;overflow-y: scroll">
+        <div class="pdfBox" style="position: relative;">
+            <div class="pdfListTitle">
+                <ul>
+                    <li class="pdfDate active">
+                        <dl>
+                            <dt>
+                                <h5>5/30</h5>
+                                <p>星期四</p>
+                            </dt>
+                            <dd>
+                                <ul style="width: 100%;" class="date0530">
+
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="pdfDate">
+                        <dl>
+                            <dt>
+                                <h5>5/31</h5>
+                                <p>星期五</p>
+                            </dt>
+                            <dd>
+                                <ul style="width: 100%;" class="date0531">
+
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="pdfDate">
+                        <dl>
+                            <dt>
+                                <h5>6/1</h5>
+                                <p>星期六</p>
+                            </dt>
+                            <dd>
+                                <ul style="width: 100%;" class="date0601">
+
+                                </ul>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pdfContainer" style="display:none;">
+
+            <div style="padding: 10px 0 10px 0;" id="pdfname">
+
+            </div>
+
+            <div id="pdf2" style="width:100%; height:750px;">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/meetinginfo.js"></script>
+<script>
+    var download = "api/convention/download";
+    var module = '<?php echo $module; ?>';
+
+    // function mtdownload(data) {
+    //     var dow_data = data.data;
+    //     if (dow_data.length) {
+    //         pdfurls = dow_data[0].file_path
+    //         var download_title = dow_data[0].download_title;
+    //         if (pdfurls.substr(-3, 3) == "pdf") {
+    //             $('<a href="' + pdfurls + '" target="view_window" download="' + dow_data[0].file_name + '">' + download_title + '&nbsp;&nbsp;<span style="font-size:14px; color:#666">(点击下载文件)</span></a>').appendTo("#pdfname");
+    //             createPdf(pdfurls)
+    //         } else {
+    //             $('<a href="https://view.officeapps.live.com/op/view.aspx?src=' + pdfurls + '" target="view_window" >' + download_title + '</a>').appendTo("#pdfname");
+    //             $('<iframe src="https://view.officeapps.live.com/op/view.aspx?src=' + pdfurls + '" width="100%" height="750" style="border:0px" frameborder="1"></iframe>').appendTo("#pdf2");
+    //         }
+    //     }
+    // }
+    function mtdownload(data) {
+        if (data.code == 200) {
+            var str = ''
+            var pdfList = data.data;
+            for (var i = 0; i < pdfList.length; i++) {
+                if (pdfList[i].download_title.indexOf('05/30') != -1) {
+                    str = '.date0530';
+                } else if (pdfList[i].download_title.indexOf('05/31') != -1) {
+                    str = '.date0531';
+                } else {
+                    str = '.date0601'
+                }
+                $('<li><a href="' + pdfList[i].file_path + '" target="view_window">' + pdfList[i].file_name.split('.')[0] + '</a></li>').appendTo(str);
+            }
+        } else {
+            showLaert(data.msg);
+        }
+    }
+    var data = {
+        "convention_id": convention_id,
+        "module": module
+    };
+    ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload); //调用函数
+
+    function createPdf(pdfurls) {
+        new PDFObject({
+            url: pdfurls,
+            pdfOpenParams: {
+                view: 'Fit',
+                scrollbars: '0',
+                toolbar: '0',
+                statusbar: '0',
+                navpanes: '0'
+            }
+        }).embed('pdf2');
+    };
+    //切换日期
+    $('.guest_txt').on('click', '.pdfDate', function() {
+        $(this).addClass('active').siblings().removeClass('active');
+    })
+    $('.guest_txt').on('click', 'dd', function() {
+
+    })
+</script>

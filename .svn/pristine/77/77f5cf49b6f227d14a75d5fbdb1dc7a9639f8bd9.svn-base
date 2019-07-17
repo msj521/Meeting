@@ -1,0 +1,297 @@
+{include file="public/header" /}
+<div class="conter960">
+    {include file="public/mbxue2" /}
+    <div class="abstract_list">
+        <div class="title_abs_list">
+            <div class="title_abs">添加作者</div>
+            <div class="title_abs_rg">
+                <div class="opt">
+                    <input class="magic-checkbox" type="checkbox" name="myinfo" id="red" value="2">
+                    <label for="red" style="color: #598DC4;">使用我的注册信息</label>
+                </div>
+            </div>
+        </div>
+        <table class="abs_table table table-bordered" style="margin-bottom: 10px;">
+            <thead>
+                <th>姓名</th>
+                <th>单位</th>
+                <th>地址</th>
+                <th>手机</th>
+                <th>邮箱</th>
+                <th>文章作者</th>
+                <th>通讯作者</th>
+                <th>管理</th>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+        <p style="text-align: center; color: #232323; font-size: 16px; margin-bottom: 15px;">每篇摘要必须包含以下文章作者、通讯作者，请选择作者身份，并在填写信息后点击添加作者，以完成保存。</p>
+        <div class="abs_txtlist">
+            <div class="radio_div">
+                <div id="" style="margin:0px auto; width: 80%;">
+                    <div class="radio_list" style="margin-left: 40px;">
+                        <div class="opt">
+                            <input class="magic-radio" type="radio" name="zhuz" id="zhuz" value="1" checked>
+                            <label for="zhuz">文章作者</label>
+                        </div>
+                    </div>
+                    <div class="radio_list" style="margin-left: 100px;">
+                        <div class="opt">
+                            <input class="magic-radio" type="radio" name="zhuz" id="zhuz1" value="2">
+                            <label for="zhuz1">通讯作者</label>
+                        </div>
+                    </div>
+                    <div class="radio_list" style="margin-left: 100px;">
+                        <div class="opt">
+                            <input class="magic-radio" type="radio" name="zhuz" id="zhuz2" value="3">
+                            <label for="zhuz2">其他作者</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="abs_input">
+                <div id="" style="margin:0px auto; width: 80%;">
+                    <div class="abs_inputlist">
+                        <div class="abs_input_lf">
+                            姓名<span>*</span>
+                        </div>
+                        <div class="abs_input_rg">
+                            <input type="text" name="" id="name" value="" class="pusinput" />
+                        </div>
+                    </div>
+                    <div class="abs_inputlist">
+                        <div class="abs_input_lf">
+                            单位<span>*</span>
+                        </div>
+                        <div class="abs_input_rg">
+                            <input type="text" name="" id="job_jib" value="" class="pusinput" />
+                        </div>
+                    </div>
+                    <div class="abs_inputlist hideinput">
+                        <div class="abs_input_lf">
+                            地址<span>*</span>
+                        </div>
+                        <div class="abs_input_rg">
+                            <input type="text" name="" id="address" value="" class="pusinput" />
+                        </div>
+                    </div>
+                    <div class="abs_inputlist">
+                        <div class="abs_input_lf">
+                            手机号<span id="phone">*</span>
+                        </div>
+                        <div class="abs_input_rg">
+                            <div style="float: left;">
+                                <input type="text" name="" id="quhao" value="" style="width: 99px;" class="pusinput" />
+                            </div>
+                            <div style="float: left; line-height: 40px;">-</div>
+                            <div style="float: left;">
+                                <input type="text" name="" id="tel" value="" style="width: 295px;" class="pusinput" />
+                            </div>
+                            <p style="color: #CF0909; font-size: 12px;">（例如：86-137****10）</p>
+                        </div>
+                    </div>
+                    <div class="abs_inputlist hideinput">
+                        <div class="abs_input_lf">
+                            邮箱<span>*</span>
+                        </div>
+                        <div class="abs_input_rg">
+                            <input type="text" name="" id="email" value="" class="pusinput" />
+                        </div>
+                    </div>
+                    <div class="abs_btn01">
+                        <input type="button" name="" id="add_worker" value="添加作者" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="title_abs_list">
+            <div class="title_abs">基本信息</div>
+        </div>
+        <div class="abs_txtlist">
+            <div id="" style="margin:0px auto; width: 80%;">
+                <div class="abs_inputlist">
+                    <div class="abs_input_lf">
+                        标题<span>*</span>
+                    </div>
+                    <div class="abs_input_rg">
+                        <input type="text" name="" id="titles" value="" />
+                    </div>
+                </div>
+                <div class="abs_inputlist">
+                    <div class="abs_input_lf">
+                        关键字<span>*</span>
+                    </div>
+                    <div class="abs_input_rg">
+                        <input type="text" name="" id="keyword" value="" />
+                        <div class="annual_tips_no2">
+                            *请用逗号划分每个关键词
+                        </div>
+                    </div>
+                </div>
+                <div class="abs_inputlist">
+                    <div class="abs_input_lf">
+                        所属专题<span>*</span>
+                    </div>
+                    <div class="abs_input_rg">
+                        <select id="special" class="form-control " data-live-search="true">
+							       <option value="0" >请选择</option>
+							 	 </select>
+                    </div>
+                </div>
+                <div class="abs_inputlist">
+                    <div style="float: left; font-size: 16px;">请选择您摘要希望发表的形式<span style="color: red;">*</span></div>
+                    <div style="width: 150px; float: left;">
+                        <div class="radio_list" style="margin-left: 20px;">
+                            <div class="opt">
+                                <input class="magic-radio" type="radio" name="xw" id="xw" value="1">
+                                <label for="xw">口头和壁报</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 150px; float: left;">
+                        <div class="radio_list" style="margin-left: 20px;">
+                            <div class="opt">
+                                <input class="magic-radio" type="radio" name="xw" id="xw1" value="2">
+                                <label for="xw1">壁报</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="title_abs_list">
+            <div class="title_abs">摘要信息</div>
+        </div>
+        <div class="abs_txtlist">
+            <div class="abs_inputlist">
+                <div class="abs_input_lf">
+                    目的<span>*</span>
+                </div>
+                <div class="abs_input_rg" style="width: 500px;">
+                    <textarea class="abs_textarea" id="objective"></textarea>
+                    <div class="str_number">
+                        (最多<span id="text-count">200</span>字符)
+                    </div>
+                </div>
+            </div>
+            <div class="abs_inputlist">
+                <div class="abs_input_lf">
+                    方法<span>*</span>
+                </div>
+                <div class="abs_input_rg">
+                    <textarea class="abs_textarea" id="method"></textarea>
+                    <div class="str_number">
+                        (最多<span id="text-count2">600</span>字符)
+                    </div>
+                </div>
+            </div>
+            <div class="abs_inputlist">
+                <div class="abs_input_lf">
+                    结果<span>*</span>
+                </div>
+                <div class="abs_input_rg" style="width: 500px;">
+                    <textarea class="abs_textarea" id="result"></textarea>
+                    <div class="str_number">
+                        (最多<span id="text-count3">600</span>字符)
+                    </div>
+                </div>
+            </div>
+            <div class="abs_inputlist">
+                <div class="abs_input_lf">
+                    结论<span>*</span>
+                </div>
+                <div class="abs_input_rg" style="width: 500px;">
+                    <textarea class="abs_textarea" id="conclusion"></textarea>
+                    <div class="str_number">
+                        (最多<span id="text-count4">200</span>字符)
+                    </div>
+                </div>
+            </div>
+            <div class="abs_btn02" style="margin-bottom: 40px;">
+                <input type="button" name="" id="add_abslist" value="保存" />
+            </div>
+            <div class="timeOutHid">
+                <div class="abs_inputlist" style="margin-bottom: 0px;">
+                    <div class="abs_input_lf">
+                        &nbsp;
+                    </div>
+                    <div class="abs_input_rg" style="width: 500px;">
+                        <p style="color: #232323; font-size: 16px;">您是否希望提交的摘要参加《中华医院感染杂志》的评选？</p>
+                    </div>
+                </div>
+                <div class="abs_inputlist" style="margin-bottom: 0;">
+                    <div class="abs_input_lf">
+                        &nbsp;
+                    </div>
+                    <div class="abs_input_rg" style="width: 500px;" id="pingxuanlist">
+                        <div class="radio_list" style="margin-left: 100px;">
+                            <div class="opt">
+                                <input class="magic-radio" type="radio" name="pingxuan" id="pingxuan" value="2" disabled="disabled">
+                                <label for="pingxuan" style="color: #232323;">是</label>
+                            </div>
+                        </div>
+                        <div class="radio_list" style="margin-left: 100px;">
+                            <div class="opt">
+                                <input class="magic-radio" type="radio" name="pingxuan" id="pingxuan2" value="1" disabled="disabled">
+                                <label for="pingxuan2" style="color: #232323;">否</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="abs_upload">
+                    <div class="abs_inputlist">
+                        <div class="abs_input_lf">
+                            &nbsp;
+                        </div>
+                        <div class="abs_input_rg" style="width: 500px;">
+                            <div class="abs_file" id="" style="display: none;">
+                                <form class="layui-form" method="post" enctype="multipart/form-data">
+                                    <button type="button" class="layui-btn" id="test3" style="width: 100%; background: #232323;"><i class="layui-icon"></i>点击选择您要上传的全文</button>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="tipls_div" style="display: none;">
+                            <p style="font-size: 14px; color: #555555;">上传条款：</p>
+                            <p style="font-size: 12px; color: #555555; padding-left: 15px; margin-bottom: 0;">1.&nbsp;全文题目需同摘要题目一致；</p>
+                            <p style="font-size: 12px; color: #555555; padding-left: 15px; margin-bottom: 0;">2.&nbsp;只有MS-WORD和PDF文件可以上传；</p>
+                            <p style="font-size: 12px; color: #555555; padding-left: 15px; margin-bottom: 0;">3.&nbsp;上传文件大小不能超过 5 MB;</p>
+                            <p style="font-size: 12px; color: #555555; padding-left: 15px; margin-bottom: 0;">4.&nbsp;文件名不能包含中文字符。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="abs_inputlist">
+                    <div class="abs_input_lf">
+                        &nbsp;
+                    </div>
+                    <div class="careful">
+                        <h3>注意：</h3>
+                        <p>1.&nbsp;若您希望您的全文在《中华医院感染杂志》上刊出,还请您在<span>2019年3月31日</span>前在线提交摘要及全文。录用结果将由杂志社直接通知您。</p>
+                        <p>2.&nbsp;若您只希望参加优秀论文，优秀壁报的评选，请在<span>2019年4月30日</span>前在线提交摘要。</p>
+                    </div>
+                </div>
+                <div class="abs_inputlist">
+                    <div class="abs_input_lf">
+                        &nbsp;
+                    </div>
+                    <div style="float: left; display: inline-block; width: 100%;">
+                        <div class="abs_btn02" style="margin-bottom: 40px;">
+                            <input type="button" name="" id="upper_level_btn" value="后退" style="background: #979797;" />&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="button" name="" id="add_quanwlist" value="保存" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>
+<script type="text/javascript" src="/static/web/js/module/add_abstract.js"></script>
+<script>
+</script>

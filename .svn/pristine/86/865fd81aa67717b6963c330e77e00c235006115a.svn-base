@@ -1,0 +1,2810 @@
+---------------------------------------------------------------
+[ 2019-01-31T03:30:08+08:00 ] 47.92.6.234 GET /
+[ info ] sific.vip/ [运行时间：0.033114s][吞吐率：30.20req/s] [内存消耗：3,169.65kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X)',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005343s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004225s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003560s ]
+---------------------------------------------------------------
+[ 2019-01-31T04:49:12+08:00 ] 106.15.176.145 GET /
+[ info ] sific.vip/ [运行时间：0.032520s][吞吐率：30.75req/s] [内存消耗：3,169.97kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004895s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003947s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003225s ]
+---------------------------------------------------------------
+[ 2019-01-31T05:19:44+08:00 ] 101.132.69.5 GET /meet/paper?fid=45&pr
+[ info ] sific.vip/meet/paper?fid=45&pr [运行时间：0.063381s][吞吐率：15.78req/s] [内存消耗：3,491.87kb] [文件加载：52]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Meet',
+    2 => 'Index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'fid' => '45',
+  'pr' => '',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'expire' => 3600,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\Controller\Meet->Index[ /home/wwwroot/default/SIFIC/application/admin/controller/Meet.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/admin/view/meet/paper.html [ array (
+  0 => 'title',
+  1 => 'index',
+  2 => 'edit',
+  3 => 'update',
+  4 => 'del',
+  5 => 'room_id',
+  6 => 'convention_id',
+  7 => 'fid',
+  8 => 'check_status',
+  9 => 'list',
+  10 => 'start',
+  11 => 'end',
+  12 => 'class_id',
+  13 => 'exhibitor',
+  14 => 'check',
+  15 => 'special_id',
+  16 => 'author_name',
+  17 => 'yes_yes',
+  18 => 'meet',
+  19 => 'special',
+  20 => 'cnt',
+  21 => 'string',
+  22 => 'exh',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004481s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003632s ]
+[ sql ] [ SQL ] SELECT * FROM `base_menu_info` ORDER BY `sort` ASC [ RunTime:0.003150s ]
+[ sql ] [ SQL ] SELECT `menu_name` FROM `base_menu_info` WHERE  `route` = 'meet/paper' LIMIT 1 [ RunTime:0.002816s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_paper_abstract` [ RunTime:0.003877s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `v_paper_abstract` WHERE  `record_status` = 1  AND `convention_id` = 45 LIMIT 1 [ RunTime:0.002994s ]
+[ sql ] [ SQL ] SELECT * FROM `v_paper_abstract` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `fid` DESC LIMIT 0,10 [ RunTime:0.003408s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `v_paper_abstract` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `yes_no` = 2 LIMIT 1 [ RunTime:0.002959s ]
+[ sql ] [ SQL ] SELECT * FROM `v_paper_abstract` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `yes_no` = 2 ORDER BY `fid` DESC LIMIT 0,10 [ RunTime:0.003038s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_class_conf` [ RunTime:0.003362s ]
+[ sql ] [ SQL ] SELECT `fid`,`class_name_zh` FROM `base_class_conf` WHERE  (  record_status=1 and class_type=7 ) ORDER BY `sort` DESC [ RunTime:0.002806s ]
+[ sql ] [ SQL ] SELECT `fid`,`class_name_zh` FROM `base_class_conf` WHERE  (  record_status=1 and class_type=11 ) ORDER BY `sort` DESC [ RunTime:0.002813s ]
+---------------------------------------------------------------
+[ 2019-01-31T05:23:30+08:00 ] 101.132.188.111 GET /meet/sign_cnf
+[ info ] sific.vip/meet/sign_cnf [运行时间：0.065407s][吞吐率：15.29req/s] [内存消耗：3,577.90kb] [文件加载：52]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'Meet',
+    2 => 'Index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'expire' => 3600,
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\admin\Controller\Meet->Index[ /home/wwwroot/default/SIFIC/application/admin/controller/Meet.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/admin/view/meet/sign_cnf.html [ array (
+  0 => 'title',
+  1 => 'index',
+  2 => 'edit',
+  3 => 'update',
+  4 => 'del',
+  5 => 'check_status',
+  6 => 'list',
+  7 => 'start',
+  8 => 'end',
+  9 => 'class_id',
+  10 => 'exhibitor',
+  11 => 'check',
+  12 => 'special_id',
+  13 => 'author_name',
+  14 => 'meet',
+  15 => 'special',
+  16 => 'cnt',
+  17 => 'string',
+  18 => 'exh',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005319s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004281s ]
+[ sql ] [ SQL ] SELECT * FROM `base_menu_info` ORDER BY `sort` ASC [ RunTime:0.003766s ]
+[ sql ] [ SQL ] SELECT `menu_name` FROM `base_menu_info` WHERE  `route` = 'meet/sign_cnf' LIMIT 1 [ RunTime:0.003439s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004416s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `v_convention` WHERE  `record_status` = 1 LIMIT 1 [ RunTime:0.003574s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,10 [ RunTime:0.005427s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_class_conf` [ RunTime:0.004001s ]
+[ sql ] [ SQL ] SELECT `fid`,`class_name_zh` FROM `base_class_conf` WHERE  (  record_status=1 and class_type=7 ) ORDER BY `sort` DESC [ RunTime:0.003407s ]
+[ sql ] [ SQL ] SELECT `fid`,`class_name_zh` FROM `base_class_conf` WHERE  (  record_status=1 and class_type=11 ) ORDER BY `sort` DESC [ RunTime:0.003423s ]
+---------------------------------------------------------------
+[ 2019-01-31T05:59:02+08:00 ] 66.249.79.47 GET /hiehtwymtudb.html
+[ info ] sific.vip/hiehtwymtudb.html [运行时间：0.014455s][吞吐率：69.18req/s] [内存消耗：2,183.87kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T06:00:44+08:00 ] 120.79.184.41 GET /disclaimer?sr=%e5%85%8d%e8%b4%a3%e5%a3%b0%e6%98%8e
+[ info ] sific.vip/disclaimer?sr=%e5%85%8d%e8%b4%a3%e5%a3%b0%e6%98%8e [运行时间：0.032637s][吞吐率：30.64req/s] [内存消耗：3,168.52kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'disclaimer',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '免责声明',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->disclaimer[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/disclaimer.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005598s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004390s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003712s ]
+---------------------------------------------------------------
+[ 2019-01-31T06:17:50+08:00 ] 123.125.67.216 GET /
+[ info ] sific.vip/ [运行时间：0.034202s][吞吐率：29.24req/s] [内存消耗：3,169.98kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005838s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004594s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003863s ]
+---------------------------------------------------------------
+[ 2019-01-31T06:17:55+08:00 ] 111.206.198.126 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.060294s][吞吐率：16.59req/s] [内存消耗：3,216.83kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a0d70d5d9-048a2b1f41c76f-5d432819-271000-168a0d70d5e3a2; CNZZDATA1275090355=101703743-1548886674-%7C1548886674',
+  'referer' => 'http://sific.vip/',
+  'resource-type' => '13',
+  'x-requested-with' => 'XMLHttpRequest',
+  'x-devtools-emulate-network-conditions-client-id' => '74607d8d-4751-4914-9fb6-a48a2f0d4f14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+  'origin' => 'http://sific.vip',
+  'proxy-connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36',
+  'content-length' => '92',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548886675',
+  'devicetype' => 'web',
+  'sign' => '51673C854B96C0C725498A7D14CACF68',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005713s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.006007s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003987s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004509s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.004003s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004364s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004382s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003920s ]
+---------------------------------------------------------------
+[ 2019-01-31T06:17:55+08:00 ] 111.206.221.17 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.088741s][吞吐率：11.27req/s] [内存消耗：3,420.64kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a0d70d5d9-048a2b1f41c76f-5d432819-271000-168a0d70d5e3a2; CNZZDATA1275090355=101703743-1548886674-%7C1548886674',
+  'referer' => 'http://sific.vip/',
+  'resource-type' => '13',
+  'x-requested-with' => 'XMLHttpRequest',
+  'x-devtools-emulate-network-conditions-client-id' => '74607d8d-4751-4914-9fb6-a48a2f0d4f14',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'accept-language' => 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+  'origin' => 'http://sific.vip',
+  'proxy-connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36',
+  'content-length' => '85',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548886675',
+  'devicetype' => 'web',
+  'sign' => '49620439C01539CD7FDB9D5C845A802A',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005234s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004120s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004159s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003696s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004073s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003693s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.004054s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003656s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004152s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.005320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.004029s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003593s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004062s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003585s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.003999s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003514s ]
+---------------------------------------------------------------
+[ 2019-01-31T06:17:55+08:00 ] 111.206.221.112 GET /null
+[ info ] sific.vip/null [运行时间：0.013118s][吞吐率：76.23req/s] [内存消耗：2,187.13kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T08:50:32+08:00 ] 157.55.39.167 GET /
+[ info ] sific.vip/ [运行时间：0.033454s][吞吐率：29.89req/s] [内存消耗：3,172.36kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+  'host' => 'sific.vip',
+  'from' => 'bingbot(at)microsoft.com',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'connection' => 'Keep-Alive',
+  'cache-control' => 'no-cache',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005279s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004224s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003502s ]
+---------------------------------------------------------------
+[ 2019-01-31T08:50:44+08:00 ] 40.77.188.194 GET /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.031903s][吞吐率：31.34req/s] [内存消耗：3,171.88kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534+ (KHTML, like Gecko) BingPreview/1.0b',
+  'host' => 'sific.vip',
+  'accept-encoding' => '',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'connection' => 'Keep-Alive',
+  'cache-control' => 'no-cache',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004894s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_info` [ RunTime:0.003888s ]
+[ sql ] [ SQL ] SELECT `app_secret` FROM `app_info` WHERE  `app_key` IS NULL  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003142s ]
+---------------------------------------------------------------
+[ 2019-01-31T08:50:44+08:00 ] 40.77.190.10 GET /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.032674s][吞吐率：30.61req/s] [内存消耗：3,171.76kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/534+ (KHTML, like Gecko) BingPreview/1.0b',
+  'host' => 'sific.vip',
+  'accept-encoding' => '',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'connection' => 'Keep-Alive',
+  'cache-control' => 'no-cache',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005369s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_info` [ RunTime:0.004236s ]
+[ sql ] [ SQL ] SELECT `app_secret` FROM `app_info` WHERE  `app_key` IS NULL  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003498s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:35:31+08:00 ] 116.247.96.226 GET /
+[ info ] sific.vip/ [运行时间：0.033323s][吞吐率：30.01req/s] [内存消耗：3,173.46kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=16738e73b6b3612-06905975b53d3-260c2b16-1fa400-16738e73b757edd; CNZZDATA1275090355=612030439-1542844366-%7C1548653853',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 SE 2.X MetaSr 1.0',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005235s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004186s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003477s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:35:36+08:00 ] 116.247.96.226 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.058725s][吞吐率：17.03req/s] [内存消耗：3,216.29kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=16738e73b6b3612-06905975b53d3-260c2b16-1fa400-16738e73b757edd; CNZZDATA1275090355=612030439-1542844366-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 SE 2.X MetaSr 1.0',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '92',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548898539',
+  'devicetype' => 'web',
+  'sign' => '958C5259D8BD7D0DA9C661C3A6859498',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005617s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004399s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003881s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004392s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003933s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004351s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.004001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004488s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003916s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:35:36+08:00 ] 116.247.96.226 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.091534s][吞吐率：10.92req/s] [内存消耗：3,420.10kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=16738e73b6b3612-06905975b53d3-260c2b16-1fa400-16738e73b757edd; CNZZDATA1275090355=612030439-1542844366-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 SE 2.X MetaSr 1.0',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '85',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548898539',
+  'devicetype' => 'web',
+  'sign' => 'D96E536F69A2C397D6233A31A3625105',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005279s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004311s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003618s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004184s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003706s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004086s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003714s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.004295s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003703s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004228s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.005436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.004180s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003622s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004153s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003613s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.004071s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003568s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:35:36+08:00 ] 116.247.96.226 GET /null
+[ info ] sific.vip/null [运行时间：0.013182s][吞吐率：75.86req/s] [内存消耗：2,186.81kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T09:49:11+08:00 ] 124.78.123.197 GET /
+[ info ] sific.vip/ [运行时间：0.032203s][吞吐率：31.05req/s] [内存消耗：3,171.29kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004928s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004001s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003226s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:14+08:00 ] 124.78.123.197 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.055670s][吞吐率：17.96req/s] [内存消耗：3,216.29kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '92',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899296',
+  'devicetype' => 'web',
+  'sign' => 'DD7359B61295CC759CB27D991F63A5E3',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005205s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004200s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003615s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004101s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003689s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004104s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003657s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004112s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003632s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:14+08:00 ] 124.78.123.197 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.095913s][吞吐率：10.43req/s] [内存消耗：3,420.10kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '85',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899296',
+  'devicetype' => 'web',
+  'sign' => '485980391DC44034635ABA41324220DA',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005799s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004639s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003941s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004446s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003956s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004345s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003945s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.004398s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003942s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004488s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.005780s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.004443s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003915s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004389s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003864s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.004307s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003808s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:14+08:00 ] 124.78.123.197 GET /null
+[ info ] sific.vip/null [运行时间：0.013319s][吞吐率：75.08req/s] [内存消耗：2,186.81kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T09:49:41+08:00 ] 124.78.123.197 GET /video?training_id
+[ info ] sific.vip/video?training_id [运行时间：0.033906s][吞吐率：29.49req/s] [内存消耗：3,172.29kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'video',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->video[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/video/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006102s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004680s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.004063s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:41+08:00 ] 124.78.123.197 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.055199s][吞吐率：18.12req/s] [内存消耗：3,216.32kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/video?training_id',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '92',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '4',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899324',
+  'devicetype' => 'web',
+  'sign' => '105E2CE36DB57783113C0205015B1874',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005226s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004274s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003587s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004108s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003626s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003977s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003592s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004034s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 4 [ RunTime:0.003664s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:41+08:00 ] 124.78.123.197 GET /api/product/training_list?product_type=2&page=1&pagesize=6&class_id=0&key=123&test=123&time=1548899324&devicetype=web&sign=487505D612AF3F911527DF0D72A7399E
+[ info ] sific.vip/api/product/training_list?product_type=2&page=1&pagesize=6&class_id=0&key=123&test=123&time=1548899324&devicetype=web&sign=487505D612AF3F911527DF0D72A7399E [运行时间：0.071361s][吞吐率：14.01req/s] [内存消耗：3,285.41kb] [文件加载：46]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'product',
+    2 => 'ProductList',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/video?training_id',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'product_type' => '2',
+  'page' => '1',
+  'pagesize' => '6',
+  'class_id' => '0',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899324',
+  'devicetype' => 'web',
+  'sign' => '487505D612AF3F911527DF0D72A7399E',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Product->ProductList[ /home/wwwroot/default/SIFIC/application/api/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005597s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004417s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003888s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004412s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003946s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004337s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003907s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004424s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `product_type` = 2  AND `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003989s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `v_product` WHERE  `product_type` = 2  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003783s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_class_conf` [ RunTime:0.004201s ]
+[ sql ] [ SQL ] SELECT `fid`,`class_name_zh` FROM `base_class_conf` WHERE  (  record_status=1 and class_type=6 ) ORDER BY `sort` DESC [ RunTime:0.003671s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:43+08:00 ] 124.78.123.197 GET /videoinfo?training_id=26
+[ info ] sific.vip/videoinfo?training_id=26 [运行时间：0.033306s][吞吐率：30.02req/s] [内存消耗：3,173.38kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'videoinfo',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/video?training_id',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '26',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->videoinfo[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/video/video_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005649s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004510s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003775s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:44+08:00 ] 124.78.123.197 GET /api/product/training_detail?training_id=26&key=123&test=123&time=1548899327&devicetype=web&sign=451EEE4145CBE03D00E6F4A8E0D42E6D
+[ info ] sific.vip/api/product/training_detail?training_id=26&key=123&test=123&time=1548899327&devicetype=web&sign=451EEE4145CBE03D00E6F4A8E0D42E6D [运行时间：0.064282s][吞吐率：15.56req/s] [内存消耗：3,282.36kb] [文件加载：46]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'product',
+    2 => 'TrainingDetail',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/videoinfo?training_id=26',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '26',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899327',
+  'devicetype' => 'web',
+  'sign' => '451EEE4145CBE03D00E6F4A8E0D42E6D',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Product->TrainingDetail[ /home/wwwroot/default/SIFIC/application/api/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005292s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004262s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003618s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004146s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004085s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003658s ]
+[ sql ] [ SQL ] call p_training_detail(26,'0') [ RunTime:0.004190s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_collect_info` [ RunTime:0.003868s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_collect_info` WHERE  `record_status` = 1  AND `product_id` = 26  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003418s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS count FROM product_info pi 
+			LEFT JOIN `product_order_info` poi on pi.fid=poi.product_id 
+			WHERE  (pi.price=0 and pi.`product_type` = 2 AND pi.`fid` = 26) or 
+			(poi.`order_status` = 2  AND  poi.`user_id` = 0  AND poi.`product_id` = 26) LIMIT 1 [ RunTime:0.003381s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:46+08:00 ] 124.78.123.197 GET /recordinfo?training_id=26&video_id=20
+[ info ] sific.vip/recordinfo?training_id=26&video_id=20 [运行时间：0.030376s][吞吐率：32.92req/s] [内存消耗：3,177.50kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'recordinfo',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/videoinfo?training_id=26',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '26',
+  'video_id' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->recordinfo[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/video/record_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004533s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003627s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.002989s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:46+08:00 ] 124.78.123.197 POST /api/product/video_detail
+[ info ] sific.vip/api/product/video_detail [运行时间：0.050363s][吞吐率：19.86req/s] [内存消耗：3,283.11kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'product',
+    2 => 'VideoDetail',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://sific.vip/recordinfo?training_id=26&video_id=20',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '112',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '26',
+  'video_id' => '20',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548899330',
+  'devicetype' => 'web',
+  'sign' => '092FFE04655754687999585B17547983',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Product->VideoDetail[ /home/wwwroot/default/SIFIC/application/api/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005753s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004623s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003908s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004391s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003980s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004345s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003920s ]
+---------------------------------------------------------------
+[ 2019-01-31T09:49:48+08:00 ] 124.78.123.197 GET /login?preUrl=http://sific.vip/recordinfo?training_id=26&video_id=20
+[ info ] sific.vip/login?preUrl=http://sific.vip/recordinfo?training_id=26&video_id=20 [运行时间：0.032745s][吞吐率：30.54req/s] [内存消耗：3,173.64kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'login',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'UM_distinctid=168a197a17937e-06cc53be9b4c11-43671415-13c680-168a197a17ad0; CNZZDATA1275090355=1991084759-1548898535-%7C1548898535',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'referer' => 'http://sific.vip/recordinfo?training_id=26&video_id=20',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'preUrl' => 'http://sific.vip/recordinfo?training_id=26',
+  'video_id' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->login[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/login/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005294s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004227s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003543s ]
+---------------------------------------------------------------
+[ 2019-01-31T12:12:22+08:00 ] 139.224.116.230 GET /api/convention/convention_base?convention_id=43&key=123&test=123&time=1547424000&devicetype=web&sign=4eb187e4e008659d8d4bfb7888e94980
+[ info ] sific.vip/api/convention/convention_base?convention_id=43&key=123&test=123&time=1547424000&devicetype=web&sign=4eb187e4e008659d8d4bfb7888e94980 [运行时间：0.094307s][吞吐率：10.60req/s] [内存消耗：3,451.51kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '43',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => '4eb187e4e008659d8d4bfb7888e94980',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006302s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.005104s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.004316s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004946s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.004328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004842s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.004303s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004986s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 43  AND `record_status` = 1 LIMIT 1 [ RunTime:0.004468s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.004613s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 43 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.004063s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004824s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 43 ORDER BY `exhibitor_type` ASC [ RunTime:0.004230s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.005326s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 43  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.004633s ]
+---------------------------------------------------------------
+[ 2019-01-31T12:53:57+08:00 ] 101.132.102.45 GET /expertlist?convention_id=43&nav_id=4
+[ info ] sific.vip/expertlist?convention_id=43&nav_id=4 [运行时间：0.031643s][吞吐率：31.60req/s] [内存消耗：3,172.91kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'expertlist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '43',
+  'nav_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->expertlist[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/expertlist.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004872s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003945s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%43%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003221s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:14:54+08:00 ] 106.14.115.254 GET /api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=a4bab1660d98ec8b1338334c906bee01
+[ info ] sific.vip/api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=a4bab1660d98ec8b1338334c906bee01 [运行时间：0.083644s][吞吐率：11.96req/s] [内存消耗：3,435.20kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => 'a4bab1660d98ec8b1338334c906bee01',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005441s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004419s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003666s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004209s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003707s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004110s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003674s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004297s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 45  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003826s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.003932s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003452s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004174s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `exhibitor_type` ASC [ RunTime:0.003605s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004639s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003884s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:15:28+08:00 ] 66.249.79.50 GET /
+[ info ] sific.vip/ [运行时间：0.032225s][吞吐率：31.03req/s] [内存消耗：3,170.55kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005234s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004167s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003547s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:17:39+08:00 ] 66.249.79.50 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.055736s][吞吐率：17.94req/s] [内存消耗：3,215.95kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '92',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => 'E0C88D8607287C0748D783C406420E1C',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005139s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004212s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003529s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004140s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003631s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004053s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003578s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004096s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003561s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:17:40+08:00 ] 66.249.79.50 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.096491s][吞吐率：10.36req/s] [内存消耗：3,419.76kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '85',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => '0AC997D0801DA9824D961D150712159A',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005787s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004602s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003971s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004487s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.004059s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004422s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003993s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.004518s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003973s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004535s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.005822s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.004521s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003927s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004511s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003971s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.004428s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003866s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:21:25+08:00 ] 38.145.99.4 GET /
+[ info ] sific.vip/ [运行时间：0.032757s][吞吐率：30.53req/s] [内存消耗：3,170.23kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36',
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004946s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003993s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003342s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:25:29+08:00 ] 66.249.79.47 GET /
+[ info ] sific.vip/ [运行时间：0.033924s][吞吐率：29.48req/s] [内存消耗：3,170.96kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005774s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004492s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003858s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:25:32+08:00 ] 66.249.79.50 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.085974s][吞吐率：11.63req/s] [内存消耗：3,420.01kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '85',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => '0AC997D0801DA9824D961D150712159A',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004977s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004100s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003458s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.003917s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003437s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003847s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.003859s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.003908s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.004948s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.003824s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003335s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.003819s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003319s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.003739s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003245s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:25:33+08:00 ] 66.249.79.47 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.055422s][吞吐率：18.04req/s] [内存消耗：3,216.20kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '92',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => 'E0C88D8607287C0748D783C406420E1C',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005343s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004343s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003642s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004146s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003740s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004075s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003671s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.004117s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003660s ]
+---------------------------------------------------------------
+[ 2019-01-31T13:51:49+08:00 ] 157.55.39.104 GET /convention
+[ info ] sific.vip/convention [运行时间：0.032688s][吞吐率：30.59req/s] [内存消耗：3,177.13kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+  'host' => 'sific.vip',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'connection' => 'Keep-Alive',
+  'cache-control' => 'no-cache',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005285s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004197s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003510s ]
+---------------------------------------------------------------
+[ 2019-01-31T16:32:51+08:00 ] 116.62.215.53 GET /
+[ info ] sific.vip/ [运行时间：0.030769s][吞吐率：32.50req/s] [内存消耗：3,169.69kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004510s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003662s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.002966s ]
+---------------------------------------------------------------
+[ 2019-01-31T16:45:39+08:00 ] 47.92.115.203 GET /
+[ info ] sific.vip/ [运行时间：0.032352s][吞吐率：30.91req/s] [内存消耗：3,169.69kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  'host' => 'sific.vip',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 4.1.1; Nexus 7 Build/JRO03D))',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005155s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004122s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003450s ]
+---------------------------------------------------------------
+[ 2019-01-31T18:37:44+08:00 ] 66.249.79.44 GET /about?sr=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC
+[ info ] sific.vip/about?sr=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC [运行时间：0.032265s][吞吐率：30.99req/s] [内存消耗：3,170.95kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'about',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'if-modified-since' => 'Thu, 24 Jan 2019 08:02:57 GMT',
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '关于我们',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->about[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/about.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005224s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004147s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003466s ]
+---------------------------------------------------------------
+[ 2019-01-31T18:37:49+08:00 ] 66.249.79.44 GET /api/sys/explain?type=sific&key=123&test=123&time=1547424000&devicetype=web&sign=AFC90F7764945ACC9FBED67343B7320D
+[ info ] sific.vip/api/sys/explain?type=sific&key=123&test=123&time=1547424000&devicetype=web&sign=AFC90F7764945ACC9FBED67343B7320D [运行时间：0.056471s][吞吐率：17.71req/s] [内存消耗：3,252.36kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Sys',
+    2 => 'Explain',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/about?sr=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'type' => 'sific',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => 'AFC90F7764945ACC9FBED67343B7320D',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Sys->Explain[ /home/wwwroot/default/SIFIC/application/api/controller/Sys.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005143s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004210s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003551s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004015s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003910s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003530s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_explain_info` [ RunTime:0.003793s ]
+[ sql ] [ SQL ] SELECT * FROM `base_explain_info` WHERE  `record_status` = 1 LIMIT 1 [ RunTime:0.004973s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:37:46+08:00 ] 66.249.79.47 GET /expertlist?convention_id=null&nav_id=4
+[ info ] sific.vip/expertlist?convention_id=null&nav_id=4 [运行时间：0.032308s][吞吐率：30.95req/s] [内存消耗：3,177.45kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'expertlist',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'if-modified-since' => 'Thu, 24 Jan 2019 11:33:32 GMT',
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'nav_id' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->expertlist[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/expertlist.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005220s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004103s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%null%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003480s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:37:51+08:00 ] 66.249.79.44 GET /api/convention/convention_base?convention_id=null&key=123&test=123&time=1547424000&devicetype=web&sign=6D9B6BE7ECE3197884A2311F36D61A51
+[ info ] sific.vip/api/convention/convention_base?convention_id=null&key=123&test=123&time=1547424000&devicetype=web&sign=6D9B6BE7ECE3197884A2311F36D61A51 [运行时间：0.085052s][吞吐率：11.76req/s] [内存消耗：3,427.74kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/expertlist?convention_id=null&nav_id=4',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => '6D9B6BE7ECE3197884A2311F36D61A51',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005336s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004371s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003686s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004165s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003723s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004027s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003680s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004179s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003954s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.005499s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 0 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003555s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004185s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 0 ORDER BY `exhibitor_type` ASC [ RunTime:0.003744s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004630s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 0  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.004372s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:37:51+08:00 ] 66.249.79.47 POST /api/convention/expert_list
+[ info ] sific.vip/api/convention/expert_list [运行时间：0.058622s][吞吐率：17.06req/s] [内存消耗：3,366.46kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ExpertList',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '104',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/expertlist?convention_id=null&nav_id=4',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => '6D9B6BE7ECE3197884A2311F36D61A51',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ExpertList[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006121s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004873s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.004192s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004672s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.004231s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004602s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.004195s ]
+[ sql ] [ SQL ] call p_convention_expert(null ) [ RunTime:0.005049s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:57:58+08:00 ] 66.249.79.47 GET /schedule?convention_id=null&nav_id=3
+[ info ] sific.vip/schedule?convention_id=null&nav_id=3 [运行时间：0.033354s][吞吐率：29.98req/s] [内存消耗：3,175.58kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'schedule',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'nav_id' => '3',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->schedule[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/schedule.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005586s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004114s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%null%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003430s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:58:02+08:00 ] 66.249.79.44 GET /api/convention/schedule_first?convention_id=45&select_date=&search_type=0&key=123&test=123&time=1547424000&devicetype=web&sign=228A27EA7DF068BFE05DCA4DCCC40123
+[ info ] sific.vip/api/convention/schedule_first?convention_id=45&select_date=&search_type=0&key=123&test=123&time=1547424000&devicetype=web&sign=228A27EA7DF068BFE05DCA4DCCC40123 [运行时间：0.066675s][吞吐率：15.00req/s] [内存消耗：3,410.40kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ScheduleFirst',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/schedule?convention_id=null&nav_id=3',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'select_date' => '',
+  'search_type' => '0',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => '228A27EA7DF068BFE05DCA4DCCC40123',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ScheduleFirst[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006134s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004876s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.004239s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004623s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.004271s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004558s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.004218s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_schedulefirst` [ RunTime:0.004643s ]
+[ sql ] [ SQL ] SELECT DISTINCT  `selectdate` FROM `v_convention_schedulefirst` WHERE  `record_status` = 1  AND `convention_id` = 45 [ RunTime:0.004079s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention_schedulefirst` WHERE  `convention_id` = 45  AND `record_status` = 1 ORDER BY `start_date` ASC,`room_id` DESC,`fid` DESC [ RunTime:0.004160s ]
+---------------------------------------------------------------
+[ 2019-01-31T19:58:03+08:00 ] 66.249.79.44 GET /api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=A9F989A362E45C4EF02E89B3E817FCF5
+[ info ] sific.vip/api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=A9F989A362E45C4EF02E89B3E817FCF5 [运行时间：0.080865s][吞吐率：12.37req/s] [内存消耗：3,440.56kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/schedule?convention_id=null&nav_id=3',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => 'A9F989A362E45C4EF02E89B3E817FCF5',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005160s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004191s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003596s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004052s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003618s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003981s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003630s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004195s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 45  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003769s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.003835s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004005s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `exhibitor_type` ASC [ RunTime:0.003516s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004485s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003852s ]
+---------------------------------------------------------------
+[ 2019-01-31T20:01:44+08:00 ] 66.249.79.44 POST /api/adsense
+[ info ] sific.vip/api/adsense [运行时间：0.054320s][吞吐率：18.41req/s] [内存消耗：3,215.95kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'Adsense',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '92',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'type' => '1',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => 'E0C88D8607287C0748D783C406420E1C',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->Adsense[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004948s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004081s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.003927s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003444s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003771s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003397s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_adsense` [ RunTime:0.003824s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_adsense` WHERE  `record_status` = 1  AND `module` = 1 [ RunTime:0.003369s ]
+---------------------------------------------------------------
+[ 2019-01-31T20:01:45+08:00 ] 66.249.79.44 POST /api/index/first_page
+[ info ] sific.vip/api/index/first_page [运行时间：0.093971s][吞吐率：10.64req/s] [内存消耗：3,419.76kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'FirstPage',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '85',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => '0AC997D0801DA9824D961D150712159A',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->FirstPage[ /home/wwwroot/default/SIFIC/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005696s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004538s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003898s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004326s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003928s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004288s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003915s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_ad_banner` [ RunTime:0.004279s ]
+[ sql ] [ SQL ] SELECT * FROM `v_ad_banner` WHERE  `record_status` = 1 ORDER BY `sort` ASC,`fid` DESC [ RunTime:0.003900s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004374s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `record_status` = 1 ORDER BY `sort` DESC,`fid` DESC LIMIT 0,11 [ RunTime:0.005755s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_live` [ RunTime:0.004356s ]
+[ sql ] [ SQL ] SELECT * FROM `v_live` WHERE  `record_status` = 1 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003827s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_product` [ RunTime:0.004337s ]
+[ sql ] [ SQL ] SELECT * FROM `v_product` WHERE  `record_status` = 1  AND `product_type` = 2 ORDER BY `recommend` DESC,`sort` DESC,`fid` DESC LIMIT 0,6 [ RunTime:0.003859s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_partner` [ RunTime:0.004234s ]
+[ sql ] [ SQL ] SELECT * FROM `v_partner` WHERE  `record_status` = 1 ORDER BY `fid` DESC LIMIT 0,12 [ RunTime:0.003775s ]
+---------------------------------------------------------------
+[ 2019-01-31T20:16:34+08:00 ] 35.203.100.21 GET /
+[ info ] sific.vip/ [运行时间：0.032962s][吞吐率：30.34req/s] [内存消耗：3,169.63kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:50.0) Gecko/20100101 Firefox/50.0',
+  'connection' => 'keep-alive',
+  'keep-alive' => '300',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005622s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004489s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003792s ]
+---------------------------------------------------------------
+[ 2019-01-31T20:16:36+08:00 ] 35.203.100.21 GET /blog/
+[ info ] sific.vip/blog/ [运行时间：0.013380s][吞吐率：74.74req/s] [内存消耗：2,183.25kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T20:16:37+08:00 ] 35.203.100.21 GET /wordpress/
+[ info ] sific.vip/wordpress/ [运行时间：0.013999s][吞吐率：71.43req/s] [内存消耗：2,183.28kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T20:16:38+08:00 ] 35.203.100.21 GET /wp/
+[ info ] sific.vip/wp/ [运行时间：0.013623s][吞吐率：73.41req/s] [内存消耗：2,183.23kb] [文件加载：36]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-01-31T21:38:12+08:00 ] 66.249.79.50 GET /city?convention_id=null&nav_id=5
+[ info ] sific.vip/city?convention_id=null&nav_id=5 [运行时间：0.032239s][吞吐率：31.02req/s] [内存消耗：3,177.78kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'city',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'if-modified-since' => 'Thu, 24 Jan 2019 19:25:06 GMT',
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'nav_id' => '5',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->city[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/hotel.html [ array (
+  0 => 'html',
+  1 => 'module',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005117s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003994s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%null%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003298s ]
+---------------------------------------------------------------
+[ 2019-01-31T21:38:20+08:00 ] 66.249.79.47 POST /api/convention/article
+[ info ] sific.vip/api/convention/article [运行时间：0.057546s][吞吐率：17.38req/s] [内存消耗：3,400.90kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'Article',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'content-length' => '113',
+  'accept-language' => 'en-US',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://sific.vip',
+  'referer' => 'http://sific.vip/city?convention_id=null&nav_id=5',
+  'host' => 'sific.vip',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'module' => 'Z',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1548892800',
+  'devicetype' => 'web',
+  'sign' => '15564527343118FCC334B080F531D0FD',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->Article[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005353s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004408s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003667s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004167s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003695s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004070s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003684s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_article_info` [ RunTime:0.003966s ]
+[ sql ] [ SQL ] SELECT * FROM `convention_article_info` WHERE  `convention_id` = 0  AND `article_type` = 1  AND `record_status` = 1 [ RunTime:0.003685s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:17:09+08:00 ] 78.46.176.21 GET /about?sr=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC
+[ info ] sific.vip/about?sr=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC [运行时间：0.033507s][吞吐率：29.84req/s] [内存消耗：3,168.87kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'about',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sific.vip',
+  'accept-language' => 'en',
+  'user-agent' => 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)',
+  'accept' => 'text/html,text/plain,text/xml,text/*,application/xml,application/xhtml+xml,application/rss+xml,application/atom+xml,application/rdf+xml,application/php,application/x-php,application/x-httpd-php',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '关于我们',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->about[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/about.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005740s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004492s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003834s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:17:11+08:00 ] 78.46.176.21 GET /contact?sr=%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC
+[ info ] sific.vip/contact?sr=%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC [运行时间：0.034081s][吞吐率：29.34req/s] [内存消耗：3,169.14kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'contact',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sific.vip',
+  'accept-language' => 'en',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)',
+  'accept' => 'text/html,text/plain,text/xml,text/*,application/xml,application/xhtml+xml,application/rss+xml,application/atom+xml,application/rdf+xml,application/php,application/x-php,application/x-httpd-php',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '联系我们',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->contact[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/contact.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005794s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004538s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003878s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:17:12+08:00 ] 78.46.176.21 GET /copyright?sr=%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E
+[ info ] sific.vip/copyright?sr=%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E [运行时间：0.033437s][吞吐率：29.91req/s] [内存消耗：3,169.16kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'copyright',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sific.vip',
+  'accept-language' => 'en',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)',
+  'accept' => 'text/html,text/plain,text/xml,text/*,application/xml,application/xhtml+xml,application/rss+xml,application/atom+xml,application/rdf+xml,application/php,application/x-php,application/x-httpd-php',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '版权声明',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->copyright[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/copyright.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004942s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.005379s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003314s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:17:15+08:00 ] 78.46.176.21 GET /disclaimer?sr=%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E
+[ info ] sific.vip/disclaimer?sr=%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E [运行时间：0.030509s][吞吐率：32.78req/s] [内存消耗：3,169.16kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'disclaimer',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sific.vip',
+  'accept-language' => 'en',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)',
+  'accept' => 'text/html,text/plain,text/xml,text/*,application/xml,application/xhtml+xml,application/rss+xml,application/atom+xml,application/rdf+xml,application/php,application/x-php,application/x-httpd-php',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '免责声明',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->disclaimer[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/disclaimer.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004782s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003857s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003162s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:17:17+08:00 ] 78.46.176.21 GET /report?sr=%E4%B8%BE%E6%8A%A5%E6%8A%95%E8%AF%89
+[ info ] sific.vip/report?sr=%E4%B8%BE%E6%8A%A5%E6%8A%95%E8%AF%89 [运行时间：0.031160s][吞吐率：32.09req/s] [内存消耗：3,169.17kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'report',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'sific.vip',
+  'accept-language' => 'en',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (compatible; MJ12bot/v1.4.8; http://mj12bot.com/)',
+  'accept' => 'text/html,text/plain,text/xml,text/*,application/xml,application/xhtml+xml,application/rss+xml,application/atom+xml,application/rdf+xml,application/php,application/x-php,application/x-httpd-php',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'sr' => '举报投诉',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->report[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/public/report.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004854s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003879s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003240s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:47:43+08:00 ] 66.249.79.47 GET /convention?convention_id=null&nav_id=1
+[ info ] sific.vip/convention?convention_id=null&nav_id=1 [运行时间：0.032384s][吞吐率：30.88req/s] [内存消耗：3,177.99kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'if-modified-since' => 'Thu, 24 Jan 2019 22:04:30 GMT',
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => 'null ',
+  'nav_id' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005146s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004144s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%null%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003406s ]
+---------------------------------------------------------------
+[ 2019-01-31T22:47:47+08:00 ] 66.249.79.50 GET /api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=8EAA436E823518364FF008606AC4AFBD
+[ info ] sific.vip/api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=8EAA436E823518364FF008606AC4AFBD [运行时间：0.081654s][吞吐率：12.25req/s] [内存消耗：3,440.56kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/convention?convention_id=null&nav_id=1',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => '8EAA436E823518364FF008606AC4AFBD',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005304s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004321s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003629s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004110s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003661s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004032s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.004167s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 45  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003788s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.003899s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003424s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004119s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `exhibitor_type` ASC [ RunTime:0.003560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004523s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003836s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:24:23+08:00 ] 66.249.79.44 GET /convention?convention_id=45
+[ info ] sific.vip/convention?convention_id=45 [运行时间：0.032620s][吞吐率：30.66req/s] [内存消耗：3,175.14kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005243s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004147s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%45%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003484s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:24:27+08:00 ] 66.249.79.47 GET /videoinfo?training_id=27
+[ info ] sific.vip/videoinfo?training_id=27 [运行时间：0.034336s][吞吐率：29.12req/s] [内存消耗：3,168.98kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'index',
+    2 => 'videoinfo',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '27',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->videoinfo[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/video/video_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006036s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004704s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.004031s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:24:29+08:00 ] 66.249.79.44 GET /api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=8EAA436E823518364FF008606AC4AFBD
+[ info ] sific.vip/api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=8EAA436E823518364FF008606AC4AFBD [运行时间：0.076954s][吞吐率：12.99req/s] [内存消耗：3,440.56kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/convention?convention_id=45',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => '8EAA436E823518364FF008606AC4AFBD',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004792s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004004s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.003775s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003361s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.003702s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003320s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.003864s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 45  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003476s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.003530s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003077s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.003667s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `exhibitor_type` ASC [ RunTime:0.003217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004132s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003512s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:24:30+08:00 ] 66.249.79.47 GET /api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=A9F989A362E45C4EF02E89B3E817FCF5
+[ info ] sific.vip/api/convention/convention_base?convention_id=45&key=123&test=123&time=1547424000&devicetype=web&sign=A9F989A362E45C4EF02E89B3E817FCF5 [运行时间：0.082770s][吞吐率：12.08req/s] [内存消耗：3,440.56kb] [文件加载：45]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'convention',
+    2 => 'ConventionBase',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/convention?convention_id=45',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'convention_id' => '45',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => 'A9F989A362E45C4EF02E89B3E817FCF5',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Convention->ConventionBase[ /home/wwwroot/default/SIFIC/application/api/controller/Convention.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005309s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004277s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003640s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004087s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003673s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004016s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003676s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention` [ RunTime:0.005260s ]
+[ sql ] [ SQL ] SELECT * FROM `v_convention` WHERE  `fid` = 45  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003810s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `convention_news_info` [ RunTime:0.003875s ]
+[ sql ] [ SQL ] SELECT `fid`,`title`,`content`,`create_time` FROM `convention_news_info` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `sort` DESC LIMIT 8 [ RunTime:0.003410s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_exhibitor` [ RunTime:0.004126s ]
+[ sql ] [ SQL ] SELECT `fid`,`convention_id`,`image_url`,`org_name`,`booth`,`org_id`,`web_url` FROM `v_convention_exhibitor` WHERE  `record_status` = 1  AND `convention_id` = 45 ORDER BY `exhibitor_type` ASC [ RunTime:0.003567s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_convention_signup_detail` [ RunTime:0.004618s ]
+[ sql ] [ SQL ] SELECT `fid`,`order_number`,`user_name`,`convention_id`,`pay_type` FROM `v_convention_signup_detail` WHERE  `record_status` = 1  AND `convention_id` = 45  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003865s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:24:32+08:00 ] 66.249.79.44 GET /api/product/training_detail?training_id=27&key=123&test=123&time=1547424000&devicetype=web&sign=BAB9331434E004343595FBD348015D2A
+[ info ] sific.vip/api/product/training_detail?training_id=27&key=123&test=123&time=1547424000&devicetype=web&sign=BAB9331434E004343595FBD348015D2A [运行时间：0.064580s][吞吐率：15.48req/s] [内存消耗：3,266.70kb] [文件加载：46]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'product',
+    2 => 'TrainingDetail',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Safari/537.36',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'application/json,text/javascript,*/*; q=0.01',
+  'connection' => 'keep-alive',
+  'accept-language' => 'en-US',
+  'x-requested-with' => 'XMLHttpRequest',
+  'referer' => 'http://sific.vip/videoinfo?training_id=27',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'training_id' => '27',
+  'key' => '123',
+  'test' => '123',
+  'time' => '1547424000',
+  'devicetype' => 'web',
+  'sign' => 'BAB9331434E004343595FBD348015D2A',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Product->TrainingDetail[ /home/wwwroot/default/SIFIC/application/api/controller/Product.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005318s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_info` [ RunTime:0.004344s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_info` WHERE  `record_Status` = 1  AND `app_postfix` = 3 ORDER BY `version_no` DESC LIMIT 0,1 [ RunTime:0.003729s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `v_version_dl_info` [ RunTime:0.004162s ]
+[ sql ] [ SQL ] SELECT * FROM `v_version_dl_info` WHERE  `record_Status` = 1  AND `version_no` = 0  AND `app_postfix` = 3  AND `org_id` = 0  AND `user_id` = 0 LIMIT 1 [ RunTime:0.003720s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `enduser_info` [ RunTime:0.004089s ]
+[ sql ] [ SQL ] SELECT * FROM `enduser_info` WHERE  `fid` = 0  AND `record_status` = 1 LIMIT 1 [ RunTime:0.003681s ]
+[ sql ] [ SQL ] call p_training_detail(27,'0') [ RunTime:0.004232s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_collect_info` [ RunTime:0.003960s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_collect_info` WHERE  `record_status` = 1  AND `product_id` = 27  AND `creator_id` = 0 LIMIT 1 [ RunTime:0.003460s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS count FROM product_info pi 
+			LEFT JOIN `product_order_info` poi on pi.fid=poi.product_id 
+			WHERE  (pi.price=0 and pi.`product_type` = 2 AND pi.`fid` = 27) or 
+			(poi.`order_status` = 2  AND  poi.`user_id` = 0  AND poi.`product_id` = 27) LIMIT 1 [ RunTime:0.003468s ]
+---------------------------------------------------------------
+[ 2019-01-31T23:37:54+08:00 ] 66.249.79.50 GET /
+[ info ] sific.vip/ [运行时间：0.032260s][吞吐率：31.00req/s] [内存消耗：3,170.55kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFIC/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'host' => 'sific.vip',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->index[ /home/wwwroot/default/SIFIC/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFIC/public/../application/web/view/index/index.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005333s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004234s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%0%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003528s ]

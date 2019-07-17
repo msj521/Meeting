@@ -1,0 +1,151 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>录播管理</cite></a>
+              <a><cite>{$title|default='录播列表'}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+
+<div class="x-body">
+  <!-- 右侧内容框架，更改从这里开始 -->
+  <form class="layui-form xbs" action="">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <label class="layui-form-label xbs768">起始时间</label>
+
+        <div class="layui-input-inline xbs768">
+          <input class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start_time" value="{$start}">
+        </div>
+        <div class="layui-input-inline xbs768">
+          <input class="layui-input" placeholder="结束日" id="LAY_demorange_e" name="end_time" value="{$end}">
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="string" placeholder="标题/专家" autocomplete="off" class="layui-input" value="{$string}">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+  <xblock>
+    <button class="layui-btn" onclick="member_edit('添加','{$edit|default='/'}','{$index|default='/'}','')"><i class="layui-icon">&#xe608;</i>添加</button>
+<!--     <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'{$del|default='/'}','{$index|default='/'}')"><i class="layui-icon">&#xe640;</i>批量删除</button> -->
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+
+
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="barTool">
+    <div class="td-manage">
+          <a title="编辑" href="javascript:;"  lay-event="edit"
+             class="ml-5" style="text-decoration:none" 
+            ><i class="iconfont" >&#xe69e;</i>
+          </a>
+          
+          <a title="删除" href="javascript:;" lay-event="del"
+             style="text-decoration:none">
+            <i class="iconfont">&#xe69d;</i>
+          </a>
+  </div>
+</script>
+
+<script type="text/html" id="a">
+  <a  href="javascript:;"  lay-event="A"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6b5;</i></a>
+</script>
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  // console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+    dataList.data[i].recommend = dataList.data[i].recommend==0 ? '否' : '推荐';
+    dataList.data[i].vip = dataList.data[i].vip==0 ? '否' : '是';
+    dataList.data[i].barrage_show = dataList.data[i].barrage_show==0 ? '关闭' : '开启';
+
+    if (dataList.data[i].FStatus==0){
+      dataList.data[i].FStatus = '预告中';
+    }else if(dataList.data[i].FStatus==1){
+      dataList.data[i].FStatus = '直播中';
+    }else if(dataList.data[i].FStatus==2){
+      dataList.data[i].FStatus = '已结束';
+    }
+    if (dataList.data[i].sort==1){
+      dataList.data[i].sort = '一级置顶';
+    }else if(dataList.data[i].sort==2){
+      dataList.data[i].sort = '二级置顶';
+    }else if(dataList.data[i].sort==3){
+      dataList.data[i].sort = '三级置顶';
+    }else{
+      dataList.data[i].sort = '普通';
+    }
+
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    }
+  }
+
+  // console.log(dataList);
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid', width:100, title: 'ID'}
+        ,{field:'title',  width:178, title: '标题'}
+        ,{field:'class_name', width:100,  title: '分类'}
+        ,{field:'resolution', width:80,  title: '分辨率'}
+        ,{field:'bitcode',  title: '码率'}
+        ,{field:'duration', width:100,  title: '视频时间'}
+        ,{field:'max_time', width:100,  title: '限制时间'}
+        ,{field:'max_num',  title: '限看量'}
+        ,{field:'play_count',  title: '播放量'}
+        ,{field:'record_status',  title: '状态'}
+        ,{field:'recommend',  title: '推荐'}
+        ,{field:'sort',  title: '置顶'}
+        ,{field:'vip',  title: 'vip'}
+        ,{ title: '播放记录',toolbar: '#a'}
+        ,{fixed: 'right', width:100, align:'center', toolbar: '#barTool'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'del'){
+        member_del(data.fid,'{$del|default="/"}','{$index|default="/"}')
+      } else if(obj.event === 'A'){
+        member_edit('播放记录','/live/video_play','{$index|default="/"}',data.fid,0,0)
+      } else if(obj.event === 'edit'){
+        member_edit('编辑','{$edit|default="/"}','{$index|default="/"}',data.fid,0,0)
+      }
+    });
+
+  })
+
+</script>
+</body>
+</html>

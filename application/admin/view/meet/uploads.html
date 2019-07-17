@@ -1,0 +1,115 @@
+{include file="public/header" /}
+
+<body>
+  <div class="x-nav">
+    <span class="layui-breadcrumb">
+      <a><cite>会议管理</cite></a>
+      <a><cite>{$theme}</cite></a>
+    </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);"
+      title="刷新">
+      <i class="layui-icon" style="line-height:30px">ဂ</i>
+    </a>
+  </div>
+  <div class="x-body">
+    <form class="layui-form x-center" action="{$index|default='/'}" method="get">
+      <input type="hidden" name="convention_id" value="{$fids|default=0}">
+      <input type="hidden" name="download_type" value="{$download_type|default=0}">
+      <div class="layui-form-pane" style="text-align: center;">
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+  </div>
+  </form>
+  <xblock>
+    <button class="layui-btn" onclick="member_edits('添加','{$edit|default='/'}','{$index|default='/'}','','{$fids|default=0}','{$download_type|default=0}')"><i
+        class="layui-icon">&#xe608;</i>添加</button>
+    <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'{$del|default='/'}','{$index|default='/'}')"><i
+        class="layui-icon">&#xe640;</i>批量删除</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+  </div>
+  {include file="public/top_js" /}
+
+  <script type="text/html" id="barTool">
+  <div class="td-manage">
+
+  <a title="编辑" href="javascript:;"  lay-event="edit"
+    class="ml-5" style="text-decoration:none" 
+    ><i class="iconfont" >&#xe69e;</i>
+  </a>  
+        
+  <a title="删除" href="javascript:;" lay-event="del"
+      style="text-decoration:none">
+    <i class="iconfont">&#xe69d;</i>
+  </a>
+</div>
+</script>
+
+  <script>
+    var dataList = <?php echo json_encode($list);?>;
+    //console.log(dataList);
+    for (var i = 0; i < dataList.data.length; i++) {
+      if (dataList.data[i].record_status == 1) {
+        dataList.data[i].record_status = '启用';
+      } else if (dataList.data[i].record_status == 2) {
+        dataList.data[i].record_status = '禁用';
+      } else if (dataList.data[i].record_status == -1) {
+        dataList.data[i].record_status = '标记删除';
+      } else if (dataList.data[i].record_status == -2) {
+        dataList.data[i].record_status = '彻底删除';
+      }
+      dataList.data[i].file_size = dataList.data[i].file_size + 'kb';
+      if (dataList.data[i].download_type == 7) {
+        dataList.data[i].creator_id = '(管理员)' + dataList.data[i].user_name;
+      } else {
+        dataList.data[i].creator_id = '(普通用户)' + dataList.data[i].enduser_name;
+      }
+    }
+
+    layui.use(['table', 'layer'], function () {
+      var layer = layui.layer;
+      var table = layui.table;
+      table.render({
+        elem: '#table'
+        , data: dataList.data
+        , cols: [[
+          { field: 'fid', width: 80, title: 'ID' }
+          , { field: 'convention_name', width: 160, title: '会议名称' }
+          , { field: 'download_title', width: 160, title: '文件标题' }
+          , { field: 'file_name', width: 160, title: '文件名称' }
+          , { field: 'file_path', width: 160, title: '文件地址' }
+          , { field: 'file_size', width: 100, title: '文件大小' }
+          , { title: '预览', templet: '<div><a href="{{d.file_path}}" style="color:red" target="_blank">预览</a></div>' }
+          , { field: 'record_status', width: 100, title: '状态' }
+          , { field: 'create_time', width: 160, title: '创建时间' }
+          , { field: 'creator_id', width: 160, title: '上传者' }
+          , { fixed: 'right', width: 100, align: 'center', toolbar: '#barTool' }
+        ]]
+        , page: false
+        , limit: dataList.data.length
+      });
+
+      //监听工具条
+      table.on('tool(tableTool)', function (obj) {
+        var data = obj.data;
+        if (obj.event === 'del') {
+          member_del(data.fid, '{$del|default=' / '}', '{$index|default=' / '}?fid=' + data.convention_id + '&B{$download_type|default=0}')
+        } else if (obj.event === 'edit') {
+          member_edits('编辑', '{$edit|default=' / '}', '{$index|default=' / '}', data.fid, data.convention_id, '{$download_type|default=0}')
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+$(function() {
+
+	var convention_base = "api/convention/convention_base";
+
+	function convention(data) {
+		var convention_info = data.data.convention_info;
+		var convention_news = data.data.convention_news;
+		var convention_exhibitors = data.data.convention_exhibitors;
+		var convention_order = data.data.convention_order;
+		storage.setItem('convention_info', JSON.stringify(convention_info));
+		
+		//会议  新闻动态  重要日期
+		var html='<div style="font-size: 14px; line-break: 50px; text-align: center;">暂无数据</div>';
+		var important_date=htmls(convention_info.important_date);
+		if(convention_info){
+			//重要日期
+			if(convention_info.important_date){
+				$("#timeday").html(important_date);
+			}
+			//新闻动态
+			if(convention_info.digest){
+				$("#introduce_txt").html(convention_info.digest);
+			}
+		}else{
+			$("#timeday,#introduce_txt").html(html);
+		}
+		
+//		if(!convention_info || htmls(convention_info.important_date)== "null") {
+//			$("#timeday").html('<div style="font-size: 14px; line-break: 50px; text-align: center;">暂无数据</div>');
+//		} else {
+//			$("#timeday").html(important_time);
+//		}
+//		if(digest == "null") {
+//			$("#introduce_txt").html('<div style="font-size: 14px; line-break: 50px; text-align: center;">暂无数据</div>');
+//		} else {
+//			$("#introduce_txt").html(digest)
+//		}
+
+		if(cook_uid == null || cook_uid == "") {
+			$('<a href="'+pu_url+'">'+'</a>'+'<p>'+'论文发表'+'</p>').appendTo(".mt_nav_rg");
+			$('<a href="' + pu_url + '">' + '</a>' + '<p>' + '会议报名' + '</p>').appendTo(".mt_nav_lf")
+		} else {
+			if(convention_info.class_name=="SIFIC专栏"){
+				$('<a href="/annual_meeting?convention_id=' + convention_id +'">' + '</a>' + '<p>' + '会议报名' + '</p>').appendTo(".mt_nav_lf")
+				
+				if(convention_order!=null){
+					$('<a href="/abstract_list?convention_id='+convention_id+'">'+'</a>'+'<p>'+'论文发表'+'</p>').appendTo(".mt_nav_rg");
+				}else{
+					$('<a href="javascript:void(0)" id="fblunwen">'+'</a>'+'<p>'+'论文发表'+'</p>').appendTo(".mt_nav_rg");
+				}
+				
+			}else{
+				$('<a href="/paper?convention_id='+convention_id+'">'+'</a>'+'<p>'+'论文发表'+'</p>').appendTo(".mt_nav_rg");
+				$('<a href="/siginfo?convention_id=' + convention_id +'">' + '</a>' + '<p>' + '会议报名' + '</p>').appendTo(".mt_nav_lf");
+			}
+			
+		}
+		$("#fblunwen").click(function(){
+			showLaert("您还未注册会议，请您先点击“会议报名”按钮注册会议后，提交您的论文！");
+		})
+		//动态新闻
+		for(var i = 0; i <convention_news.length; i++) {
+			$('<li>' + '<a href="/newsinfo?convention_id=' + convention_id + '&news_id=' +convention_news[i].fid+ '">' +
+				'<div class="newstext ellipsis">' + convention_news[i].title + '</div>' +
+				'<div class="newstime">' + timeStamp2String(convention_news[i].create_time) + '</div>' +
+				'</a>' + '</li>').appendTo(".news_ul");
+		}
+		
+		//机构列表
+//		for(var i = 0; i < convention_exhibitors.length; i++) {
+//			$('<a href="' + convention_exhibitors[i].web_url + '" target="_blank" style="display: block; width: 135px; height: 55px; float:left"><img src="' + convention_exhibitors[i].image_url + '"></a>').appendTo(".str_move");
+//		}
+//		$(".str_wrap").height(55 + 'px')
+	}
+
+	var data = {
+		"convention_id": convention_id,
+		"uid":cook_uid
+	};
+	ajax_all_Filed("true", "true", "GET", convention_base, "json", data, convention);
+	
+	
+})

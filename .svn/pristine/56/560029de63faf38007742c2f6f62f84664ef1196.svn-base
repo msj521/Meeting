@@ -1,0 +1,59 @@
+{include file="public/header" /} {include file="public/meeting_nav" /} {include file="public/mbxue" /}
+<div class="conter960">
+    <div class="company">
+        <div class="company_list">
+            <h1>特别支持单位</h1>
+            <div class="teb" id="tej">
+
+            </div>
+        </div>
+        <div class="company_list">
+            <h1>A级支持</h1>
+            <div class="Aji" id="Aji">
+
+            </div>
+        </div>
+        <div class="company_list">
+            <h1>B级支持</h1>
+            <div class="Aji" id="Bji">
+
+            </div>
+        </div>
+        <div class="company_list">
+            <h1>C级支持</h1>
+            <div class="Cji" id="Cji">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+
+
+<script>
+    var download = "api/convention/exhibitor_list";
+
+    function mtdownload(data) {
+        if (data.data.exhibitor_list == undefined || data.data.exhibitor_list == "") {
+            return false;
+        }
+        for (var i = 0; i < data.data.exhibitor_list.length; i++) {
+            if (data.data.exhibitor_list[i].exhibitor_type == 1) {
+                $('<a href="' + data.data.exhibitor_list[i].web_url + '" target="_blank">' + '<img src="' + data.data.exhibitor_list[i].image_url + '">' + '</a>').appendTo("#tej");
+            } else if (data.data.exhibitor_list[i].exhibitor_type == 2) {
+                $('<a href="' + data.data.exhibitor_list[i].web_url + '" target="_blank">' + '<img src="' + data.data.exhibitor_list[i].image_url + '">' + '</a>').appendTo("#Aji");
+            } else if (data.data.exhibitor_list[i].exhibitor_type == 3) {
+                $('<a href="' + data.data.exhibitor_list[i].web_url + '" target="_blank">' + '<img src="' + data.data.exhibitor_list[i].image_url + '">' + '</a>').appendTo("#Bji");
+            } else {
+                $('<a href="' + data.data.exhibitor_list[i].web_url + '" target="_blank">' + '<img src="' + data.data.exhibitor_list[i].image_url + '">' + '</a>').appendTo("#Cji");
+            }
+        }
+        $('#Cji').css('width', $('#Cji').find('a').length * 124 + 'px')
+
+    }
+    var data = {
+        "convention_id": convention_id
+    };
+    ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload); //调用函数
+</script>

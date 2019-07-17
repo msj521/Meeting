@@ -1,0 +1,75 @@
+{include file="public/header" /}
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form" action='{$update|default="/"}' method="post" enctype="multipart/form-data">
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">考试名称<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text"  name="exam_name" lay-verify="required" autocomplete="off" placeholder="请输入" class="layui-input" value="{$list.exam_name|default=''}">
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">考试时长<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text" name="duration" lay-verify="required" placeholder="请输入" class="layui-input" value="{$list['duration']|default=0}">
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">考试总分<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text" name="score_total" lay-verify="required" placeholder="请输入" class="layui-input" value="{$list['score_total']|default=0}">
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label">及格分数<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text" name="score_pass" lay-verify="required" placeholder="请输入" class="layui-input" value="{$list['score_pass']|default=0}">
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">答案解析</label>
+              <div class="layui-input-block">
+                <input type="radio" name="show_analysis" value="1" title="是" checked>
+                <input type="radio" name="show_analysis" value="0" title="否" {if condition="isset($list['show_analysis']) and $list['show_analysis'] eq 0"} checked {/if}>
+              </div>
+            </div>
+            
+
+            <div class="layui-form-item">
+                <label for="description" class="layui-form-label">简介</label>
+                <div class="layui-input-block" >
+                    <textarea placeholder="请输入简介" required id="description" name="description" autocomplete="off"
+                    class="layui-textarea" style="height: 80px;">{$list.description|default=''}</textarea>
+                </div>
+            </div>
+
+          <input type="hidden" name="fid" value="{$list.fid|default=''}">
+
+          <div class="layui-form-item">
+            <label class="layui-form-label xbs768">状态</label>
+            <div class="layui-input-block">
+              <input type="radio" name="record_status" value="1" title="启用"checked>
+              <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+              <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+            </div>
+          </div>
+
+            <div class="layui-form-item">
+                <label for="L_sign" class="layui-form-label">
+                </label>
+                <button class="layui-btn" lay-filter="add" lay-submit="">
+                    保存
+                </button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+</body>
+</html>

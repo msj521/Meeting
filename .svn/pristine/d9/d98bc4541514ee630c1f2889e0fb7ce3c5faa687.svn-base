@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>申请发票</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link rel="stylesheet" href="/static/web/css/pulic.css">
+    <link rel="stylesheet" href="/static/web/css/ydui.css?rev=@@hash" />
+    <link rel="stylesheet" href="/static/web/css/demo.css" />
+    <script src="/static/web/js/ydui.flexible.js"></script>
+    <link rel="stylesheet" href="/static/web/css/bootstrap.css">
+    <script type="text/javascript">
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURI(r[2]);
+            return null;
+        }
+        var convention_id = getQueryString("convention_id");
+        var cook_uid = getQueryString("cook_uid");
+        var cook_token = getQueryString("cook_token");
+        //		var convention_id = 47;
+        //		var cook_uid = 2641;
+        //		var cook_token='ec1d65127d3d7db5890c429e85237a4f2029eb2e'
+    </script>
+    <style type="text/css">
+        @-webkit-keyframes loading-3 {
+            50% {
+                transform: scale(0.4);
+                opacity: .4;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .loading-3 {
+            position: relative;
+        }
+        
+        .loading-3 i {
+            display: block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #333;
+            position: absolute;
+        }
+        
+        .loading-3 i:nth-child(1) {
+            top: 25px;
+            left: 0;
+            -webkit-animation: loading-3 1s ease 0s infinite;
+        }
+        
+        .loading-3 i:nth-child(2) {
+            top: 17px;
+            left: 17px;
+            -webkit-animation: loading-3 1s ease -0.12s infinite;
+        }
+        
+        .loading-3 i:nth-child(3) {
+            top: 0px;
+            left: 25px;
+            -webkit-animation: loading-3 1s ease -0.24s infinite;
+        }
+        
+        .loading-3 i:nth-child(4) {
+            top: -17px;
+            left: 17px;
+            -webkit-animation: loading-3 1s ease -0.36s infinite;
+        }
+        
+        .loading-3 i:nth-child(5) {
+            top: -25px;
+            left: 0;
+            -webkit-animation: loading-3 1s ease -0.48s infinite;
+        }
+        
+        .loading-3 i:nth-child(6) {
+            top: -17px;
+            left: -17px;
+            -webkit-animation: loading-3 1s ease -0.6s infinite;
+        }
+        
+        .loading-3 i:nth-child(7) {
+            top: 0px;
+            left: -25px;
+            -webkit-animation: loading-3 1s ease -0.72s infinite;
+        }
+        
+        .loading-3 i:nth-child(8) {
+            top: 17px;
+            left: -17px;
+            -webkit-animation: loading-3 1s ease -0.84s infinite;
+        }
+        
+        .newloading {
+            position: fixed;
+            z-index: 999;
+            background: rgba(35, 35, 35, 0.3);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .canh_prlist {
+            float: left;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .canh_prlist_lf {
+            float: left;
+            width: 91px;
+            text-align: left;
+            font-size: 18px;
+            color: #555555;
+            line-height: 34px;
+        }
+        
+        .canh_prlist_rg {
+            float: left;
+            margin-left: 20px;
+        }
+        
+        .canh_prlist_rg input {
+            width: 350px;
+        }
+        
+        .invoice {
+            width: 170px;
+            height: 40px;
+            border-radius: 4px;
+            border: #979797 solid 1px;
+            text-align: center;
+            font-size: 18px;
+            color: #111;
+            float: left;
+            margin-right: 10px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        
+        .invoice_action {
+            border: #232323 solid 1px;
+            background: url(/static/web/images/icon_invoice.png) no-repeat;
+            background-position: right bottom;
+        }
+        
+        .title {
+            width: 100%;
+            padding: 15px 0 20px 0;
+            float: left;
+        }
+        
+        .title_txt {
+            font-size: 20px;
+            float: left;
+            padding-left: 10px;
+            border-left: #333 solid 5px;
+            color: #676767;
+        }
+        
+        .tijiao_btn {
+            border: 0px;
+            font-size: 20px;
+            background: #6FBBED;
+            color: #fff;
+            line-height: 60px;
+            width: 211px;
+            border-radius: 4px;
+        }
+        
+        .canh_prlist_lf.active::after {
+            content: '*';
+            color: #f00;
+        }
+        
+        .footers {
+            height: 250px;
+            background: #EFF0F0;
+            width: 100%;
+            float: left;
+        }
+        
+        .footer_txt {
+            width: 540px;
+            margin: auto;
+        }
+        
+        .fter_01 {
+            text-align: center;
+            color: #232323;
+            font-size: 18px;
+            margin-top: 50px;
+        }
+        
+        .fter_01 a {
+            color: #232323;
+            font-size: 18px;
+        }
+        
+        .fter_01 a img {
+            display: inline-block;
+        }
+        
+        .invoice_btn {
+            margin-left: -200px;
+        }
+    </style>
+</head>
+
+<body style="background: #fff;">
+    <section class="g-flexview">
+        <div class="mbxue ellipsis">
+            位置&nbsp;>&nbsp;会议&nbsp;>&nbsp;<span id="class_name">发票申请</span>
+        </div>
+        <section class="g-scrollview">
+            <div class="ip_annual_ct">
+                <p style="color: #598DC4; margin-bottom: 0.3rem;">注意：大会只提供电子发票，请各位老师仔细核对发票抬头和税号，发票开出后 <span style="color: #AB3B3B;">不得退换</span>！谢谢！</p>
+                <div class="title">
+                    <div class="title_txt2 title_txt">发票</div>
+                </div>
+                <div class="canh_pr">
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf">
+                            发票类型
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <div class="invoice invoice_action" id="f1">普通发票</div>
+                            <div class="invoice" id="f2">增值税专用发票</div>
+                        </div>
+                    </div>
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type1 canh_prlist_lf_type2">
+                            发票抬头
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="bill_title" value="" class="form-control" id="bill_title" placeholder="填写公司名称">
+                        </div>
+                    </div>
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type1 canh_prlist_lf_type2">
+                            税号
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="tax_num" value="" class="form-control" id="tax_num" placeholder="填写纳税人识别号">
+                        </div>
+                    </div>
+                    <div class="canh_prlist" id="khuh">
+                        <div class="canh_prlist_lf canh_prlist_lf_type2">
+                            开户行
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="account_bank" value="" class="form-control" id="account_bank" placeholder="请填写">
+                        </div>
+                    </div>
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type2">
+                            地址
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="sign_addr" class="form-control" id="sign_addr" placeholder="填写公司地址">
+                        </div>
+                    </div>
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type2">
+                            电话
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="sign_tel" value="" class="form-control" id="sign_tel" placeholder="填写公司电话">
+                        </div>
+                    </div>
+
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type2">
+                            账号
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="" value="" class="form-control" id="account" placeholder="填写开户行账号">
+                        </div>
+                    </div>
+                    <div class="canh_prlist">
+                        <div class="canh_prlist_lf canh_prlist_lf_type1 canh_prlist_lf_type2">
+                            邮寄地址
+                        </div>
+                        <div class="canh_prlist_rg">
+                            <input type="text" name="address" value="" class="form-control" id="address" placeholder="公司或住址以便您的签收">
+                        </div>
+                    </div>
+                    <div class="canh_prlist" style="text-align: center; margin-top: 20px;">
+                        <button class="tijiao_btn invoice_btn" id="tj_dingdan">提交订单</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="fp_btn">
+                <input type="button" name="" id="invoice_btn" value="提交" />
+            </div> -->
+        </section>
+    </section>
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script src="/static/web/js/ajax.js"></script>
+    <script src="/static/web/js/md5.js"></script>
+    <script src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var invoiceurl = "/api/convention/submit_invoice" //发票信息提交接口
+
+            var bill_type = 1; //默认发票类型
+
+            $(".invoice_btn").click(function() {
+                var bill_title = $("#bill_title").val(); //发票抬头
+                var tax_num = $("#tax_num").val(); //纳税识别号
+                var account_bank = $('#account_bank').val(); //开户行
+                var sign_addr = $('#sign_addr').val(); //公司地址
+                var sign_tel = $('#sign_tel').val(); //公司电话
+                var address = $('#address').val(); //邮寄地址
+                var account = $('#account').val(); //开户行账号
+                if (bill_type == 1) {
+                    if (bill_title == '' || tax_num == '' || address == '') {
+                        alert('标‘*’的为必填项，请完善信息！');
+                        return;
+                    }
+                } else {
+                    if (bill_title == '' || tax_num == '' || account_bank == '' || sign_addr == '' || sign_tel == '' || address == '' || account == '') {
+                        alert('标‘*’的为必填项，请完善信息！');
+                        return;
+                    }
+                }
+
+                function invoicefo(data) {
+                    if (data.code == 200) {
+
+                        // $("body .newloading").remove();
+                        //alert("发票抬头："+bill_title+"；纳税人识别号："+tax_num);
+                        //						window.location.href = "/convention?convention_id=" + convention_id + "&nav_id=1";
+                        //		
+                        window.location.href = "/";
+                    }
+                }
+                var invoiceata = {
+                    "convention_id": 47, //会议id
+                    "uid": $.cookie('cook_uid'), //用户id
+                    "bill_type": bill_type, //发票类型
+                    " bill_title": bill_title, //发票抬头
+                    "tax_num": tax_num, //纳税识别号
+                    "account_bank": account_bank, //开户行
+                    "sign_addr": sign_addr, //公司地址
+                    "sign_tel": sign_tel, //公司电话
+                    "address": address, //邮寄地址
+                    "account": account //开户行账号
+                };
+                ajax_all_Filed("true", "true", "POST", invoiceurl, "json", invoiceata, invoicefo); //调用函数
+            })
+
+            formRequist(); //默认时候渲染普通发票ui
+
+            //发票类型切换
+            $(".canh_prlist_rg").on('click', 'div', function() {
+                $(this).addClass('invoice_action').siblings().removeClass('invoice_action');
+                bill_type = $(this).index() - 0 + 1; //修改发票类型
+                formRequist(); //切换发票类型时候切换发票列表ui
+            })
+
+
+            function formRequist() {
+                if (bill_type == 1) {
+                    $('.canh_prlist_lf_type2').removeClass('active');
+                    $('.canh_prlist_lf_type1').addClass('active');
+                } else {
+                    $('.canh_prlist_lf_type1').removeClass('active');
+                    $('.canh_prlist_lf_type2').addClass('active');
+                }
+            }
+
+        })
+
+        // function Loadings() {
+        //     $('<div class="newloading"><div style="margin:50% auto; width: 0.5rem;"><div class="loading-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>').appendTo('body');
+        // }
+    </script>
+    {include file="public/footer2" /}

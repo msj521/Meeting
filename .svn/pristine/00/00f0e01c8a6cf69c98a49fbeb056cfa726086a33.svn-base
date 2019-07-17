@@ -1,0 +1,19 @@
+<div class="mbxue ellipsis">
+	位置&nbsp;>&nbsp;会议&nbsp;>&nbsp;<span id="class_name"></span>&nbsp;>&nbsp;<span id="title"></span>
+</div>
+<script>
+	$(function(){
+		var mbxurl = "api/convention/convention_base";
+		function mbx(data){
+			var convention_info = data.data.convention_info;
+			if(convention_info!=null){
+				$("#class_name").text(convention_info.class_name);
+				$("#title").text(convention_info.convention_name)
+				$("#meeting_img").attr({ src:convention_info.web_image_url , alt: ""})
+			}
+		}
+		var data = {"convention_id":convention_id};
+	   	ajax_all_Filed("true", "true", "GET", mbxurl, "json", data, mbx);//调用函数	
+	})
+	
+</script>

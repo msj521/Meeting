@@ -1,0 +1,440 @@
+---------------------------------------------------------------
+[ 2019-02-24T22:54:42+08:00 ] 110.75.242.101 POST /
+[ info ] forum.sific.vip/ [运行时间：0.034297s][吞吐率：29.16req/s] [内存消耗：3,181.90kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1573',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:30:37',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:30:41',
+  'notify_time' => '2019-02-24 22:54:41',
+  'subject' => '外地会员',
+  'sign' => 'L++KwyfkXuizL7X0Y8DfAFRCkVyfxEcaAdVdRTQ9uOeq+rQVeBFMvoGcyv4A6rGpLe0r9gbJgd5YwqImbSfnclhfaqZZ9e7rMazIVWtaAepXCbTdK+Dx9bpCIGy0jW7kleUZyT7r4aIqrrLVILW1cCz6sHnWigoQUxNid0OXGXp/AcrlbSLoOkpK9OIxK327ucm5O2bxjDe6chBtMYYoqzvE8DqpJv1rfN5yEbVo5VtJUtK+Ko6jedifMeOiY/gjueyDzgKrRxNqVZJ+zebNSJ85/0Lc1uN9qNdQGwY/EB7bbk4P9kkyzOBDEFNrn3m6hlVpPAUmcEXW6fQLhPLIKA==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:50,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:29:45&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:29:45&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022472615&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222133041070441049858796',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022472615',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020218866',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005748s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004556s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003800s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:03:18+08:00 ] 110.75.242.123 POST /
+[ info ] forum.sific.vip/ [运行时间：0.034452s][吞吐率：29.03req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1565',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:39:30',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:39:34',
+  'notify_time' => '2019-02-24 23:03:18',
+  'subject' => '外地会员',
+  'sign' => 'QJn666M0loOuBSqANWg8zu9ZnhNGTlLIZIsxaOYuUkP92xFbAcnOtOz3yOqO513vSTAYXn+OUtKiBe4FJmdmoY096Kkvg4Z36R4sYgTAgBEbWZjqXpofaqlmH6q0Ev+HR83O9Z1uIpcaT6dqIYBOS3qUuShezyBtBS5HbnCxqbZ3LggbxSEN5uxQ1OonNn8A3j9jGkvI061T/AykZ3qmZbC5trRB1Fm9rrB7iUnV+0PLpOoKWSzocbFl2cg5bLDKKSCdq1q8Cay3IfLWOEKP5cvwJPOfEdGNqDdPhXMkVGFgUbZFral2dtPrPzF4fpsTWjiwArnyRGE9D+R6GsLg/Q==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:51,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:39:17&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:39:17&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022494270&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222133934070441049707199',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022494270',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020031683',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005600s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004504s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003782s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:08:16+08:00 ] 110.75.242.247 POST /
+[ info ] forum.sific.vip/ [运行时间：0.031961s][吞吐率：31.29req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1579',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:44:23',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:44:27',
+  'notify_time' => '2019-02-24 23:08:16',
+  'subject' => '外地会员',
+  'sign' => 'lOhWgy07UwFtSEM8QhLSS1G9EHtvKCFE33voE1QIursVZQkbK1y269k+b20sXyB/+EBFuNnWi5Hg3BibOiSDMfMtm5F05hfbj7xAuoGikHw7BwhGzjF7jssx1/hw9q6Tqz7uHPnREgFzHEa6CoSft1CPRwLf7jdhGPfmpTTz7vZl67Ho/Kk1eqYc5R87O7bqxfh/SuHTQQ5ebpECbcKK8xzSO2VepTtMpsHXSBUJLIli/eMH/G29exDeiPudJ90owBSDArBZ6sH+D+lmE4i4DazA3uPHoaMGU+eCicdJKXUaUE6QkbGG3a3YOVpjtzp1CKVmbGVbolgxt9+sk+hADQ==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:52,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:43:17&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:43:17&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022424105&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222134427070441049817549',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022424105',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020211165',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004837s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003990s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003230s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:15:21+08:00 ] 110.75.242.42 POST /
+[ info ] forum.sific.vip/ [运行时间：0.032432s][吞吐率：30.83req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1565',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:51:18',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:51:24',
+  'notify_time' => '2019-02-24 23:15:21',
+  'subject' => '外地会员',
+  'sign' => 'Nf9LNlsvwNhh+Ai2nXVNeMOltiIeFV4h3YftsqaTuPhyiQBuO9hYROw255VECZPiQuCac/M3U/t75YCl0GqinCBUNK1tssKmW3gzGJAQm8oPO3TIijDziBN526OHxP96JuwZMmWtFX1728nxCbfyWoQN3TuMSkr5FMYWzLxQyL8/5XZlyx259PIgfdHf8D18qgwRiCF3moHXIZglkH7HokB3wWAuFn5aXhZGu0Ai5uAfJtIPAnPUV39W9wsGvBYUtZfv5qm4NxQmQOGCCgcEChK0+Kb3CFoYYv0aEvvIj9yNy82vihO94cmIqqcjPjT4WDRhg9sRyi5nF/h5ODOVHQ==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:53,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:51:02&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:51:02&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022451284&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222135124070441049695021',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022451284',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020113908',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005506s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004336s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003659s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:18:35+08:00 ] 110.75.242.91 POST /
+[ info ] forum.sific.vip/ [运行时间：0.031738s][吞吐率：31.51req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1577',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:53:48',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:54:30',
+  'notify_time' => '2019-02-24 23:18:35',
+  'subject' => '外地会员',
+  'sign' => 'NIvpkiPNEAWNMEQlmOOyIZRfdSsDS3dl4eTAU/WDiJBXpCSDPwoBXYhP5VVrkyNyX1y6Ln2uKM3dkTgKL+/E8Pce7cQnB6RS93ifgX7zk6qLWxYUVNmWTy7G5YNxCrTrQNeNAy6k8mEgqz+8xOA7HbbBtjQeaT0l6le/Al5kjAaRIiT2N39j7+j6rwljMs+umr1QiQ6+cDbB31qbPn9/tQ3VDVxSJtXWxLQ9Cgww/NhkoD7NyPcAA2Vd3wUz0ujnv+4Wauz9b3ncjlHh4+lvANmbCNF67oWWeVcb9hArJD6OguR3QXa5Sqt8pk3QBqdyh0ndfBtgpXRpdMp0tUlZsQ==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:54,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:53:38&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:53:38&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022459655&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222135430070441049626060',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022459655',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020055911',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004818s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.003869s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003214s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:25:28+08:00 ] 110.75.242.116 POST /
+[ info ] forum.sific.vip/ [运行时间：0.032833s][吞吐率：30.46req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1575',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 13:58:46',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 13:58:59',
+  'notify_time' => '2019-02-24 23:25:28',
+  'subject' => '外地会员',
+  'sign' => 'gB8n3lhgZehTqUArC84FkVgwK10Ti8q3XdMojONllUiIN19SF8/f/6oP4aFsJbAqCRCkw0ig2dTxh9Z7al9A9gLNZlJVF79G1ANgkMiBeLm9DEeoDCzXXHRWEOilh+cO/88LJ36Qo1oawDKpYIhVtgLAQusRIkPQqyQKrc33St9OlRrkm7r9VncAzNpwH2bMFaQFNPFIAhqA4+bZghlvKuHd/CmsALmKJuSjFyB+P+LLfszZlj3V4kABM0uJy8lx3Jtb9fXQWev+6O5TsNPA6s7EK3GblFQFXB/Rf1H1Ji84nxLp1Dx/9LMpYyNDWeoenMIvQPJQFrlbZvsy6iPdnA==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:55,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 13:58:38&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 13:58:38&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022476848&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222135900070441049721363',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022476848',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020107110',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005500s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004246s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003553s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:28:18+08:00 ] 110.75.242.42 POST /
+[ info ] forum.sific.vip/ [运行时间：0.033486s][吞吐率：29.86req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1571',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 14:04:14',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 14:04:23',
+  'notify_time' => '2019-02-24 23:28:18',
+  'subject' => '外地会员',
+  'sign' => 'WSH+Tj+K/HF3OPJLRFT0rhzvqZvYkDv7k1xs+Al3rKu051uENpE/X8Qbrmrutye3vRjt04LSYwmhxbFCPsl0b3/OMSOxufNFO9HFAvDESxWYGxmWTTZISn1GSXctTWa0TocoT14iMFfTQfdIVrE0nusqPcOTPE7rokSRTEGX2yFu4ta+c7QlPAnCEYc5thsYzsNyWMPHbK3LlpOJfQrkK36crmw6LQ3/9br5w7z8poPnC6OyzbuBPtfG9wcWz3MRqV63pD7GIhnOxGNV6+WG40A1kVTuQGeM6UHDxvyxG8LiSq3Bvx5bbJ2NscmYCkTrdPIcJqWtBQaj7dMEtclKUw==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:56,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 14:04:05&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 14:04:05&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.01&quot;,&quot;pay_number&quot;:&quot;2019022468056&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019022400222140423070441049837935',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.01&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022468056',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020031689',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.01',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005720s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004470s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003833s ]
+---------------------------------------------------------------
+[ 2019-02-24T23:36:50+08:00 ] 110.75.242.200 POST /
+[ info ] forum.sific.vip/ [运行时间：0.032915s][吞吐率：30.38req/s] [内存消耗：3,181.59kb] [文件加载：48]
+[ info ] [ LANG ] /home/wwwroot/default/SIFICYear/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'web',
+    1 => 'Index',
+    2 => 'convention',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/4.0',
+  'host' => 'forum.sific.vip',
+  'content-length' => '1573',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-02-24 14:11:53',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-02-24 14:12:02',
+  'notify_time' => '2019-02-24 23:36:50',
+  'subject' => '外地会员',
+  'sign' => 'cESFvkeYDYMz3juTnWbfWXM6kOi6IeaWz4VMj3qaoRWaDVw38G7XLMxhOujP+E8CsxYBJaCdTptLiFplCDm0ANJFgTvvE5WM0KDeStb8jpac0wqkbqyDW7wmTxFuEWgf3RKQ6urA8CQ18b0qNv2vqHusCHRIuSG9H1ximpV34G5vm+F6b4KxXuK/oKbM2/nR6km6b+ioxSBX7nZxMXtFVnNIOTPtEqTGzOa4w0VBb80WJ3TutqTACOP8i1kjkhm2zzqo6PuyvJhl+HEu7ec64tC1C/b9seLyUDXesnL7KD0xc/XgmLZLngPbRKEsP9SHcTgVZsi5X6+WRFxsC/i8sQ==',
+  'buyer_id' => '2088812174970445',
+  'body' => '{&quot;convention_name&quot;:&quot;2019\\u5e74\\u4f1a\\u6d4b\\u8bd5&quot;,&quot;fid&quot;:57,&quot;convention_id&quot;:47,&quot;ticket_id&quot;:14,&quot;order_number&quot;:&quot;2019T06&quot;,&quot;order_status&quot;:1,&quot;record_status&quot;:1,&quot;creator_id&quot;:6,&quot;create_time&quot;:&quot;2019-02-24 14:11:41&quot;,&quot;updater_id&quot;:0,&quot;update_time&quot;:&quot;2019-02-24 14:11:41&quot;,&quot;ticket_name&quot;:&quot;\\u5916\\u5730\\u4f1a\\u5458&quot;,&quot;price&quot;:&quot;0.02&quot;,&quot;pay_number&quot;:&quot;2019022410227&quot;,&quot;alipay_number&quot;:null}',
+  'invoice_amount' => '0.02',
+  'version' => '1.0',
+  'notify_id' => '2019022400222141202070441049733691',
+  'fund_bill_list' => '[{&quot;amount&quot;:&quot;0.02&quot;,&quot;fundChannel&quot;:&quot;ALIPAYACCOUNT&quot;}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '2019022410227',
+  'total_amount' => '0.02',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019022422001470441020074534',
+  'auth_app_id' => '2019022163298245',
+  'receipt_amount' => '0.02',
+  'point_amount' => '0.00',
+  'app_id' => '2019022163298245',
+  'buyer_pay_amount' => '0.02',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088431599976043',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\web\controller\Index->convention[ /home/wwwroot/default/SIFICYear/application/web/controller/Index.php ]
+[ info ] [ VIEW ] /home/wwwroot/default/SIFICYear/public/../application/web/view/meeting/meeting_info.html [ array (
+  0 => 'html',
+) ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005237s ] mysql:host=47.100.34.53;port=8888;dbname=live;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `base_menu_info` [ RunTime:0.004167s ]
+[ sql ] [ SQL ] SELECT `pid`,`fid`,`menu_name`,`route` FROM `base_menu_info` WHERE  (   app_type = 2 AND record_status = 1 AND (convention_ids  not like ('%47%') OR ISNULL(convention_ids)) ) ORDER BY `fid` ASC [ RunTime:0.003453s ]

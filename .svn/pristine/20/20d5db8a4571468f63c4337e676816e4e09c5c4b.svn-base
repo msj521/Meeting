@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>支付方式</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="/static/web/css/ydui.css?rev=@@hash"/>
+    <link rel="stylesheet" href="/static/web/css/demo.css"/>
+    <script src="/static/web/js/ydui.flexible.js"></script>
+	<script type="text/javascript">
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return decodeURI(r[2]);
+			return null;
+		}
+		var convention_id = getQueryString("convention_id");
+		var cook_uid = getQueryString("cook_uid");
+        var cook_token = getQueryString("cook_token");
+//		var convention_id = 45;
+//		var cook_uid = 2641;
+//		var cook_token='ec1d65127d3d7db5890c429e85237a4f2029eb2e'
+	</script>
+	<style type="text/css">
+	.cell-select{height: 0.6rem; width: 100%;}
+.opt{display: inline-block;}
+.opt label{font-size: 0.25rem;}
+@-webkit-keyframes loading-3{
+	50%{ transform:scale(0.4); opacity:.4;}
+	100%{ transform:scale(1); opacity:1;}
+	}
+.loading-3 { position:relative;}
+.loading-3 i{ display:block; width:15px;height:15px;border-radius:50%; background-color:#333; position:absolute;}
+.loading-3 i:nth-child(1){top:25px;left:0;-webkit-animation:loading-3 1s ease 0s infinite;}
+.loading-3 i:nth-child(2){top:17px;left:17px;-webkit-animation:loading-3 1s ease -0.12s infinite;}
+.loading-3 i:nth-child(3){top:0px;left:25px;-webkit-animation:loading-3 1s ease -0.24s infinite;}
+.loading-3 i:nth-child(4){top:-17px;left:17px;-webkit-animation:loading-3 1s ease -0.36s infinite;}
+.loading-3 i:nth-child(5){top:-25px;left:0;-webkit-animation:loading-3 1s ease -0.48s infinite;}
+.loading-3 i:nth-child(6){top:-17px;left:-17px;-webkit-animation:loading-3 1s ease -0.6s infinite;}
+.loading-3 i:nth-child(7){top:0px;left:-25px;-webkit-animation:loading-3 1s ease -0.72s infinite;}
+.loading-3 i:nth-child(8){top:17px;left:-17px;-webkit-animation:loading-3 1s ease -0.84s infinite;}
+.newloading{position: fixed; z-index: 999; background:rgba(35,35,35,0.3); top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%;}
+@keyframes hover-color {
+	from {
+		border-color: #c0c0c0;
+	}
+ 
+	to {
+		border-color: #3e97eb;
+	}
+}
+.magic-radio,
+.magic-checkbox {
+	position: absolute;
+	display: none;
+}
+ 
+.magic-radio[disabled],
+.magic-checkbox[disabled] {
+	cursor: not-allowed;
+}
+ 
+.magic-radio + label,
+.magic-checkbox + label {
+	position: relative;
+	display: block;
+	padding-left: 20px;
+	cursor: pointer;
+	vertical-align: middle;
+		
+}
+ 
+.magic-radio + label:hover:before,
+.magic-checkbox + label:hover:before {
+	animation-duration: 0.4s;
+	animation-fill-mode: both;
+	animation-name: hover-color;
+}
+ 
+.magic-radio + label:before,
+.magic-checkbox + label:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	content: '';
+	border: 1px solid #000;
+}
+.magic-radio + label:after,
+  .magic-checkbox + label:after {
+	position: absolute;
+	display: none;
+	content: '';
+}
+.magic-radio[disabled] + label,
+.magic-checkbox[disabled] + label {
+	cursor: not-allowed;
+	color: #fff;
+}
+.magic-radio[disabled] + label:hover, 
+.magic-radio[disabled] + label:before, 
+.magic-radio[disabled] + label:after,
+.magic-checkbox[disabled] + label:hover,
+.magic-checkbox[disabled] + label:before,
+.magic-checkbox[disabled] + label:after {
+	cursor: not-allowed;
+}
+.magic-radio[disabled] + label:hover:before,
+.magic-checkbox[disabled] + label:hover:before {
+	border: 1px solid #000;
+	animation-name: none;
+}
+ 
+.magic-radio[disabled] + label:before,
+.magic-checkbox[disabled] + label:before {
+	border-color: #000;
+}
+ 
+.magic-radio:checked + label:before,
+.magic-checkbox:checked + label:before {
+	animation-name: none;
+}
+ 
+.magic-radio:checked + label:after,
+.magic-checkbox:checked + label:after {
+	display: block;
+}
+.magic-radio + label:before {
+	border-radius: 50%;
+}
+.magic-radio + label:after {
+	top: 4px;
+	left: 4px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #000;
+}
+.magic-radio:checked + label:before {
+	border: 1px solid #000;
+}
+.magic-radio:checked[disabled] + label:before {
+	border: 1px solid #000;
+}
+.magic-radio:checked[disabled] + label:after {
+	background: #fff;
+}
+.magic-checkbox + label:before {
+	border-radius: 3px;
+}
+.magic-checkbox + label:after {
+	top: 0px;
+	left: 5px;
+	box-sizing: border-box;
+	width: 6px;
+	height: 12px;
+	transform: rotate(45deg);
+	border-width: 2px;
+	border-style: solid;
+	border-color: #fff;
+	border-top: 0;
+	border-left: 0;
+}
+.magic-checkbox:checked + label:before {
+    border: #000;
+    background: #000;
+}
+.magic-checkbox:checked[disabled] + label:before {
+	border: #000;
+	background: #000;
+}
+	</style>
+</head>
+<body style="background: #F1F4F6;">
+<section class="g-flexview">
+    <section class="g-scrollview">
+    	<div class="ip_annual_ct">
+			<p style="color: #598DC4; margin-bottom: 0.3rem;" >注册报道日期为5月16日</p>
+			<div class="ip_annual_ctlist">
+				<div class="ip_annual_ctlist_txt">
+					预计到会日期<span>*</span>
+				</div>
+				<div class="ip_annual_ctlist_input">
+					<select class="cell-select" id="start_time">
+		                <option value="0">请选择时间</option>
+		           </select>
+				</div>
+			</div>	
+			<div class="ip_annual_ctlist">
+				<div class="ip_annual_ctlist_txt">
+					预计离开日期<span>*</span>
+				</div>
+				<div class="ip_annual_ctlist_input">
+					<select class="cell-select" id="end_time">
+		                <option value="0">请选择时间</option>
+		          </select>
+				</div>
+			</div>	
+			<div class="ip_annual_ctlist">
+				<div class="ip_annual_ctlist_txt">
+					是否需要发票<span>*</span>
+				</div>
+				<div class="ip_annual_ctlist_input">
+					<div class="opt"  style="float: left; margin-top: 0.1rem;">
+						<input class="magic-radio" type="radio" name="fp" id="fs1" value="1" checked="checked">
+						<label for="fs1">是</label>
+					</div>
+					<div class="opt" style="float: left; margin-left: 0.5rem; margin-top: 0.1rem;">
+						<input class="magic-radio" type="radio" name="fp" id="fs2" value="2">
+						<label for="fs2">否</label>
+					</div>
+				</div>
+			</div>	
+			<div id="title_abs4" style="margin-bottom: 0.3rem;"></div>
+		</div>
+		
+		<div class="ip_annual_ct" style="margin-top: 0.3rem;">
+			<h1>选择支付方式</h1>
+			<div class="ip_annual_ctlist" id="pay_fs">
+				<div class="pay_fs action">
+					在线支付
+				</div>
+			</div>
+		</div>
+    	<div class="bottomlist">
+    		<div class="zonge">
+    			<span class="heji">合计：</span><span class="numbers"></span>
+    		</div>
+    		<input type="button" name="" id="annual_btn" value="下一步" class="next_btn"/>
+    	</div>
+    </section>
+</section>
+<link rel="stylesheet" type="text/css" href="/static/web/css/LCalendar.min.css"/>
+<script type="text/javascript" src="/static/web/libs/jquery/jquery.js" ></script>
+<script type="text/javascript" src="/static/web/js/LCalendar.js" ></script>
+<script src="/static/web/js/ajax.js"></script>
+<script src="/static/web/js/md5.js"></script>
+<script type="text/javascript" src="/static/web/js/app/siginfo.js" ></script>
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+		var signupurl = "/api/convention/signup";//提交接口
+		var userurl = "/api/convention/personal";
+		
+		var storage = window.localStorage;
+		var jsonStr  =  JSON.parse(storage.getItem("baseArr"));
+		$(".numbers").text(jsonStr.rmbs)
+			
+		var ticket_id ="";
+		function userinfo(data) {
+			var Timelist = data.data.meeting_time;
+			var take_care = data.data.take_care;
+			if(take_care){
+				$(take_care[4]).appendTo("#title_abs4");
+			}
+			if(data.data.length!=0 && data.data.pay_state == "报名成功"){
+				ticket_id = data.data.ticket_id;
+				$(".numbers").text(data.data.price);
+				var str="";
+				for(var i=0; i<Timelist.length;i++){
+				str+='<option value="'+Timelist[i].detail_name+'"';
+					if(data.data.start_time==Timelist[i].detail_name||data.data.end_time==Timelist[i].detail_name){
+						str+='selected="selected"';
+					}
+				str+='>'+Timelist[i].detail_name+'</option>'
+				}
+				$("#start_time").append(str);
+				$("#end_time").append(str)
+				
+				//是否需要发票
+				$(".opt input[name=fp]").each(function() {
+					var eachvalue = $(this).val();
+					if(eachvalue == data.data.invoice_status) {
+						$(this).attr("checked", 'true')
+					}
+				});
+			}else{
+				var str="";
+				for(var i=0; i<Timelist.length;i++){
+					str+='<option value="'+Timelist[i].detail_name+'">'+Timelist[i].detail_name+'</option>';
+				}
+				$("#start_time").append(str);
+				$("#end_time").append(str)
+			}
+		}
+		  
+		var userdata = {
+			"convention_id": convention_id,
+			"uid": cook_uid
+		};
+		ajax_all_Filed("true", "true", "GET", userurl, "json", userdata, userinfo); //调用函数
+		//提交数据
+		$("#annual_btn").click(function() {
+			if($("#start_time").val() == 0) {
+					alert("请选择入会时间！");
+					return false;
+				}
+			if($("#end_time").val() == 0) {
+					alert("请选择离开时间！");
+					return false;
+				}
+			Loadings();
+			var invoice_status = $(".ip_annual_ctlist_input input[name=fp]:checked").val();
+			var start_time = $("#start_time").val();
+			var end_time = $("#end_time").val()
+			jsonStr.invoice_status = invoice_status;
+			jsonStr.start_time = start_time;
+			jsonStr.end_time = end_time;
+			
+			function dingdan(data) {
+				if(data.code == 200) {
+					$("body .newloading").remove();
+					alert(data.msg)
+					if(invoice_status==1){
+						window.location.href = "/ip_fapiao?convention_id=" + convention_id+'&cook_uid'+cook_uid;
+					}
+					//storage.removeItem("baseArr");
+				}
+	
+			}
+			var data = {
+				"convention_id": convention_id,
+				"uid": cook_uid,
+				"sign_info": jsonStr
+			};
+			ajax_all_Filed("true", "true", "POST", signupurl, "json", data, dingdan); //调用函数
+		})
+			
+	})
+	
+function Loadings(){
+	$('<div class="newloading"><div style="margin:50% auto; width: 0.5rem;"><div class="loading-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>').appendTo('body');
+}
+</script>

@@ -1,0 +1,77 @@
+{include file="public/header" /}
+<style type="text/css">
+		.str4 a{margin-right: 10px;}
+		.str4 a img {width: auto;
+	height: auto;
+	max-width: 100%;
+	max-height: 100%;}
+	</style>
+		<div class="conter960">
+			{include file="public/mbxue" /}
+			{include file="public/meeting_nav" /}
+			<div class="mt_list_module">
+					<div class="meeting_ct">
+					<div class="mt_nav_m">
+						<div class="mt_nav">
+							<div class="mt_nav_lf"></div>
+							<div class="mt_nav_rg"></div>
+						</div>
+					</div>
+					<div class="mt_news">
+						<div class="mt_newslist">
+							<div class="mt_news_lf">
+								<h1 class="mt_news_h1">重要日期</h1>
+								<div class="timeday" id="timeday">
+									
+								</div>
+							</div>
+							<div class="mt_news_rg">
+								<h1 class="mt_news_h1">新闻动态</h1>
+								<div class="news_ullist">
+									<ul class="news_ul">
+									</ul>
+								</div>
+							</div>
+						</div>
+						
+						
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+<div class="paomad">
+	<div class="conter960">
+		<div class="sponsor_list">
+			<h2 class="sponsor_h2t">特别支持</h2>
+			<div class="sponsor_list_ct" id="sponsor_list_t">
+			</div>
+		</div>
+		<div class="sponsor_list">
+			<h2 class="sponsor_h2A">A级支持</h2>
+			<div class="sponsor_list_ct" id="sponsor_list_A">
+			</div>
+		</div>
+		<div class="sponsor_list">
+			<h2 class="sponsor_h2B">B级支持</h2>
+			<div class="sponsor_list_ct" id="sponsor_list_B">
+			</div>
+		</div>
+		<div class="sponsor_list">
+			<h2 class="sponsor_h2C">C级支持</h2>
+			<div class="sponsor_list_ct" id="sponsor_list_C">
+			</div>
+		</div>
+	</div>
+</div>
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/meetinginfo.js" ></script>
+<script>
+	$(function(){
+		$("#sponsor_list_t a").eq(0).css('margin-left','0px')
+		$("#sponsor_list_A a").eq(0).css('margin-left','0px')
+		$("#sponsor_list_B a").eq(0).css('margin-left','0px')
+		$("#sponsor_list_C a").eq(0).css('margin-left','0px')
+	})
+</script>

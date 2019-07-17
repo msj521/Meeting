@@ -1,0 +1,113 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>系统管理</cite></a>
+              <a><cite>{$title}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+  <xblock>
+    <span class="layui-btn" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+<table class="layui-hide" id="table" lay-filter="tableTool"></table>
+<div class="page">
+  {$list->render()}
+</div>
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="a">
+  <a  href="javascript:;"  lay-event="A"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6f5;</i></a>
+</script>
+
+<script type="text/html" id="b">
+  <a  href="javascript:;"  lay-event="B"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6b3;</i></a>
+</script>
+
+<script type="text/html" id="c">
+  <a  href="javascript:;"  lay-event="C"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe724;</i></a>
+</script>
+
+<script type="text/html" id="d">
+  <a  href="javascript:;"  lay-event="D"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe705;</i></a>
+</script>
+
+<script type="text/html" id="e">
+  <a  href="javascript:;"  lay-event="E"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6c7;</i></a>
+</script>
+
+<script type="text/html" id="f">
+  <a  href="javascript:;"  lay-event="F"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe725;</i></a>
+</script>
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  // console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+
+    if (dataList.data[i].record_status == 1) {
+      dataList.data[i].record_status = '启用';
+    } else if (dataList.data[i].record_status == 2) {
+      dataList.data[i].record_status = '禁用';
+    } else if (dataList.data[i].record_status == -1) {
+      dataList.data[i].record_status = '标记删除';
+    } else if (dataList.data[i].record_status == -2) {
+      dataList.data[i].record_status = '彻底删除';
+    }
+
+  }
+
+  // console.log(dataList);
+  layui.use(['table', 'layer'], function () {
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      , data: dataList.data
+      , cols: [[
+        { field: 'fid', width: 80, title: 'ID', sort: true }
+        , { title: '关于我们', toolbar: '#a' }
+        , { title: '版权声明', toolbar: '#b' }
+        , { title: '免责声明', toolbar: '#c' }
+        , { title: '举报投诉', toolbar: '#d' }
+        , { title: '意见建议', toolbar: '#e' }
+        , { title: '联系我们', toolbar: '#f' }
+        , { field: 'record_status', width: 80, title: '状态' }
+      ]]
+      , page: false
+      , limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function (obj) {
+      var data = obj.data;
+      if (obj.event === 'A') {
+        member_edit('关于我们', '/sys/explain/edit', '/sys/explain', data.fid + '&A', 0, 0)
+      } else if (obj.event === 'B') {
+        member_edit('版权声明', '/sys/explain/edit', '/sys/explain', data.fid + '&B', 0, 0)
+      } else if (obj.event === 'C') {
+        member_edit('免责声明', '/sys/explain/edit', '/sys/explain', data.fid + '&C', 0, 0)
+      } else if (obj.event === 'D') {
+        member_edit('举报投诉', '/sys/explain/edit', '/sys/explain', data.fid + '&D', 0, 0)
+      } else if (obj.event === 'E') {
+        member_edit('意见建议', '/sys/explain/edit', '/sys/explain', data.fid + '&E', 0, 0)
+      } else if (obj.event === 'F') {
+        member_edit('联系我们', '/sys/explain/edit', '/sys/explain', data.fid + '&F', 0, 0)
+      }
+    });
+
+  })
+
+</script>
+</body>
+</html>

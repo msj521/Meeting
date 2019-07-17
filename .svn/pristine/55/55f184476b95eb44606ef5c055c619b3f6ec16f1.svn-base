@@ -1,0 +1,114 @@
+{include file="public/header" /}
+<style type="text/css">
+  table {
+    table-layout: fixed;
+  }
+
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会议管理</cite></a>
+              <a><cite>日程列表</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/meet/agenda" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <label class="layui-form-label">创建时间</label>
+        <input TYPE="hidden" name="fid" value="{$fid}">
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="开始日" id="LAY_demorange_s" name="start_time" value="{$start}">
+        </div>
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="截止日" id="LAY_demorange_e" name="end_time" value="{$end}">
+        </div>
+
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off"
+                 class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <button class="layui-btn" onclick="member_edits('添加','{$edit|default='/'}','{$index|default='/'}','','{$fid|default='0'}','')"><i class="layui-icon">&#xe608;</i>添加</button>
+    <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'{$del|default='/'}','{$index|default='/'}')"><i class="layui-icon">&#xe640;</i>批量删除</button> 
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th width="5%">
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i>
+        </div>
+      </th>
+      <th width="5%">ID</th>
+      <th width="10%">日程名称</th>
+      <th width="10%">会议室</th>
+      <th width="10%">专家</th>
+      <th width="15%">开始时间</th>
+      <th width="15%">结束时间</th>
+      <th width="8%">时间日程</th>
+      <th width="8%">状态</th>
+      <th width="8%">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">
+          &#xe605;</i></div>
+      </td>
+      <td>{$vo.fid}</td>
+      <td title="{$vo.schedule_name}">{$vo.schedule_name}</td>
+      <td title="{$vo.room_name}">{$vo.room_name}</td>
+      <td title="{$vo.expert_name}">{$vo.expert_name}</td>
+      <td title="{$vo.start_date}">{$vo.start_date}</td>
+      <td title="{$vo.end_date}">{$vo.end_date}</td>
+      <td style="text-align: center">
+        <a href="javascript:;" onclick="member_edits('时间日程','/meet/time_agenda','{$index|default='/'}','{$vo.fid}','{$vo.convention_id|default=0}','{$vo.room_id|default=0}')"
+           class="ml-5" style="text-decoration:none">
+          <i class="iconfont">&#xe6bf;</i>
+        </a>
+      </td>
+      <td>{$vo.record_status|is_status}</td>
+      <td class="td-manage">
+              <a title="编辑" href="javascript:;" onclick="member_edits('编辑','{$edit|default='/'}','{$index|default='/'}','{$vo.fid}','{$vo.convention_id|default=0}','')"
+                 class="ml-5" style="text-decoration:none" >
+                <i class="layui-icon" >&#xe642;</i>
+              </a>
+
+              <a title="删除" href="javascript:;" onclick="member_dels('{$vo.fid}','{$del|default='/'}','{$index|default='/'}','{$vo.convention_id|default=0}')"
+                 style="text-decoration:none">
+                <i class="layui-icon">&#xe640;</i>
+              </a>
+      </td>
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+{include file="public/top_js" /}
+<script>
+</script>
+</body>
+</html>

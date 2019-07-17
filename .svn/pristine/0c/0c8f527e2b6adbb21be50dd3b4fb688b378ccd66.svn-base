@@ -1,0 +1,34 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+  <form class="layui-form" action='{$update|default="/"}' method="post">
+
+    <div class="layui-form-item">
+      <label for="actual_pay" class="layui-form-label">实际支付<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="actual_pay" name="actual_pay" value="{$list['actual_pay']|default=0}" required lay-verify="actual_pay" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label xbs768">支付状态</label>
+        <div class="layui-input-block">
+          <input type="radio" name="pay_status" value="1" title="未支付" checked>
+          <input type="radio" name="pay_status" value="2" title="支付成功" {if condition="isset($list['pay_status']) and $list['pay_status'] eq 2"} checked {/if}>
+        </div>
+    </div>
+
+    <input type="hidden"  name="convention_id"  value="{$list['convention_id']|default=0}">
+	 <input type="hidden"  name="creator_id"  value="{$list['creator_id']|default=0}">
+    <input type="hidden"  name="fid"  value="{$list['fid']|default=$fid}">
+
+    <div class="layui-form-item">
+      <label  class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit" >保存</button>
+    </div>
+  </form>
+</div>
+<script>
+</script>
+</body>
+</html>

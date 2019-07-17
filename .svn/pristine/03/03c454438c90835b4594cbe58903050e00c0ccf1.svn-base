@@ -1,0 +1,139 @@
+<style>
+    .swiper-container {
+        width: 100%;
+    }
+    
+    .swiper-slide {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .swiper-slide a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .swiper-slide img {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+    
+    .swiper-pagination span {
+        width: 30px;
+        border-radius: 0;
+    }
+    
+    @media screen and (max-width: 800px) {
+        .swiper-container {
+            width: 1280px !important;
+            height: 720px !important;
+        }
+        .meet-center {
+            width: 1280px !important;
+        }
+        .meet_main {
+            width: 1280px !important;
+        }
+        .footers {
+            width: 1280px !important;
+        }
+    }
+</style>
+<!-- 轮播图 -->
+<div class="swiper-container meet_banner">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <a href=""><img src="" alt=""></a>
+        </div>
+        <div class="swiper-slide">
+            <a href=""><img src="" alt=""></a>
+        </div>
+        <div class="swiper-slide">
+            <a href=""><img src="" alt=""></a>
+        </div>
+        <div class="swiper-slide">
+            <a href=""><img src="" alt=""></a>
+        </div>
+    </div>
+    <!-- 如果需要分页器 -->
+    <!-- <div class="swiper-pagination"></div> -->
+</div>
+
+<script src="/static/web/js/swiper.min.js"></script>
+<script>
+    var mySwiper = new Swiper('.swiper-container', {
+            direction: 'horizontal', // 设置轮播的方向
+            observer: true, //监听器
+            autoplay: {
+                delay: 3000, //播放时间间隔
+                disableOnInteraction: false,
+            },
+            mousewheels: true,
+            pagination: {
+                el: '.swiper-pagination', // 分页器配置
+                clickable: true
+            }
+        })
+        /*鼠标移入停止轮播，鼠标离开 继续轮播*/
+    var comtainer = document.querySelector('.swiper-container');
+    comtainer.onmouseenter = function() {
+        mySwiper.autoplay.stop(); //鼠标移入轮播图，轮播停止
+    };
+    comtainer.onmouseleave = function() {
+        mySwiper.autoplay.start(); //鼠标离开轮播图，轮播图开始自动轮播
+    }
+
+    $(function() {
+        function homelist(data) {
+            if (data.code == 414) {
+                return false;
+            }
+            var banner = data.data.banner_list;
+            let banner_str = '';
+            for (var i = 0; i < banner.length; i++) {
+                banner_str += `<div class="swiper-slide" style="width:100%;"><a href="${banner[i].location_url}"><img src="${banner[i].web_image_url}" title="${banner[i].title}" style="display:block;width:100%;height:100%;"></a></div>`
+            }
+            $('.swiper-container').css({
+                height: window.innerHeight * .55 + 'px'
+            });
+            $('.swiper-wrapper').html(banner_str); //轮播图字符串渲染
+        }
+        var bannerurl = "/api/index/first_page"; //轮播图数据所在接口
+        var home_data = {};
+
+        ajax_all_Filed("true", "true", "POST", bannerurl, "json", home_data, homelist); //封装ajax得到数据执行homelist方法	
+    })
+
+    $(function() {
+        if (localStorage_info != null && localStorage_info != "" && localStorage_info.fid == convention_id) {
+            var localStorage_info = JSON.parse(localStorage.getItem("convention_info"))
+            $("#class_name").text(localStorage_info.class_name);
+            $("#title").text(localStorage_info.convention_name)
+            $("#meeting_img").attr({
+                src: localStorage_info.top_image_url,
+                alt: ""
+            })
+        } else {
+            var mbxurl = "api/convention/convention_base";
+            var data = {
+                "convention_id": convention_id
+            };
+            ajax_all_Filed("true", "true", "GET", mbxurl, "json", data, mbx); //调用	
+        }
+
+        function mbx(data) {
+            var convention_info = data.data.convention_info;
+            if (convention_info != null) {
+                storage.setItem('convention_info', JSON.stringify(data.data.convention_info));
+                $("#class_name").text(convention_info.class_name);
+                $("#title").text(convention_info.convention_name)
+                $("#meeting_img").attr({
+                    src: convention_info.top_image_url,
+                    alt: ""
+                })
+            }
+        }
+    })
+</script>

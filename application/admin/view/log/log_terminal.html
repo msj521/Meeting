@@ -1,0 +1,121 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>系统管理</cite></a>
+              <a><cite>运行日志</cite></a>
+              <a><cite>{$title}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/sys/log_terminal" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">  
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="终端IMEI/终端型号" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <!-- <button class="layui-btn" onclick="member_edit('添加','/sys/log_terminal/edit','/sys/log_terminal','')"><i class="layui-icon">&#xe608;</i>添加</button> -->
+    <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'/sys/log_terminal/delete','/sys/log_terminal')"><i class="layui-icon">&#xe640;</i>批量删除</button>
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th style="width:40px;">ID</th>
+      <th>用户名</th>
+      <th>终端IMEI</th>
+      <th>终端型号</th>
+      <th>CPU</th>
+      <th>memory</th>
+      <th>flash</th>
+      <th>其他</th>
+      <th>创建时间</th>
+      <th>状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>{$vo.fid}</td>
+      <td>{$vo.user_name}</td>
+      <td>{$vo.imei}</td>
+      <td>{$vo.model}</td>
+      <td>{$vo.cpu}</td>
+      <td>{$vo.memory}</td>
+      <td>{$vo.flash}</td>
+      <td>{$vo.content}</td>
+      <td>{$vo.create_time}</td>
+      <td>{$vo.record_status|is_status}</td>
+      <td class="td-manage">
+        <!-- <a title="编辑" href="javascript:;" onclick="member_edit('编辑','/sys/log_terminal/edit','/sys/log_terminal','{$vo.fid}',0,0)"
+           class="ml-5" style="text-decoration:none">
+          <i class="layui-icon" >&#xe642;</i>
+        </a> -->   
+        <a title="禁用" href="javascript:;" onclick="member_del('{$vo.fid}','/sys/log_terminal/delete','/sys/log_terminal','{$vo.user_name}','{$vo.record_status}')"
+           style="text-decoration:none">{if condition="$vo.record_status eq 1"}禁用{else}启用{/if}</a>
+      </td>      
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+
+<script>
+  function member_del(id, url, urls,user_name,record_status) {
+    if (id == -1) {
+      var ids = tableCheck.getData();
+    } else {
+      var ids = id;
+    }
+    if (ids == '' || ids == null || ids < 0) {
+      layer.msg('请选择要删除的数据！', {icon: 2, time:2000});
+    } else {
+      //询问框
+      layer.confirm('确认要对该用户 【'+ user_name+'】状态操作？', {
+        btn: ['是','否']
+      }, function(){
+        is_del(ids,url,urls,record_status);
+      }, function(){
+        window.location.href = urls;
+      });
+    }
+  }
+
+  function is_del(ids,url,urls,type){
+    //发异步删除数据
+    $.ajax({
+      type: "post",
+      url: url,
+      data: {fid:ids,urls:urls,type:type},
+      dataType: "json",
+      success: function (data) {
+        if (data.code == 1) {
+          layer.msg("操作成功", {icon: 1, time: 1000});
+        } else {
+          layer.msg("操作失败", {icon: 1, time: 1000});
+        }
+        setTimeout(function () {
+          window.location.href = urls;
+        }, 1000);
+      }
+    });
+  }
+</script>
+</body>
+</html>

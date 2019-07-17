@@ -1,0 +1,25 @@
+{include file="public/header" /}
+	<body>
+		{include file="public/top" /}
+		<div class="containerlist">
+			{include file="public/label" /}
+			<div class="ctpage1" style="padding-top: 0px;">	
+				<div class="conter1200">
+					<div class="newslft">
+						<div class="colleglist">
+							{$content}
+						</div>
+					</div>
+						{include file="public/newsrg" /}
+				</div>		
+			</div>
+		</div>
+			
+			
+		</div>
+		{include file="public/partner" /}
+		<div class="footer"> 
+			{include file="public/footer2" /}
+		</div>
+	</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title></title>
+	</head>
+	<style type='text/css'>
+		*, *:before, *:after { box-sizing: border-box; outline: none; }
+		html, body { height: 100%; }
+		body { background-color: #F5F5F5; font-size: 12px; -webkit-font-smoothing: antialiased; font-family: '微软雅黑', arial, sans-serif; }
+		body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, iframe { margin: 0; padding: 0; }
+		img, article, aside, details, figcaption, figure, footer, header, menu, nav, section, summary, time, mark, audio, video { display: block; margin: 0; padding: 0; }
+		h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+		fieldset, img { border: 0; }
+		address, caption, cite, dfn, em, th, var, i, em { font-style: normal; font-weight: normal; }
+		ol, ul { list-style: none; }
+		a { text-decoration: none;  }
+		a:hover { text-decoration: none; }
+		a, label, button, input, select { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+		.contlist{width: 800px; margin:0 auto;}
+		.contlist_ct{display: inline-block; width: 100%; background: #fff; 
+		-webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+		-moz-box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.imglist{display: inline-block; width: 100%; height: 114px;}
+	.imglist img{width: auto;height: auto;max-width: 100%;max-height: 100%;}
+	.contlist_ct_txt{width: 720px; margin:0 auto;}
+	.ft_center{padding-top: 10px; padding-bottom: 10px;}
+	background-color: #FFFFFF;
+border: 1px solid #CCCCCC;
+box-shadow: 0 1px 11px #CCCCCC;
+margin: 5px auto;
+padding-bottom: 10px;}
+ .v_warp {
+MARGIN: 10px; LINE-HEIGHT: 1.6em; BORDER: 3px double #FFF; margin:0 20px; padding:8px 18px 18px;
+}
+ .v_warp H3{ text-align:center; font-size:18px; margin:0 0 20px; }
+ .visa {
+background:url('http://192.168.1.8:8012/Assets/userfiles/sys_eb538c1c-65ff-4e82-8e6a-a1ef01127fed/images/paid.jpg') no-repeat scroll center bottom transparent
+}
+ .Alldiv {
+LINE-HEIGHT: 1.6em; BORDER: 1px dashed #FFF; padding:5px 18px; border:1px #999 dotted; background:#f9f9f9;
+}
+ .clear{ clear:both; }
+ a.down_link{ font-size:16px; color:#0000FF; font-weight:bold; text-decoration:underline;}
+ a.down_link:hover{ color:#990000; text-decoration:underline;}
+ .v_info a{ color:#ff6600; text-decoration:underline; font-weight:bold;}
+ .v_info a:hover{ color:#0000FF;}
+ table#The_onlyTab{
+border-top:2px solid #999;
+border-bottom:none;
+border-left:none;
+border-right:none;
+width:700px;
+}
+ table#The_onlyTab td, table#The_onlyTab th{
+border-bottom: 1px solid #999;
+padding: 3px;
+word-wrap: break-word;
+text-align:center;
+}
+ table#The_onlyTab th {
+background: none repeat scroll 0 0 #F4F4F4;
+color: #333;
+font-weight: bold;
+}
+ .onpay{ border: 3px double #f00;
+background:#FFE;
+color: #666666;
+font-size: 12px;
+margin: 5px 0px;
+padding: 10px 30px;
+text-align:center;}
+ .onpay p{ margin-bottom:10px;}
+ #cf_t{
+color: #666666;
+font-family: arial;
+font-size: 18px;
+font-weight: bold;
+padding-top: 30px;
+text-align: center;}
+ #foot{ color:#666; padding:15px 22px 10px; }
+ .ft_center{ text-align:left; font-size:11px; }
+ .table_one {
+border-collapse: collapse;
+border-top: 1px solid #EEEEEE;
+font-size: 11px;
+margin: 20px auto;
+width: 650px;
+}
+ .table_one thead {
+background-color: #DDDDDD;
+}
+ .table_one thead th {
+border-right: 1px solid #FFFFFF;
+color: #10506F;
+}
+ .table_one td {
+border-bottom: 1px solid #EEEEEE;
+padding: 4px 12px;
+}
+ .table_one .odd {
+background-color: #fff;
+}
+	</style>
+	<body>
+		<div class='contlist'>
+			<div class='contlist_ct'>
+				<div class='imglist'>
+					<img src='images/SIFIC2018 Banner.jpg' />
+				</div>
+				<div class='contlist_ct_txt'>
+					<div class='v_warp '>
+					<h3 style='text-align: center;    font-size: 18px; margin: 20px 0 20px; font-weight: normal;'>付款确认函</h3>
+					<div><strong>尊敬的用户,</strong></div>
+					<div style='line-height: 1.5rem;'>系统已重置您的登录密码为：SIFIC27206。请使用新密码登录（http://2018.sific.org.cn/Passport/Login）。如有任何疑问，请随时与大会注册秘书处联系！</div>
+
+					<p style='line-height: 1.5rem; margin-bottom: 30px; margin-top: 30px;'>感谢您对SIFIC 2018会议的大力支持！</p>
+					
+					<p>致敬！<br>
+			SIFIC2018注册秘书处</p>
+
+					<div style='padding-top: 20px;'>
+						<hr size='1' style='margin: 10px 0px; border-top-color: rgb(153, 153, 153); border-top-width: 1px; border-top-style: dashed;'>
+						<div id='foot'>
+						<div class='ft_center'>
+						<p align='center' style='line-height: 1.5rem;'><strong style='color: #666;'>第14届上海国际医院感染控制论坛摘要秘书处</strong><br>
+						邮箱: <a href='mailto:Abstract@sific.org.cn' style='color: #;'>Abstract@sific.org.cn</a><strong><u> </u></strong></p>
+			
+						<p align='center'>电话：021-3279 8784</p>
+						</div>
+						</div>
+					</div>
+					</div>
+					</div>
+					<div style='padding: 5px 15px 0px 5px; text-align: right; color: rgb(136, 136, 136); border-top-color: rgb(204, 204, 204); border-top-width: 1px; border-top-style: solid; line-height: 45px;'>这是系统回执邮件,请不要回复!</div>
+			
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

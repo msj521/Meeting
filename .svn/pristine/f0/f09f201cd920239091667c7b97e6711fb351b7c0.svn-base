@@ -1,0 +1,133 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>系统管理</cite></a>
+              <a><cite>运行日志</cite></a>
+              <a><cite>{$title}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/sys/log_login" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <select name="status" lay-search="" >
+            <option value="">是否锁定</option>
+            {volist name="is_no" key="ko" id="vo"}
+            <option value="{$ko}"  {if condition="$ko eq $status"} selected="selected" {/if} >{$vo}</option>
+            {/volist}
+          </select>
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="用户姓名/登录地址/终端IMEI" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  {if condition="fid eq 5"}
+  <xblock>
+    <button class="layui-btn" onclick="member_edit('添加','/sys/log_login/edit','/sys/log_login','')"><i class="layui-icon">&#xe608;</i>添加</button>
+    <button class="layui-btn layui-btn-danger" onclick="member_del(-1,'/sys/log_login/delete','/sys/log_login')"><i class="layui-icon">&#xe640;</i>批量删除</button>
+  </xblock>
+  {/if}  
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+<!--       <th style="width:20px;">
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+      </th> -->
+      <th style="width:40px;">ID</th>
+      <th>用户名</th>
+      <th>终端IMEI</th>
+      <th>登录地址</th>
+      <th>登录结果</th>
+      <th>错误次数</th>
+      <th>次数上限</th>
+      <th>登录时间</th>
+      <th>状态</th>
+      <th style="width:120px;">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+<!--       <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">&#xe605;</i></div>
+      </td> -->
+      <td>{$vo.fid}</td>
+      <td>{$vo.user_name}</td>
+      <td>{$vo.imei}</td>
+      <td>{$vo.region_name}</td>
+      <td>{$vo.login_result}</td>
+      <td>{$vo.error_num}</td>
+      <td>{$vo.error_limit}</td>
+      <td>{$vo.create_time}</td>
+      <td>{$vo.record_status}</td>
+      <td class="td-manage">
+        {if condition="$vo.status eq 2 and $vo.error_num eq 5"}
+          <a title="禁用" href="javascript:;" span style="color:red" onclick="member_del('{$vo.fid}','/sys/log_login/delete','/sys/log_login','{$vo.user_name}','{$vo.status}')"
+            style="text-decoration:none">启用</a>
+        {else}<span style="color:#5FB863">正常</span>{/if}
+      </td>
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+<script>
+  function member_del(id, url, urls,user_name,status) {
+    if (id == -1) {
+      var ids = tableCheck.getData();
+    } else {
+      var ids = id;
+    }
+    if (ids == '' || ids == null || ids < 0) {
+      layer.msg('请选择要删除的数据！', {icon: 2, time:2000});
+    } else {
+      //询问框
+      layer.confirm('确认要对该用户 【'+ user_name+'】状态操作？', {
+        btn: ['是','否']
+      }, function(){
+        is_del(ids,url,urls,status);
+      }, function(){
+        window.location.href = urls;
+      });
+    }
+  }
+
+  function is_del(ids,url,urls,type){
+    //发异步删除数据
+    $.ajax({
+      type: "post",
+      url: url,
+      data: {fid:ids,urls:urls,type:type},
+      dataType: "json",
+      success: function (data) {
+        if (data.code == 1) {
+          layer.msg("操作成功", {icon: 1, time: 1000});
+        } else {
+          layer.msg("操作失败", {icon: 1, time: 1000});
+        }
+        setTimeout(function () {
+          window.location.href = urls;
+        }, 1000);
+      }
+    });
+  }
+</script>
+</body>
+</html>

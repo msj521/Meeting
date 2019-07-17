@@ -1,0 +1,116 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>会议管理</cite></a>
+              <a><cite>{$title}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="{$index|default='/'}" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}"  autocomplete="off" class="layui-input">
+        </div>
+        <input type="hidden" name="convention_id" value="{$convention_id|default=0}">
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <button class="layui-btn layui-btn-danger" onclick="members_del(-1,'{$del|default='/'}','{$index|default='/'}')"><i class="layui-icon">&#xe640;</i>批量审核</button> 
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th style="width:20px;">
+        <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+      </th>
+      <th style="width:40px;">ID</th>
+      <th>图片</th>
+      <th>分类名称</th>
+      <th>点赞数</th>
+      <th>上传者</th>
+      <th>上传时间</th>
+      <th>审核状态</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>
+        <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='{$vo.fid}'><i class="layui-icon">&#xe605;</i></div>
+      </td>
+      <td>{$vo.fid}</td>
+      <td><img src="{$vo.file_path}"></td>
+      <td>{$vo.class_name}</td>
+      <td>{$vo.praise_num}&nbsp;&nbsp;<a href="javascript:;"  style="text-decoration:none;color:red" onclick="member_edit('点赞记录','/meet/photo_detail','/meet/photo',{$vo.fid},0,0)" >点赞记录</a></td>
+      <td>{$vo.user_name}</td>
+      <td>{$vo.create_time}</td>
+      <td>{$vo.record_status|is_status}</td>
+      <td class="td-manage"> 
+        <a title="禁用" href="javascript:;" onclick="members_del('{$vo.fid}','{$del|default='/'}','{$index|default='/'}','{$vo.record_status}')"
+           style="text-decoration:none">{if condition="$vo.record_status eq 1"}禁用{else}启用{/if}</a>
+      </td>      
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+{include file="public/top_js" /}
+<script>
+  function members_del(id, url, urls,record_status) {
+    if (id == -1) {
+      var ids = tableCheck.getData();
+    } else {
+      var ids = id;
+    }
+    if (ids == '' || ids == null || ids < 0) {
+      layer.msg('请选择要删除的数据！', {icon: 2, time:2000});
+    } else {
+      //询问框
+      layer.confirm('确认状态操作？', {
+        btn: ['是','否']
+      }, function(){
+        iss_del(ids,url,urls,record_status);
+      }, function(){
+        window.location.href = urls;
+      });
+    }
+  }
+
+  function iss_del(ids,url,urls,type){
+    //发异步删除数据
+    $.ajax({
+      type: "post",
+      url: url,
+      data: {fid:ids,urls:urls,type:type},
+      dataType: "json",
+      success: function (data) {
+        if (data.code == 1) {
+          layer.msg("操作成功", {icon: 1, time: 1000});
+        } else {
+          layer.msg("操作失败", {icon: 1, time: 1000});
+        }
+        setTimeout(function () {
+          window.location.href = urls;
+        }, 1000);
+      }
+    });
+  }
+</script>
+</body>
+</html>

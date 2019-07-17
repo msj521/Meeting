@@ -1,0 +1,73 @@
+{include file="public/header" /}
+
+<style type="text/css">
+  /*隐藏全选checkbox*/
+  .layui-table th .layui-unselect{
+      display: none;
+  }
+</style>
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form"  action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+
+          <div class="layui-form-item">
+                <label for="ticket_name" class="layui-form-label">名称<?php html_sign();?></label>
+                <div class="layui-input-block">
+                  <input type="text" id="ticket_name" lay-verify="required" name="ticket_name" autocomplete="off" value="{$list.ticket_name|default=''}" class="layui-input">
+                </div>
+          </div>
+
+          <div class="layui-form-item">
+                <label for="price" class="layui-form-label">价格<?php html_sign();?></label>
+                <div class="layui-input-block">
+                  <input type="text" id="price" lay-verify="required" name="price" autocomplete="off" value="{$list.price|default=''}" class="layui-input">
+                </div>
+          </div>
+
+          <div class="layui-form-item layui-form-text">
+            <label for="description" class="layui-form-label">备注</label>
+            <div class="layui-input-block" >
+                <textarea placeholder="请输入备注" required id="description" name="description" autocomplete="off"
+                class="layui-textarea" style="height: 80px;">{$list.description|default=''}</textarea>
+            </div>
+          </div>
+
+          <div class="layui-form-item">
+            <label class="layui-form-label xbs768">开始时间</label>
+            <div class="layui-input-block">
+              <input class="layui-input" id="LAY_demorange_s" name="start_time" value="{$list.start_time|default=''}">
+            </div>
+          </div>
+      
+          <div class="layui-form-item">
+            <label class="layui-form-label xbs768">结束时间</label>
+            <div class="layui-input-block">
+              <input class="layui-input" id="LAY_demorange_e" name="end_time" value="{$list.end_time|default=''}">
+            </div>
+          </div>          
+
+            
+          <input type="hidden" name="convention_id" value="{$list.convention_id|default=$fid}">
+          <input type="hidden" name="fid" value="{$list.fid|default=''}">
+
+        <div class="layui-form-item">
+          <label class="layui-form-label xbs768">状态</label>
+          <div class="layui-input-block">
+            <input type="radio" name="record_status" value="1" title="启用" checked >
+            <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+            <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <label  class="layui-form-label"></label>
+          <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+        </div>
+      </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+</body>
+{include file="public/top_js" /}
+</html>

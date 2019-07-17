@@ -1,0 +1,102 @@
+{include file="public/header" /}
+	<div class="conter960">
+		{include file="public/mbxue" /}
+		{include file="public/meeting_nav" /}
+		<div class="honor">
+			
+		</div>
+	</div>
+
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/jquery.flexslider-min.js" ></script>
+
+
+<script>
+
+		var download = "api/convention/history";
+		function mtdownload(data){
+			//console.log(data);
+			// var str="";
+			// for(var i=0; i<data.data.length;i++){
+			// 	str+='<div class="honorlist">';
+			// 	str+='<h1>';
+			// 	str+=data.data[i].title;
+			// 	str+='</h1>';
+			// 	str+='<p>'+'大会时间：';
+			// 	str+=data.data[i].create_time;
+			// 	str+='&nbsp;&nbsp;|&nbsp;&nbsp;';
+			// 	str+='会场地址：';
+			// 	str+=data.data[i].address;
+			// 	str+='</p>';
+			// 	str+='<div class="honorimg">';
+			// 		for(var j=0; j<data.data[i].image_list.length;j++){
+			// 			str+='<a href="#">'+'<img src="'+data.data[i].image_list[j].file_path+'">'+'</a>';
+			// 		}
+				
+			// 	str+='</div>';
+			// 	str+='</div>';
+			// }
+			
+			// $(".honor").append(str)		
+
+			var str="";
+			for(var i=0; i<data.data.length;i++){
+				str+='<div class="honorlist">';
+				str+='<h1>';
+				str+=data.data[i].title;
+				str+='</h1>';
+				str+='<p>'+'大会时间：';
+				str+=data.data[i].create_time;
+				str+='&nbsp;&nbsp;|&nbsp;&nbsp;';
+				str+='会场地址：';
+				str+=data.data[i].address;
+				str+='</p>';
+				str+='<div class="honorimg">';
+
+				str+='<div class="flexslider" style="width: 100%; height: auto;padding:0px 5px 60px 5px;margin:20px 10px"><ul class="slides">';
+				
+				var picNum = data.data[i].image_list.length; //图片总张数
+				var pageNum = picNum ? Math.ceil(picNum/12) : 0;  //总页数
+				
+				for(var k=0;k<pageNum;k++){
+					str+='<li>';
+						var lastPicNum = 0;
+						if (pageNum-1==k){
+							var lastPicNum = picNum%12;
+						}else{
+							lastPicNum = 12;
+						}
+						for(var n=0;n<lastPicNum;n++){
+							str+='<img src="'+data.data[i].image_list[k*12+n].file_path+'" style="margin:5px 15px;">'+'</a>';
+						}
+					str+='</li>';
+				}
+				
+				str+='</ul></div>';
+
+
+				// for(var j=0; j<data.data[i].image_list.length;j++){
+				// 	str+='<a href="#">'+'<img src="'+data.data[i].image_list[j].file_path+'">'+'</a>';
+				// }
+				str+='</div>';
+				str+='</div>';
+			}
+			
+			$(".honor").append(str)		
+						
+			var imageList = ['/static/web/images/logo.png','/static/web/images/pic_head.png'];
+			//轮播图
+			// for(var i = 0; i < 2; i++) {
+			// 	$('<li>' + '<img src="'+imageList[i]+'">' + '</li>').appendTo(".slides");
+			// }
+			$('.flexslider').flexslider({
+				directionNav: true,
+				pauseOnAction: false
+			});
+			
+		}
+		var data = {"convention_id":convention_id,"history_type":1};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

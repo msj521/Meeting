@@ -1,0 +1,43 @@
+{include file="public/header" /}
+<style>
+	body{
+		background: #fff;
+	}
+</style>
+	<div class="ctpageloginlist">
+		<div class="conter960">
+			<div class="ctpagelogin">
+				<div class="logintxt"></div>
+				<div class="loginlist">
+					<h1>用户登录</h1>
+					<p>手机号</p>
+					<div class="pos_input">
+						<input type="text" name="" id="mobile" value="" /><div></div>
+					</div>
+					<p>密码</p>
+					<div class="pos_input">
+						<input type="password" name="" id="passwordId" value="" /><div></div>
+					</div>
+					<p>验证码</p>
+					<div class="pos_input">
+						<input type="text" name="" id="yzm" value=""/>
+						<div class="canvaslist">
+							<canvas id="canvas" width="120" height="39"></canvas>
+						</div>
+						<div style="" id="reflashCode"></div>
+					</div>
+					<div class="error_txt"></div>
+					<button class="login_btn" id="login_btn">登录</button>
+					<div>
+						<a href="/forget" class="forget_pwd">忘记密码？</a>
+						<a href="/register" class="reg_a">创建账号</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+		
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/loginform.js" ></script>
+

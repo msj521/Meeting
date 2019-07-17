@@ -1,0 +1,43 @@
+{include file="public/header" /}
+<body>
+<div class="x-body">
+  <form class="layui-form" action="/meet/update_exh" method="post">
+    <div class="layui-form-item">
+      <label for="booth" class="layui-form-label">展位<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="booth" name="booth" value="" required lay-verify="booth" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label  class="layui-form-label">排序<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="text" id="sort" name="sort" value="" required lay-verify="sort" autocomplete="off"  class="layui-input">
+      </div>
+    </div>
+
+    <input type="hidden"  name="convention_id"  value="{$convention_id}">
+    <input type="hidden"  name="org_id"  value="{$fid}">
+    <input type="hidden"  name="fid"  value="0">
+
+    <div class="layui-form-item">
+      <label for="exhibitor_type" class="layui-form-label">分类<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <select name="exhibitor_type" id="exhibitor_type" lay-verify="required" lay-search="">
+          {volist name="exhibitor_type" id="vo" key="ko"}
+          <option value="{$ko}">{$vo}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label  class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit" >保存</button>
+    </div>
+  </form>
+</div>
+<script>
+</script>
+</body>
+</html>

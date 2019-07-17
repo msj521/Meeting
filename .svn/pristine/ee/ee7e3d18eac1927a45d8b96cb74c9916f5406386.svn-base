@@ -1,0 +1,47 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="/meet/time_update_agenda" method="post">
+    <div class="layui-form-item">
+      <label for="schedule_name" class="layui-form-label">日程名称</label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="schedule_name" name="schedule_name" required lay-verify="schedule_name"  value="{$list.schedule_name|default=''}">
+      </div>
+    </div>
+
+    {include file="public/meet_expert" /}
+
+    <div class="layui-form-item">
+      <label class="layui-form-label ">开始时间</label>
+      <div class="layui-input-block ">
+        <input class="layui-input" id="start_date" required lay-verify="start_date" name="start_date" value="{$list.start_date|default=''}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label ">结束时间</label>
+      <div class="layui-input-block ">
+        <input class="layui-input" id="end_date"  required lay-verify="end_date" name="end_date" value="{$list.end_date|default=''}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label ">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用" checked>
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+    <input type="hidden" name="room_id" value="{$room_id|default=''}">
+    <input type="hidden" name="schedulefirst_id" value="{$fmid|default=''}">
+    <input type="hidden" name="convention_id" value="{$convention_id|default=''}">
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

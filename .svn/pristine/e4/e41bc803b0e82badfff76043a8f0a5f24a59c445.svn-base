@@ -1,0 +1,138 @@
+{include file="public/header" /}
+<div class="conter960">
+    <div class="mbxue ellipsis">
+        位置&nbsp;>&nbsp;会议&nbsp;>&nbsp;<span id="class_name">支付方式</span>
+    </div>
+    <div class="abstract_list">
+        <div class="meet_pay_title" style="overflow:hidden;margin-bottom:20px;">
+            <p class="meet_pay_title_xx">线下支付</p>
+            <p class="meet_pay_title_xs active">线上支付</p>
+        </div>
+        <div class="content01 contentPayType"></div>
+        <div class="content02 contentPayType">
+            <div class="title_abs_list" style="margin-bottom: 30px;">
+                <div class="title_abs">在线支付&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #598DC4; font-size: 12px;">在线支付只接收人民币支付</span></div>
+            </div>
+            <div class="abs_txtlist">
+                <div class="abs_input">
+                    <div id="" style="margin:0px auto; width: 80%;">
+                        <div class="abs_inputlist">
+                            <div class="abs_input_lf">
+                                总注册费
+                            </div>
+                            <div class="abs_input_rg">
+                                <div class="pay_info" id="price"></div>
+                            </div>
+                        </div>
+                        <div class="abs_inputlist">
+                            <div class="abs_input_lf">
+                                注册编号
+                            </div>
+                            <div class="abs_input_rg">
+                                <div class="pay_info" id="order_number"></div>
+                            </div>
+                        </div>
+                        <div class="abs_inputlist">
+                            <div class="abs_input_lf">
+                                注册类别
+                            </div>
+                            <div class="abs_input_rg">
+                                <div class="pay_info ellipsis" style="color: #239397;" id="ticket_name"></div>
+                            </div>
+                        </div>
+                        <div class="abs_inputlist">
+                            <div class="abs_input_lf">
+                                总价
+                            </div>
+                            <div class="abs_input_rg">
+                                <div class="pay_info" id="all_price"></div>
+                            </div>
+                        </div>
+                        <p style=" color:#D03F3F; margin-bottom: 0;">注意：</p>
+                        <p style=" color:#D03F3F; text-indent:35px">注册过程中所产生的所有银行手续费将由参会者自行承担，注册服务处只接受支付了全额会议费的参会者，敬请谅解。 请在您的付款单上表明参会者的注册编号及姓名，请确保信息的准确性和完整性，以便于尽快确认您的付款信息，谢谢！
+                        </p>
+                        <div style="float: left; display: inline-block; width: 80%;">
+                            <div class="abs_btn02" style="margin-top: 40px;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="button" name="" id="btt" value="立即支付" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{include file="public/footer2" /}
+<script>
+    $(function() {
+        var orderinfoPayNum = '';
+
+        function order(data) {
+            var orderinfo = data.orderinfo;
+            $("#price").text('¥' + orderinfo.price);
+            $("#order_number").text(orderinfo.order_number);
+            $("#ticket_name").text(orderinfo.ticket_name);
+            $("#all_price").text('¥' + orderinfo.price);
+            orderinfoPayNum = orderinfo.pay_number;
+            //根据支付类型渲染支付方式 content01线下   content02线上
+            if (data.orderinfo.pay_type == 1) {
+                //线下
+                $('.meet_pay_title_xx').addClass('active');
+                $('.meet_pay_title_xs').removeClass('active');
+                $('.content01').show();
+                $('.content02').hide();
+            } else {
+                //线上
+                $('.meet_pay_title_xx').removeClass('active');
+                $('.meet_pay_title_xs').addClass('active');
+                $('.content02').show();
+                $('.content01').hide();
+            }
+
+        }
+        var order_url = 'api/convention/order' //订单接口
+        var data = {
+            "convention_id": convention_id,
+            "uid": cook_uid,
+        };
+        ajax_all_Filed("true", "true", "POST", order_url, "json", data, order); //调用函数
+
+        $("#s_step").click(function() {
+            window.location.href = '/annual_meeting?convention_id=' + convention_id
+        })
+
+        $("#btt").click(function() {
+            var toPayUrl = '/api/convention/return_url';
+            Loadings();
+            var toPayUrlData = {
+                    "param": orderinfoPayNum
+                }
+                // window.location.href = '/api/convention/return_url?test&param=' + orderinfoPayNum
+            ajax_all_Filed("true", "true", "get", toPayUrl, "json", toPayUrlData, toPayFun);
+
+            function toPayFun(data) {
+                //console.log('out-success')
+
+                if (data.code > 400) {
+                    showLaert(data.msg)
+                }
+            }
+        })
+    })
+
+    $(function() {
+        var convention_base = "api/convention/convention_base"; //新闻和重要日期数据所在接口
+        var data = {
+            "convention_id": convention_id,
+            "uid": cook_uid
+        };
+        ajax_all_Filed("true", "true", "GET", convention_base, "json", data, meetPayTypeFun);
+
+        function meetPayTypeFun(data) {
+            $('.content01').html(htmls(data.data.convention_info.public_account))
+        }
+    })
+</script>

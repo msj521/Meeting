@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script charset='utf-8' type='text/javascript' src='/static/web/libs/jquery/jquery.js'></script>
+        <script src="/static/web/libs/jquery.qrcode/jquery.qrcode.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+          setInterval(function(){
+                var codeString = Date.parse(new Date());
+                var div = document.getElementById("qr_container");
+            　　while(div.hasChildNodes()) //当div下还存在子节点时 循环继续
+            　　{
+            　　　　div.removeChild(div.firstChild);
+            　　}
+                $('#qr_container').qrcode({render:"canvas",height:500, width:500,correctLevel:0,text:"http://2019.sific.com.cn/signin/SignWechat?timestamp="+codeString+""}); 
+          },3000);
+        });
+        </script>
+    </head>
+    <body>
+	<div style="text-align:center;">
+		<h1>2019 SIFIC年会现场签到</h1>
+		<h2>请打开微信扫码签到</h2>
+        <div id="qr_container" style="margin:auto; position:relative;"></div>
+	</div>
+
+    </body>
+</html>

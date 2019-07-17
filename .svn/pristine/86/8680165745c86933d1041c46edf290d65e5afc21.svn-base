@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>申请发票</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="/static/web/css/ydui.css?rev=@@hash"/>
+    <link rel="stylesheet" href="/static/web/css/demo.css"/>
+    <script src="/static/web/js/ydui.flexible.js"></script>
+	<script type="text/javascript">
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return decodeURI(r[2]);
+			return null;
+		}
+		var convention_id = getQueryString("convention_id");
+		var cook_uid = getQueryString("cook_uid");
+        var cook_token = getQueryString("cook_token");
+//		var convention_id = 45;
+//		var cook_uid = 2641;
+//		var cook_token='ec1d65127d3d7db5890c429e85237a4f2029eb2e'
+	</script>
+	<style type="text/css">
+		@-webkit-keyframes loading-3{
+	50%{ transform:scale(0.4); opacity:.4;}
+	100%{ transform:scale(1); opacity:1;}
+	}
+	.loading-3 { position:relative;}
+	.loading-3 i{ display:block; width:15px;height:15px;border-radius:50%; background-color:#333; position:absolute;}
+	.loading-3 i:nth-child(1){top:25px;left:0;-webkit-animation:loading-3 1s ease 0s infinite;}
+	.loading-3 i:nth-child(2){top:17px;left:17px;-webkit-animation:loading-3 1s ease -0.12s infinite;}
+	.loading-3 i:nth-child(3){top:0px;left:25px;-webkit-animation:loading-3 1s ease -0.24s infinite;}
+	.loading-3 i:nth-child(4){top:-17px;left:17px;-webkit-animation:loading-3 1s ease -0.36s infinite;}
+	.loading-3 i:nth-child(5){top:-25px;left:0;-webkit-animation:loading-3 1s ease -0.48s infinite;}
+	.loading-3 i:nth-child(6){top:-17px;left:-17px;-webkit-animation:loading-3 1s ease -0.6s infinite;}
+	.loading-3 i:nth-child(7){top:0px;left:-25px;-webkit-animation:loading-3 1s ease -0.72s infinite;}
+	.loading-3 i:nth-child(8){top:17px;left:-17px;-webkit-animation:loading-3 1s ease -0.84s infinite;}
+	.newloading{position: fixed; z-index: 999; background:rgba(35,35,35,0.3); top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%;}
+	</style>
+</head>
+<body style="background: #fff;">
+<section class="g-flexview">
+    <section class="g-scrollview">
+    	<div class="ip_annual_ct">
+			<p style="color: #598DC4; margin-bottom: 0.3rem;" >注意：大会只提供电子发票，请各位老师仔细核对发票抬头和税号，发票开出后 <span style="color: #AB3B3B;">不得退换</span>！谢谢！</p>
+			<div class="ip_annual_ctlist">
+				<div class="ip_annual_ctlist_txt">
+					发票抬头<span>*</span>
+				</div>
+				<div class="ip_annual_ctlist_input">
+					<input type="text" name="" id="bill_title" value="" class="txtinput" />
+				</div>
+			</div>	
+			<div class="ip_annual_ctlist">
+				<div class="ip_annual_ctlist_txt">
+					纳税人识别号<span>*</span>
+				</div>
+				<div class="ip_annual_ctlist_input">
+					<input type="text" name="" id="tax_num" value="" class="txtinput" />
+				</div>
+			</div>	
+		</div>
+		<div class="fp_btn">
+			<input type="button" name="" id="invoice_btn" value="提交" />
+		</div>
+    </section>
+</section>
+<script type="text/javascript" src="/static/web/libs/jquery/jquery.js" ></script>
+<script src="/static/web/js/ajax.js"></script>
+<script src="/static/web/js/md5.js"></script>
+<script type="text/javascript" src="/static/web/js/app/siginfo.js" ></script>
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+		var invoiceurl = "/api/convention/pay"//下拉接口
+		
+		$("#invoice_btn").click(function(){
+			var bill_title = $("#bill_title").val()
+			var tax_num = $("#tax_num").val()
+			
+			if(bill_title == ""){
+				alert("发票抬头不能为空！");
+			}
+			if(tax_num == ""){
+				alert("纳税人识别号不能为空！");
+			}
+			Loadings()
+			function invoicefo(data) {
+				if(data.code==200){
+					$("body .newloading").remove();
+					alert("提交成功！")
+					//alert("发票抬头："+bill_title+"；纳税人识别号："+tax_num);
+//						window.location.href = "/convention?convention_id=" + convention_id + "&nav_id=1";
+//						
+				}
+			}
+				var invoiceata = {
+					"convention_id": convention_id,
+					"uid": cook_uid,
+					"bill_title":bill_title,
+					" tax_num": tax_num,
+					"type":2,
+					"invoice_status":1
+				};
+				ajax_all_Filed("true", "true", "GET", invoiceurl, "json", invoiceata, invoicefo); //调用函数
+			
+		})
+	})
+function Loadings(){
+	$('<div class="newloading"><div style="margin:50% auto; width: 0.5rem;"><div class="loading-3"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>').appendTo('body');
+}
+	</script>

@@ -1,0 +1,83 @@
+{include file="public/header" /}
+<div class="flexslider">
+	<ul class="slides">
+		
+		<!--<li style="background:url(/static/web/images/2.png) 50% 0 no-repeat;"></li>
+		<li style="background:url(/static/web/images/3.png) 50% 0 no-repeat;"></li>
+		<li style="background:url(/static/web/images/4.png) 50% 0 no-repeat;"></li>-->
+	</ul>
+</div>
+
+		<div class="conter960">
+			
+			<div class="h_module">
+				<div class="h_modulelist">
+					<div class="title">
+					<div class="title_txt">直播</div>
+					<div class="movers">
+						<a href="/lives?live_id">更多</a>
+					</div>
+					</div>
+					<div class="live_list" id="aa">
+						<ul class="live_ul" id="home_live_ul"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="h_module">
+				<div class="h_modulelist">
+					<div class="title">
+						<div class="title_txt">会议</div>
+						<div class="movers">
+							<a href="/meeting?convention_id">更多</a>
+						</div>
+					</div>
+					<div class="live_list">
+						<div class="meeting_list">
+							<ul class="meeting_ul">
+								
+								
+							</ul>
+						</div>
+						<div class="meeting_news">
+							<div class="hot_title">
+								近期热门会议
+							</div>
+							<div class="hot_list">
+								<ul class="hot_news">
+									
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="h_module">
+				<div class="h_modulelist">
+					<div class="title">
+					<div class="title_txt">培训</div>
+					<div class="movers">
+						<a href="/video?training_id">更多</a>
+					</div>
+					</div>
+					<div class="live_list">
+						<div class="train_list">
+							<ul class="train_ul">
+								
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="logoslist">
+				<div class="logos" id="logos1"></div>
+				<div class="logos2" id="logos2"></div>
+			</div>
+			
+			
+			{include file="public/partner" /}
+		</div>
+{include file="public/footer" /}
+<script type="text/javascript" src="/static/web/js/module/index.js" ></script>
+<script type="text/javascript" src="/static/web/js/jquery.flexslider-min.js" ></script>

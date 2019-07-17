@@ -1,0 +1,170 @@
+{include file="public/header" /}
+
+<style type="text/css">
+  /*隐藏全选checkbox*/
+  .layui-table th .layui-unselect{
+      display: none;
+  }
+</style>
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form"  action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+
+            <div class="layui-form-item">
+                  <label for="field_name" class="layui-form-label">已有字段名*</label>
+                  <div class="layui-input-block">
+                    <input disabled="disabled"style="color: red;" value="参会人、联系电话、单位、职称" class="layui-input">
+                  </div>
+            </div>
+
+            <div class="layui-form-item">
+                  <label for="field_name" class="layui-form-label">字段名</label>
+                  <div class="layui-input-block">
+                    <input type="text" id="field_name" lay-verify="required" name="field_name" autocomplete="off" value="{$list.field_name|default=''}" class="layui-input">
+                  </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">是否必填</label>
+              <div class="layui-input-block">
+                <input type="radio" name="require" value="1" title="必填" checked >
+                <input type="radio" name="require" value="2" title="非必填" {if condition="isset($list['require']) and $list['require'] eq 2"} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">题目类型</label>
+              <div class="layui-input-block">
+                <input type="radio" name="field_type" value="1" title="填空题" checked >
+                <input type="radio" name="field_type" value="2" title="单选题" {if condition="isset($list['field_type']) and $list['field_type'] eq 2"} checked {/if}>
+                <input type="radio" name="field_type" value="3" title="多选题" {if condition="isset($list['field_type']) and $list['field_type'] eq 3"} checked {/if}>
+                <input type="radio" name="field_type" value="4" title="下拉选择" {if condition="isset($list['field_type']) and  $list['field_type'] eq 4"} checked {/if}>
+                <input type="radio" name="field_type" value="5" title="时间" {if condition="isset($list['field_type']) and  $list['field_type'] eq 5"} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label for="sort" class="layui-form-label">报名明细</label>
+                <table class="layui-hide" id="func" lay-data="{id:'myTable'}" lay-filter="myTable"></table>
+            </div>
+
+            <div class="layui-form-item">
+              <label for="sort" class="layui-form-label">排序</label>
+              <div class="layui-input-block">
+                <input type="number" id="sort" name="sort" autocomplete="off" value="{$list.sort|default=''}" class="layui-input">
+              </div>
+            </div>
+
+            <input type="hidden" name="convention_id" value="{$list.convention_id|default=$fid}">
+            <input type="hidden" name="fid" value="{$list.fid|default=''}">
+            <input type="hidden" id="option_list" name="option_list" value="">
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">状态</label>
+              <div class="layui-input-block">
+                <input type="radio" name="record_status" value="1" title="启用" checked >
+                <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+                <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label  class="layui-form-label"></label>
+              <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+    <!-- 中部结束 -->
+    <script type="text/html" id="barTool">
+      <div class="td-manage">  
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+      </div>
+    </script>
+</body>
+{include file="public/top_js" /}
+
+<script>
+var option_list = <?php echo $option_list;?>;
+
+if (option_list.length==0) {
+  option_list = Array();
+}
+//console.log(option_list);
+var table;
+
+var option_model = {
+  'fid':-1,
+  'detail_name':'',
+  'sort':'',
+};
+option_list.push(option_model);
+
+layui.use(['tree', 'layer','table'], function(){
+    table = layui.table;
+    initTabel(option_list,table);
+    //监听工具条
+  table.on('tool(myTable)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'del'){
+      if (data.fid==-1) {
+        layer.msg('此数据为空，不需要删除！');
+        return;
+      }
+      for (let i = 0; i < option_list.length; i++) {
+        const element = option_list[i];
+        if (element.fid==data.fid) {
+          option_list.splice(i,1);
+          break;
+        }
+/*         if (element.sort==data.sort){
+              layer.msg('排序ID不能相同哦');
+              return;
+        } */
+      } 
+      initTabel(option_list,table);
+    }
+  });
+  //监听单元格编辑
+  table.on('edit(myTable)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data = obj.data //得到所在行所有键值
+    ,field = obj.field; //得到字段
+
+    if (data.fid==-1) {
+      //新增
+      for (let i = 0; i < option_list.length; i++) {
+        var element = option_list[i];
+        if (element.fid=='-1') {
+          element.fid = 0;
+        }
+      }
+      var option_model = {
+        'fid':-1,
+        'detail_name':'',
+        'sort':'',
+      };
+      option_list.push(option_model);
+    }
+      initTabel(option_list,table);
+  });
+});
+
+function initTabel(data,table){
+
+  table.render({
+    elem: '#func'
+    ,data:data
+    ,cols: [[
+      {field:'detail_name', title: '选项名称',edit: 'text'},
+      {field:'sort', title: '排序',edit: 'text'}
+      ,{fixed: 'right', width:150, title:'操作',align:'center', toolbar: '#barTool'}
+    ]]    
+  });  
+  var option_str = JSON.stringify(option_list);
+  $('#option_list').val(option_str);
+}
+</script>
+</html>

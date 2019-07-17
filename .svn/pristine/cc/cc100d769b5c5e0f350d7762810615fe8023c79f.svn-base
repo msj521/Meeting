@@ -1,0 +1,44 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue" /}
+			{include file="public/meeting_nav" /}
+			<div class="honor">
+				
+			</div>
+		</div>
+
+{include file="public/footer" /}
+
+
+<script>
+		var download = "api/convention/history";
+		function mtdownload(data){
+			console.log(data);
+			var str="";
+			for(var i=0; i<data.data.length;i++){
+				str+='<div class="honorlist">';
+				str+='<h1>';
+				str+=data.data[i].title;
+				str+='</h1>';
+				str+='<p>';
+				str+=data.data[i].description;
+				str+='</p>';
+				str+='<div class="honorimg">';
+					for(var j=0; j<data.data[i].image_list.length;j++){
+						str+='<a href="#">'+'<img src="'+data.data[i].image_list[j].file_path+'">'+'</a>';
+					}
+				
+				str+='</div>';
+				str+='</div>';
+			}
+			
+			$(".honor").append(str)		
+						
+				
+			
+		}
+		var data = {"convention_id":convention_id,"history_type":1};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

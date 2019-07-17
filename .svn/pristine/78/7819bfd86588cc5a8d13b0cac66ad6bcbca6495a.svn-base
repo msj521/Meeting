@@ -1,0 +1,158 @@
+<div class="mt_nav_module">
+	<div class="meeting_nav">
+		<ul class="meeting_nav_ul">
+		</ul>
+	</div>
+</div>
+	
+<script>
+	var navLlist = Array;
+ 
+  navLlist = [<?php echo $html ?>];
+	//  navLlist=[
+  //       {
+  //         name: "会议中心",
+  //         url:"/convention",
+  //         id:1,
+  //         subMenu: [
+            
+  //         ]
+  //       },
+  //       {
+  //         name: "会议介绍",
+  //         id:2,
+  //         url:"/introduce",
+  //         subMenu: [
+  //           { name: "大会征文通知", suid: 21, url: "/zhwen" },
+  //           { name: "会议通知", suid: 22, url: "/introduce" },
+  //         ]
+  //       },
+  //       {
+  //         name: "会议日程",
+  //         url:"/schedule",
+  //         id:3,
+  //         subMenu: [
+            
+  //         ]
+  //       },
+  //       {
+  //         name: "演讲嘉宾",
+  //         url:"/expertlist",
+  //         id:4,
+  //         subMenu: [
+  //           { name: "演讲嘉宾", suid: 41, url: "/expertlist"},
+  //           { name: "会议课件", suid: 42, url: "/courseware" },
+  //           { name: "资料汇编", suid: 43, url: "/assembly" },
+  //           { name: "论文集", suid: 44, url: "/paperji" }
+  //         ]
+  //       },
+  //       {
+  //         name: "会场食宿",
+  //         url: "/city",
+  //         id:5,
+  //         subMenu: [
+  //           { name: "关于城市", suid: 51, url: "/city" },
+  //           { name: "会议酒店", suid: 52, url: "/hotel" },
+  //           { name: "会场介绍", suid: 53, url: "/huichang" },
+  //           { name: "会场周边餐饮", suid: 54, url: "/diet" }
+  //         ]
+  //       },
+  //       {
+  //         name: "企业交流",
+  //         url: "/manual",
+  //         id:6,
+  //         subMenu: [
+  //           { name: "企业交流手册", suid:61, url: "/manual" },
+  //           { name: "展区布局图", suid: 62, url: "/map" },
+  //           { name: "支持单位", suid: 63, url: "/support" }
+  //         ]
+  //       },
+  //       {
+  //         name: "历届与荣誉",
+  //         url:"/lijiejj",
+  //         id:7,
+  //         subMenu: [
+  //           { name: "历届简介", suid: 71, url: "/lijiejj" },
+  //           { name: "历届会议剪影", suid: 72, url: "/silhouette" },
+  //           { name: "荣誉", suid: 73, url: "/honor" }
+  //         ]
+  //       },
+  //       {
+  //         name: "直播",
+  //         url:"/metlive",
+  //         id:8,
+  //         subMenu: [
+            
+  //         ]
+  //       },
+  //       {
+  //         name: "秘书处",
+  //         id:9,
+  //         url:"/mishuchu",
+  //         subMenu: [
+            
+  //         ]
+  //       }
+  //     ];
+
+	 $(function(){
+	 	str=""
+	 	for (i=0; i<navLlist.length;i++) {
+	 		str+='<li class="navs">';
+	 		
+			if(navLlist[i].subMenu==''){
+				 	str+='<a href="'+navLlist[i].url+'?convention_id='+convention_id+'&'+'nav_id='+navLlist[i].id+'" class="';
+				 	if(navLlist[i].id==nav_id){
+				 		str+='navs_a active';
+				 	}else{
+				 		str+='navs_a';
+				 	}
+				 	str+='">';
+			 		str+=navLlist[i].name;
+			 		str+='</a>';	
+			}else{
+				str+='<a href="'+navLlist[i].url+'?convention_id='+convention_id+'&nav_id='+navLlist[i].id+'" class="';
+				if(navLlist[i].id==nav_id){
+				 		str+='navs_a active';
+				 	}else{
+				 		str+='navs_a';
+				 	}
+				 	str+='">';
+		 		str+=navLlist[i].name;
+		 		str+='</a>';	
+		 		str+='<div class="mt_navcts">';
+		 		str+='<div class="mt_sanj">';
+		 		str+='</div>';
+		 		str+='<ul>';
+		 			for(var j=0; j<navLlist[i].subMenu.length;j++){
+		 				str+='<li>';
+		 				str+='<a href="'+navLlist[i].subMenu[j].url+'?convention_id='+convention_id+'&nav_id='+navLlist[i].id+'&suid='+navLlist[i].subMenu[j].suid+'"';
+		 				if (navLlist[i].subMenu[j].suid==suid) {
+		 					str+='style="color:#000"';
+		 				}else{
+		 					str+='';
+		 				}
+		 				str+='>';
+		 				str+=navLlist[i].subMenu[j].name;
+		 				str+='</a>';
+		 				str+='</li>';
+		 			}
+		 			
+		 		str+='</ul>';
+		 		str+='</div>';
+			}
+		
+	 		str+='</li>';
+	 	}
+	 	$(".meeting_nav_ul").append(str);
+	 })
+</script>
+
+
+	
+	
+		
+		
+			
+        
+	

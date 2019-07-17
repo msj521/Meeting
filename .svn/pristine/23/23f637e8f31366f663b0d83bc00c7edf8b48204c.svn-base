@@ -1,0 +1,96 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue2" /}
+			<div class="abstract_list" >
+				<div class="content02">
+				<div class="title_abs_list" style="margin-bottom: 30px;">
+					<div class="title_abs">在线支付&nbsp;&nbsp;&nbsp;&nbsp; <span style="color: #598DC4; font-size: 12px;">在线支付只接收人民币支付</span></div>
+				</div>
+					<div class="abs_txtlist">
+						<div class="abs_input">
+							<div id="" style="margin:0px auto; width: 80%;">
+								<div class="abs_inputlist">
+									<div class="abs_input_lf">
+										总注册费
+									</div>
+									<div class="abs_input_rg">
+										<div class="pay_info" id="price"></div>
+									</div>
+								</div>
+								<div class="abs_inputlist">
+									<div class="abs_input_lf">
+										注册编号
+									</div>
+									<div class="abs_input_rg">
+										<div class="pay_info" id="order_number"></div>
+									</div>
+								</div>
+								<div class="abs_inputlist">
+									<div class="abs_input_lf">
+										注册类别
+									</div>
+									<div class="abs_input_rg">
+										<div class="pay_info ellipsis" style="color: #239397;" id="ticket_name"></div>
+									</div>
+								</div>
+								<div class="abs_inputlist">
+									<div class="abs_input_lf">
+										总价
+									</div>
+									<div class="abs_input_rg">
+										<div class="pay_info" id="all_price"></div>
+									</div>
+								</div>
+								<!--<div class="abs_inputlist">
+									<div class="abs_input_lf">
+										付费状态
+									</div>
+									<div class="abs_input_rg">
+										<div class="pay_info">未支付</div>
+									</div>
+								</div>-->
+								<p style=" color:#D03F3F; margin-bottom: 0;">注意：</p>
+								<p style=" color:#D03F3F; text-indent:35px">注册过程中所产生的所有银行手续费将由参会者自行承担，注册服务处只接受支付了全额会议费的参会者，敬请谅解。 请在您的付款单上表明参会者的注册编号及姓名，请确保信息的准确性和完整性，以便于尽快确认您的付款信息，谢谢！</p>
+								<div style="float: left; display: inline-block; width: 80%;">
+									<div class="abs_btn02" style="margin-top: 40px;">
+										<input type="button" name="" id="s_step" value="上一步"  style="background: #979797;"/>&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="button" name="" id="btt" value="立即支付" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+
+{include file="public/footer2" /}
+<script>
+	$(function(){
+		var order_url = 'api/convention/order' //订单接口
+		var data = {
+			"convention_id": convention_id,
+			"uid": cook_uid,
+		};
+		ajax_all_Filed("true", "true", "POST", order_url, "json", data, order); //调用函数
+		
+		$("#s_step").click(function(){
+			window.location.href='/annual_meeting?convention_id='+convention_id
+		})		
+		
+		$("#btt").click(function(){
+			window.location.href='/api/convention/return_url?test=123&convention_id='+convention_id+'&uid='+cook_uid
+		})
+	})
+	
+	function order(data){
+		var orderinfo = data.orderinfo;
+		$("#price").text('¥'+orderinfo.price);
+		$("#order_number").text(orderinfo.order_number);
+		$("#ticket_name").text(orderinfo.ticket_name);
+		$("#all_price").text('¥'+orderinfo.price)
+		
+	}
+</script>

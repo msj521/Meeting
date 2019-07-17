@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>ICU 问卷调查</title>
+    <link rel="stylesheet" href="/static/web/css/SignInAndFeedback.css">
+    <link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+    <script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>
+    <style>
+        .radio_dd ol>li {
+            height: .5rem;
+            padding-left: .07rem;
+            line-height: .5rem;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+        }
+        
+        .radio_dd ol>li:last-child {
+            border: 0;
+        }
+        
+        .radio_dd ol>li>span {
+            display: block;
+            width: .5rem;
+            float: left;
+        }
+        
+        .q5 {
+            overflow-x: hidden;
+            float: left;
+        }
+        
+        .radio_dd .otherInput {
+            height: .5rem;
+            padding: .1rem .15rem;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body style="padding-top: .44rem;">
+    <header>ICU问卷调查</header>
+    <main>
+        <h3>2019年国家级继续医学教育示范项目《ICU感染防控技能高级培训班》问卷调查</h3>
+        <div class="form_box">
+            <ul>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>1.您认为本项目讲授主要内容是本学科最新发展、最新成果或亟待解决的问题</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q1" value="是" id="q1_very" />是</label>
+                            <label><input type="radio" name="q1" value="基本是" id="q1_good" />基本是</label>
+                            <label><input type="radio" name="q1" value="否" id="q1_normal" />否</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>2.对本项目基本内容以前了解情况为</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q2" value="全知道" id="q2_very" />全知道</label>
+                            <label><input type="radio" name="q2" value="部分知道" id="q2_good" />部分知道</label>
+                            <label><input type="radio" name="q2" value="不知道" id="q2_normal" />不知道</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>3.通过本项目学习认为收获</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q3" value="很大" id="q3_very" />很大</label>
+                            <label><input type="radio" name="q3" value="较大" id="q3_good" />较大</label>
+                            <label><input type="radio" name="q3" value="一般" id="q3_normal" />一般</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>4.对授课教师讲授内容满意度</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q4" value="很满意" id="q4_very" />很满意</label>
+                            <label><input type="radio" name="q4" value="满意" id="q4_good" />满意</label>
+                            <label><input type="radio" name="q4" value="一般" id="q4_normal" />一般</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>5.请客观的对此次课程的所有授课教师教学水平进行评价，不满意为1分，非常满意为5分</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <ol>
+                                <li class="clear_float">
+                                    <span>胡必杰</span>
+                                    <div id="q5_1" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>高晓东</span>
+                                    <div id="q5_2" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>倪语星</span>
+                                    <div id="q5_3" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>张群</span>
+                                    <div id="q5_4" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>黄怡</span>
+                                    <div id="q5_5" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>吴安华</span>
+                                    <div id="q5_6" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>肖永红</span>
+                                    <div id="q5_7" class="q5"></div>
+                                </li>
+                                <li class="clear_float">
+                                    <span>俞云松</span>
+                                    <div id="q5_8" class="q5"></div>
+                                </li>
+                            </ol>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>6.对本项目的教学计划安排感到</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q6" value="很满意" id="q6_very" />很满意</label>
+                            <label><input type="radio" name="q6" value="满意" id="q6_good" />满意</label>
+                            <label><input type="radio" name="q6" value="一般" id="q6_normal" />一般</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>7.对本项目所用教材的满意度</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q7" value="很满意" id="q7_very" />很满意</label>
+                            <label><input type="radio" name="q7" value="满意" id="q7_good" />满意</label>
+                            <label><input type="radio" name="q7" value="一般" id="q7_normal" />一般</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>8.通过本项目学习，感受收获最大的是(只许选二项)</span>
+                            <p style="color:#aaa;font-size:.14rem;">请在前三项里选择最符合的一项，后两项里选择最符合的一项</p>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="checkbox" name="q8" value="开阔思路" id="q8_very" />开阔思路</label>
+                            <label><input type="checkbox" name="q8" value="提高临床诊治能力" id="q8_good" />提高临床诊治能力</label>
+                            <label><input type="checkbox" name="q8" value="提高理论水平" id="q8_normal" />提高理论水平</label>
+                            <label><input type="checkbox" name="q8" value="提高科研工作能力" id="q8_normal" />提高科研工作能力</label>
+                            <label><input type="checkbox" name="q8" value="提高操作能力" id="q8_normal" />提高操作能力</label>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>9.存在的问题与建议</span>
+                        </dt>
+                        <dd class="radio_dd" style="border:0;">
+                            <textarea name="q9" id="q9" style="width:100%;height:1rem;resize:none;border: .01rem solid #ccc;border-radius: .05rem;"></textarea>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>10.您对理论授课设置是否满意</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q10" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q10" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q10" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q10" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q10" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q10_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>11.您对操作课程设置是否满意</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q11" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q11" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q11" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q11" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q11" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q11_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>12.您对病例讨论课程设置是否满意</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q12" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q12" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q12" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q12" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q12" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q12_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>13.您对手术录像课程设置是否满意</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q13" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q13" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q13" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q13" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q13" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q13_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>14.您对我们课程设置最满意的是哪一部分</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q14" value="理论课" id="q7_very" />理论课</label>
+                            <label><input type="radio" name="q14" value="操作课" id="q7_good" />操作课</label>
+                            <label><input type="radio" name="q14" value="病例讨论" id="q7_normal" />病例讨论</label>
+                            <label><input type="radio" name="q14" value="手术视频" id="q7_normal" />手术视频</label>
+                            <label><input type="radio" name="q14" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q14_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                                <b class="red">*</b><span>15.您认为我们需要增加哪部分的课程内容</span>
+                            </dt>
+                        <dd class="radio_dd">
+                            <label><input type="checkbox" name="q15" value="理论课" id="q7_very" />理论课</label>
+                            <label><input type="checkbox" name="q15" value="操作课" id="q7_good" />操作课</label>
+                            <label><input type="checkbox" name="q15" value="病例讨论" id="q7_normal" />病例讨论</label>
+                            <label><input type="checkbox" name="q15" value="手术视频" id="q7_normal" />手术视频</label>
+                            <label><input type="checkbox" name="q15" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q15_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>16.您认为我们需要减少哪部分的课程内容</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="checkbox" name="q16" value="理论课" id="q7_very" />理论课</label>
+                            <label><input type="checkbox" name="q16" value="操作课" id="q7_good" />操作课</label>
+                            <label><input type="checkbox" name="q16" value="病例讨论" id="q7_normal" />病例讨论</label>
+                            <label><input type="checkbox" name="q16" value="手术视频" id="q7_normal" />手术视频</label>
+                            <label><input type="checkbox" name="q16" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q16_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>17.您对我们的场地设置是否满意</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q17" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q17" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q17" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q17" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q17" value="其他" id="q7_normal" />其他</label>
+                            <div class="otherInput">
+                                <input type="text" name="q17_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>18.您对学习班的整体接待过程是否满意</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q18" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q18" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q18" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q18" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q18" value="建议" id="q7_normal" />建议</label>
+                            <div class="otherInput">
+                                <input type="text" name="q18_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>19.您对学习班的时间安排是否满意</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q19" value="非常满意" id="q7_very" />非常满意</label>
+                            <label><input type="radio" name="q19" value="比较满意" id="q7_good" />比较满意</label>
+                            <label><input type="radio" name="q19" value="一般" id="q7_normal" />一般</label>
+                            <label><input type="radio" name="q19" value="不满意" id="q7_normal" />不满意</label>
+                            <label><input type="radio" name="q19" value="建议" id="q7_normal" />建议</label>
+                            <div class="otherInput">
+                                <input type="text" name="q19_1">
+                            </div>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt>
+                            <b class="red">*</b><span>20.对课程总体评价</span>
+                        </dt>
+                        <dd class="radio_dd">
+                            <label><input type="radio" name="q20" value="非常好" id="q7_very" />非常好</label>
+                            <label><input type="radio" name="q20" value="好" id="q7_good" />好</label>
+                            <label><input type="radio" name="q20" value="良" id="q7_normal" />良</label>
+                            <label><input type="radio" name="q20" value="一般" id="q7_normal" />一般</label>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="submitBtn">
+                <button>提交</button>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    $(function() {
+        for (let i = 1; i < 9; i++) {
+            layui.use(['rate'], function() {
+                var rate = layui.rate;
+                rate.render({
+                    elem: '#q5_' + i,
+                    value: 0,
+                    text: true,
+                    setText: function(value) { //自定义文本的回调
+                        var arrs = {
+                            '1': '不满意',
+                            '2': '一般',
+                            '3': '较好',
+                            '4': '满意',
+                            '5': '非常满意'
+                        };
+                        this.span.text(arrs[value] || (''));
+                    }
+                })
+
+            });
+        }
+        var userinfo = <?php echo json_encode($userinfo);?>;
+        var openid = userinfo.openid;
+        var url = '/api/convention/Question_detail';
+        var getData = {
+            open_id: openid,
+            type: 0
+        }
+        ajax_all_Filed("true", "true", "POST", url, "json", getData, get_func);
+
+        function get_func(data) {
+            if (data.code == 200) {
+                if (data.data) {
+                    for (var i = 1; i < 21; i++) {
+                        if (i == 5) {
+                            var obj = {
+                                '不满意': '1',
+                                '一般': '2',
+                                '较好': '3',
+                                '满意': '4',
+                                '非常满意': '5'
+                            }
+                            for (let n = 1; n < 9; n++) {
+                                layui.use(['rate'], function() {
+                                    var rate = layui.rate;
+                                    var getValue = data.data['q5_' + n];
+                                    rate.render({
+                                        elem: '#q5_' + n,
+                                        value: obj[data.data['q5_' + n]],
+                                        text: true,
+                                        setText: function(value) { //自定义文本的回调
+                                            var arrs = {
+                                                '1': '不满意',
+                                                '2': '一般',
+                                                '3': '较好',
+                                                '4': '满意',
+                                                '5': '非常满意'
+                                            };
+                                            this.span.text(arrs[value] || (''));
+                                        }
+                                    })
+
+                                });
+                            }
+                        } else if (i == 9) {
+                            $('#q9').val(data.data.q9);
+                        } else {
+                            if ($(`input[name='${'q'+i}'][type='checkbox']`).length > 0) {
+                                var arr = JSON.parse(htmls(data.data['q' + i]));
+                                //多选
+                                for (var j = 0; j < arr.length; j++) {
+                                    $(`input[name='${'q'+i}'][type='checkbox'][value='${arr[j]}']`).attr({
+                                        checked: true
+                                    });
+                                }
+                            } else {
+                                //单选
+                                $(`input[name='${'q'+i}'][value='${data.data['q'+i]}']`).attr({
+                                    checked: true
+                                });
+                            }
+                            //其他
+                            if ($(`input[name='${'q'+i+'_1'}']`).length == 1) {
+                                $(`input[name='${'q'+i+'_1'}']`).val(data.data['q' + i + '_1']);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        //提交 589
+        $('.submitBtn').click(function() {
+            var data = {};
+            for (var i = 1; i < 21; i++) {
+                if (i == 5) {
+                    for (var k = 1; k < 9; k++) {
+                        if (!$('#q5_' + k).find('span').text()) {
+                            alert('第5题未填完整！');
+                            return;
+                        } else {
+                            data['q5_' + k] = $('#q5_' + k).find('span').text();
+                        }
+                    }
+                } else if (i == 9) {
+                    if (!$('#q9').val()) {
+                        alert('第9题未填完整！');
+                        return;
+                    } else {
+                        data.q9 = $('#q9').val();
+                    }
+                } else {
+                    if (!$(`input[name='${'q'+i}']:checked`).val()) {
+                        alert('第' + i + '题未填写完整！');
+                        return;
+                    } else {
+                        if ($(`input[name='${'q'+i}'][type='checkbox']:checked`).length > 0) {
+                            var arr = [];
+                            for (var j = 0; j < $(`input[name='${'q'+i}'][type='checkbox']:checked`).length; j++) {
+                                arr.push($(`input[name='${'q'+i}'][type='checkbox']:checked`).eq(j).val());
+                            }
+                            data['q' + i] = JSON.stringify(arr);
+                        } else {
+                            data['q' + i] = $(`input[name='${'q'+i}']:checked`).val();
+                        }
+                        if ($(`input[name='${'q'+i+'_1'}']`).length == 1) {
+                            data['q' + i + '_1'] = $(`input[name='${'q'+i+'_1'}']`).val();
+                        }
+                    }
+
+                }
+            }
+            data.type = 1;
+            data.open_id = getData.open_id;
+            ajax_all_Filed("true", "true", "POST", url, "json", data, submit_func);
+        })
+
+        function submit_func(data) {
+            alert(data.msg);
+        }
+    })
+</script>
+
+</html>

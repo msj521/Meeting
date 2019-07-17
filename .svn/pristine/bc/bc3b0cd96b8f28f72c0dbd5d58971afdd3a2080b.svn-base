@@ -1,0 +1,387 @@
+{include file="public/header" /}
+<script src="//imgcache.qq.com/open/qcloud/js/vod/sdk/ugcUploader.js"></script>
+<style type="text/css">
+	.text-danger{
+		color: red;
+	}
+	.control-label{
+		text-align: left !important;
+	}
+	#resultBox {
+		width: 100%;
+		height: 80px;
+		border: 1px solid #888;
+		padding: 5px;
+		overflow: auto;
+		margin-bottom: 20px;
+	}
+	.uploaderMsgBox {
+		width: 100%;
+		border-bottom: 1px solid #888;
+	}
+	[act=cancel-upload]{
+		text-decoration: none;
+		cursor:pointer;
+	}
+</style>
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form" action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text"  name="video_title" lay-verify="required" autocomplete="off" placeholder="请输入标题" class="layui-input" value="{$list.title|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">时长</label>
+              <div class="layui-input-block">
+                <input type="text"  name="duration"  autocomplete="off" placeholder="请输入标题" class="layui-input" value="{$list.duration|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">分辨率</label>
+              <div class="layui-input-block">
+                <input type="text"  name="resolution" autocomplete="off" placeholder="请输入" class="layui-input" value="{$list.resolution|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">码率</label>
+              <div class="layui-input-block">
+                <input type="text"  name="bitcode"  autocomplete="off" placeholder="请输入" class="layui-input" value="{$list.bitcode|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">限量</label>
+              <div class="layui-input-block">
+                <input type="text"  name="max_num"  autocomplete="off" placeholder="请输入" class="layui-input" value="{$list.max_num|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">限时</label>
+              <div class="layui-input-block">
+                <input type="text"  name="max_time"  autocomplete="off" placeholder="请输入" class="layui-input" value="{$list.max_time|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">播放量</label>
+              <div class="layui-input-block">
+                <input type="play_count" name="play_count" placeholder="请输入播放量" class="layui-input" value="{$list['play_count']|default=0}">
+              </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label for="description" class="layui-form-label">简介</label>
+                <div class="layui-input-block" >
+                    <textarea placeholder="请输入直播简介" required id="description" name="description" autocomplete="off"
+                    class="layui-textarea" style="height: 80px;">{$list.description|default=''}</textarea>
+                </div>
+            </div>
+
+
+            <div class="layui-form-item">
+              <label for="class_id" class="layui-form-label">录播类型<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <select name="class_id" lay-verify="required" lay-search="">
+                  <option value="">--选择或者搜索--</option>
+                  {volist name="class" id="vo"}
+                  <option value="{$vo.fid}" {if condition="isset($list['class_id']) and $vo['fid'] eq $list['class_id']"} selected="selected" {/if} >{$vo.class_name_zh}</option>
+                  {/volist}
+                </select>
+              </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <label class="layui-form-label xbs768">置顶</label>
+                  <div class="layui-input-block">
+                    <select name="sort" lay-verify="required" >
+                      <option value="0">普通</option>
+                      <option value="1" {if condition="isset($list['sort']) and $list['sort'] eq 1"} selected="selected" {/if} >一级置顶</option>
+                      <option value="2" {if condition="isset($list['sort']) and $list['sort'] eq 2"} selected="selected" {/if} >二级置顶</option>
+                      <option value="3" {if condition="isset($list['sort']) and $list['sort'] eq 3"} selected="selected" {/if} >三级置顶</option>
+                    </select>     
+                  </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="L_sign" class="layui-form-label">专家<?php html_sign();?></label>
+               <a class="layui-btn" onclick="expert_add()"><i class="layui-icon">&#xe608;</i>添加专家</a>
+            </div>
+
+            <div class="layui-form-item" style="margin-left: 110px;">
+                <table id="expert_table" lay-filter="expert_table"></table>
+                <input type="hidden"  name="expert_ids" lay-verify="required">
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">是否推荐</label>
+              <div class="layui-input-block">
+                <input type="radio" name="recommend" value="0" title="普通" {if condition="isset($list['recommend']) and $list['recommend'] eq 1 "} {else} checked {/if}>
+                <input type="radio" name="recommend" value="1" title="推荐" {if condition="isset($list['recommend']) and $list['recommend'] eq 1 "} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">VIP才能观看</label>
+              <div class="layui-input-block">
+                <input type="radio" name="vip" value="1" title="是" {if condition="isset($list['vip']) and $list['vip'] eq 1 "} checked {/if}>
+                <input type="radio" name="vip" value="0" title="否" {if condition="isset($list['vip']) and $list['vip'] eq 1 "} {else} checked {/if}>
+              </div>
+            </div>
+			
+			<div id="form2">
+				<input id="addVideo-file" type="file" style="display:none;">
+				<input id="addCover-file" type="file" style="display:none;">
+			</div>
+			注意：<span style="color:red;">1.上传过程中请勿关闭或刷新页面 &nbsp; 2.上传步骤 1-2-3</span>
+			<div class="row" style="padding:10px;">
+				<a id="addVideo" href="javascript:void(0);" class="layui-btn">1.添加视频</a>
+				<a id="addCover" href="javascript:void(0);" class="layui-btn">2.添加封面</a>
+				<a id="uploadFile" href="javascript:void(0);" class="layui-btn">3.上传</a>
+			</div>
+			<div class="row" id="resultBox"></div>
+			
+          <input type="hidden" name="fid" value="{$list.fid|default=''}">
+		  
+			<div class="layui-form-item" {if condition="!isset($list['view_play_url'])"} style="display:none;" {/if}>
+				<label class="layui-form-label">视频预览</label>
+				<div class="layui-upload">
+					<div style="float: left; width: 150px; text-align: center;">
+						<div class="layui-upload-list">
+						  <video controls="controls"  width="300">
+							<source src="{$list.view_play_url|default=''}"  id="videos" type="video/mp4" />
+						  </video>
+						</div>
+					</div>
+				</div>
+			</div>
+		  
+          <input type="hidden" name="source_id"  id="source_id" value="{$list.source_id|default=0}"> 
+          <input type="hidden" name="view_play_url"  id="play_url" value="{$list.view_play_url|default=''}"> 
+          <input type="hidden" name="fileid" id="fileid" value="{$list.fileid|default=0}">
+          {include file="public/upload" /}
+
+          <div class="layui-form-item">
+            <label class="layui-form-label xbs768">状态</label>
+            <div class="layui-input-block">
+              <input type="radio" name="record_status" value="1" title="启用"checked>
+              <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+              <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+            </div>
+          </div>
+
+            <div class="layui-form-item">
+              <label for="L_sign" class="layui-form-label"></label>
+              <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+{include file="public/expert" /}
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	var index=0;
+	var cosBox=[];
+	
+	/**
+	 * 计算签名
+	**/
+	var getSignature = function(callback){
+		$.ajax({
+			url: '/api/live/js_sign?test=123',  //获取客户端上传签名的 URL
+			type: 'POST',
+			dataType: 'json',
+			success: function(result){
+				if(result) {
+					callback(result);
+				} else {
+					return '获取签名失败';
+				}
+			}
+		});
+	};
+	
+	//删除已上传
+	var video_del = function(fileid){
+		$.ajax({
+			url: '/api/live/js_sign?test=123&fileid='+fileid,
+			type: 'POST',
+			dataType: 'json',
+			success: function(result){
+				return result;
+			}
+		});
+	};
+
+
+	function getAntiLeechUrl(videoUrl, callback) {
+		$.ajax({
+			url: 'https://demo.vod2.myqcloud.com/ugc-upload/',
+			data: JSON.stringify({
+				"Action": "GetAntiLeechUrl",
+				Url: videoUrl,
+			}),
+			type: 'POST',
+			dataType: 'json',
+			success: function(res){
+				if(res.data && res.data.url) {
+					callback(res.data.url);
+				} else {
+					return '获取防盗链视频地址失败';
+				}
+
+			}
+		});
+	}	
+	
+	/**
+	 * 添加上传信息模块
+	 */
+	var addUploaderMsgBox = function(type){
+		var html = '<div class="uploaderMsgBox" name="box'+index+'">';
+		if(!type || type == 'hasVideo') {
+			html += '视频名称：<span name="videoname'+index+'"></span>；' +
+				'计算sha进度：<span name="videosha'+index+'">0%</span>；' +
+				'上传进度：<span name="videocurr'+index+'">0%</span>；' +
+				'fileId：<span name="videofileId'+index+'">   </span>；' +
+				'上传结果：<span name="videoresult'+index+'">   </span>；<br>' +
+				'地址：<span name="videourl'+index+'">   </span>；'+
+				'<a href="javascript:void(0);" name="cancel'+index+'" cosnum='+index+' act="cancel-upload">取消上传</a><br>';
+		}
+		if(!type || type == 'hasCover') {
+			html += '封面名称：<span name="covername'+index+'"></span>；' +
+			'计算sha进度：<span name="coversha'+index+'">0%</span>；' +
+			'上传进度：<span name="covercurr'+index+'">0%</span>；' +
+			'上传结果：<span name="coverresult'+index+'">   </span>；<br>' +
+			'地址：<span name="coverurl'+index+'">   </span>；<br>' +
+			'</div>'
+		}
+		html += '</div>';
+		$('#resultBox').append(html);
+		return index++;
+	};
+
+	/**
+	 *上传视频+封面
+	**/
+	var videoFileList = [];
+	var coverFileList = [];
+	// 给addVideo添加监听事件
+	$('#addVideo-file').on('change', function (e) {
+		var videoFile = this.files[0];
+		videoFileList[0] = videoFile;
+		$('#result').append(videoFile.name +　'\n');
+
+	});
+	$('#addVideo').on('click', function () {
+		$('#addVideo-file').click();
+	});
+	// 给addCover添加监听事件
+	$('#addCover-file').on('change', function (e) {
+		var coverFile = this.files[0];
+		coverFileList[0] = coverFile;
+		$('#result').append(coverFile.name +　'\n');
+
+	});
+	$('#addCover').on('click', function () {
+		$('#addCover-file').click();
+	});
+
+	var startUploader = function(fileid){
+		if(videoFileList.length){
+			var num = addUploaderMsgBox();
+			if(!coverFileList[0]){
+				$('[name=covername'+num+']').text('没有上传封面');
+			}
+			var resultMsg = qcVideo.ugcUploader.start({
+				videoFile: videoFileList[0],
+				coverFile: coverFileList[0],
+				getSignature: getSignature,
+				allowAudio: 1,
+				success: function(result){
+					if(result.type == 'video') {
+						$('[name=videoresult'+num+']').text('上传成功');
+						$('[name=cancel'+num+']').remove();
+						cosBox[num] = null;
+					} else if (result.type == 'cover') {
+						$('[name=coverresult'+num+']').text('上传成功');
+					}
+				},
+				error: function(result){
+					if(result.type == 'video') {
+						$('[name=videoresult'+num+']').text('上传失败>>'+result.msg);
+					} else if (result.type == 'cover') {
+						$('[name=coverresult'+num+']').text('上传失败>>'+result.msg);
+					}
+				},
+				progress: function(result){
+					if(result.type == 'video') {
+						$('[name=videoname'+num+']').text(result.name);
+						$('[name=videosha'+num+']').text(Math.floor(result.shacurr*100)+'%');
+						$('[name=videocurr'+num+']').text(Math.floor(result.curr*100)+'%');
+						$('[name=cancel'+num+']').attr('taskId', result.taskId);
+						cosBox[num] = result.cos;
+					} else if (result.type == 'cover') {
+						$('[name=covername'+num+']').text(result.name);
+						$('[name=coversha'+num+']').text(Math.floor(result.shacurr*100)+'%');
+						$('[name=covercurr'+num+']').text(Math.floor(result.curr*100)+'%');
+					}
+				},
+				finish: function(result){
+					//上传成功 
+					if(result.fileId>0){
+						video_del(fileid);
+					}
+					$('#fileid').val(result.fileId);
+					$('#play_url').val(result.videoUrl);
+					$('[name=videofileId'+num+']').text(result.fileId);
+					getAntiLeechUrl(result.videoUrl, function (newUrl) {
+						$('[name=videourl'+num+']').text(newUrl);
+					});
+					if(result.coverUrl) {
+						$('[name=coverurl'+num+']').text(result.coverUrl);
+					}
+					if(result.message) {
+						$('[name=videofileId'+num+']').text(result.message);
+					}
+				}
+			});
+			if(resultMsg){
+				$('[name=box'+num+']').text(resultMsg);
+			}
+		} else {
+			$('#result').append('请添加视频！\n');
+		}
+
+	}
+
+	// 上传按钮点击事件
+	$('#uploadFile').on('click', function () {
+		var secretId = $('#secretId').val();
+		var secretKey = $('#secretKey').val();
+		var fileid=$('#fileid').val();
+		startUploader(fileid);
+		//$('#form2')[0].reset();
+	});
+	
+	/*
+	 * 取消上传绑定事件，示例一与示例二通用
+	 */
+	$('#resultBox').on('click', '[act=cancel-upload]', function() {
+		var cancelresult = qcVideo.ugcUploader.cancel({
+			cos: cosBox[$(this).attr('cosnum')],
+			taskId: $(this).attr('taskId')
+		});
+		console.log(cancelresult);
+	});
+</script>
+</body>
+</html>

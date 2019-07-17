@@ -1,0 +1,94 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+      <label for="download_title" class="layui-form-label">标题<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="download_title" name="download_title"  lay-verify="required" value="{$list.download_title|default=''}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">资源上传<?php html_sign();?></label>
+      <div class="layui-upload">
+          <button type="button" class="layui-btn" id="img">
+              {if condition="isset($list['file_path']) and $list['fid']"} 重新上传{else}点击上传 {/if}
+          </button>
+          <span class="layui-upload-list">
+            <table class="layui-table">
+              <thead>
+                <tr>
+                  <th>文件名</th>
+                  <th>大小</th>
+                </tr>
+              </thead>
+              <tbody id="demoList">
+                <tr>
+                    <td>{$list.file_name|default=''}</td>
+                    <td>{$list.file_size|default=0}kb</td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
+      </div>
+    </div>
+    
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+    <input type="hidden" name="convention_id" value="{$list.convention_id|default=$convention_id}">
+    <input type="hidden" name="download_type" value="{$list.room_id|default=$room_id}">
+    <input type="hidden" id="file_ids" name="file_ids" value="{$list.file_ids|default=0}">
+    
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用" checked>
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  layui.use('upload',function(){
+    var $ = layui.jquery
+    ,upload = layui.upload;
+    var fid='{$list.file_ids|default=0}';
+    //上传
+    var uploadInst = upload.render({
+      elem: '#img'
+      ,url: '/upload'
+      ,data: {fid:fid,source_type:4,download_type:3}
+      ,accept: 'file'
+      ,multiple: true
+      ,before: function(obj){
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+      //读取本地文件
+      obj.preview(function(index, file, result){
+          var tr = $(['<tr id="upload-'+ index +'">'
+            ,'<td>'+ file.name +'</td>'
+            ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+          ,'</tr>'].join(''));
+          $("#demoList").html(tr);
+        });
+      }
+      ,done: function(res){
+        //如果上传失败
+        if(res.code==200){
+          $('#file_ids').attr('value', res.data);
+          return layer.msg('上传成功');
+        }else{
+          return layer.msg('上传失败');
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

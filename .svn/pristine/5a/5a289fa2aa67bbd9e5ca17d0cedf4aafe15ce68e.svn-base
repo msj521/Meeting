@@ -1,0 +1,24 @@
+	<div class="footers">
+			<div class="conter960">
+				<div class="footer_txt">
+					<div class="fter_01">
+						<a href="/about?sr=关于我们">关于我们</a>&nbsp;|&nbsp;
+						<a href="/copyright?sr=版权声明">版权声明</a>&nbsp;|&nbsp;
+						<a href="/disclaimer?sr=免责声明">免责声明</a>&nbsp;|&nbsp;
+						<a href="/report?sr=举报投诉">举报投诉</a>&nbsp;|&nbsp;
+						<a href="/contact?sr=联系我们">联系我们</a>
+					</div>
+					<div class="fter_01" style="font-size: 14px; color: #555;">
+						<p> Copyright©2018-2028 深圳斯菲克科技有限公司 版权所有<br /><a href="http://sific.vip/certificate.jpg" target="_blank" style="font-size: 14px; color: #555;">网络文化经营许可证</a> <br /> <a href="http://www.miitbeian.gov.cn" target="_blank" style="font-size: 14px; color: #555;">粤ICP备18060349号-1</a>
+							<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275090355'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1275090355%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+						</p>
+						
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script type="text/javascript" src="/static/web/js/pulic.js" ></script>

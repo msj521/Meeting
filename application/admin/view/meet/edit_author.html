@@ -1,0 +1,78 @@
+{include file="public/header" /}
+
+<style type="text/css">
+  /*隐藏全选checkbox*/
+  .layui-table th .layui-unselect{
+      display: none;
+  }
+</style>
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form"  action="{$update}" method="post" enctype="multipart/form-data">
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">姓名<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text"  name="author_name" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input" value="{$list['author_name']|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">手机<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text"  name="tel" lay-verify="required" autocomplete="off" placeholder="请输入手机" class="layui-input" value="{$list['tel']|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">邮箱<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text" name="email" lay-verify="email" autocomplete="off" placeholder="请输入邮箱" class="layui-input" value="{$list['email']|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">地址</label>
+              <div class="layui-input-block">
+                <input type="text" name="address" lay-verify="address" autocomplete="off" placeholder="请输入地址" class="layui-input" value="{$list['address']|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">单位</label>
+              <div class="layui-input-block">
+                <input type="text" name="company" lay-verify="company" autocomplete="off" placeholder="请输入单位" class="layui-input" value="{$list['company']|default=''}">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">作者类别</label>
+              <div class="layui-input-block">
+                <input type="radio" name="author_type" value="1" title="文章作者" checked>
+                <input type="radio" name="author_type" value="2" title="通讯作者" {if condition="isset($list['type']) && $list['type'] eq 2"} checked {/if}>
+                <input type="radio" name="author_type" value="3" title="其他作者" {if condition="isset($list['type']) &&  $list['type'] eq 3"} checked {/if}>
+              </div>
+            </div>
+			
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">状态</label>
+              <div class="layui-input-block">
+                <input type="radio" name="record_status" value="1" title="启用" checked>
+                <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) && $list['record_status'] eq 2"} checked {/if}>
+                <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) &&  $list['record_status'] eq -1"} checked {/if}>
+              </div>
+            </div>
+			<input type="hidden" name="fid" value="{$list['fid']|default='0'}">
+			<input type="hidden" name="paper_id" value="{$paper_id|default='0'}">
+            <div class="layui-form-item">
+              <label  class="layui-form-label"></label>
+              <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+    <!-- 中部束 -->
+</body>
+</html>

@@ -1,0 +1,82 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>系统管理</cite></a>
+              <a><cite>运行日志</cite></a>
+              <a><cite>{$title}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="/sys/log_api" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <select name="app_type_id" lay-search="" >
+            <option value="">应用端类型</option>
+            {volist name="app_type" key="ko" id="vo"}
+            <option value="{$ko}"  {if condition="$ko eq $app_type_id"} selected="selected" {/if} >{$vo}</option>
+            {/volist}
+          </select>
+        </div>      
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="用户姓名/IP地址/终端IMEI" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+    <span class="x-right" style="line-height:40px">共有数据：{$cnt} 条</span>
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th style="width:40px;">ID</th>
+      <th>用户名</th>
+      <th>终端类型</th>
+      <th>终端IMEI</th>
+      <th>版本号</th>
+      <th>IP地址</th>
+      <th>浏览器类型</th>
+      <th>接口名称</th>
+      <th>URL</th>
+      <th>调用结果</th>
+      <th>返回内容</th>
+      <th>耗时</th>
+      <th>创建时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="list" id="vo"}
+    <tr>
+      <td>{$vo.fid}</td>
+      <td>{$vo.user_name}</td>
+      <td>{$vo.app_type|app_type}</td>
+      <td>{$vo.imei}</td>
+      <td>{$vo.version_no}</td>
+      <td>{$vo.ip}</td>
+      <td>{$vo.http_agent}</td>
+      <td>{$vo.method}</td>
+      <td>{$vo.url}</td>
+      <td>{$vo.result}</td>
+      <td>{$vo.returnstr}</td>
+      <td>{$vo.elapse}</td>
+      <td>{$vo.create_time}</td>
+    </tr>
+    {/volist}
+    </tbody>
+  </table>
+  <div class="page">
+    {$list->render()}
+  </div>
+</div>
+<script>
+</script>
+</body>
+</html>

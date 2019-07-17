@@ -1,0 +1,99 @@
+<?php
+namespace app\api\controller;
+
+use think\Db;
+use think\Model;
+use think\Request;
+use app\api\common\Base;
+use app\api\model\AppInfo;
+
+class Sys extends Base {
+    
+    /**
+     * @return string|void
+     * 版本检测接口
+     */
+    public function version_check() {
+        $user_id = $this->request->get('user_id');
+        $version = $this->request->get('version');
+        $type = $this->request->get('type');
+        
+        $enduser_info = Db::table('enduser_info')->where(['fid'=>$user_id,'record_status'=>1])->find();
+        $org_id = $enduser_info['org_id'];
+
+        $version_new_list = [];
+        //验证是否有可用的新版本
+        $version_old = Db::table('version_info')->where(['type'=>$type,'version_no'=>$version,'status'=>1])->find();
+        if (!empty($version_old)) {
+            $version_id = $version_old['fid'];
+            $version_list = Db::query('select * from version_info where type=$type and status=1 and fid>$version_id order by fid desc');     
+            $version_ids = []; 
+            if (count($version_list)>0) {
+                foreach ($ver as $vo) {
+                    $version_ids[] = $vo['fid'];
+                }
+                $version_dl_list = Db::table('version_dl_info')->wherein('version_id',$version_ids)->select();
+                if (count($version_dl_list)>0) {
+                    foreach ($version_dl_list as $version) {
+                        $version_org_id = $version['org_id'];
+                        $version_user_id = $version['user_id'];
+                        $start_time = $version['start_time'];
+                        $end_time = $version['end_time'];
+                        $force_type = $version['force_type'];
+                        $flag = false;
+                        if ($version_org_id=0) {
+                            # 所有人都可以下载
+                            $flag = true;
+                        }else if ($version_org_id>0 && $version_user_id=0){
+                            # 指定部门的所有人员可以下载
+                            $flag = true;
+                        }else if ($version_org_id>0 && $version_user_id>0){
+                            # 指定部门的指定人员可以下载
+                            $flag = true;
+                        }
+                        if ($flag) {
+                            $version_info = [
+                                'force_type' => $version['force_type'],
+                                'dl_pass' => $version['dl_pass'],
+                                'memo' => $version['memo']
+                            ];
+                            $version_new_list[] = $version_info;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        $data = [
+            'code' => '200',
+            'msg' => '获取成功',
+            'data' => [
+                'version_list' => $version_new_list
+            ]
+        ];
+        echo  json_encode($data);exit;
+    }
+
+    /* 平台声明 */
+    public function Explain(){
+        $type = $this->request->get('type');
+        if(empty($type) || !$type || $type!="sific"){
+            $data = [
+                'code' => '410',
+                'msg' => '获取失败'
+            ];
+        }else{
+            $explain_list=Db::table('base_explain_info')->where(['record_status'=>1])->find();
+            $data = [
+                'code' => '200',
+                'msg' => '获取成功',
+                'data' => [
+                    'explain_list' => $explain_list
+                ]
+            ];
+        }
+        echo  json_encode($data);exit;
+    }
+    
+}      

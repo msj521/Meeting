@@ -1,0 +1,40 @@
+{include file="public/header" /}
+		<div class="conter960">
+			{include file="public/mbxue" /}
+			{include file="public/meeting_nav" /}
+			<div class="honor">
+				<div id="firstpane" class="menu_list">
+					
+				</div>
+			</div>
+		</div>
+
+{include file="public/footer" /}
+
+
+<script>
+		var download = "api/convention/history";
+		function mtdownload(data){
+			var str="";
+			for(var i=0; i<data.data.length;i++){
+				str+='<div class="firstpanelist">';
+				str+='<h3 class="menu_head">';
+				str+=data.data[i].title;
+				str+='</h3>';
+				str+='<div style="display:none" class="menu_body">';
+				for(var j=0; j<data.data[i].image_list.length;j++){
+						str+='<a href="#">'+'<img src="'+data.data[i].image_list[j].file_path+'">'+'</a>';
+				}
+				str+='</div>'
+				str+='</div>'
+			}
+			
+			$("#firstpane").append(str)		
+			$("#firstpane h3:first").addClass("current");
+			 $("#firstpane .menu_body:eq(0)").show();
+		}
+		var data = {"convention_id":convention_id,"history_type":2};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

@@ -1,0 +1,85 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="/sys/acl/update" method="post" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">应用名称<?php html_sign();?></label>
+      <div class="layui-input-block">
+          <select name="app_id" lay-search="" lay-verify="required">
+            <option value="">--选择或者搜索--</option>
+            {volist name="app_info" id="vo"}
+            <option value="{$vo.fid}"  {if condition="isset($list.app_id) && $vo.fid eq $list.app_id"} selected="selected" {/if} >{$vo.app_name}</option>
+            {/volist}
+          </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="version_id" class="layui-form-label">应用版本号<?php html_sign();?></label>
+      <div class="layui-input-block">
+          <select name="version_id" lay-search="" lay-verify="required">
+            <option value="">--选择或者搜索--</option>
+            {volist name="version_info" id="vo"}
+            <option value="{$vo.fid}"  {if condition="isset($list['version_id']) && $vo.fid eq $list.version_id"} selected="selected" {/if} >{$vo.version_no}</option>
+            {/volist}
+          </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="function" class="layui-form-label">接口名称<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" placeholder="%表示全部接口" lay-verify="required"  id="function" name="function" value="{$list.function|default=''}">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">分配时间<?php html_sign();?></label>
+      <div class="layui-input-block xbs768">
+        <input class="layui-input" id="LAY_demorange_s" lay-verify="required" name="issue_time" value="{$list.issue_time|default=''}">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">过期时间<?php html_sign();?></label>
+      <div class="layui-input-block xbs768">
+        <input class="layui-input" id="LAY_demorange_e" lay-verify="required" name="expire_time" value="{$list.expire_time|default=''}">
+      </div>
+    </div>
+
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用"checked>
+
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) && $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="2" title="标记删除" {if condition="isset($list['record_status']) &&  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+<script>
+  layui.use('laydate', function () {
+    var laydate = layui.laydate;
+
+    //执行一个laydate实例
+    laydate.render({
+      elem: '#LAY_demorange_s'
+      ,type: 'datetime'
+    });
+    //执行一个laydate实例
+    laydate.render({
+      elem: '#LAY_demorange_e'
+      ,type: 'datetime'
+    });
+
+  });
+</script>
+</body>
+</html>

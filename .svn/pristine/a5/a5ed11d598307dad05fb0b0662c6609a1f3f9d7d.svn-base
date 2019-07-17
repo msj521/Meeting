@@ -1,0 +1,194 @@
+{include file="public/header" /}
+		<div class="conter960">
+			<div class="userlist">
+				<div class="userlf">
+					<div class="userimg">
+						<img src="" class="userimgs" />
+						<p><span id="nick_name"></span></p>
+					</div>
+					<div class="up_pwd">
+						<a href="/modify">修改资料</a>&nbsp;|&nbsp;<a href="javascript:void(0)" id="update_pwd">修改密码</a>
+					</div>
+					<div class="user_nav">
+						<a href="/userinfo" class="user_data user_data2">个人资料</a>
+						<!-- <a href="/mytrain" class="user_train">我的培训</a> -->
+						<a href="/mydownload" class="user_up">投稿中心</a>
+						<!-- <a href="/shoplist" class="user_shop">购买记录</a> -->
+						<a href="/meetingname" class="user_sign">会议报名</a>
+					</div>
+					<div class="user_skip_btn1">
+							<a href="/" class="back2index">返回首页</a>&nbsp;|&nbsp;<a href="javascript:void(0);" class="out">退出登录</a>
+					</div>
+				</div>
+				<div class="userrg">
+					<div class="usrinfo_txt">
+						<ul class="usrinfo_txt_ul">
+							<li class="userli01">
+								<div class="usrinfo_txtlf">手机号：</div>
+								<input type="text" class="form-control" id="update_tels" disabled="disabled">
+							</li>
+							<li class="userli01">
+								<div class="usrinfo_txtlf">姓名：</div>
+								<input type="text" class="form-control" id="update_names">
+								
+							</li>
+							<li class="userli01">
+								<div class="usrinfo_txtlf">昵称：</div>
+								 <input type="text" class="form-control" id="update_class_names">
+								
+							</li>
+							<li class="userli01">
+								<div class="usrinfo_txtlf">职位：</div>
+							    <input type="text" class="form-control" id="update_job_names">
+							</li>
+							
+							<li class="userli01">
+								<div class="usrinfo_txtlf">学历：</div>
+								
+								 <select class="form-control" id="update_education_names">
+								 </select>
+							</li>
+							<li class="userli02">
+								<div class="usrinfo_txtlf">科室/部门：</div>
+								<select id="department_s" class="form-control">
+								        
+								 </select>
+							</li>
+							<li class="userli02">
+								<div class="usrinfo_txtlf">省市区：</div>
+								<div class="form-group" style="float: left; width: 32%;">
+								    <select class="form-control" id="region_s">
+
+								    </select>
+								  </div>
+								  <div class="form-group" style="float: left; width: 31%; margin-left: 10px;">
+								    <select class="form-control" id="region_ss">
+			
+								    </select>
+								  </div>
+								  <div class="form-group" style="float: left; width: 32%;margin-left: 10px;">
+								    <select class="form-control" id="region_sss">
+			
+								    </select>
+								  </div>
+							</li>
+							<li class="userli02">
+								<div class="usrinfo_txtlf">所属单位：</div>
+								
+								<div class="form-group">
+								    <select class="form-control" id="update_org_names">
+											
+								    </select>
+								  </div>
+							</li>
+						</ul>
+					</div>
+					<div class="pulic_btn" style="width: 100%; float: left;">
+					  	<button class="pulic_bt" id="update_pulic_btn">保存</button>
+					  </div>
+					<!--<div class="user_logo">
+						<img src="../images/banner.png" />
+					</div>-->
+				</div>
+			</div>
+		</div>
+{include file="public/footer2" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css"/>
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js" ></script>
+<script type="text/javascript" src="/static/web/js/module/user.js" ></script>
+<!--<script type="text/javascript" src="/static/web/js/module/select.js" ></script>-->
+<div class="pulic_t_div" style="display: none;" id="pu_pawd">
+	<div class="pulic_t_divct">
+		<div class="pulic_t_txt">
+			<div class="daytiem_close"></div>
+			<div class="pulic_t_title">修改密码</div>
+			<div class="inputlist">
+				<div class="inputlist_txt">
+					<div class="form-group">
+					    <label for="name">旧密码</label>
+					    <input type="password" class="form-control" id="old_pwd" maxlength="16">
+					  </div>
+					  <div class="form-group">
+					    <label for="name">新密码</label>
+					    <input type="password" class="form-control" id="new_pwd" maxlength="16">
+					  </div>
+					  <div class="form-group">
+					    <label for="name">重复新密码</label>
+					    <input type="password" class="form-control" id="new_pwd2" maxlength="16">
+					  </div>
+					  <p class="tis_txt" id="tis_txt"></p>
+					  <div class="pulic_btn">
+					  	<button class="pulic_bt" id="pu_pawd_btn">保存</button>
+					  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="pulic_t_div" id="update_img" style="display: none;">
+	<div class="pulic_t_divct">
+		<div class="pulic_t_txt">
+			<div class="daytiem_close"></div>
+			<div class="pulic_t_title">修改头像</div>
+			<div class="inputlist">
+				<div class="layui-upload" style="text-align: center;">
+				  <div class="layui-upload-list">
+				    <img class="layui-upload-img" id="demo1" width="72" height="72">
+				    <p id="demoText"></p>
+				  </div>
+				   <button type="button" class="layui-btn" id="test1">请选择新图片</button>
+				</div>   
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+var uploadurl = "api/user/update_user_img";
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+  
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: '/upload'
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+    	console.log(res)
+      //如果上传失败
+      if(res.code >200){
+        return layer.msg('上传失败');
+      }
+      //上传成功
+        function uploadinfo(data){
+        	if(data.code==200){
+        		showLaert(data.msg)
+   	 			$("#alert_btn").on('click',function(){
+					window.location.reload()
+				})
+        	}
+        }
+        var uploaddata = {"wab_image_id":res.data,"creator_id":cook_uid};
+   		ajax_all_Filed("true", "true", "POST", uploadurl, "json", uploaddata, uploadinfo);//调用函数	
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+
+});
+</script>

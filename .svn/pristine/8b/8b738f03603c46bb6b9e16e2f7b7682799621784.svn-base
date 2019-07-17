@@ -1,0 +1,97 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>考试管理</cite></a>
+              <a><cite>{$title|default='答题记录'}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+
+<div class="x-body">
+  <!-- 右侧内容框架，更改从这里开始 -->
+  <form class="layui-form xbs" action="{$index|default='/'}">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+        <div class="layui-input-inline">
+          <input type="text" name="string" placeholder="考试题目" autocomplete="off" class="layui-input" value="{$string}">
+          <input type="hidden" name="uid" value="{$uid|default=''}">
+          <input type="hidden" name="exam_id" value="{$exam_id|default=''}">
+          <input type="hidden" name="fid" value="{$fid|default=''}">
+        </div>
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+  <xblock>
+    <a><span class="layui-btn" style="line-height:40px">共有数据：{$cnt} 条</span></a>
+  </xblock>
+
+
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="barTool">
+    <div class="td-manage">
+      <a title="删除" href="javascript:;" lay-event="del"
+          style="text-decoration:none">
+        <i class="iconfont">&#xe69d;</i>
+      </a>
+  </div>
+</script>
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  //console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    }
+  }
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid', width:80, title: 'ID'}
+        ,{field:'exam_name',  width:178, title: '考试名称'}
+        ,{field:'subject_name',  width:178, title: '考试题目'}
+        ,{field:'user_name',title: '用户名称'}
+        ,{field:'option_name',title: '用户选择'}
+        ,{field:'record_status',  title: '状态'}
+        ,{field:'create_time', width:160,  title: '答题时间'}       
+        ,{fixed: 'right', title: '操作',width:80, align:'center', toolbar: '#barTool'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'del'){
+        member_del(data.fid,'{$del|default="/"}','{$index|default="/"}?fid={$fid|default=''}&exam_id={$exam_id|default=''}&uid={$uid|default=''}')
+      }
+    });
+  })
+</script>
+</body>
+</html>

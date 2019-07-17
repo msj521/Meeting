@@ -1,0 +1,154 @@
+{include file="public/header" /}
+
+<link rel="stylesheet" type="text/css" href="/static/web/css/bootstrap-select.css"> 
+<script type="text/javascript" src="/static/web/libs/bootstrap/bootstrap_select.js"></script> 
+ <script type="text/javascript" src="/static/web/libs/bootstrap/bootstrap.min.js"></script>
+		<div class="conter960">
+			<div class="retrieve_list" style="height: 1200px; margin-bottom: 20px;">
+				<div class="retrieve_title">
+					<h1>创建账号</h1>
+				</div>
+					<div class="retrieve_txt">
+					<div class="retrieve_tb">
+						<div class="rt_lf">手机号</div>
+						<div class="rt_rg"><input type="text" id="tel" value="" class="jianting ret_input" placeholder="请输入手机号" />
+							<div></div>
+						</div>
+					</div>
+					
+					<div class="retrieve_tb">
+						<div class="rt_lf">验证码</div>
+						<div class="rt_rg">
+							<input type="text" id="message" value="" class="jianting ret_input" placeholder="请输入验证码" style="width: 180px; float: left;"/>
+						<input type="button" class="yzm_btn" id="yzm_btn" value="免费获取验证码" style="float: right; width: 110px;"  onclick="settime(this);"/>
+							<div style="margin-top: 12px;"></div>
+						</div>
+					</div>
+					
+					<div class="retrieve_tb">
+						<div class="rt_lf">密码</div>
+						<div class="rt_rg"><input type="password"  id="password" value="" class="jianting ret_input" placeholder="请输入至少六位数新密码" maxlength="16"/><div></div></div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">重复密码</div>
+						<div class="rt_rg"><input type="password"  id="password2" value="" class="jianting ret_input" placeholder="请重复新密码" maxlength="16"/><div></div></div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">姓名</div>
+						<div class="rt_rg"><input type="text" id="user_name" value="" class="jianting ret_input" placeholder="请输入真实姓名" /><div></div></div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">邮箱</div>
+						<div class="rt_rg"><input type="text" id="email" value="" class="jianting ret_input" placeholder="请输入邮箱" />
+							<div></div>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">省</div>
+						<div class="rt_rg">
+						<select class="form-control" id="region_s" style="float: left; width:100%; height: 40px;">
+					      <option value="0">请选择省</option>
+					  </select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">市</div>
+						<div class="rt_rg">
+						<select class="form-control" id="region_ss" style="float: left; width:100%; height: 40px;">
+					      
+					  </select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">区</div>
+						<div class="rt_rg">
+						<select class="form-control" id="region_sss" style="float: left; width:100%; height: 40px;">
+					      
+					  </select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<form class="layui-form" action="">
+						<div class="rt_lf">所属单位</div>
+						<div class="rt_rg">
+							 <select id="org_id" class="form-control selectpicker "  data-live-search="true">
+							        <option value="0">请选择单位</option>
+							  </select>
+						</div>
+
+						</form>
+						  
+					</div>
+					<div class="retrieve_tb" id="beyong" style="display: none;">
+						<div class="rt_lf">备注单位</div>
+						<div class="rt_rg">
+							<input type="text" name="" id="diy_org" value="" class="ret_input" placeholder="找不到合适单位请填写"/>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">部门/科室</div>
+						<div class="rt_rg">
+							 <select id="deparitment" class="form-control pulic_select"  data-live-search="true">
+						        <option value="0">请选择部门/科室</option>
+						 	</select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">职位</div>
+						<div class="rt_rg">
+							<input type="text" name="" id="job_id" value="" class="ret_input" placeholder="请填写职位"/>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">职称级别</div>
+						<div class="rt_rg">
+							<select class="form-control" id="credit_type" style="float: left; width:100%; height: 40px;">
+						      <option value="0">请选职称级别</option>
+						  </select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">职称</div>
+						<div class="rt_rg">
+							<select class="form-control" id="credit_title" style="float: left; width:100%; height: 40px;">
+						      <option value="0">请选择职称</option>
+
+						  </select>
+						</div>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">学历</div>
+						<div class="rt_rg">
+							<select class="form-control" id="education_id" style="float: left; width:100%; height: 40px;">
+						      <option value="0">请选学历</option>
+						     
+						  </select>
+						</div>
+					</div>
+					<div style="margin-left: 90px;">
+						<label><input type="checkbox" name="" id="rg_checkbox" value="" />已阅读并同意</label><a href="/xieyi" target="_blank">《公司协议》</a>
+					</div>
+					<div class="retrieve_tb">
+						<div class="rt_lf">&nbsp;</div>
+						<div class="rt_rg"><button class="retrieve_btn" id="retrieve_btn">立即创建</button></div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/register.js" ></script>
+
+  
+
+ <script type="text/javascript">
+        $(window).on('load', function () {
+ 
+            $('.selectpicker').selectpicker({
+                'selectedText': 'cat'
+            });
+ 
+            // $('.selectpicker').selectpicker('hide');
+        });
+    </script>

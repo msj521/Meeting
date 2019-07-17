@@ -1,0 +1,23 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="guest_txt" id="mishuc" style="padding: 20px 30px;">
+				
+			</div>
+		</div>
+
+{include file="public/footer2" /}
+<script>
+	$(function(){
+		var convention_info = JSON.parse(localStorage.getItem("convention_info"))
+		var content = htmls(convention_info.secretary);
+		
+		if(content=="null" || content==undefined){
+				$("#mishuc").html('<div style="font-size: 14px; line-break: 50px; text-align: center;">暂无数据</div>');
+			}else{
+				$("#mishuc").html(content);
+			}
+	})
+	
+</script>

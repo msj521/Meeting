@@ -1,0 +1,210 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>会议管理</cite></a>
+              <a><cite>{$title|default='报名记录'}</cite></a>
+            </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+
+<div class="x-body">
+  <!-- 右侧内容框架，更改从这里开始 -->
+  <form class="layui-form xbs" action="{$index|default='/'}">
+    <div class="layui-form-pane" style="text-align: center;">
+      <div class="layui-form-item" style="display: inline-block;">
+	  
+        <label class="layui-form-label">起始时间</label>
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="开始时间" id="LAY_demorange_s" name="start_time" value="{$start}">
+        </div>
+		
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="结束时间" id="LAY_demorange_e" name="end_time" value="{$end}">
+        </div>
+		
+		<div class="layui-input-inline">
+          <select name="pay_type" lay-search="">
+            <option value="">支付方式</option>
+			<option value="1"  {if condition="isset($pay_type) and $pay_type eq 1"} selected{/if} >银行转账</option>
+			<option value="5"  {if condition="isset($pay_type) and $pay_type eq 5"} selected {/if} >在线支付</option>
+          </select>
+        </div>
+		
+		<div class="layui-input-inline">
+          <select name="pay_status" lay-search="">
+            <option value="">支付状态</option>
+			<option value="1"  {if condition="isset($pay_status) and $pay_status eq 1"}selected{/if} >未支付</option>
+			<option value="2"  {if condition="isset($pay_status) and $pay_status eq 2"} selected {/if}>支付成功</option>
+          </select>
+        </div>
+		
+		<div class="layui-input-inline">
+          <input type="text" name="pay_number" placeholder="订单号" autocomplete="off" class="layui-input" value="{$pay_number}">
+        </div>
+		
+        <div class="layui-input-inline">
+          <input type="text" name="string" placeholder="" autocomplete="off" class="layui-input" value="{$string}">
+          <input type="hidden" name="fid" value="{$fid|default=0}">
+        </div>
+		
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <a class="layui-btn layui-btn-normal" style="line-height:40px">报名总数：{$all_cnt} 条</a>
+    <a class="layui-btn" style="line-height:40px">报名成功数：{$all_scnt} 条</a>
+    <a class="layui-btn layui-btn-warm" style="line-height:40px">报名总金额：{$all_money} 元</a>
+    <a class="layui-btn " style="line-height:40px">支付宝总金额：{$all_alpay} 元</a>
+    <a class="layui-btn layui-btn-danger" style="line-height:40px">公账总金额：{$all_acpay} 元</a>
+    <a class="layui-btn" style="line-height:40px">当前页共有数据：{$cnt} 条</a>
+    <a class="layui-btn x-right" href="/meet/signup?fid={$fid|default=0}&ZJ=0&export_id={$fid|default=0}">导出报名记录</a>
+  </xblock>
+
+  <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="barTool">
+  <div class="td-manage">
+
+      <a title="审核" href="javascript:;"  lay-event="edit" ><i class="iconfont" >&#xe6b2;</i></a>
+	  
+      <!-- <a title="修改注册资料" href="javascript:;"  lay-event="A"><i class="iconfont" >&#xe69e;</i></a> -->   
+	  
+      <a title="开票" href="javascript:;"  lay-event="C"><i class="iconfont" >&#xe69e;</i></a>
+	   
+      <a title="删除" href="javascript:;" lay-event="del" style="text-decoration:none"><i class="iconfont">&#xe69d;</i></a>
+	  
+	  
+    </div>
+</script>
+
+<script type="text/html" id="a">
+  <a  href="javascript:;"  lay-event="A"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe757;</i></a>
+</script>
+
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  //console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+    if(dataList.data[i].field_type==1){
+        dataList.data[i].field_type='填空';
+    }else if(dataList.data[i].field_type==2){
+        dataList.data[i].field_type='单选题';
+    }else if(dataList.data[i].field_type==3){
+        dataList.data[i].field_type='多选题';
+    }else if(dataList.data[i].field_type==4){
+        dataList.data[i].field_type='下拉选择';
+    }
+
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    }
+
+    if(dataList.data[i].pay_status==1){
+        dataList.data[i].pay_status='未支付';
+    }else if(dataList.data[i].pay_status==2){
+        dataList.data[i].pay_status='支付成功';
+    }else if(dataList.data[i].pay_status==3){
+        dataList.data[i].pay_status='支付失败';
+    }
+	
+	if(dataList.data[i].pay_type==1){
+        dataList.data[i].pay_type='银行转账';
+    }else if(dataList.data[i].pay_type==2){
+        dataList.data[i].pay_type='现场支付';
+    }else if(dataList.data[i].pay_type==3){
+        dataList.data[i].pay_type='支付宝';
+    }else if(dataList.data[i].pay_type==4){
+        dataList.data[i].pay_type='微信';
+    }else if(dataList.data[i].pay_type==5){
+        dataList.data[i].pay_type='在线支付';
+    }
+	
+	if(dataList.data[i].bill_type==1){
+        dataList.data[i].bill_type='普通发票';
+    }else if(dataList.data[i].bill_type==2){
+        dataList.data[i].bill_type='增值税专用发票';
+    }	
+	
+	if(dataList.data[i].bill_status==1){
+        dataList.data[i].bill_status='未开';
+    }else if(dataList.data[i].bill_status==2){
+        dataList.data[i].bill_status='已开';
+    }
+	
+	if(dataList.data[i].creator_id>0){
+        dataList.data[i].creator_id='2019T0'+dataList.data[i].creator_id;
+    }else{
+        dataList.data[i].creator_id=dataList.data[i].creator_id;
+    }
+  }
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid', width:80, title: 'ID'}
+		,{field:'creator_id',width:120, title: '注册编号'} 
+        ,{field:'user_name',width:90, title: '用户名'}   
+        ,{field:'tel',width:150, title: '手机号'} 
+        ,{field:'pay_number',width:180, title: '订单号'}		
+        ,{field:'ticket_name',width:150, title: '门票类型'}
+        ,{field:'price', width:100,  title: '门票价格'} 
+        ,{field:'actual_pay', width:100,  title: '实际支付'}
+        ,{field:'pay_status',width:90, title: '支付状态'} 
+		,{field:'pay_type',width:90, title: '支付方式'} 
+		,{field:'create_time', width:180,title: '报名时间'}
+        ,{field:'bill_type',width:150, title: '发票类型'}   		
+        ,{field:'sign_tel',width:150, title: '公司电话'}        
+        ,{field:'sign_addr',width:150, title: '公司地址'}        
+        ,{field:'account_bank',width:150, title: '开户行'}  
+        ,{field:'account',width:150, title: '开户账号'}     
+        ,{field:'tax_num',width:150, title: '税号'} 
+        ,{field:'bill_title',width:150, title: '发票抬头'}   
+		,{field:'sign_addr',width:150, title: '邮寄地址'} 
+        ,{field:'bill_status', width:100,  title: '开票状态'}		
+        ,{field:'record_status', width:90,  title: '状态'}		
+        ,{fixed: 'right', width:180, align:'center', toolbar: '#barTool', title: '审核-开票-删除'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'del'){
+        member_del(data.fid,'{$del|default="/"}&creator_id='+data.creator_id+'&convention_id='+data.convention_id,'{$index|default="/"}?fid={$fid|default=0}')
+      }else if(obj.event === 'A'){
+        member_edit('修改注册资料',"{$edit|default='/'}",'{$index|default="/"}?fid={$fid|default=0}&ZJ=ticket_name',data.fid+','+data.creator_id+','+data.convention_id,0,0)
+      }else if(obj.event === 'edit'){
+        member_edit('审核',"{$edit|default='/'}","{$index|default='/'}?fid={$fid|default=0}&ZJ=0",data.fid,500,300)
+      }else if(obj.event === 'C'){
+        member_edit('开票',"/meet/bill_status","{$index|default='/'}?fid={$fid|default=0}&ZJ=0",data.fid,500,300)
+      }
+    });
+  })
+</script>
+</body>
+</html>

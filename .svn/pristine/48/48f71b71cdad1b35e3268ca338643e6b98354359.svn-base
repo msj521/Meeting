@@ -1,0 +1,114 @@
+<style type="text/css">
+
+    .conter1000 {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 60px 0;
+        background: #fff;
+    }
+
+    .conter1000::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .meet-center {
+        width: 100%;
+        background: rgba(255, 255, 255, 1)
+    }
+
+    .meet-center-ul {
+        width: 100%;
+    }
+
+    .meet-center-ul li:hover {
+        box-shadow: 0px 0px 30px 0px rgba(6, 114, 227, 0.3);
+    }
+
+    .meet-center-ul li:hover .meet_login {
+        background-image: url(static/web/images/file_copy.png)
+    }
+
+    .meet-center-ul li:hover .meet_paper {
+        background-image: url(static/web/images/newspaper_copy.png)
+    }
+
+    .meet-center-ul li:hover .meet_user {
+        background-image: url(static/web/images/id-card_copy.png)
+    }
+
+    .meet-center-ul li:hover p {
+        color: rgba(6, 114, 227, 1);
+    }
+
+    .meet-center-li {
+        width: 300px;
+        height: 200px;
+        /* background: rgba(255, 255, 255, 1); */
+        box-shadow: 0px 0px 30px 0px rgba(0, 92, 244, 0.1);
+        border-radius: 10px;
+        float: left;
+        margin-right: 50px;
+    }
+
+    .meet-center-ul li:last-child {
+        margin-right: 0;
+    }
+
+    .meet-center-li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .meet_login {
+        background: #fff url(static/web/images/file.png) 120px 40px no-repeat;
+    }
+
+    .meet_paper {
+        background: #fff url(static/web/images/newspaper.png) 120px 40px no-repeat;
+    }
+
+    .meet_user {
+        background: #fff url(static/web/images/id-card.png) 120px 40px no-repeat;
+    }
+
+    /* .meet-center-li img {
+		display: block;
+		margin: 40px auto;
+	} */
+
+    .meet-center-li p {
+        text-align: center;
+        height: 33px;
+        font-size: 24px;
+        font-family: PingFangSC-Medium;
+        font-weight: 500;
+        color: rgba(72, 78, 94, 1);
+        line-height: 33px;
+        padding-top: 127px;
+    }
+</style>
+<!-- 会议报名 -->
+<div class="meet-center">
+    <div class="conter1000">
+        <ul class="meet-center-ul">
+            <li class="meet-center-li meet_login_li">
+                <!-- <a class="meet_login">
+                        <p>会议报名</p>
+                    </a> -->
+            </li>
+            <li class="meet-center-li meet_paper_li">
+                <!-- <a class="meet_paper">
+                        <p>论文发表</p>
+                    </a> -->
+            </li>
+            <li class="meet-center-li meet_user_li">
+                <!-- <a class="meet_user">
+                        <p>个人中心</p>
+                    </a> -->
+            </li>
+        </ul>
+    </div>
+</div>

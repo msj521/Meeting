@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 26.6667vw;
+}
+
+body {
+    line-height: .24rem;
+}
+
+.conter1000 {
+    margin: 0 !important;
+    padding: 0;
+    width: 100% !important;
+}
+
+.liveinfo_head {
+    height: .44rem;
+    line-height: .44rem;
+}
+
+.liveinfo_head_back {
+    font-size: .3rem;
+    margin-left: .15rem;
+}
+
+.context {
+    position: relative;
+}
+
+#live_list {
+    width: 100% !important;
+    height: 2rem !important;
+    font-size: .17rem !important;
+    line-height: 2rem !important;
+}
+
+.liveinfo_titlerg {
+    float: left;
+    background: url(../images/icon_audience.png) no-repeat;
+    background-position: .01rem .04rem;
+    background-size: .15rem, .12rem;
+    padding-left: .18rem;
+    font-size: .16rem;
+    color: #333;
+    padding-right: .10rem;
+    position: absolute;
+    left: .1rem;
+    bottom: -.24rem;
+}
+
+.liveinfo_ct {
+    padding: 0 !important;
+    margin: .4rem .2rem 0 !important;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    border-bottom: .01rem solid #ccc;
+    height: .4rem;
+}
+
+.liveinfo_tab .title_txt2_content {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: .5rem;
+}
+
+.liveinfo_tab_active .title_txt2_content {
+    display: block;
+}
+
+.liveinfo_tab .title_txt2::after {
+    display: none;
+}
+
+.liveinfo_tab_active .title_txt2::after {
+    display: block;
+}
+
+.title_txt2 {
+    font-size: .18rem;
+}
+
+.title_txt2::after {
+    content: "";
+    display: block;
+    height: .02rem;
+    background: rgba(35, 35, 35, 1);
+    margin-top: 0.15rem;
+}
+
+.liveinfo_tab_active .title_txt2 {
+    font-weight: bold;
+    color: #FF9F00;
+}
+
+.dm-list-cont {
+    max-height: 4rem;
+    overflow: scroll;
+}
+
+.heihei {
+    display: none;
+}
+
+.mbxue,
+.footers,
+.liveinfo_title {
+    display: none;
+}
+
+.liveinfo_head,
+.chet_tab {
+    display: block !important;
+}
+
+.mt_live_module {
+    width: 100%;
+}
+
+.liveinfo_titlerg {
+    font-size: .16rem;
+}
+
+.dm-y-list {
+    width: 100%;
+    padding-right: .2rem;
+    position: absolute;
+    left: .2rem;
+    bottom: -5.2rem;
+    display: none;
+}
+
+#send_input {
+    width: 3rem;
+    border-radius: .1rem;
+    outline: none;
+    border: .01rem solid #ccc;
+}
+
+.sendBtn {
+    width: .4rem;
+    height: .24rem;
+    border: 0;
+    border-radius: .1rem;
+}

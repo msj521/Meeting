@@ -1,0 +1,52 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="honor_live">
+				<ul class="mtlive_ul">
+					
+					
+				</ul>
+			</div>
+		</div>
+
+{include file="public/footer2" /}
+
+
+<script>
+		var download = "api/convention/live";
+		function mtdownload(data){
+			if(data.data==undefined){
+				return false;
+			}
+			for(var i=0;i<data.data.length;i++){
+				$('<li>'+
+				'<a href="/livesinfo?live_id='+data.data[i].live_id+'">'+
+					'<div class="live_info">'+
+						'<div class="layer">'+'</div>'+
+						'<div class="live_title ellipsis">'+data.data[i].title+'</div>'+
+						'<div class="live_img">'+
+							'<img src="'+data.data[i].web_image_url+'" />'+
+						'</div>'+
+						'<div class="live_ms">'+
+							'<div class="live_ms_lf">'+
+								'<div class="tl_img">'+'<img src="/static/web/images/icon_experts.png">'+'</div>'+
+								'<div class="tl_name ellipsis">'+data.data[i].expert_name+'</div>'+
+							'</div>'+
+							'<div class="liev_ms_rg">'+
+								'<div class="zjclass2">'+data.data[i].class_name+'</div>'+
+								'<div class="guank2">'+data.data[i].sort+'</div>'+
+							'</div>'+
+						'</div>'+
+					'</div>'+
+				'</a>'+
+			'</li>').appendTo(".mtlive_ul");
+			}
+			
+			
+		}
+		var data = {"convention_id":convention_id,"pagesize":100,"page":1,};
+   		ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload);//调用函数
+
+
+</script>

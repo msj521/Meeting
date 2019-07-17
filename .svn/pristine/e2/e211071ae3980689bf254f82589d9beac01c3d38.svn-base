@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+/*css重置*/
+*html{padding:0px} 
+@font-face { font-family: asd; src:url(DIN-Light.otf); }
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,small{ margin:0; padding:0; }
+body{ font-size:12px; line-height:22px; font-family:Arial, Helvetica, sans-serif; color:#333333; background:#fff; }
+h1,h2,h3,h4,h5,h6,small{ font-size:100%; overflow:hidden; }
+input,select{ vertical-align:middle; font-size:12px; }
+ol,ul,li{ list-style:none; }i{ font-style: normal; }
+img{ border:0; }ul,li{ list-style-type:none; }
+
+
+/*--日程一览图--*/
+	body { color:#fff; font-size:12px; font-family:"Microsoft YaHei", arial;background: #fff;}
+	table.tb1, tr, td {padding:0; font-size:12px; font-family:"Microsoft YaHei", arial;border-color: #FFF;}
+	table.tb1 td{
+		border-right:1px solid #FFF;
+		text-align:center;border-top:0px;border-bottom:0px;border-left:0px;
+	}
+	table.tb1{
+		/*table-layout: fixed;*/margin:auto;
+		min-width:1536px;/*width:100%;*/
+		border:1px solid #fff;overflow:hidden;
+		border-collapse:0;border-spacing:0;
+	}
+	
+	table#tb_head thead{
+		position: fixed;left:0px;top:0px;right:0;
+		background-color: #FFF;
+		width:100%;
+	}
+	
+	table#tb_meeting2{
+		width:100%;min-width: 1536px;overflow: hidden;
+		border: 1px rgb(255, 255, 255); border-image: none;
+		position: absolute;top:0;z-index: -1;
+	}
+	.container{min-width:1536px;width:100%;margin:auto;height: auto;z-index: 0;}
+	
+	table.tb1 thead td{border:0px;background: transparent;}
+	.tr1 td:not(.timeShow){border:none;word-break: break-all;height:50px;line-height: 50px;background: transparent;}
+	.tb1 tbody tr td:not(.hr){vertical-align: middle;}
+	
+	.tb1 tbody tr td.td_meetting_Div:hover{cursor: pointer;background:#125452; }
+	
+	.tb1 tbody tr td.td_meetting_Div{position: relative;background:#0ba29b;height:60px;}
+	.tb1 tbody tr td.td_meetting_Div .showWords_Div{position: absolute;bottom:-80px;right:-60px;width:260px;
+		min-height: 60px;padding:10px 5px;overflow:hidden;vertical-align:middle;z-index:1;
+		background:#000;visibility:hidden;border:0px;
+		filter:alpha(opacity=80);  -moz-opacity:0.8; 
+		opacity:0.8;
+	}
+	.tb1 tbody tr td div.meettingName{color:#fff;display: inline;overflow: hidden;text-align: center;
+	}
+	
+	
+	.timeShow{
+		border:0px;
+		transform:rotate(-45deg);
+		-ms-transform:rotate(-45deg);
+		-moz-transform:rotate(-45deg);
+		-webkit-transform:rotate(-45deg);
+		-o-transform:rotate(-45deg);
+		color:#0ba29b;
+		width:2.3%;word-break:inherit;
+		background: transparent;
+		line-height: 50px;height: 50px;
+		background: transparent;
+		
+	}
+	.divTop .imgShow{color: #000;width:250px;margin:auto auto auto 32px;
+		background-image: url("../images/unchecked.png");
+		background-repeat:no-repeat;
+		/*background-size:100%;*/background-position: -20px -10px;
+		height:100px;display: inline-block;
+	}
+	.divTop .imgShow,.tb1 div:hover{cursor: pointer;}
+	.date_shows{width:100px;text-align: center;color: #fff;line-height:32px;;}
+	.tabnav_date{width:1190px;/*background: blue;*/overflow: hidden;text-align: center; height: 60px; padding-left: 20%;}
+	.tabnav_date div{ float: left; width: 120px; text-decoration: none; color: #fff; background: url(../images/btn_schedulewhite.png) no-repeat; background-position:70px 10px; height: 55px; margin-top: 5px; margin-right: 20px; cursor: pointer;}
+	.tabnav_date div.aShow{ background: #fff url(../images/btn_schedulegreen.png) no-repeat; background-position:70px 10px; border-radius:10px 10px 0 0; color: #239397;}
+	.tabnav_span1{font-size: 20px;display: block;text-align: left; padding-left: 5px; margin-top: 5px;}
+	.tabnav_span2{font-size: 14px; display: block;text-align: left; padding-left: 5px; margin-top: 5px;}
+	/*第一个弹框*/
+.daytiem_div{position: fixed; z-index: 999; background: rgba(0,0,0,0); width: 100%; height: 100%; top: 0; left: 0; bottom: 0; right: 0;
+
+}
+.daytiem_div_ct{width: 700px; height: 500px; background: #fff; margin:10% auto; border-radius: 4px;
+	-webkit-box-shadow: 0px 2px 30px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 2px 30px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 2px 30px 0px rgba(0,0,0,0.5);
+}
+.daytiem_div_ct h1{ font-size: 20px;color: #111; }
+.daytiem_close{width: 11px; height: 11px; float: right; background: url(../images/icon_shutdown.png) no-repeat; cursor: pointer; margin: 10px;}
+.tc_title{width: 100%; float: left; margin-top: 10px; margin-bottom: 18px; padding:0 20px 0 20px;}
+.tc_title p{line-height: 35px; color: #111111; font-size: 14px;}
+.tc_ct{float: left; width: 100%;}
+.tc_ctlf h1,.tc_ctrg h1{border-bottom: 1px solid #979797; font-size: 18px; padding: 11px 0 11px 20px;}
+.tc_ctlf{float: left; margin-left: 20px; width: 230px; height: 340px; border: #979797 solid 1px;}
+.tc_ctrg{float: right; margin-right: 20px; width: 400px; height: 340px; border: #979797 solid 1px;}
+.tc_ctlf_txt,.tc_ctrg_txt{width: 100%; float: left; margin-top: 20px;}
+.tc_img,.tcrg_time{float: left; margin-left: 20px;}
+.tc_txt{float: left; margin-left: 10px; width: 146px; color: #333; font-size: 14px; }
+
+.tclist{height: 289px;width: 100%; overflow: scroll;}
+.schedule_ex{width: 100%; float: left;}
+.schedule_ex div{float: left;line-height: 35px; color: #111111; font-size: 14px; margin-right: 10px;}
+	
+	
+	

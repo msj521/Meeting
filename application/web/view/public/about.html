@@ -1,0 +1,39 @@
+{include file="public/header" /}
+
+<div class="conter960">
+    <div class="mbxue">
+        位置&nbsp;>&nbsp;<span id="aboutlist"></span>
+    </div>
+    <div style="width: 100%; float: left;">
+        <div class="ablist_nva">
+            <a href="/about?sr=关于我们" class="action">关于我们</a>
+            <a href="/copyright?sr=版权声明">版权声明</a>
+            <a href="/disclaimer?sr=免责声明">免责声明</a>
+            <a href="/report?sr=举报投诉">举报投诉</a>
+            <a href="/contact?sr=联系我们">联系我们</a>
+        </div>
+        <div class="ablist_ct" id="ablist_ct">
+
+        </div>
+    </div>
+</div>
+{include file="public/footer2" /}
+<script>
+    $(function() {
+        var sysurl = "api/sys/explain"
+        $("#aboutlist").text(sr);
+
+        function sys(data) {
+            if (data != "" || data != null) {
+                var explaindata = data.data.explain_list
+                $("#ablist_ct").html(htmls(explaindata.about_us));
+            } else {
+                $("#ablist_ct").html('<p style="text-align: center;">暂无数据</p>')
+            }
+        }
+        var data = {
+            "type": "sific"
+        };
+        ajax_all_Filed("true", "true", "GET", sysurl, "json", data, sys); //调用函数
+    })
+</script>

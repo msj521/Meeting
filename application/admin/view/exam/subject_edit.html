@@ -1,0 +1,156 @@
+{include file="public/header" /}
+
+<style type="text/css">
+  /*隐藏全选checkbox*/
+  .layui-table th .layui-unselect{
+      display: none;
+  }
+</style>
+<body>
+        <!-- 右侧主体结束 -->
+    <div class="x-body layui-anim layui-anim-up">
+        <!-- 右侧内容框架，更改从这里开始 -->
+        <form class="layui-form"  action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+
+            <div class="layui-form-item">
+              <label for="subject_name" class="layui-form-label">题目名称<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="text" id="subject_name" lay-verify="required" name="subject_name" autocomplete="off" value="{$list.subject_name|default=''}" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">题目类型</label>
+              <div class="layui-input-block">
+                <input type="radio" name="subject_type" value="1" title="单选题" checked >
+                <input type="radio" name="subject_type" value="2" title="多选题" {if condition="isset($list['subject_type']) and $list['subject_type'] eq 2"} checked {/if}>
+                <input type="radio" name="subject_type" value="3" title="判断题" {if condition="isset($list['subject_type']) and  $list['subject_type'] eq 3"} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label for="score" class="layui-form-label">分值<?php html_sign();?></label>
+              <div class="layui-input-block">
+                <input type="number" id="score" name="score" autocomplete="off" lay-verify="required" value="{$list.score|default=''}" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label for="sort" class="layui-form-label">排序</label>
+              <div class="layui-input-block">
+                <input type="number" id="sort" name="sort" autocomplete="off" value="{$list.sort|default=''}" class="layui-input">
+              </div>
+            </div>
+
+            <input type="hidden" name="fid" value="{$list.fid|default=''}">
+            <input type="hidden" id="option_list" name="option_list" value="">
+            <input type="hidden" name="exam_id" value="{$list.exam_id|default=$exam_id}">
+
+            <div class="layui-form-item">
+              <label class="layui-form-label xbs768">状态</label>
+              <div class="layui-input-block">
+                <input type="radio" name="record_status" value="1" title="启用" checked >
+                <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+                <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label for="sort" class="layui-form-label">题目选项<?php html_sign();?></label>
+                <table class="layui-hide" id="func" lay-data="{id:'myTable'}" lay-filter="myTable"></table>
+            </div>
+
+            <div class="layui-form-item">
+              <label  class="layui-form-label"></label>
+              <button class="layui-btn" lay-filter="add" lay-submit="">保存</button>
+            </div>
+        </form>
+        <!-- 右侧内容框架，更改从这里结束 -->
+    </div>
+    <!-- 中部结束 -->
+    <script type="text/html" id="barTool">
+      <div class="td-manage">  
+        <!-- <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a> -->
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+      </div>
+    </script>
+</body>
+{include file="public/top_js" /}
+
+<script>
+var option_list = <?php echo $option_list;?>;
+
+if (option_list.length==0) {
+  option_list = Array();
+}
+//console.log(option_list);
+var table;
+
+var option_model = {
+  'fid':-1,
+  'option_name':'',
+  'correct':''
+};
+option_list.push(option_model);
+
+layui.use(['tree', 'layer','table'], function(){
+    table = layui.table;
+    initTabel(option_list,table);
+    //监听工具条
+  table.on('tool(myTable)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'del'){
+      if (data.fid==-1) {
+        layer.msg('此数据为空，不需要删除！');
+        return;
+      }
+      for (let i = 0; i < option_list.length; i++) {
+        const element = option_list[i];
+        if (element.fid==data.fid) {
+          option_list.splice(i,1);
+          break;
+        }
+      } 
+      initTabel(option_list,table);
+    }
+  });
+  //监听单元格编辑
+  table.on('edit(myTable)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data = obj.data //得到所在行所有键值
+    ,field = obj.field; //得到字段
+
+    if (data.fid==-1) {
+      //新增
+      for (let i = 0; i < option_list.length; i++) {
+        var element = option_list[i];
+        if (element.fid=='-1') {
+          element.fid = 0;
+        }
+      }
+      var option_model = {
+        'fid':-1,
+        'option_name':'',
+        'correct':0
+      };
+      option_list.push(option_model);
+    }
+    initTabel(option_list,table);
+  });
+});
+
+function initTabel(data,table){
+  table.render({
+    elem: '#func'
+    ,data:data
+    ,cols: [[
+      {field:'option_name', title: '选项名称',edit: 'text'}
+      ,{field:'correct', title: '是否正确选项  1.是 2.不是', edit: 'text'}
+      ,{fixed: 'right', width:150, title:'操作',align:'center', toolbar: '#barTool'}
+    ]]    
+  });  
+  var option_str = JSON.stringify(option_list);
+  $('#option_list').val(option_str);
+}
+</script>
+</html>

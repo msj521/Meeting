@@ -1,0 +1,215 @@
+<style type="text/css">
+    dl,
+    dd,
+    dt {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .conter980 {
+        width: 1000px !important;
+        margin: 0 auto;
+    }
+    
+    .conter960 {
+        width: 1000px !important;
+        margin: 0 auto;
+    }
+    
+    .str4 a {
+        margin-right: 10px;
+    }
+    
+    .str4 a img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .meet-navbarfixed-top {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        background: #0C7753;
+        z-index: 10;
+    }
+    
+    .meet-margin {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .meet-nav-container li {
+        float: left;
+        width: 125px;
+        text-align: center;
+        height: 100%;
+        cursor: pointer;
+    }
+    
+    .meet-nav-container li.active {
+        background: rgba(35, 35, 35, 0.2);
+    }
+    
+    .meet-nav-container li:hover {
+        background: rgba(35, 35, 35, 0.2);
+    }
+    
+    .meet-nav-container li:hover dd {
+        display: block;
+    }
+    
+    .meet-nav-container li dd {
+        display: none;
+        transition: all .3s ease;
+    }
+    
+    .meet-nav-container li dl dt {
+        height: 60px;
+        box-sizing: border-box;
+    }
+    
+    .meet-nav-container li dl dt span {
+        display: block;
+        width: 100%;
+        line-height: 56px;
+    }
+    
+    .meet-nav-container li dl dt span a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .meet-nav-container li dl dt a {
+        color: #fff;
+    }
+    
+    .meet-nav-container li dl dt .meet_nav_b {
+        width: 60px;
+        height: 4px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 1);
+        display: none;
+        border-radius: 2px;
+    }
+    
+    .meet-nav-container li span {
+        font: 500 18px/52px '微软雅黑';
+        color: rgba(255, 255, 255, 1);
+    }
+    
+    .meet_second_nav {
+        background: #0C7753;
+        padding-top: 10px;
+    }
+    
+    .meet_second_nav p {
+        margin: 0;
+        padding: 10px 0;
+        height: 20px;
+        box-sizing: content-box;
+    }
+    
+    .meet_second_nav p a {
+        font: 500 14px/20px '微软雅黑';
+        color: rgba(255, 255, 255, 1);
+        cursor: pointer;
+    }
+    
+    .meet_nav_fill {
+        height: 60px;
+    }
+</style>
+
+<div class="meet-navbarfixed-top">
+    <div class="meet-margin meet-margin-nav">
+        <ul class="meet-nav-container">
+
+        </ul>
+    </div>
+</div>
+<div class="meet_nav_fill"></div>
+
+<script>
+    var navLlist = Array;
+    navLlist = [<?php echo $html ?>]; //后端返回的导航数据
+    $(function() {
+        str = "";
+        var navlength = 'width:' + (navLlist.length * 125) + 'px';
+        //根据导航栏的数目设置导航栏的宽度
+        $('.meet-margin').attr({
+            style: navlength
+        });
+        //对数据进行处理拼接渲染
+        let navUrlStr = document.location.search; //获取浏览器地址栏的参数
+        let firstNavId = getQueryString('nav_id'); //获取地址栏一级菜单的字段值
+        let secondNavId = getQueryString('suid'); //获取地址栏二级菜单的字段值
+
+        for (var i = 0; i < navLlist.length; i++) {
+            if (navLlist[i].subMenu == '') {
+                str += `
+        <li>
+          <dl>
+            <dt><span><a href="${navLlist[i].url}?convention_id=${convention_id}&nav_id=${navLlist[i].id}">${navLlist[i].name}</a></span>
+              <div class="meet_nav_b"></div>
+            </dt>
+          </dl>
+        </li>
+        `
+            } else {
+                str += `
+              <li>
+                <dl>
+                  <dt><span><a>${navLlist[i].name}</a></span>
+                    <div class="meet_nav_b"></div>
+                  </dt>
+                  <dd>
+                    <div class="meet_second_nav">`
+                for (var j = 0; j < navLlist[i].subMenu.length; j++) {
+
+                    if (i + 1 == firstNavId && j + 1 == secondNavId) {
+
+                        str += `<p style="background:rgba(51,51,51,0.4);"><a href="${navLlist[i].subMenu[j].url}?convention_id=${convention_id}&nav_id=${navLlist[i].id}&suid=${navLlist[i].subMenu[j].suid}">${navLlist[i].subMenu[j].name}</a></p>`;
+                    } else {
+
+                        str += `<p><a href="${navLlist[i].subMenu[j].url}?convention_id=${convention_id}&nav_id=${navLlist[i].id}&suid=${navLlist[i].subMenu[j].suid}">${navLlist[i].subMenu[j].name}</a></p>`;
+                    }
+                }
+                str += `</div>
+                                </dd>
+                              </dl>
+                            </li>`
+            }
+
+        }
+        $('.meet-nav-container').html(str);
+
+        //根据路由判断导航激活状态
+        var meetUrl = document.location.search; //获取路由的携带参数
+        //为空的时候，会议首页中心处于激活状态
+        if (!meetUrl) {
+            $('.meet_nav_b').hide().end().eq(0).show();
+        } else {
+            //携带参数没有nav_id时，让导航栏第一个处于激活状态
+            if (meetUrl.split('nav_id=').length < 2) {
+                $('.meet_nav_b').hide().end().eq(0).show();
+            } else {
+                var meetNavId = meetUrl.split('nav_id=')[1][0] - 1; //判断携带参数对应的nav_id的值来渲染对应导航栏的激活状态
+                $('.meet_nav_b').hide().eq(meetNavId).show()
+            }
+        }
+
+        //判断设备屏幕宽度
+        if (window.innerWidth < 800) {
+            $('.meet-navbarfixed-top').on('click', 'li', function() {
+                $(this).find('dd').show();
+            })
+        } else {
+
+        }
+
+    })
+</script>

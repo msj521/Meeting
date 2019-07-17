@@ -1,0 +1,26 @@
+<?php
+$config = array (	
+	//应用ID,您的APPID。
+	'app_id' => "2019022163298245",
+
+	//商户私钥
+	'merchant_private_key' =>"MIIEpQIBAAKCAQEAsMAb4LVayenMjS41xT0PsNzTzdfNIWedmE0HCxs5V2Di/+KzcdSJVteOKA9jY6bu3wkpt11ZjEn2Lqm0mNOL1CibdqBW1uEytZAriQXhuHYSxle5XdHFAh19AFSvahyZpUvTsAlknCXrI5oaDdDF3egiDOtY216NI6bqXIkfl1oS8qiqigUpTItsGtisEi82yFDIfSw2z4VT3fbbrVN/8jW79heMLInOEIvaZIuBUDJr+5NsRhXvGGWD7MHVJcleFX5CPifkRwcLYTRHRtSNm4/hX5Ko13RLrLtVivVHo7cENyrNWT5WfFCacstXIU4RzfRoaFuCrXEBEdZIwWfyRwIDAQABAoIBAHScakgYnmt0atYCVMtqe72uE7dM1zNgzyK6PxlevrgdXeaAxO8mz+2RjWJ0tJf8fMB9pR4q4neiHF+w60ug1jIFEHx1UJW4QeJz2aUvUjqG++AL5Go3iYjZt6zOMmUJtXzOyDzuFYjHo5j7hJD02naLPlvTse4ZNXj+GMUwWr1ZQAsvh66Fxyihv2MmhApUl6ncpB2SrdBVaO7GeI0jWnf6PqAn4ljwV9JvxbF4lXkKg3KjyyCJKDiBOdKeD0wl22x7VvwYI6d8BsXTIqDircjVwtmqRQx+ZDJI8m/c8IZSJ/nrKJ44W3XA/iSaqGagdgy6THf9Gd9q5sV/7LuJXmECgYEA6hHYgrHJTLR3EWdAzBdr40YDD6I0RdF1g/1ZN1XU53mPANBzvmL3hqBdXOnpIpw2uBZEsLmS/hPuja9ObMMl1ysxSYGYRsdHx7vc/Qkx/XzJ+nlObyuqIT2war8i25MLohIokxViZR4TzvrtLpLcL6DW//CDSaHyfukrYvO+4z8CgYEAwU92RiWGrYKU+dJJbiGHMgfTaXsehj9rU7T+1yfbYy1MzblPtv/lVJPcvHHGdQCxLoHI5u8W+ocyikVQcMSPhHxZMfUuGj0qJL2XwIlddtd0bELZGnnnsbfZTyK95gxR0yimLlIcR31/Bkl669Z4oQ2aTfEOXNmvPB1IqOTqlvkCgYEAgKTsPPBfdVPd+OepukHJHvEUr5vzZMf48WDljr8Ss2Gg0c6/Pk0AQ7KRfYZlhosam9RJTmO/wPrNanuF+8rJWle3z/F08rmF3uWGUF+kZPAXxhyzmfACoiBYfGKuUsWfaCTYvfXLzU1Zj7Fjd+xpLZgVcjcKwQZL06ptGQZjzFsCgYEAuPH6WWBburNdLqqHAGvpee9Mz/UwHgac+4gF7PlAB2H2wjhSUOYAleulW1GLKrPP0IvxFyiWFni03N81973HBV0mxQoq4oW0RVRy1I1Xs3Ss+Ur3hUIubrRTn0fA4VDWFC0m2NhMIAWsOuqgRPR7krJ996XyNNk7s0rdEmF5I5kCgYEArI6x4yHRn8ORAOQeulIl3AL01F8DtIfNm8LSm9PbgdrwvxA5VTUBRWgm/bK1GrwPcGQlXmuWxC1zRVe5Q682OKiQjou76AAvTtnNqJky7apBgYMKIGZ4bq+lY+rCaRf7rgrrjxcv+3daO/2Lxp8WW1NC8vP0G96IH1zwJk2WU0s=",
+
+	//异步通知地址
+	'notify_url' => "http://2019.sific.com.cn/api/convention/pay?test",
+
+	//同步跳转
+	'return_url' => "http://2019.sific.com.cn",
+
+	//编码格式
+	'charset' => "UTF-8",
+
+	//签名方式
+	'sign_type'=>"RSA2",
+
+	//支付宝网关
+	'gatewayUrl' => "https://openapi.alipay.com/gateway.do",
+
+	//支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。
+	'alipay_public_key' => "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAputaHpaXtq2iM4yF+wJji+JJHjf8BF0NO/4xUJQBNmQ2ZeNTFqwU01yZYp6Xcf1onUWr5aW9LZgX7z2Kt4E2tnYCihmvCz7V4xRUYnBcULttkzAwnNV6sPrpISZp4A/zSJfh8sMJ/VbbJvDp9JgCtLT5NiZsm532P5gwAvBP2Qfb6KOer6bZ/g7CFkfEe0Ugsfv9SyBCNoQGvportqwgqcNMeSw2UHw5gD8olYEWOi9T5aSWS99IZ3/3RAQS+6l5MWNspYpPjfPy35tVvrdMJuYomlK01jXqknVFQ7h/N7rjZ/tvG5WfFSrcU2YOKehZ+/LXN8RfQXVe5dwjwZGUTwIDAQAB",
+);

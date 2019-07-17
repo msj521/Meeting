@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>参会指南</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="/static/web/css/ydui.css?rev=@@hash"/>
+    <link rel="stylesheet" href="/static/web/css/demo.css"/>
+    <script src="/static/web/js/ydui.flexible.js"></script>
+	<script type="text/javascript">
+		function getQueryString(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+			var r = window.location.search.substr(1).match(reg);
+			if(r != null) return decodeURI(r[2]);
+			return null;
+		}
+		var convention_id = getQueryString("convention_id");
+		
+	</script>
+</head>
+<style>
+.menu_list{width:100%;margin:0 auto;}
+.firstpanelist{width: 100%; float: left;border-bottom: 1px solid #F7F6F6;}
+.menu_head{
+	height: 40px;
+	line-height: 40px;
+	font-size: 15px;
+	color: #111111;
+	cursor: pointer;
+	border-bottom: 0px;
+	position: relative;
+	margin: 0px;
+	font-weight: bold;
+	background: #fff url(/static/web/images/icon_pulldown.png) center left no-repeat;
+	background-position:98% 15px;
+/*	margin-bottom: 20px;*/
+}
+.menu_list .current{background:#fff url(/static/web/images/icon_up.png) center left no-repeat; background-position:98% 15px;}
+.menu_body{
+	line-height: 1.5em;
+	backguound: #fff;
+	padding: 2%;
+	word-wrap: break-word;
+}
+.menu_body img{
+	width: 100%;
+}
+</style>
+<body>
+<section class="g-flexview">
+    <section class="g-scrollview">
+		 <div id="J_Tab" class="m-tab demo-pitch">
+            <ul class="tab-nav">
+                <li class="tab-nav-item tab-active"><a href="javascript:;">基本信息</a></li>
+                <li class="tab-nav-item"><a href="javascript:;">场馆图</a></li>
+            </ul>
+            <div class="tab-panel">
+                <div class="tab-panel-item tab-active">
+                	<div id="firstpane" class="menu_list">
+						<div class="firstpanelist">
+							<h3 class="menu_head current">会议介绍</h3>
+							<div class="menu_body" id="digest">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head ">会议日期</h3>
+							<div style="display:none" class="menu_body" >
+								<span id="start_time"></span>至 <span id="end_time"></span>
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">会场介绍</h3>
+							<div style="display:none" class="menu_body" id="content">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">交通信息</h3>
+							<div style="display:none" class="menu_body" id="transport_info">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">发票领取方法</h3>
+							<div style="display:none" class="menu_body" id="invoice_collection">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">参会人员学分证</h3>
+							<div style="display:none" class="menu_body" id="credit_certificate">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">展会参观积点卡</h3>
+							<div style="display:none" class="menu_body" id="dot_card">
+								
+							</div>
+						</div>
+						<div class="firstpanelist">
+							<h3 class="menu_head">秘书处</h3>
+							<div style="display:none" class="menu_body" id="secretary">
+								
+							</div>
+						</div>
+					</div>
+                </div>
+                <div class="tab-panel-item">
+                	<div class="m-cell" style="float: left; width: 100%;">
+					    <div id="firstpane2" class="menu_list">
+							
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</section>
+<script type="text/javascript" src="/static/web/libs/jquery/jquery.js" ></script>
+<script src="/static/web/js/ydui.js"></script>
+<script src="/static/web/js/ajax.js"></script>
+<script src="/static/web/js/md5.js"></script>
+</body>
+</html>
+<script>
+    /**
+     * Javascript API调用Tab
+     */
+
+    !function ($) {
+    	 function htmls(a) {
+			a = "" + a;
+			return a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+		}
+    	var ipmeturl = 'api/convention/convention_base';
+    	function ipmet(data){
+    		var datas = data.data.convention_info;
+    		var digest = htmls(datas.digest);//会议简介
+    		var start_time = datas.start_time;//结束时间
+    		var end_time = datas.end_time;//结束时间
+    		var content =  htmls(datas.content);//会场介绍
+    		var transport_info = htmls(datas.transport_info);//交通信息
+    		var invoice_collection = datas.invoice_collection;//领票方法
+    		var credit_certificate = datas.credit_certificate;//参会人员学分证
+    		var dot_card = datas.dot_card;//展会参观积点卡
+    		var secretary =  htmls(datas.secretary);//秘书处
+    		$("#digest").html(digest);
+    		$("#start_time").text(start_time);
+    		$("#end_time").text(end_time);
+    		$("#content").html(content);
+    		$("#transport_info").html(transport_info);
+    		$("#invoice_collection").text(invoice_collection)
+    		$("#credit_certificate").text(credit_certificate);
+    		$("#dot_card").text(dot_card);
+    		$("#secretary").html(secretary);
+    			var str="";
+			for(var i=0; i<data.data.map_list.length;i++){
+				str+='<div class="firstpanelist">';
+				str+='<h3 class="menu_head">';
+				str+=data.data.map_list[i].download_title;
+				str+='</h3>';
+				str+='<div style="display:none" class="menu_body">';
+				str+='<div>'+'<img src="'+data.data.map_list[i].file_path+'" style="width:100%">'+'</div>';
+				str+='</div>'
+				str+='</div>'
+			}
+			
+			$("#firstpane2").append(str)		
+			$("#firstpane2 h3:first").addClass("current");
+			$("#firstpane2 .menu_body:eq(0)").show();
+    		
+    	}
+    	var data = {"convention_id":convention_id,'devicetype':'web'};
+	   	ajax_app_Filed("true", "true", "GET", ipmeturl, "json", data, ipmet);//调用函数
+	   	
+   		$('#firstpane').on('click', 'h3', function() {
+		   if($(this).hasClass('current')){
+		        $(this).removeClass("current").next("div.menu_body").slideUp("slow");
+				$(this).parent().siblings().find("h3.menu_head").removeClass("current").next('div.menu_body').slideUp("slow");
+		    }else{
+		        $(this).addClass('current').next("div.menu_body").slideDown("slow");
+				$(this).parent().siblings().find("h3.menu_head").removeClass("current").next('div.menu_body').slideUp("slow");
+		    }
+		});
+		$('#firstpane2').on('click', 'h3', function() {
+		   if($(this).hasClass('current')){
+		        $(this).removeClass("current").next("div.menu_body").slideUp("slow");
+				$(this).parent().siblings().find("h3.menu_head").removeClass("current").next('div.menu_body').slideUp("slow");
+		    }else{
+		        $(this).addClass('current').next("div.menu_body").slideDown("slow");
+				$(this).parent().siblings().find("h3.menu_head").removeClass("current").next('div.menu_body').slideUp("slow");
+		    }
+		});
+		
+		
+	 var $tab = $('#J_Tab');
+
+        $tab.tab({
+            nav: '.tab-nav-item',
+            panel: '.tab-panel-item',
+            activeClass: 'tab-active'
+        });
+
+        $tab.find('.tab-nav-item').on('opened.ydui.tab', function (e) {
+            //console.log('索引：%s - [%s]已经打开了', e.index, $(this).text());
+        });
+    }(jQuery);
+</script>

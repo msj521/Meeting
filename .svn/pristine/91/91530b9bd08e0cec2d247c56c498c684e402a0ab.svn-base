@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>
+        <?php 
+				if(count(path())==0){ 
+					echo "SIFIC会议系统-首页";
+				}else if(isset(path()['convention_id'])){
+					echo "SIFIC会议系统-会议";
+				}else if(isset(path()['live_id'])){
+					echo "SIFIC会议系统-直播";
+				}else if(isset(path()['training_id'])){
+					echo "SIFIC会议系统-培训";
+				}else{
+					echo "SIFIC会议系统";
+				}
+			?>
+    </title>
+    <link rel="stylesheet" href="/static/web/css/bootstrap.css" />
+    <link rel="stylesheet" href="/static/web/css/pulic.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/banner.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/liveinfo.css" />
+    <link rel="stylesheet" type="text/css" href="/static/web/css/pagination.css" />
+    <link rel="stylesheet" href="/static/web/css/idangerous.swiper.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+    <script type="text/javascript" src="/static/web/js/pdfobject.js"></script>
+</head>
+
+<body>
+    <script>
+        <!-- $(function () { -->
+        <!-- $(".nologin").text(""); -->
+
+        <!-- if (cook_tel == null || cook_tel == "") { -->
+        <!-- $('<img src="/static/web/images/pic_head.png">' + '</img>' + '<a href="' + pu_url + '">' + '登录' + '</a>' + -->
+        <!-- '&nbsp;' + '|' + '&nbsp;' + '<a href="/register">' + '创建账号' + '</a>').appendTo(".nologin"); -->
+        <!-- return false; -->
+        <!-- } else { -->
+        <!-- var userinfo = JSON.parse(localStorage.getItem("user_info")) -->
+        <!-- if (userinfo == null || userinfo == "") { -->
+        <!-- return false; -->
+        <!-- } -->
+        <!-- $('<img src="' + userinfo.web_image_url + '">' + '</img>' + '<a href="/userinfo" style="font-size: 16px;">' + -->
+        <!-- userinfo.user_name + '</a>').appendTo(".nologin"); -->
+        <!-- $("#userimg").attr("src", userinfo.web_image_url); -->
+        <!-- } -->
+        <!-- }) -->
+    </script>

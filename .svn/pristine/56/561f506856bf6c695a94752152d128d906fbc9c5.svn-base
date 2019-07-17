@@ -1,0 +1,721 @@
+{include file="public/header" /} {include file="public/meeting_nav" /} {include file="public/mbxue" /}
+<style>
+    .tree {
+        min-height: 20px;
+        padding: 19px;
+        margin-bottom: 20px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05)
+    }
+    
+    .tree li {
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 5px 0 5px;
+        position: relative;
+    }
+    
+    .grade_B_ul li {
+        display: none;
+    }
+    
+    .tree li::before,
+    .tree li::after {
+        content: '';
+        left: -20px;
+        position: absolute;
+        right: auto
+    }
+    
+    .tree li::before {
+        border-left: 1px solid #999;
+        bottom: 50px;
+        height: 100%;
+        top: 0;
+        width: 1px
+    }
+    
+    .tree li::after {
+        border-top: 1px solid #999;
+        height: 20px;
+        top: 25px;
+        width: 25px
+    }
+    
+    .tree li span {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 3px 8px;
+        text-decoration: none
+    }
+    
+    .tree li.parent_li>span {
+        cursor: pointer
+    }
+    
+    .tree>ul>li::before,
+    .tree>ul>li::after {
+        border: 0
+    }
+    
+    .tree li:last-child::before {
+        height: 30px
+    }
+    
+    .tree li.parent_li>span:hover,
+    .tree li.parent_li>span:hover+ul li span {
+        background: #eee;
+        border: 1px solid #94a0b4;
+        color: #000
+    }
+    
+    .grade_C_ul,
+    .grade_B_ul {
+        margin-left: 30px;
+    }
+</style>
+<div class="conter960">
+    <div class="guest_txt" style="min-height: 806px;overflow-y: scroll">
+        <div class="tree">
+            <ul class="tree_box">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/meetinginfo.js"></script>
+<script>
+    $(function() {
+        //渲染
+        var pdfJson = [{
+            roomName: '第一会议室',
+            dateList: [{
+                date: '05月30日',
+                files: [{
+                    url: 'http://2019.sific.com.cn/uploads/20190531/4b0746446169ea3a270c435f8f15a83f.pdf',
+                    name: '上海市医院感染管理岗位培训班讲义'
+                }]
+            }, {
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第一会议室/5月31日/（上海.SIFIC讲用版）聚焦溯源：完善新时期感控策略思考.pdf',
+                    name: '（上海.SIFIC讲用版）聚焦溯源：完善新时期感控策略思考'
+                }, {
+                    url: '/conventionFile/第一会议室/5月31日/CRO感染防控技术指引-高晓东.pdf',
+                    name: 'CRO感染防控技术指引-高晓东'
+                }, {
+                    url: '/conventionFile/第一会议室/5月31日/ESBLs肠杆菌科细菌感染流行与控制-俞云松.pdf',
+                    name: 'ESBLs肠杆菌科细菌感染流行与控制-俞云松'
+                }, {
+                    url: '/conventionFile/第一会议室/5月31日/翻译Avdic E- ASP US perspective fina 16v9.pdf',
+                    name: '翻译Avdic E- ASP US perspective fina 16v9'
+                }, {
+                    url: '/conventionFile/第一会议室/5月31日/我国感染病现状和大感染学科建设-王贵强.pdf',
+                    name: '我国感染病现状和大感染学科建设-王贵强'
+                }, ]
+            }]
+        }, {
+            roomName: '第二会议室',
+            dateList: [{
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第二会议室/5月31日/（上海.SIFIC）手卫生，“心”境界-付强.pdf',
+                    name: '（上海.SIFIC）手卫生，“心”境界-付强'
+                }, {
+                    url: '/conventionFile/第二会议室/5月31日/多措并举预防和控制手术部位感染-刘运喜.pdf',
+                    name: '多措并举预防和控制手术部位感染-刘运喜'
+                }, {
+                    url: '/conventionFile/第二会议室/5月31日/软式内镜再处理：目前证据和未来方向-范珊红.pdf',
+                    name: '软式内镜再处理：目前证据和未来方向-范珊红'
+                }, {
+                    url: '/conventionFile/第二会议室/5月31日/手卫生-感控不衰的话题--李福琴.pdf',
+                    name: '手卫生-感控不衰的话题--李福琴'
+                }, {
+                    url: '/conventionFile/第二会议室/5月31日/手卫生失败原因分析-吴安华.pdf',
+                    name: '手卫生失败原因分析-吴安华'
+                }, {
+                    url: '/conventionFile/第二会议室/5月31日/手卫生相关监测-何去何从？-高晓东.pdf',
+                    name: '手卫生相关监测-何去何从？-高晓东'
+                }]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第二会议室/6月1日/（英文版）住院儿童结核病人的院内感染防控措施--宋晓岩.pdf',
+                    name: '（英文版）住院儿童结核病人的院内感染防控措施--宋晓岩'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/mNGS报告解读--胡必杰.pdf',
+                    name: 'mNGS报告解读--胡必杰'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/mNGS临床应用最新进展--金文婷.pdf',
+                    name: 'mNGS临床应用最新进展--金文婷'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/T思维下的宏基因组学临床应用（基础）--陈唯军.pdf',
+                    name: 'T思维下的宏基因组学临床应用（基础）--陈唯军'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/二代测序应用：争议与合理应用--张文宏.pdf',
+                    name: '二代测序应用：争议与合理应用--张文宏'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/各种功能水（酸性氧化电位水、微酸性电解水、次氯酸水）的特性及其在医疗机构消毒控制感染中的应用--李新武.pdf',
+                    name: '各种功能水（酸性氧化电位水、微酸性电解水、次氯酸水）的特性及其在医疗机构消毒控制感染中的应用--李新武'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/艰难梭菌诊治与防控--乔甫.pdf',
+                    name: '艰难梭菌诊治与防控--乔甫'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/紧急应变：肠病毒群突发与防护之策略--黄淑如.pdf',
+                    name: '紧急应变：肠病毒群突发与防护之策略--黄淑如'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/临床感染性疾病的实验室诊断技术进展--杨启文.pdf',
+                    name: '临床感染性疾病的实验室诊断技术进展--杨启文'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/外科医生的个性化SSI防控-陈辉-上海SIFIC-公示版.pdf',
+                    name: '外科医生的个性化SSI防控-陈辉-上海SIFIC-公示版'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/细菌生物膜与院内感染--秦亮.pdf',
+                    name: '细菌生物膜与院内感染--秦亮'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/消毒新技术助力医院感染控制展望--朱仁义.pdf',
+                    name: '消毒新技术助力医院感染控制展望--朱仁义'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/新生儿医院感染暴发事件的原因、影响及管理对策--邓子德.pdf',
+                    name: '新生儿医院感染暴发事件的原因、影响及管理对策--邓子德'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/新诊断技术在医院感染管理中的价值-张秀珍.pdf',
+                    name: '新诊断技术在医院感染管理中的价值-张秀珍'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/血流感染和耐药的快递诊断--王云峰.pdf',
+                    name: '血流感染和耐药的快递诊断--王云峰'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/医院使用的消毒产品卫生安全评价新标准要求--顾健.pdf',
+                    name: '医院使用的消毒产品卫生安全评价新标准要求--顾健'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/疫苗在儿童感染疾病预防中的应用--陈强.pdf',
+                    name: '疫苗在儿童感染疾病预防中的应用--陈强'
+                }, {
+                    url: '/conventionFile/第二会议室/6月1日/预防手术部位感染-吴安华.pdf',
+                    name: '预防手术部位感染-吴安华'
+                }]
+            }]
+        }, {
+            roomName: '第三会议室',
+            dateList: [{
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第三会议室/5月31日/遏制耐药需要科学的抗菌药物政策和管理--何礼贤.pdf',
+                    name: '遏制耐药需要科学的抗菌药物政策和管理--何礼贤'
+                }, {
+                    url: '/conventionFile/第三会议室/5月31日/抗菌药物PKPD理论在耐药菌感染中实际应用进展--施毅.pdf',
+                    name: '抗菌药物PKPD理论在耐药菌感染中实际应用进展--施毅'
+                }, {
+                    url: '/conventionFile/第三会议室/5月31日/抗菌药物临床监测与管理--杨小强.pdf',
+                    name: '抗菌药物临床监测与管理--杨小强'
+                }, {
+                    url: '/conventionFile/第三会议室/5月31日/手卫生对多重耐药菌的传播与控制--刘运喜.pdf',
+                    name: '手卫生对多重耐药菌的传播与控制--刘运喜'
+                }, {
+                    url: '/conventionFile/第三会议室/5月31日/数字化抗菌药物管理--倪语星.pdf',
+                    name: '数字化抗菌药物管理--倪语星'
+                }]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第三会议室/6月1日/AMR and One health  SIFIC 2019 -Dr. Chen Hong Final shared version.pdf',
+                    name: 'AMR and One health  SIFIC 2019 -Dr. Chen Hong Final shared version'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/肝移植术后感染--王婷.pdf',
+                    name: '肝移植术后感染--王婷'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/感控新风险--关注药品器械相关感染暴发--蔡虻.pdf',
+                    name: '感控新风险--关注药品器械相关感染暴发--蔡虻'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/行标解读—临床微生物标本采集和运送指南--王辉.pdf',
+                    name: '行标解读—临床微生物标本采集和运送指南--王辉'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/临床医生如何读懂细菌药敏试验报告--胡付品.pdf',
+                    name: '临床医生如何读懂细菌药敏试验报告--胡付品'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/免疫抑制宿主医院感染的防控--黄怡.pdf',
+                    name: '免疫抑制宿主医院感染的防控--黄怡'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/新医改背景下临床微生物检验能力建设--马筱玲.pdf',
+                    name: '新医改背景下临床微生物检验能力建设--马筱玲'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/血液科精准感控的探索与实践--孙庆芬.pdf',
+                    name: '血液科精准感控的探索与实践--孙庆芬'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/药敏折点的研究方法和临床应用--吕媛.pdf',
+                    name: '药敏折点的研究方法和临床应用--吕媛'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/医院口腔感控管理思路--余红.pdf',
+                    name: '医院口腔感控管理思路--余红'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/在感染聚集暴发案例中看标准预防落实的关键点-覃金爱.pdf',
+                    name: '在感染聚集暴发案例中看标准预防落实的关键点-覃金爱'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/正确鉴别耳念珠菌，有效防控院感爆发--胡继红.pdf',
+                    name: '正确鉴别耳念珠菌，有效防控院感爆发--胡继红'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/中国HIV感染的流行现状及防控策略--卢洪洲.pdf',
+                    name: '中国HIV感染的流行现状及防控策略--卢洪洲'
+                }, {
+                    url: '/conventionFile/第三会议室/6月1日/种植牙手术的感染控制现状与防控--俞雪芬.pdf',
+                    name: '种植牙手术的感染控制现状与防控--俞雪芬'
+                }]
+            }]
+        }, {
+            roomName: '第四会议室',
+            dateList: [{
+                date: '05月30日',
+                files: [{
+                    url: '/conventionFile/第四会议室/5月30日/遏制耐药，从规范送检开始--倪语星.pdf',
+                    name: '遏制耐药，从规范送检开始--倪语星'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/遏制耐药，全球共关注--司徒永康.pdf',
+                    name: '遏制耐药，全球共关注--司徒永康'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/基于微生物思维的耐药防控实践--胡必杰.pdf',
+                    name: '基于微生物思维的耐药防控实践--胡必杰'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/借助感染防控专家系统，全面提升面耐药管控能力--刘运喜.pdf',
+                    name: '借助感染防控专家系统，全面提升面耐药管控能力--刘运喜'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/抗菌药物管理(AMS)在耐药防控中的角色扮演--王任贤.pdf',
+                    name: '抗菌药物管理(AMS)在耐药防控中的角色扮演--王任贤'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/抗菌药物体外敏感为何治疗失败？--陈佰义.pdf',
+                    name: '抗菌药物体外敏感为何治疗失败？--陈佰义'
+                }, {
+                    url: '/conventionFile/第四会议室/5月30日/中国抗菌药物管理与细菌耐药现状报告-上海-林丽开.pdf',
+                    name: '中国抗菌药物管理与细菌耐药现状报告-上海-林丽开'
+                }]
+            }, {
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第四会议室/5月31日/ICU导管相关感染防控--潘文彦.pdf',
+                    name: 'ICU导管相关感染防控--潘文彦'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/ICU多重耐药菌防控--李卫光.pdf',
+                    name: 'ICU多重耐药菌防控--李卫光'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/空气源感染暴发与防控新进展--金慧.pdf',
+                    name: '空气源感染暴发与防控新进展--金慧'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/临床医务人员感染防控质量数据采集与管理报告实践分享--付陈超.pdf',
+                    name: '临床医务人员感染防控质量数据采集与管理报告实践分享--付陈超'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/手卫生，与时俱进--付强.pdf',
+                    name: '手卫生，与时俱进--付强'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/血透室医院感染防控要点解析--邹建洲.pdf',
+                    name: '血透室医院感染防控要点解析--邹建洲'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/医用洁净工程运行维护管理--李卫光.pdf',
+                    name: '医用洁净工程运行维护管理--李卫光'
+                }, {
+                    url: '/conventionFile/第四会议室/5月31日/重症感染防控--刘婧.pdf',
+                    name: '重症感染防控--刘婧'
+                }, ]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第四会议室/6月1日/16.9医疗机构感染预防与控制基本制度（试行）解读--李春辉-10min.pdf',
+                    name: '16.9医疗机构感染预防与控制基本制度（试行）解读--李春辉-10min'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/Accrdiation and licensure-宋晓岩.pdf',
+                    name: 'Accrdiation and licensure-宋晓岩'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/Year in Infection Control -林佳冰 .pdf',
+                    name: 'Year in Infection Control -林佳冰 '
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/标准预防--乔甫.pdf',
+                    name: '标准预防--乔甫'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/感控基本制度解读-侵入性操作&传染病防控--刘聚源.pdf',
+                    name: '感控基本制度解读-侵入性操作&传染病防控--刘聚源'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/国际微生物TOP10--杨启文.pdf',
+                    name: '国际微生物TOP10--杨启文'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/进展性的肺部弥漫性病变--胡继华.pdf',
+                    name: '进展性的肺部弥漫性病变--胡继华'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/临床大查房--顾吉娜.pdf',
+                    name: '临床大查房--顾吉娜'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/年轻女性发高热，青霉素后出红疹：咋整？ --李冰.pdf',
+                    name: '年轻女性发高热，青霉素后出红疹：咋整？ --李冰'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/我国医院评审评价理念及方法解读-童德军.pdf',
+                    name: '我国医院评审评价理念及方法解读-童德军'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/医疗机构感控基本制度（MDRO及暴发）--陈文森.pdf',
+                    name: '医疗机构感控基本制度（MDRO及暴发）--陈文森'
+                }, {
+                    url: '/conventionFile/第四会议室/6月1日/医院感染质量检查、评审、认证三步曲--武迎宏.pdf',
+                    name: '医院感染质量检查、评审、认证三步曲--武迎宏'
+                }, ]
+            }]
+
+        }, {
+            roomName: '第五会议室',
+            dateList: [{
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第五会议室/5月31日/POCT 在感控的角色--薛博仁.pdf',
+                    name: 'POCT 在感控的角色--薛博仁'
+                }, {
+                    url: '/conventionFile/第五会议室/5月31日/规范β内酰胺类抗生素皮试（2019）-杨帆.pdf',
+                    name: '规范β内酰胺类抗生素皮试（2019）-杨帆'
+                }, {
+                    url: '/conventionFile/第五会议室/5月31日/如何建立并发展台湾长照机构手部卫生与感管措施模块之经验分享_吳怡慧.pdf',
+                    name: '如何建立并发展台湾长照机构手部卫生与感管措施模块之经验分享_吳怡慧'
+                }, {
+                    url: '/conventionFile/第五会议室/5月31日/如何桥接政府感染控制政策，同时整合医疗机构、小区资源开创新局面--姜秀子.pdf',
+                    name: '如何桥接政府感染控制政策，同时整合医疗机构、小区资源开创新局面--姜秀子'
+                }, {
+                    url: '/conventionFile/第五会议室/5月31日/围术期抗菌药物的合理应用.pdf',
+                    name: '围术期抗菌药物的合理应用'
+                }, {
+                    url: '/conventionFile/第五会议室/5月31日/医疗器材的再处理之TOP 10趋势--吴丽鸿.pdf',
+                    name: '医疗器材的再处理之TOP 10趋势--吴丽鸿'
+                }, ]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第五会议室/6月1日/负压隔离病房环境控制要求--曹晋桂.pdf',
+                    name: '负压隔离病房环境控制要求--曹晋桂'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/护士在抗菌药物合理应用中的作用--秦薇.pdf',
+                    name: '护士在抗菌药物合理应用中的作用--秦薇'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/环境微生物监测与CRO防控--汤灵玲.pdf',
+                    name: '环境微生物监测与CRO防控--汤灵玲'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/三网联动 遏制细菌耐药--王明贵.pdf',
+                    name: '三网联动 遏制细菌耐药--王明贵'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/手术室的建筑设计与使用维护--甘和平.pdf',
+                    name: '手术室的建筑设计与使用维护--甘和平'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/院感防治MDT与抗菌药物的合理使用--王力红.pdf',
+                    name: '院感防治MDT与抗菌药物的合理使用--王力红'
+                }, {
+                    url: '/conventionFile/第五会议室/6月1日/中国CRE耐药机制新进展--顾兵.pdf',
+                    name: '中国CRE耐药机制新进展--顾兵'
+                }]
+            }]
+
+        }, {
+            roomName: '第六会议室',
+            dateList: [{
+                date: '05月30日',
+                files: [{
+                    url: '/conventionFile/第六会议室/5月30日/（可发布）无菌物品保存期限的不同体系--王亚娟.pdf',
+                    name: '（可发布）无菌物品保存期限的不同体系--王亚娟'
+                }, {
+                    url: '/conventionFile/第六会议室/5月30日/复用医疗器械预处理 --钱黎明.pdf',
+                    name: '复用医疗器械预处理 --钱黎明'
+                }, {
+                    url: '/conventionFile/第六会议室/5月30日/过氧化氢低温等离子体灭菌卫生管理技术标准和违法责任--王绍鑫.pdf',
+                    name: '过氧化氢低温等离子体灭菌卫生管理技术标准和违法责任--王绍鑫'
+                }, {
+                    url: '/conventionFile/第六会议室/5月30日/区域消毒供应的院感风险控制-冯秀兰.pdf',
+                    name: '区域消毒供应的院感风险控制-冯秀兰'
+                }, {
+                    url: '/conventionFile/第六会议室/5月30日/外来器械接收中的困惑与对策--钱黎明.pdf',
+                    name: '外来器械接收中的困惑与对策--钱黎明'
+                }, {
+                    url: '/conventionFile/第六会议室/5月30日/压力蒸汽灭菌原理与质量监测--倪晓平.pdf',
+                    name: '压力蒸汽灭菌原理与质量监测--倪晓平'
+                }]
+            }, {
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第六会议室/5月31日/2019曲霉菌病欧洲指南--宁永忠.pdf',
+                    name: '2019曲霉菌病欧洲指南--宁永忠'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/肺曲霉病的临床多样性--陈佰义.pdf',
+                    name: '肺曲霉病的临床多样性--陈佰义'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/区域化医院感染监测平台互联互通工作进展 --李卫光.pdf',
+                    name: '区域化医院感染监测平台互联互通工作进展 --李卫光'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/社区获得性肺炎的分层诊治--王瑞兰.pdf',
+                    name: '社区获得性肺炎的分层诊治--王瑞兰'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/信息化在医疗质量与患者安全中的应用--刘敏超.pdf',
+                    name: '信息化在医疗质量与患者安全中的应用--刘敏超'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/真菌感染非培养实验室诊断技术的临床应用与进展--施毅.pdf',
+                    name: '真菌感染非培养实验室诊断技术的临床应用与进展--施毅'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/中国医院感染信息化监测态势与展望--付强.pdf',
+                    name: '中国医院感染信息化监测态势与展望--付强'
+                }, {
+                    url: '/conventionFile/第六会议室/5月31日/中重度社区获得性肺炎的分层治疗--潘珏.pdf',
+                    name: '中重度社区获得性肺炎的分层治疗--潘珏'
+                }]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第六会议室/6月1日/WHO结核感染预防与控制指南解读--沈鑫.pdf',
+                    name: 'WHO结核感染预防与控制指南解读--沈鑫'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/超声探头的污染及交叉感染分析探讨--张群.pdf',
+                    name: '超声探头的污染及交叉感染分析探讨--张群'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/儿童感控您准备好了吗？--王传清.pdf',
+                    name: '儿童感控您准备好了吗？--王传清'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/儿童季节性病毒医院感染防控--王传清.pdf',
+                    name: '儿童季节性病毒医院感染防控--王传清'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/儿童重症腺病毒肺炎--陆国平.pdf',
+                    name: '儿童重症腺病毒肺炎--陆国平'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/耳念珠菌的实验室诊断--魏莲花.pdf',
+                    name: '耳念珠菌的实验室诊断--魏莲花'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/健康体检中心医院感染管理的要点--任淑华.pdf',
+                    name: '健康体检中心医院感染管理的要点--任淑华'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/结核病医院感染新实践--陆烨.pdf',
+                    name: '结核病医院感染新实践--陆烨'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/结核病诊治进展--卢水华.pdf',
+                    name: '结核病诊治进展--卢水华'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/如何解读细菌培养及药敏结果--褚云卓.pdf',
+                    name: '如何解读细菌培养及药敏结果--褚云卓'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/苏州地区儿童接种流感疫苗可减少的病例数估计--赵根明.pdf',
+                    name: '苏州地区儿童接种流感疫苗可减少的病例数估计--赵根明'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/台灣長照機構執行潛伏結核感染的現況--薛博仁.pdf',
+                    name: '台灣長照機構執行潛伏結核感染的現況--薛博仁'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/细菌生物膜与耐药--瞿涤.pdf',
+                    name: '细菌生物膜与耐药--瞿涤'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/新生儿常见疾病及医院感染控制--曾慧慧.pdf',
+                    name: '新生儿常见疾病及医院感染控制--曾慧慧'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/医美，你和女神只差一个规范的距离--索瑶.pdf',
+                    name: '医美，你和女神只差一个规范的距离--索瑶'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/医院感染控制策略--黄怡.pdf',
+                    name: '医院感染控制策略--黄怡'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/以临床为导向的MIC精准治疗--吴文娟.pdf',
+                    name: '以临床为导向的MIC精准治疗--吴文娟'
+                }, {
+                    url: '/conventionFile/第六会议室/6月1日/遵循CLSI原则，规范药敏试验--朱德妹.pdf',
+                    name: '遵循CLSI原则，规范药敏试验--朱德妹'
+                }]
+            }]
+        }, {
+            roomName: '第七会议室',
+            dateList: [{
+                date: '05月30日',
+                files: [{
+                    url: '/conventionFile/第七会议室/5月30日/“新生儿CRBSI暴发案例剖析”--廖丹.pdf',
+                    name: '“新生儿CRBSI暴发案例剖析”--廖丹'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/初入ICU病人需要开展多重耐药菌主动筛查--阎颖等.pdf',
+                    name: '初入ICU病人需要开展多重耐药菌主动筛查--阎颖等'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/从病例看病原微生物送检--阎颖.pdf',
+                    name: '从病例看病原微生物送检--阎颖'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/感控不怕挑，我有十大招--赵静.pdf',
+                    name: '感控不怕挑，我有十大招--赵静'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/四年周期已到，你的卫生安全评价报告更新了吗--黄小强.pdf',
+                    name: '四年周期已到，你的卫生安全评价报告更新了吗--黄小强'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/透过暴发事件审视新生儿医院感染细节管理--韩玲样.pdf',
+                    name: '透过暴发事件审视新生儿医院感染细节管理--韩玲样'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/医院感染暴发调查处置与体会--张静.pdf',
+                    name: '医院感染暴发调查处置与体会--张静'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/医院抗菌药物管理中AMS建设--张波.pdf',
+                    name: '医院抗菌药物管理中AMS建设--张波'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/造血干细胞移植患者真菌感染处理对策--周密.pdf',
+                    name: '造血干细胞移植患者真菌感染处理对策--周密'
+                }, {
+                    url: '/conventionFile/第七会议室/5月30日/证件审核你真的会吗--雷小航.pdf',
+                    name: '证件审核你真的会吗--雷小航'
+                }]
+            }, {
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第七会议室/5月31日/“Bundles”- overview of bundles  and comparison of WHO vs. CDC--宋晓岩.pdf',
+                    name: '“Bundles”- overview of bundles  and comparison of WHO vs. CDC--宋晓岩'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/Cleaning and disinfection – from product to application--Ann-Christine Nyquist.pdf',
+                    name: 'Cleaning and disinfection – from product to application--Ann-Christine Nyquist'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/Employee health – from vaccination to post-exposure management--Ann-Christine Nyquist.pdf',
+                    name: 'Employee health – from vaccination to post-exposure management--Ann-Christine Nyquist'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/Intravenous vs. Oral Therapy and When is Appropriate to Switch--Edina Avdic.pdf',
+                    name: 'Intravenous vs. Oral Therapy and When is Appropriate to Switch--Edina Avdic'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/Promoting Hand Hygiene Problem of Campaign Fatigue--司徒永康.pdf',
+                    name: 'Promoting Hand Hygiene Problem of Campaign Fatigue--司徒永康'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/Respiratory Viral Infections SIFIC_May 2019.pdf',
+                    name: 'Respiratory Viral Infections SIFIC_May 2019'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/The application of engineering control in infection control--宋晓岩.pdf',
+                    name: 'The application of engineering control in infection control--宋晓岩'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/国际旅行健康建议：如何预防传染病--陈翔.pdf',
+                    name: '国际旅行健康建议：如何预防传染病--陈翔'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/新发传染病的识别与诊治--张文宏.pdf',
+                    name: '新发传染病的识别与诊治--张文宏'
+                }]
+            }, {
+                date: '06月01日',
+                files: [{
+                    url: '/conventionFile/第七会议室/6月1日/KN23-2：内镜消毒效果评价技术研究进展--徐燕.pdf',
+                    name: 'KN23-2：内镜消毒效果评价技术研究进展--徐燕'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/地市级医院感染管理质量控制中心的使命与担当--刘荣辉.pdf',
+                    name: '地市级医院感染管理质量控制中心的使命与担当--刘荣辉'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/关于应急演练的一些思考--宋舸.pdf',
+                    name: '关于应急演练的一些思考--宋舸'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/规范血透设备管理，控制血透感染风险--张立国.pdf',
+                    name: '规范血透设备管理，控制血透感染风险--张立国'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/基层医疗机构消毒供应中心现状与对策思考--张浩军.pdf',
+                    name: '基层医疗机构消毒供应中心现状与对策思考--张浩军'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/软式内镜再处理，我们知多少？--王萍.pdf',
+                    name: '软式内镜再处理，我们知多少？--王萍'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/眼科医院感染防控--孟庆兰.pdf',
+                    name: '眼科医院感染防控--孟庆兰'
+                }, {
+                    url: '/conventionFile/第七会议室/6月1日/医院感染论文中常见统计问题与探讨--曹煜隆.pdf',
+                    name: '医院感染论文中常见统计问题与探讨--曹煜隆'
+                }]
+            }]
+        }, {
+            roomName: '展厅学术角A区',
+            dateList: [{
+                date: '05月31日',
+                files: [{
+                    url: '/conventionFile/第七会议室/5月31日/环境卫生学监测，是鸡肋还是机会--芦珊.pdf',
+                    name: '环境卫生学监测，是鸡肋还是机会--芦珊'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/基层医疗机构医院感染管理常见问题及对策--吴怀英.pdf',
+                    name: '基层医疗机构医院感染管理常见问题及对策--吴怀英'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/手卫生监测还是很困惑？--刘滨.pdf',
+                    name: '手卫生监测还是很困惑？--刘滨'
+                }, {
+                    url: '/conventionFile/第七会议室/5月31日/医院感染信息化监测持续改进实践分享--丁韧.pdf',
+                    name: '医院感染信息化监测持续改进实践分享--丁韧'
+                }]
+            }]
+        }]
+        var html_str = '';
+        for (var i = 0; i < pdfJson.length; i++) {
+            html_str += "<li><span><i class='icon-calendar'></i>" + pdfJson[i].roomName + "</span><ul class='grade_B_ul'>";
+            for (var j = 0; j < pdfJson[i].dateList.length; j++) {
+                html_str += "<li><span class='badge badge-success'><i class='icon-minus-sign'></i>" + pdfJson[i].dateList[j].date + "</span><ul class='grade_C_ul'>";
+                for (var k = 0; k < pdfJson[i].dateList[j].files.length; k++) {
+                    html_str += "<li><span><i class='icon-time'></i>PDF</span> &ndash;<a target='__blank' href='" + pdfJson[i].dateList[j].files[k].url + "' >" + pdfJson[i].dateList[j].files[k].name + "</a></li>";
+                }
+                html_str += "</ul></li>";
+            }
+            html_str += "</ul></li>";
+        }
+        $('.tree .tree_box').html(html_str);
+        //树形结构交互
+        $('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+        $('.tree li.parent_li > span').on('click', function(e) {
+            var children = $(this).parent('li.parent_li').find(' > ul > li');
+            if (children.is(":visible")) {
+                children.hide('fast');
+                $(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+            } else {
+                children.show('fast');
+                $(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+            }
+            e.stopPropagation();
+        });
+    });
+    // var download = "api/convention/download";
+
+    // function mtdownload(data) {
+    //     var dow_data = data.data;
+    //     if (dow_data.length) {
+    //         pdfurls = dow_data[0].file_path
+    //         var download_title = dow_data[0].download_title;
+    //         if (pdfurls.substr(-3, 3) == "pdf") {
+    //             $('<a href="' + pdfurls + '" target="view_window" download="' + dow_data[0].file_name + '">' + download_title + '&nbsp;&nbsp;<span style="font-size:14px; color:#666">(点击下载文件)</span></a>').appendTo("#pdfname");
+    //             createPdf(pdfurls)
+    //         } else {
+    //             $('<a href="https://view.officeapps.live.com/op/view.aspx?src=' + pdfurls + '" target="view_window" >' + download_title + '</a>').appendTo("#pdfname");
+    //             $('<iframe src="https://view.officeapps.live.com/op/view.aspx?src=' + pdfurls + '" width="100%" height="750" style="border:0px" frameborder="1"></iframe>').appendTo("#pdf2");
+    //         }
+    //     }
+    // }
+    // function mtdownload(data) {
+    //     if (data.code == 200) {
+    //         var str = ''
+    //         var pdfList = data.data;
+    //         for (var i = 0; i < pdfList.length; i++) {
+    //             if (pdfList[i].download_title.indexOf('05/30') != -1) {
+    //                 str = '.date0530';
+    //             } else if (pdfList[i].download_title.indexOf('05/31') != -1) {
+    //                 str = '.date0531';
+    //             } else {
+    //                 str = '.date0601'
+    //             }
+    //             $('<li><a href="' + pdfList[i].file_path + '" target="view_window">' + pdfList[i].file_name.split('.')[0] + '</a></li>').appendTo(str);
+    //         }
+    //     } else {
+    //         showLaert(data.msg);
+    //     }
+    // }
+    // var data = {
+    //     "convention_id": convention_id,
+    // };
+    // ajax_all_Filed("true", "true", "POST", download, "json", data, mtdownload); //调用函数
+
+    // function createPdf(pdfurls) {
+    //     new PDFObject({
+    //         url: pdfurls,
+    //         pdfOpenParams: {
+    //             view: 'Fit',
+    //             scrollbars: '0',
+    //             toolbar: '0',
+    //             statusbar: '0',
+    //             navpanes: '0'
+    //         }
+    //     }).embed('pdf2');
+    // };
+    // //切换日期
+    // $('.guest_txt').on('click', '.pdfDate', function() {
+    //     $(this).addClass('active').siblings().removeClass('active');
+    // })
+    // $('.guest_txt').on('click', 'dd', function() {
+
+    // })
+</script>

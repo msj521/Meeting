@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="qr_container" style="margin:auto; position:relative;"></div>
+    <p id="qr_container_text"></p>
+</body>
+<script>
+    var domain = window.location.host;
+    var timestamp = getQueryString("timestamp");
+    var now = Date.parse(new Date());
+
+    window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx52a019041e2dda35&redirect_uri=http://2019.sific.com.cn/Signin/QuestionDetailAuthorization&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect";
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+</script>
+
+</html>

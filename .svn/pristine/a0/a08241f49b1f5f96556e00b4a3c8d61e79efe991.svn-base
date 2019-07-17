@@ -1,0 +1,223 @@
+{include file="public/header" /}
+<div class="conter980" style="font-size:18px;">
+    <h3>SIFIC 2019卓越感控追梦之星</h3>
+    <h4 style="text-align:center;"><a href="/excellent_introduce" target="_blank" style="font-size: 20px;color: blue;">卓越感控追梦之星</a></h4>
+    <div class="apply_term apply_term_1 clear">
+        <div style="float:left;">姓名：<input type="text" style="width:80px;" class="apply_name"></div>
+        <div style="float:left;margin-left: 70px;">性别：<select class="form-control apply_sex" style="width: 53%;display: inline-block;background:#F8F8F7;"><option>男</option><option>女</option></select></div>
+        <div style="float:left;margin-left: 70px;"><span>SIFIC会员名:</span><input type="text" class="apply_sific_name"></div>
+        <div style="float:left;margin-left: 70px;"><span>会员等级:</span><input type="text" class="apply_member_level"></div>
+    </div>
+    <div class="apply_term apply_term_2 clear">
+        <div class="abs_inputlist hideinput" style="width:auto;float:left;">
+            <div class="abs_input_lf">
+                省份/城市<span></span>
+            </div>
+            <div class="abs_input_rg">
+                <select id="province_id" class="form-control" data-live-search="true" style="width: 47%; float: left;background:#F8F8F7;">
+                        <option value="0">请选择</option>
+                      </select>
+                <select id="city_id" class="form-control" data-live-search="true" style="width: 47%; float: left; margin-left: 6%;background:#F8F8F7;">
+                        <option value="0">请选择</option>
+                      </select>
+                <div class="annual_tips_ys" id="ss_tilps" style="margin-top: 10px;"></div>
+            </div>
+        </div>
+        <div style="float:left;line-height: 50px;margin-left: 50px;"><span>部门:</span><input type="text" style="width: 130px;" class="apply_department"></div>
+        <div style="float:left;line-height: 50px;margin-left: 15px;"><span>邮编:</span><input type="text" style="width: 80px" class="apply_postal_code"></div>
+    </div>
+    <div class="apply_term apply_term_3 clear">
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                入职年月<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime0 apply_entry_date" name="" id="entry_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                注册时间<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime1 apply_register_date" name="" id="register_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                出生年月<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime2 apply_birthday" name="" id="birth_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+        <div style="float:left;">
+            <div class="abs_input_lf">
+                申请日期<span></span>
+            </div>
+            <div class="abs_input_rg" style="width:auto;">
+                <input type="text" class="Myclass_timeselect clssdatetime3 apply_date" name="" id="apply_day" value="" style="width:100px;height:34px;" />
+                <div class="annual_tips_ys"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="apply_term apply_term_4 clear">
+        <div style="float:left;"><span>职务:</span><input type="text" class="apply_job"></div>
+        <div style="float:left;margin:0 10px;"><span>技术职称:</span><input type="text" class="apply_title"></div>
+        <div style="float:left;margin:0 10px;"><span>最高学位:</span><input type="text" class="apply_degree"></div>
+        <div style="float:left;"><span>单位级别:</span><input type="text" class="apply_company_level"></div>
+    </div>
+    <div class="apply_term apply_term_5 clear">
+        <div style="float:left;"><span>医院床位:</span><input type="text" style="width: 60px;" class="apply_bed_num"></div>
+        <div style="float:left;margin:0 20px;"><span>E-mail:</span><input type="text" style="width: 300px;" class="apply_email"></div>
+        <div style="float:left;margin:0 10px;"><span>手   机:</span><input type="text" style="width: 120px" class="apply_phone"></div>
+        <div style="float:left;"><span>单位电话:</span><input type="text" class="apply_tel"></div>
+    </div>
+    <div class="apply_term apply_term_6 clear">
+        <div><span>工作单位:</span><input type="text" style="width: 500px;" class="apply_company"></div>
+        <div style="margin:10px 0;"><span>单位地址:</span><input type="text" style="width: 500px;" class="apply_company_address"></div>
+    </div>
+    <div class="apply_term apply_term_6 clear select_box">
+        <div class="select_1_title">1. “优先条件”具备情况（限500字内）</div>
+        <textarea id="apply_situation" class="apply_situation" cols="30" rows="10" style="width:100%;height:250px;outline: none;resize: none;background:rgb(248, 248, 247);margin-top: 10px;"></textarea>
+    </div>
+    <div class="apply_term apply_term_7 clear select_box">
+        <div class="select_2_title">2. 需要补充说明的其他信息</div>
+        <textarea id="apply_explain" class="apply_explain" cols="30" rows="10" style="width:100%;height:250px;outline: none;resize: none;background:rgb(248, 248, 247);margin-top: 10px;"></textarea>
+    </div>
+    <div class="apply_term apply_term_8 clear select_box">
+        <div class="select_3_title">3. 推荐意见（请评价感控的业务能力和工作成绩）</div>
+        <textarea id="apply_recommend" class="apply_recommend" cols="30" rows="10" style="width:100%;height:250px;outline: none;resize: none;background:rgb(248, 248, 247);margin-top: 10px;"></textarea>
+    </div>
+    <div class="select_4 select_box select_box_crl">
+        <div class="select_4_title">4. 何时、何校(中/大专起)、何专业、毕业：</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">院校名称</th>
+                        <th class="table_thead_2">专业名称</th>
+                        <th class="table_thead_3">入学时间</th>
+                        <th class="table_thead_4">毕业时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_5 select_box select_box_crl">
+        <div class="select_5_title">5. 2016年1月起感染相关论文发表（题目、杂志与起止页，发表年份）并注明您是第一/通讯作者：</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">题目</th>
+                        <th class="table_thead_2">时间</th>
+                        <th class="table_thead_3">发表年份</th>
+                        <th class="table_thead_4">作者</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_6 select_box select_box_crl">
+        <div class="select_6_title">6. 推荐者姓名、单位和部门、学会/质控中心兼职、邮箱、手机：</div>
+        <div class="table_box">
+            <table border="2" cellspacing="0" class="programme_table">
+                <thead align="center">
+                    <tr>
+                        <th class="table_thead_1">推荐者姓名</th>
+                        <th class="table_thead_2">单位</th>
+                        <th class="table_thead_3">部门</th>
+                        <th class="table_thead_4">学会/质控中心兼职</th>
+                        <th class="table_thead_4">邮箱</th>
+                        <th class="table_thead_4">手机</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                        <td><input type="text" value=""></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input class="table_add" value="添加+" type="button" />
+        </div>
+    </div>
+    <div class="select_7 select_box select_box_crl">
+        <div>7.*申请者应确保提供的上述材料真实有效，如有虚假不实，一切后果由申请者自己承担；申请时请将申请表（加盖单位公章并扫描成PDF文件）、发表论文（PDF 格式）、其他相关证明材料，一同打包压缩成zip或rar格式文件，在申请页面上传，文件名称请参照“申请人+SIFIC 2019卓越感控追梦之星申请表”格式填写 *推荐意见：由附件 1中的“推荐人”人员填写，并如实记录推荐者相关信息。
+            <a href="/static/web/docx1.docx" download="附件1.docx" style="color:blue;text-decoration:underline;">附件1下载</a>
+            <a href="/static/web/docx2.docx" download="附件2.docx" style="color:blue;margin:0 60px 0 20px;text-decoration:underline;">附件2下载</a>
+            <input type="button" value="文件上传" class="apply_person_file" style="display:inline-block;width: 100px;"></div>
+    </div>
+    <input type="button" class="apply_person_submit" value="提交">
+</div>
+{include file="public/footer2" /}
+<script src="/static/web/js/module/excellent_person.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/admin/lib/layui/css/layui.css" />
+<script type="text/javascript" src="/static/admin/lib/layui/layui.js"></script>

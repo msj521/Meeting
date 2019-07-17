@@ -1,0 +1,171 @@
+{include file="public/header" /}
+<body>
+<div class="x-nav">
+  <span class="layui-breadcrumb">
+    <a><cite>大会管理</cite></a>
+    <a><cite>{$title}</cite></a>
+  </span>
+  <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
+     href="javascript:location.replace(location.href);" title="刷新">
+    <i class="layui-icon" style="line-height:30px">ဂ</i>
+  </a>
+</div>
+<div class="x-body">
+  <form class="layui-form x-center" action="{$index|default='/'}" method="get">
+    <div class="layui-form-pane" style="text-align: center;">
+
+      <div class="layui-form-item" style="display: inline-block;">
+        <label class="layui-form-label">起始时间</label>
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="开始时间" id="LAY_demorange_s" name="start_time" value="{$start}">
+        </div>
+        <div class="layui-input-inline">
+          <input class="layui-input" placeholder="结束时间" id="LAY_demorange_e" name="end_time" value="{$end}">
+        </div>
+
+        <div class="layui-input-inline">
+          <select name="class_id" lay-search="">
+            <option value="">会议分类</option>
+            {volist name="meet"  id="vo"}
+            <option value="{$vo.fid}"  {if condition="$vo.fid eq $class_id"} selected="selected" {/if} >{$vo.class_name_zh}</option>
+            {/volist}
+          </select>
+        </div>
+        <div class="layui-input-inline">
+          <input type="text" name="string" value="{$string}" placeholder="请输入查询内容" autocomplete="off" class="layui-input">
+        </div>
+
+        <div class="layui-input-inline" style="width:80px">
+          <button class="layui-btn" lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <xblock>
+    <span class="layui-btn" style="line-height:40px">共有数据：{$cnt} 条</span>
+  </xblock>
+ <table class="layui-hide" id="table" lay-filter="tableTool"></table>
+
+  <div class="page">
+    {$list->render()}
+  </div>
+
+</div>
+{include file="public/top_js" /}
+
+<script type="text/html" id="zs">
+  <a  href="javascript:;"  lay-event="ZS"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6af;</i></a>
+</script>
+
+<script type="text/html" id="zj">
+  <a  href="javascript:;"  lay-event="ZJ"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe699;</i></a>
+</script>
+
+<script type="text/html" id="zk">
+  <a  href="javascript:;"  lay-event="ZK"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe758;</i></a>
+</script>
+
+<script type="text/html" id="pc">
+  <a  href="javascript:;"  lay-event="PC"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe70b;</i></a>
+</script>
+
+<script type="text/html" id="py">
+  <a  href="javascript:;"  lay-event="PY"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6ec;</i></a>
+</script>
+
+<script type="text/html" id="wt">
+  <a  href="javascript:;"  lay-event="WT"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6ec;</i></a>
+</script>
+
+<script type="text/html" id="bt">
+  <a  href="javascript:;"  lay-event="BT"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe69a;</i></a>
+</script>
+
+<script type="text/html" id="pr">
+  <a  href="javascript:;"  lay-event="PR"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe724;</i></a>
+</script>
+
+<script type="text/html" id="za">
+  <a  href="javascript:;"  lay-event="ZA"
+              class="ml-5" style="text-decoration:none" ><i class="iconfont">&#xe6a4;</i></a>
+</script>
+
+
+<script>
+  var dataList = <?php echo json_encode($list);?>;
+  //console.log(dataList);
+  for (var i = 0; i < dataList.data.length; i++) {
+    if(dataList.data[i].record_status==1){
+        dataList.data[i].record_status='启用';
+    }else if(dataList.data[i].record_status==2){
+        dataList.data[i].record_status='禁用';
+    }else if(dataList.data[i].record_status==-1){
+        dataList.data[i].record_status='标记删除';
+    }else if(dataList.data[i].record_status==-2){
+        dataList.data[i].record_status='彻底删除';
+    } 
+  }
+
+  layui.use(['table','layer'],function(){
+    var layer = layui.layer;
+    var table = layui.table;
+    table.render({
+      elem: '#table'
+      ,data: dataList.data
+      ,cols: [[
+        {field:'fid',width:80,title: 'ID',sort:true}
+        ,{field:'convention_name',  width:200, title: '名称'}
+        ,{  width:100,title: '会议菜单栏', toolbar: '#bt'}
+		,{ width:100, title: '摘要及全文', toolbar: '#pr'}
+        ,{ width:100,title: '自定义报名', toolbar: '#zs'}
+        ,{width:100, title: '报名记录', toolbar: '#zj'}
+        ,{width:100,title: '参会类型', toolbar: '#zk'}
+        ,{width:100,title: '注意配置', toolbar: '#za'}
+        ,{ width:100, title: '对公账户', toolbar: '#pc'}
+        ,{ width:100, title: '支付宝支付', toolbar: '#py'}
+        ,{width:100, title: '微信支付', toolbar: '#wt'}
+        ,{field:'start_time', width:180,  title: '开始时间'}
+        ,{field:'end_time',  width:180, title: '结束时间'}        
+        ,{fixed: 'right',align:'center',field:'record_status', width:100, title: '状态'}
+      ]]
+      ,page: false
+      ,limit: dataList.data.length
+    });
+ 
+    //监听工具条
+    table.on('tool(tableTool)', function(obj){
+      var data = obj.data;
+      if(obj.event === 'ZS'){
+        member_edit('自定义报名','/meet/sign','{$index|default="/"}',data.fid+'&ZS=0',0,0)
+      } else if(obj.event === 'ZJ'){
+        member_edit('报名记录','/meet/signup','{$index|default="/"}',data.fid+'&ZJ=0',0,0)
+      } else if(obj.event === 'ZK'){
+        member_edit('参会类型','/meet/ticket','{$index|default="/"}',data.fid+'&ZK=0',0,0)
+      } else if(obj.event === 'PC'){
+        member_edit('对公账户','/meet/switch','{$index|default="/"}',data.fid+'&PC',0,0)
+      } else if(obj.event === 'PY'){
+        member_edit('支付宝支付','/meet/switch','{$index|default="/"}',data.fid+'&PY',0,0)
+      } else if(obj.event === 'WT'){
+        member_edit('微信支付','/meet/switch','{$index|default="/"}',data.fid+'&WT',0,0)
+      } else if(obj.event === 'BT'){
+        member_edit('会议菜单栏','/menu/meet','{$index|default="/"}',data.fid+'&BT='+data.convention_name,0,0)
+	  } else if(obj.event === 'PR'){
+        member_edit('摘要及全文','/meet/paper','{$index|default="/"}',data.fid+'&PR',0,0)
+      } else if(obj.event === 'ZA'){
+		member_edit('注意配置','/meet/switch','{$index|default="/"}',data.fid+'&ZA',0,0)
+      }
+    });
+
+  })
+
+</script>
+</body>
+</html>

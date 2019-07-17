@@ -1,0 +1,232 @@
+{include file="public/header" /}
+<body>
+<div class="x-body layui-anim layui-anim-up">
+  <form class="layui-form" action="{$update|default='/'}" method="post" enctype="multipart/form-data">
+
+    <div class="layui-form-item">
+      <label for="title" class="layui-form-label">标题<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="title" name="title"  lay-verify="required" value="{$list.title|default=''}">
+      </div>
+    </div>
+	
+    <div class="layui-form-item">
+      <label for="keyword" class="layui-form-label">关键字<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input class="layui-input" id="keyword" name="keyword"  lay-verify="required" value="{$list.keyword|default=''}">
+      </div>
+    </div>
+	
+	<div class="layui-form-item layui-form-text">
+      <label for="objective" class="layui-form-label">目的<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入目的" required id="objective" name="objective" autocomplete="off" class="layui-textarea"
+          style="height: 80px;">{$list.objective|default=''}</textarea>
+      </div>
+    </div>
+	
+	<div class="layui-form-item layui-form-text">
+      <label for="method" class="layui-form-label">方法<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入方法" required id="method" name="method" autocomplete="off" class="layui-textarea"
+          style="height: 80px;">{$list.method|default=''}</textarea>
+      </div>
+    </div>
+	
+	<div class="layui-form-item layui-form-text">
+      <label for="result" class="layui-form-label">结果<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入结果" required id="result" name="result" autocomplete="off" class="layui-textarea"
+          style="height: 80px;">{$list.result|default=''}</textarea>
+      </div>
+    </div>
+	
+	<div class="layui-form-item layui-form-text">
+      <label for="conclusion" class="layui-form-label">结论<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <textarea placeholder="请输入结论" required id="conclusion" name="conclusion" autocomplete="off" class="layui-textarea"
+          style="height:50px;">{$list.conclusion|default=''}</textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label for="special" class="layui-form-label">所属专题<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <select name="special" lay-verify="required" lay-search="">
+          <option value="">所属专题</option>
+          {volist name="special" id="vo"}
+          <option value="{$vo.fid}" {if condition="isset($list.special) and $vo.fid eq $list.special" } selected="selected" {/if} >{$vo.class_name_zh}</option>
+          {/volist}
+        </select>
+      </div>
+    </div>
+	
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">发表形式<?php html_sign();?></label>
+      <div class="layui-input-block">
+        <input type="radio" name="shape" value="1" title="口头和壁报" checked>
+        <input type="radio" name="shape" value="2" title="壁报" {if condition="isset($list['shape']) and $list['shape'] eq 2"} checked {/if}>
+      </div>
+    </div>  
+		
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">参加评选</label>
+      <div class="layui-input-block" id="IsPurchased">
+        <input type="radio"  lay-filter="publics" name="yes_no" value="1" title="否"  checked>
+        <input type="radio"  lay-filter="publics"  name="yes_no" value="2" title="是" {if condition="isset($list['yes_no']) and $list['yes_no'] eq 2"} checked {/if}>
+      </div>
+    </div>  
+	
+	<div class="layui-form-item">
+      <label class="layui-form-label xbs768">摘要审核</label>
+      <div class="layui-input-block" id="checked">
+        <input type="radio" name="abstract_status" value="1" title="待审核" checked>
+        <input type="radio" name="abstract_status" value="2" title="接受" {if condition="isset($list['abstract_status']) and $list['abstract_status'] eq 2"} checked {/if}>
+        <input type="radio" name="abstract_status" value="3" title="拒绝" {if condition="isset($list['abstract_status']) and  $list['abstract_status'] eq 3"} checked {/if}>
+      </div>
+    </div>
+	
+	<div class="layui-form-item">
+      <label class="layui-form-label xbs768" style="width:120px;">发送摘要录用通知:</label>
+      <div class="layui-input-block">
+		<a class="layui-btn" href="javascript:;" onclick="send({$list.fid},{$list.creator_id},{$list.convention_id})">
+			{if condition="isset($list['abstract_send']) and $list['abstract_send'] eq 2"} 重新发送 {else} 发送{/if}
+		</a>
+      </div>
+    </div>	
+	
+	
+    <input type="hidden" name="fid" value="{$list.fid|default=''}">
+    <input type="hidden" name="convention_id" value="{$list.convention_id|default=$convention_id}">
+    <input type="hidden" id="fileid" name="fileid" value="{$list.fileid|default=0}">	
+    <input type="hidden" id="uid" name="uid" value="{$list.creator_id|default=0}">	
+
+	<hr>
+	<div class="layui-form-item" id="paper">
+	  <label class="layui-form-label">全文上传<?php html_sign();?></label>
+	  <div class="layui-upload">
+		  <button type="button" class="layui-btn" id="img">
+			  {if condition="isset($list['file_path']) and $list['fid']"} 重新上传{else}点击上传 {/if}
+		  </button>
+		  <span class="layui-upload-list">
+			<table class="layui-table">
+			  <thead>
+				<tr>
+				  <th>文件名</th>
+				  <th>大小</th>
+				</tr>
+			  </thead>
+			  <tbody id="demoList">
+				<tr>
+					<td>{$list.file_name|default=''}</td>
+					<td>{$list.file_size|default=0}kb</td>
+				</tr>
+			  </tbody>
+			</table>
+		  </span>
+	  </div>
+	</div>
+
+<!-- 	<div class="layui-form-item" id="paper2">
+	  <label class="layui-form-label xbs768">全文审核</label>
+	  <div class="layui-input-block">
+		<input type="radio" name="paper_status" value="1" title="待审核" checked>
+		<input type="radio" name="paper_status" value="2" title="通过" {if condition="isset($list['paper_status']) and $list['paper_status'] eq 2"} checked {/if}>
+		<input type="radio" name="paper_status" value="3" title="不通过" {if condition="isset($list['paper_status']) and  $list['paper_status'] eq 3"} checked {/if}>
+	  </div>
+	</div>  -->
+
+    <div class="layui-form-item">
+      <label class="layui-form-label xbs768">状态</label>
+      <div class="layui-input-block">
+        <input type="radio" name="record_status" value="1" title="启用" checked>
+        <input type="radio" name="record_status" value="2" title="禁用" {if condition="isset($list['record_status']) and $list['record_status'] eq 2"} checked {/if}>
+        <input type="radio" name="record_status" value="-1" title="标记删除" {if condition="isset($list['record_status']) and  $list['record_status'] eq -1"} checked {/if}>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <label class="layui-form-label"></label>
+      <button class="layui-btn" lay-filter="save" lay-submit="" type="submit">保存</button>
+    </div>
+  </form>
+</div>
+
+<script>
+	$(document).ready(function(){
+		var yes_no={$list['yes_no']|default=1};
+		if (yes_no== "2") {
+			$("#paper,#paper2").show();
+		}else {
+			$("#paper,#paper2").hide();
+		}
+	});
+	
+	function send(fid,uid,convention_id){
+		var url="/meet/paper";
+		var urls="/meet/edit_paper?fid="+fid;
+		var status=$('#checked input[name="abstract_status"]:checked ').val();
+		$.ajax({
+		  type: "post",
+		  url: url,
+		  data: {_send:1,urls:urls,uid:uid,convention_id:convention_id,status:status,fid:fid},
+		  dataType: "json",
+		  success: function (data) {
+			if (data) {
+			  layer.msg("发送成功", {icon: 1, time: 500});
+			} else {
+			  layer.msg("发送失败", {icon: 1, time: 500});
+			}
+			setTimeout(function () {
+			  window.location.href = urls;
+			}, 500);
+		  }
+		});
+	}
+	
+	layui.use(["upload","form"],function(){
+		var $ = layui.jquery
+		,upload = layui.upload
+		,form = layui.form;
+		//是否 参加评选
+		form.on('radio(publics)', function (data) {        
+			if ($('#IsPurchased input[name="yes_no"]:checked ').val() == "2") {
+				$("#paper,#paper2").show();
+			}else {
+				$("#paper,#paper2").hide();
+			}
+			form.render();
+		});
+		var fid='{$list.fileid|default=0}';
+		//上传
+		var uploadInst = upload.render({
+		  elem: '#img'
+		  ,url: '/upload'
+		  ,data: {fid:fid,source_type:4}
+		  ,accept: 'file'
+		  ,exts: 'pdf|doc'
+		  ,multiple: true
+		  ,before: function(obj){
+		  var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+		  //读取本地文件
+		  obj.preview(function(index, file, result){
+			  var tr = $(['<tr id="upload-'+ index +'">'
+				,'<td>'+ file.name +'</td>'
+				,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+			  ,'</tr>'].join(''));
+			  $("#demoList").html(tr);
+			});
+		  }
+		  ,done: function(res){
+			//如果上传成功
+			if(res.code==200){
+			  $('#fileid').attr('value', res.data);
+			  return layer.msg('上传成功');
+			}else{
+			  return layer.msg('上传失败');
+			}
+		  }
+		});
+	});
+</script>
+</body>
+</html>

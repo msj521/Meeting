@@ -1,0 +1,20 @@
+{include file="public/header" /}
+{include file="public/meeting_nav" /}
+{include file="public/mbxue" /}
+		<div class="conter960">
+			<div class="meeting_ct">
+				<div class="guest_txt">
+				
+				<div class="guest_info">
+					<img src="../images/pic_person.png" style="float: left; margin-bottom: 10px; margin-right: 20px; width: 144px; height: 198px;" id="expert_img"/>
+				<h1 style="font-size: 20px; color: #555; margin-bottom: 10px;" id="expert_name"></h1>
+				<p style="font-size: 16px; color: #555;" id="expert_ct"></p>
+				</div>
+				
+			</div>
+			</div>
+			
+		</div>
+
+{include file="public/footer2" /}
+<script type="text/javascript" src="/static/web/js/module/expertinfo.js" ></script>

@@ -1,0 +1,34 @@
+<div class="mbxue ellipsis" style="width: 100%;">
+	位置&nbsp;>&nbsp;会议&nbsp;>&nbsp;<span id="class_name"></span>&nbsp;>&nbsp;<span id="title"></span>
+</div>
+<div class="mt_img_module">
+	<div class="met_banner">
+		<img src="" id="meeting_img" />
+	</div>
+</div>
+
+<script>
+	$(function(){
+		if(localStorage_info!=null && localStorage_info!=""&&localStorage_info.fid==convention_id){
+			var localStorage_info = JSON.parse(localStorage.getItem("convention_info"))
+			$("#class_name").text(localStorage_info.class_name);
+			$("#title").text(localStorage_info.convention_name)
+			$("#meeting_img").attr({ src:localStorage_info.top_image_url , alt: ""})
+		}else{
+			var mbxurl = "api/convention/convention_base";
+			var data = {"convention_id":convention_id};
+		   	ajax_all_Filed("true", "true", "GET", mbxurl, "json", data, mbx);//调用	
+		}
+		
+		function mbx(data){
+			var convention_info = data.data.convention_info;
+			if(convention_info!=null){
+				storage.setItem('convention_info',JSON.stringify(data.data.convention_info));
+				$("#class_name").text(convention_info.class_name);
+				$("#title").text(convention_info.convention_name)
+				$("#meeting_img").attr({ src:convention_info.top_image_url , alt: ""})
+			}
+		}
+	})
+	
+</script>

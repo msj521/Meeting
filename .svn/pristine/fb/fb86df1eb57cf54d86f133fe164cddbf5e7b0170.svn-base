@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>SIFIC2019年会 发票申请</title>
+    <link rel="stylesheet" href="/static/web/css/temp.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+</head>
+
+<body>
+    <header>SIFIC2019年会 发票申请</header>
+    <main>
+        <h3><span class="red">注意： </span> 大会只提供纸质发票，请各位老师仔细核对发票抬头和税号，发票开出后 不得退换！谢谢！</h3>
+        <div class="ticket_form">
+            <ul>
+                <li>
+                    <p>发票类型:</p>
+                    <div class="ticket_box">
+                        <button name="1" class="ticket_btn isActive ticket1">普通发票</button>
+                        <button name="2" class="ticket_btn ticket2">增值税专用发票</button>
+                    </div>
+                </li>
+                <li class="require">
+                    <p>姓名:</p>
+                    <div class="from_box">
+                        <input type="text" class="username">
+                    </div>
+                </li>
+                <li class="require">
+                    <p>注册编号:</p>
+                    <div class="from_box">
+                        <input type="text" class="serial_number">
+                    </div>
+                </li>
+                <li class="require">
+                    <p>发票抬头:</p>
+                    <div class="from_box">
+                        <input type="text" class="bill_title">
+                    </div>
+                </li>
+                <li class="require">
+                    <p>税号:</p>
+                    <div class="from_box">
+                        <input type="text" class="tax_num">
+                    </div>
+                </li>
+                <li class="require">
+                    <p>电话:</p>
+                    <div class="from_box">
+                        <input type="text" class="unit_tel">
+                    </div>
+                </li>
+                <li class="toggle">
+                    <p>地址:</p>
+                    <div class="from_box">
+                        <input type="text" class="unit_address">
+                    </div>
+                </li>
+                <li class="toggle">
+                    <p>开户行:</p>
+                    <div class="from_box">
+                        <input type="number" class="account_bank">
+                    </div>
+                </li>
+                <li class="toggle">
+                    <p>开户行账号:</p>
+                    <div class="from_box">
+                        <input type="text" class="account">
+                    </div>
+                </li>
+                <li class="require">
+                    <p>邮寄地址:</p>
+                    <div class="from_box">
+                        <input type="text" class="address">
+                    </div>
+                </li>
+            </ul>
+            <p class="button"><button class="submit">提交</button></p>
+        </div>
+    </main>
+</body>
+<script>
+    $(function() {
+        var userinfo = <?php echo json_encode($userinfo);?>;
+        var url = '/api/convention/gather_invoice';
+        var bill_type = 1;
+        var openid = userinfo.openid;
+        var data = {
+            open_id: openid
+        };
+        ajax_all_Filed("true", "true", "POST", url, "json", data, searchData);
+
+        function searchData(data) {
+            if (data.code == 412) {
+                //已申请
+                alert(data.msg);
+                if (data.data) {
+                    $('.username').val(data.data.username);
+                    $('.serial_number').val(data.data.serial_number);
+                    $('.bill_title').val(data.data.bill_title);
+                    $('.tax_num').val(data.data.tax_num);
+                    $('.account_bank').val(data.data.account_bank);
+                    $('.account').val(data.data.account);
+                    $('.address').val(data.data.address);
+                    $('.unit_tel').val(data.data.unit_tel);
+                    $('.unit_address').val(data.data.unit_address);
+                    $('.ticket' + data.data.bill_type).addClass('isActive').siblings().removeClass('isActive');
+                    bill_type = data.data.bill_type - 0;
+                    if (bill_type == 2) {
+                        $('.toggle').each(function() {
+                            $(this).addClass('require');
+                        })
+                    }
+                }
+            } else {
+                //success
+                // alert(data.msg);
+            }
+        }
+
+        $('.submit').click(function() {
+            if ($('.username').val() == '') {
+                alert('姓名不能为空！');
+                return;
+            } else if ($('.serial_number').val() == '') {
+                alert('注册编号不能为空！');
+                return;
+            } else if ($('.bill_title').val() == '') {
+                alert('发票抬头不能为空！');
+                return;
+            } else if ($('.tax_num').val() == '') {
+                alert('税号不能为空！');
+                return;
+            } else if ($('.address').val() == '') {
+                alert('邮寄地址不能为空！');
+                return;
+            } else if ($('.unit_tel').val() == '') {
+                    alert('电话不能为空！');
+                    return;
+            }else if (bill_type == 2) {
+                if ($('.account_bank').val() == '') {
+                    alert('开户行不能为空！');
+                    return;
+                } else if ($('.account').val() == '') {
+                    alert('开户行账号不能为空！');
+                    return;
+                } else if ($('.unit_address').val() == '') {
+                    alert('地址不能为空！');
+                    return;
+                }
+            }
+            var data = {
+                username: $('.username').val(),
+                serial_number: $('.serial_number').val(),
+                bill_title: $('.bill_title').val(),
+                tax_num: $('.tax_num').val(),
+                address: $('.address').val(),
+                account_bank: $('.account_bank').val(),
+                account: $('.account').val(),
+                unit_tel: $('.unit_tel').val(),
+                unit_address: $('.unit_address').val(),
+                bill_type: bill_type,
+                open_id: openid,
+                type: 1
+            }
+            ajax_all_Filed("true", "true", "POST", url, "json", data, submit_func);
+        })
+
+        function submit_func(data) {
+            alert(data.msg);
+            $('.submit').hide();
+        }
+
+        $('.ticket_box').on('click', 'button', function() {
+            bill_type = $(this).attr('name') - 0;
+            $(this).addClass('isActive').siblings().removeClass('isActive');
+            if (bill_type == 1) {
+                $('.toggle').each(function(i) {
+                    $(this).removeClass('require');
+                })
+            } else if (bill_type == 2) {
+                $('.toggle').each(function(i) {
+                    $(this).addClass('require');
+                })
+            }
+        })
+
+    })
+</script>
+
+</html>

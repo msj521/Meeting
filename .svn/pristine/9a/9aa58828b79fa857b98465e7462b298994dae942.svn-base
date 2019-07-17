@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="第15届上海国际医院感染控制论坛（SIFIC）定于2019年5月30日-6月2日在上海跨国采购会展中心召开，同期还将召开第3届东方耐药与感染大会（OCAMRI）">
+    <meta name="Keywords" content="SIFIC,SIFIC 2019,SIFIC 2019年会报名,第15届上海国际医院感染控制论坛">
+    <title>2019 SIFIC年会现场签到</title>
+    <link rel="stylesheet" href="/static/web/css/temp.css">
+    <script type="text/javascript" src="/static/web/libs/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/web/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/static/web/js/md5.js"></script>
+    <script type="text/javascript" src="/static/web/js/ajax.js"></script>
+    <script type="text/javascript" src="/static/web/js/getQueryString.js"></script>
+</head>
+
+<body>
+    <header>2019 SIFIC年会现场签到</header>
+    <main>
+        <h3><span class="red">注意: </span>参会人员需每日上午与下午分别进行签到。每个手机号每天仅能签到二次。不可帮他人代签。</h3>
+        <div class="">
+            <ul>
+                <li>
+                    <p>报名姓名:</p>
+                    <div class="from_box">
+                        <input type="text" class="name">
+                    </div>
+                </li>
+                <li>
+                    <p>注册编号:</p>
+                    <div class="from_box">
+                        <input type="text" class="number">
+                    </div>
+                </li>
+                <li>
+                    <p>手机号码:</p>
+                    <div class="from_box">
+                        <input type="number" class="phone">
+                    </div>
+                </li>
+            </ul>
+            <p class="button"><button class="sign">签到</button></p>
+        </div>
+    </main>
+</body>
+<script>
+    $(function() {
+        var userinfo = <?php echo json_encode($userinfo);?>;
+        var url = '/api/convention/training_sigin';
+        var openid = userinfo.openid;
+        var getData = {
+            open_id: openid
+        }
+        ajax_all_Filed("true", "true", "POST", url, "json", getData, get_func);
+
+        function get_func(data) {
+			alert(data.msg);
+			$('.name').val(data.data.username);
+			$('.number').val(data.data.serial_number);
+			$('.phone').val(data.data.tel);		
+            if (data.code == 412) {
+				$('.sign').hide();
+                //$('.register').val(data.data.ticket_id);
+            } else {
+                //alert(data.msg);
+            }
+        }
+
+        $('.sign').click(function() {
+            if ($('.name').val() == '') {
+                alert('报名姓名不能为空！');
+                return;
+            }else if ($('.phone').val().length != 11) {
+                alert('手机号码格式不正确！');
+                return;
+            }else {
+                var data = {
+                    username: $('.name').val(),
+                    serial_number: $('.number').val(),
+                    tel: $('.phone').val(),
+                    //ticket_id: $('.register').val(),
+                    type: 1,
+                    open_id: openid
+                }
+                ajax_all_Filed("true", "true", "POST", url, "json", data, sign_func);
+            }
+        })
+
+        function sign_func(data) {
+            alert(data.msg);
+            $('.sign').hide();
+        }
+
+    })
+</script>
+
+</html>
