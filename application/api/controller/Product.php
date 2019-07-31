@@ -21,6 +21,7 @@ class Product extends Base {
                 'class_list' => $class_list
             ]
         ];
+	   $data=$this->api_redis($data);
        echo json_encode($data);exit;
     }
 
@@ -56,9 +57,7 @@ class Product extends Base {
         $total = Db::table("v_product")
                 ->where($where)
                 ->count();
-        //ECHO Db::table("v_product")->GETLASTSQL();die;
         $class_list = classify(6);
-        
         $data = [
             'code' => '200',
             'msg' => '获取成功',
@@ -68,6 +67,7 @@ class Product extends Base {
                 'total' => count($total)
             ]
         ];
+		$data=$this->api_redis($data);
        echo json_encode($data);exit;
     }
     
@@ -150,6 +150,7 @@ class Product extends Base {
                     'video_list' => $section
                 ]
             ];
+			//$data=$this->api_redis($data);
         }else{
             $data = [
                 'code' => '414',
@@ -213,29 +214,12 @@ class Product extends Base {
                     'data'=>$play_url_tow,
                     'msg'=>'获取成功'
                 ];
+				$data=$this->api_redis($play_url_data);
             }
+			
             echo json_encode($play_url_data);exit;
         }
-        
-        
-        $comment = Db::table('v_video_comment')
-        ->field('fid,video_id,content,user_name,nick_name,app_image_url,web_image_url,praise_num,create_time')
-        ->where(['record_status'=>1,'video_id'=>$video_id,'check'=>1])
-        ->order(['fid'=>'desc'])
-        ->select();
-        if (count($comment)>0){
-	        foreach ($comment as &$vo){
-	            $comment_detail = Db::table('video_comment_detail')
-	            ->where(['record_status'=>1,'creator_id'=>$uid,'video_id'=>$video_id,'comment_id'=>$vo['fid']])
-	            ->select();
-	            if (count($comment_detail)>0){
-	            	$vo['is_praise'] = 1;
-	            }else{
-	            	$vo['is_praise'] = 0;
-	            }
-	        }
-        }
-        
+       
         if (isset($video_info)&&count($video_info)>0) {
             $section = [];
             if (isset($video_video)&&count($video_video)>0) {
@@ -304,6 +288,26 @@ class Product extends Base {
             $play_info = Db::table('video_play_info')
             ->where(['record_status'=>1,'video_id'=>$video_id,'product_id'=>$training_id,'creator_id'=>$uid])
             ->find();
+			
+			//评论
+			$comment = Db::table('v_video_comment')
+						->field('fid,video_id,content,user_name,nick_name,app_image_url,web_image_url,praise_num,create_time')
+						->where(['record_status'=>1,'video_id'=>$video_id,'check'=>1])
+						->order(['fid'=>'desc'])
+						->select();
+			if (!empty($comment)){
+				foreach ($comment as &$vo){
+					$comment_detail = Db::table('video_comment_detail')
+					->where(['record_status'=>1,'creator_id'=>$uid,'video_id'=>$video_id,'comment_id'=>$vo['fid']])
+					->find();
+					if (!empty($comment_detail)){
+						$vo['is_praise'] = 1;
+					}else{
+						$vo['is_praise'] = 0;
+					}
+				}
+			}
+
             $data = [
                 'code' => '200',
                 'msg' => '获取成功',
@@ -316,6 +320,7 @@ class Product extends Base {
                     'play_info'=>$play_info
                 ]
             ];
+			//$data=$this->api_redis($data);
         }else{
             $data = [
                 'code' => '414',
@@ -324,42 +329,6 @@ class Product extends Base {
         }
        echo json_encode($data);exit;
     }    
-//     /**
-//     * 录播地址
-//     */
-//    public function VideoUrl(){
-//        $params = request()->param();
-//        $uid =isset($params['uid'])?$params['uid']:0;
-//        $video_id =isset($params['video_id'])?$params['video_id']:0;
-
-//        //判断是否有权限播放      
-//        $results = Db::query("call p_play_authority($uid,$video_id,2)");
-//        $result = $results[0][0]['result'];
-       
-//        if ($result==0) {
-//            $data = [
-//                'code' => '410',
-//                'msg' => '无权播放',
-//            ];
-//            echo json_encode($data);exit;
-//        }
-
-//        $play_url = Db::table("v_video_url")
-//        ->where(["video_id"=>$video_id,"record_status"=>1])
-//        ->order(['fid'=>'desc'])
-//        ->find();
-//        if (!empty($play_url)) {
-//             $play_url['play_url'] = base64_encode($play_url['play_url']);
-//        }
-//        $data = [
-//            'code' => '200',
-//            'msg' => '获取成功',
-//            'data' => [
-//                'play_url' => $play_url
-//            ]
-//        ];
-//       echo json_encode($data);exit;
-//    }
 
     /**
      * 培训评论列表
@@ -374,7 +343,7 @@ class Product extends Base {
 
         $comment = Db::table('v_video_comment')
         ->field('fid,video_id,content,user_name,nick_name,app_image_url,web_image_url,praise_num,create_time')
-        ->where(['record_status'=>1,'video_id'=>$video_id,'check'=>1])
+        ->where(['record_status'=>1,'video_id'=>$video_id,'check'=>2])
         ->order(['fid'=>'asc'])
         ->limit(($page-1)*$pagesize,$pagesize)
         ->select();
@@ -384,6 +353,7 @@ class Product extends Base {
 	            $comment_detail = Db::table('video_comment_detail')
 	            ->where(['record_status'=>1,'creator_id'=>$uid,'video_id'=>$video_id,'comment_id'=>$vo['fid']])
 	            ->select();
+				echo count($comment_detail);
 	            if (count($comment_detail)>0){
 	            	$vo['is_praise'] = 1;
 	            }else{
@@ -396,7 +366,7 @@ class Product extends Base {
             'msg' => '获取成功',
             'data' => $comment
         ];
-
+	   //$data=$this->api_redis($data);
        echo json_encode($data);exit;
     }
 
@@ -454,9 +424,9 @@ class Product extends Base {
         }
 
         $comment = Db::table('v_video_comment')
-        ->field('fid,video_id,content,user_name,nick_name,app_image_url,web_image_url,praise_num,create_time')
-        ->where(['record_status'=>1,'fid'=>$status,'check'=>1])
-        ->find();
+					->field('fid,video_id,content,user_name,nick_name,app_image_url,web_image_url,praise_num,create_time')
+					->where(['record_status'=>1,'fid'=>$status,'check'=>1])
+					->find();
 
         if (!empty($comment)) {
             $data = [
@@ -477,17 +447,15 @@ class Product extends Base {
      * 培训发起评论点赞
      */
     public function TrainingCommentParise(){
-        // $heard=$this->getAllHeaders();
         $heard = request()->param();
         $uid =isset($heard['uid'])?$heard['uid']:0;
         $video_id =isset($heard['video_id'])?$heard['video_id']:0;
         $training_id =isset($heard['training_id'])?$heard['training_id']:0;
         $comment_id =isset($heard['comment_id'])?$heard['comment_id']:0;
-
         if ($uid>0) {
             $comment = Db::table('video_comment_detail')
-            ->where(['record_status'=>1,'creator_id'=>$uid,'video_id'=>$video_id,'comment_id'=>$comment_id])
-            ->select();
+						->where(['record_status'=>1,'creator_id'=>$uid,'video_id'=>$video_id,'comment_id'=>$comment_id])
+						->find();
             if (empty($comment)) {
                 $comment_data = [
                     'video_id' => $video_id,
@@ -497,14 +465,18 @@ class Product extends Base {
                 ];
                 Db::table('video_comment_detail')->insert($comment_data);
                 $data = [
-                    'code' => '200',
-                    'msg' => '点赞成功'
+                    'code' => 200,
+                    'msg' => '点赞成功',
+					'cnt' => 1
                 ];
             }else{
+				$cnt = Db::table('video_comment_detail')->where(['record_status'=>1,'video_id'=>$video_id,'comment_id'=>$comment_id])->count();
                 $data = [
-                    'code' => '200',
-                    'msg' => '已点过赞'
+                    'code' => 200,
+                    'msg' => '已点过赞',
+                    'cnt' => $cnt
                 ];
+				
             }
         }else{
             $data = [
@@ -806,6 +778,7 @@ class Product extends Base {
                     'video_list' => $living_video
                 ]
             ];
+			$data=$this->api_redis($data);
         }else{
             $data = [
                 'code' => '414',
@@ -845,4 +818,4 @@ class Product extends Base {
         }
        echo json_encode($data);exit;
     }
-}      
+}
